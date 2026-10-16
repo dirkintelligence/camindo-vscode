@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "comment": "camindo CMS template commands (CMS:NAME …) inside PHP/HTML. Injected into text.html.php so that a command - with quotes, HTML snippets or PHP expressions in its values - is read as one unit and does not disturb the HTML grammar. Scope names are deliberately theme-neutral (meta.cms.*); the colors come from the extension (decorations, *.cms.php only).",
+  "scopeName": "camindo.cms.injection",
+  "injectionSelector": "L:text.html.php -source.php",
+  "patterns": [
+    { "include": "#command" }
+  ],
+  "repository": {
+    "command": {
+      "begin": "(\\()((?i:CMS)):([A-Za-z_][A-Za-z0-9_]*)",
+      "beginCaptures": {
+        "1": { "name": "meta.cms.punctuation.begin" },
+        "2": { "name": "meta.cms.prefix" },
+        "3": { "name": "meta.cms.name" }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": { "name": "meta.cms.punctuation.end" }
+      },
+      "name": "meta.cms.command",
+      "patterns": [
+        { "include": "#string-double" },
+        { "include": "#string-single" },
+        { "include": "#php-brace" },
+        { "include": "#php-variable" },
+        { "include": "#brace" },
+        { "include": "#key" },
+        { "include": "#operator" }
+      ]
+    },
+    "string-double": {
+      "begin": "\"",
+      "end": "\"",
+      "name": "meta.cms.string.double",
+      "patterns": [
+        { "include": "#escape" },
+        { "include": "#php-brace" },
+        { "include": "#php-variable" }
+      ]
+    },
+    "string-single": {
+      "begin": "'",
+      "end": "'",
+      "name": "meta.cms.string.single",
+      "patterns": [
+        { "include": "#escape" }
+      ]
+    },
+    "escape": {
+      "match": "\\\\.",
+      "name": "meta.cms.escape"
+    },
+    "php-brace": {
+      "begin": "\\{(?=\\$)",
+      "end": "\\}",
+      "name": "meta.cms.php",
+      "patterns": [
+        { "include": "#php-brace-inner" }
+      ]
+    },
+    "php-brace-inner": {
+      "begin": "\\{",
+      "end": "\\}",
+      "patterns": [
+        { "include": "#php-brace-inner" }
+      ]
+    },
+    "php-variable": {
+      "match": "\\$[A-Za-z_][A-Za-z0-9_]*(?:->[A-Za-z_][A-Za-z0-9_]*)*",
+      "name": "meta.cms.php"
+    },
+    "brace": {
+      "begin": "\\{",
+      "end": "\\}",
+      "name": "meta.cms.brace",
+      "patterns": [
+        { "include": "#brace" }
+      ]
+    },
+    "key": {
+      "match": "[A-Za-z_][A-Za-z0-9_]*(?=\\s*(?:\\[|=|<|>|!))",
+      "name": "meta.cms.key"
+    },
+    "operator": {
+      "match": "==|!=|!!|<=|>=|<<|>>|=|<|>|!",
+      "name": "meta.cms.operator"
+    }
+  }
+}

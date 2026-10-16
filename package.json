@@ -1,0 +1,52 @@
+{
+  "name": "camindo-cms-templates",
+  "displayName": "camindo CMS Templates",
+  "description": "Colors, completion and hover for (CMS:…) commands in camindo CMS templates (*.cms.php)",
+  "version": "0.1.0",
+  "publisher": "camindo",
+  "license": "AGPL-3.0-or-later",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Programming Languages", "Snippets"],
+  "main": "./extension.js",
+  "activationEvents": [
+    "workspaceContains:**/*.cms.php",
+    "onLanguage:php"
+  ],
+  "contributes": {
+    "grammars": [
+      {
+        "scopeName": "camindo.cms.injection",
+        "path": "./syntaxes/cms.injection.tmLanguage.json",
+        "injectTo": ["text.html.php"]
+      }
+    ],
+    "commands": [
+      {
+        "command": "camindo.reloadCommands",
+        "title": "camindo: Reload command definitions"
+      }
+    ],
+    "configuration": {
+      "title": "camindo CMS",
+      "properties": {
+        "camindo.commandsFile": {
+          "type": "string",
+          "default": "",
+          "description": "JSON file with the command definitions (tools/export-commands.php), absolute or relative to the workspace. Empty: the file shipped with the extension."
+        },
+        "camindo.commandColor": {
+          "type": "string",
+          "default": "",
+          "description": "Color of (CMS:…) commands, e.g. #a000a0. Empty: purple, lighter in dark themes."
+        },
+        "camindo.phpColor": {
+          "type": "string",
+          "default": "",
+          "description": "Color of PHP expressions inside commands ({$…}, $var), e.g. #ff8800. Empty: orange."
+        }
+      }
+    }
+  }
+}
