@@ -1,2 +1,6 @@
-tools/**
+.github/**
+test/**
+node_modules/**
+images/icon.svg
+.gitignore
 *.vsix

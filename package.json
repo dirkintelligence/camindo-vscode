@@ -1,10 +1,25 @@
 {
   "name": "camindo-cms-templates",
   "displayName": "camindo CMS Templates",
-  "description": "Colors, completion and hover for (CMS:…) commands in camindo CMS templates (*.cms.php)",
+  "description": "%description%",
   "version": "0.1.0",
   "publisher": "camindo",
+  "author": "Dirk Ruetz",
   "license": "AGPL-3.0-or-later",
+  "icon": "images/icon.png",
+  "homepage": "https://github.com/dirkintelligence/camindo-vscode#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dirkintelligence/camindo-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dirkintelligence/camindo-vscode/issues"
+  },
+  "keywords": ["camindo", "cms", "template", "php", "completion", "syntax"],
+  "galleryBanner": {
+    "color": "#3d5a8a",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -14,6 +29,15 @@
     "workspaceContains:**/*.cms.php",
     "onLanguage:php"
   ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "commands": "php ../Core/cron/camindo.php template commands --all --out=data",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.2"
+  },
   "contributes": {
     "grammars": [
       {
@@ -25,26 +49,32 @@
     "commands": [
       {
         "command": "camindo.reloadCommands",
-        "title": "camindo: Reload command definitions"
+        "title": "%command.reload%"
       }
     ],
     "configuration": {
       "title": "camindo CMS",
       "properties": {
+        "camindo.language": {
+          "type": "string",
+          "default": "",
+          "enum": ["", "ar_SA", "bn_BD", "de_DE", "en_US", "es_ES", "fr_FR", "hi_IN", "ja_JP", "ko_KR", "pt_BR", "ur_PK", "zh_CN"],
+          "description": "%config.language%"
+        },
         "camindo.commandsFile": {
           "type": "string",
           "default": "",
-          "description": "JSON file with the command definitions (tools/export-commands.php), absolute or relative to the workspace. Empty: the file shipped with the extension."
+          "description": "%config.commandsFile%"
         },
         "camindo.commandColor": {
           "type": "string",
           "default": "",
-          "description": "Color of (CMS:…) commands, e.g. #a000a0. Empty: purple, lighter in dark themes."
+          "description": "%config.commandColor%"
         },
         "camindo.phpColor": {
           "type": "string",
           "default": "",
-          "description": "Color of PHP expressions inside commands ({$…}, $var), e.g. #ff8800. Empty: orange."
+          "description": "%config.phpColor%"
         }
       }
     }

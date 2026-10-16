@@ -1,0 +1,3892 @@
+{
+    "version": "9.0.8",
+    "lang": "hi_IN",
+    "commands": {
+        "continue": {
+            "note": "सफलता टेम्पलेट के बावजूद टेम्पलेट की प्रोसेसिंग जारी रखता है।",
+            "do": "field",
+            "oneof": "",
+            "params": {}
+        },
+        "csp": {
+            "note": "इस पेज की स्क्रिप्ट नीति (Content Security Policy) बदलता है: अतिरिक्त स्क्रिप्ट स्रोत, फ़ॉर्म लक्ष्य या कोई दूसरा मोड। पहले आउटपुट से पहले होना चाहिए।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "script": {
+                    "description": "अतिरिक्त स्क्रिप्ट स्रोत, स्पेस या कॉमा से अलग (https://js.example.com, *.example.com)। 'unsafe-inline' जैसे कीवर्ड हटा दिए जाते हैं।",
+                    "value": "स्रोत",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "form": {
+                    "description": "अतिरिक्त फ़ॉर्म लक्ष्य (form-action सक्षम करता है), जैसे भुगतान प्रदाता।",
+                    "value": "स्रोत",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mode": {
+                    "description": "इस पेज का मोड: off = कोई स्क्रिप्ट नीति नहीं, report = केवल रिपोर्ट, enforce = लागू करें। खाली: इंस्टेंस की सेटिंग।",
+                    "value": "off / report / enforce",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "date": {
+            "note": "किसी दिनांक मान का दिनांक भाग फ़ॉर्मैट करके आउटपुट करता है।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "वह रिकॉर्ड जिससे पढ़ा जाता है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "रिकॉर्ड के उस फ़ील्ड का नाम जिसकी सामग्री स्रोत के रूप में उपयोग होती है।",
+                    "value": "फ़ील्ड",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "पाठ रूप में मान जो स्रोत के रूप में उपयोग होता है।",
+                    "value": "दिनांक मान",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU पैटर्न, जैसे \"dd.MM.y\"। निर्दिष्ट न होने पर पेज का लोकेल लेखन-शैली तय करता है।",
+                    "value": "प्रारूप निर्देश",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: समय क्षेत्र का नाम जोड़ा जाता है (जैसे \"Europe/Berlin\")।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "यदि प्रश्नचिह्न से पहले का पाठ फ़ॉर्मैट किए गए मान में आता है, तो उसे प्रश्नचिह्न के बाद के पाठ से बदल दिया जाता है (जैसे \"Jan?January\")।",
+                    "value": "पाठ?पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "स्रोत ('field' या 'useval') खाली होने पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "स्रोत खाली न होने पर उसके स्थान पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली न होने पर उससे पहले रखा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली न होने पर अंत में जोड़ा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "फ़ॉर्मैट किया गया मान आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "datetime": {
+            "note": "किसी दिनांक मान का दिनांक और समय फ़ॉर्मैट करके आउटपुट करता है।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "वह रिकॉर्ड जिससे पढ़ा जाता है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "रिकॉर्ड के उस फ़ील्ड का नाम जिसकी सामग्री स्रोत के रूप में उपयोग होती है।",
+                    "value": "फ़ील्ड",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "पाठ रूप में मान जो स्रोत के रूप में उपयोग होता है।",
+                    "value": "दिनांक मान",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU पैटर्न, जैसे \"dd.MM.y HH:mm\"। निर्दिष्ट न होने पर पेज का लोकेल लेखन-शैली तय करता है।",
+                    "value": "प्रारूप निर्देश",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "autotime": {
+                    "description": "true: यदि कोई समय मौजूद नहीं है (00:00), तो वह नहीं दिखाया जाता।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: समय क्षेत्र का नाम जोड़ा जाता है (जैसे \"Europe/Berlin\")।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "यदि प्रश्नचिह्न से पहले का पाठ फ़ॉर्मैट किए गए मान में आता है, तो उसे प्रश्नचिह्न के बाद के पाठ से बदल दिया जाता है (जैसे \"Jan?January\")।",
+                    "value": "पाठ?पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "स्रोत ('field' या 'useval') खाली होने पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "स्रोत खाली न होने पर उसके स्थान पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली न होने पर उससे पहले रखा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली न होने पर अंत में जोड़ा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "फ़ॉर्मैट किया गया मान आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "email": {
+            "note": "ईमेल भेजता है। अनुरोध पर पहले फ़ॉर्म के आवश्यक फ़ील्ड जाँचता है।",
+            "do": "do",
+            "oneof": "subject,subjecttemplate,body,bodytemplate",
+            "params": {
+                "formguard": {
+                    "description": "true: रोबोट से फ़ॉर्म सुरक्षा - फ़ॉर्म में (CMS:USER_TOKEN formguard=true) के फ़ील्ड (टाइमस्टैम्प, खाली हनीपॉट फ़ील्ड) होने चाहिए और इसे user.formguard_min_seconds (3) के बाद ही भेजा जा सकता है। कोई संख्या इस फ़ॉर्म के लिए यह न्यूनतम समय तय करती है (formguard=5); 0 या false सुरक्षा बंद करता है। अन्यथा थ्रॉटलिंग की तरह संदेश \"throttled\"।",
+                    "value": "true / false / सेकंड",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "throttle": {
+                    "description": "मूल (IP) के अनुसार थ्रॉटलिंग: true = सीमा user.throttle.email_ip (प्रति घंटे 5), अन्यथा user.throttle से एक अलग बकेट। सीमित होने पर: संदेश \"throttled\", कोई ईमेल नहीं। ऐसे संपर्क फ़ॉर्म के लिए जिनमें कोई भी पता दर्ज कर सकता है।",
+                    "value": "true / बकेट का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "to": {
+                    "description": "प्राप्तकर्ता का ईमेल पता। कई प्राप्तकर्ता to[]=… के रूप में या कॉमा से अलग करके (अधिकतम 20)।",
+                    "value": "ईमेल पता",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "toname": {
+                    "description": "प्राप्तकर्ता का नाम (केवल ठीक एक प्राप्तकर्ता होने पर)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "from": {
+                    "description": "प्रेषक का ईमेल पता।",
+                    "value": "ईमेल पता",
+                    "default": "email.noreply या email.reply (.camindo.php)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fromname": {
+                    "description": "प्रेषक का नाम।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "contenttype": {
+                    "description": "ईमेल का MIME प्रकार।",
+                    "value": "text/plain या text/html",
+                    "default": "text/plain",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "ईमेल का विषय।",
+                    "value": "पाठ",
+                    "default": "(no subject)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subjecttemplate": {
+                    "description": "विषय के लिए टेम्पलेट (टैग और लाइन ब्रेक हटा दिए जाते हैं)। subject से अधिक प्राथमिकता रखता है।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "body": {
+                    "description": "संदेश का पाठ (पाठ या HTML)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "bodytemplate": {
+                    "description": "ईमेल के मुख्य भाग के लिए टेम्पलेट। body से अधिक प्राथमिकता रखता है।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "paths_absolute": {
+                    "description": "true: ईमेल के मुख्य भाग के सभी सर्वर-सापेक्ष पथ निरपेक्ष पथों में बदल दिए जाते हैं (केवल contenttype=\"text/html\" के साथ)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sender_url": {
+                    "description": "(वैकल्पिक रूप से प्रोटोकॉल सहित) + डोमेन, ताकि सर्वर-सापेक्ष पथ निरपेक्ष पथों में बदले जा सकें।",
+                    "value": "(http://)डोमेन",
+                    "default": "इंस्टेंस का प्रोटोकॉल और मुख्य डोमेन",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: ईमेल लॉग फ़ाइल var/log/{date}_mail-debug.log में लिखा जाता है, पर भेजा नहीं जाता।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "requiredfields": {
+                    "description": "आवश्यक फ़ील्ड का निर्धारण। अनुरोध ऐरे data[…] में फ़ील्ड के नाम (इंडेक्स नाम) (पैरामीटर data देखें)।",
+                    "value": "फ़ील्ड के नाम, कॉमा से अलग",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "उस अनुरोध ऐरे का नाम जिसमें 'requiredfields' द्वारा अपेक्षित डेटा है (डिफ़ॉल्ट data, यानी $_POST['data'])।",
+                    "value": "PHP वेरिएबल का नाम",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "'requiredfields' का मूल्यांकन केवल तभी होता है जब 'submit' में कोई मान हो। अन्यथा CMS:EMAIL कमांड को अनदेखा किया जाता है।",
+                    "value": "पाठ मान",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "सफलतापूर्वक भेजने के बाद शामिल किया जाने वाला टेम्पलेट; इसके बाद पेज समाप्त हो जाता है (CMS:CONTINUE के साथ नहीं)।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "त्रुटि संदेश। इंडेक्स में: उपयोग का मामला (required, to, from, content, attachment, send); मान में: संदेश का पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "attachment": {
+                    "description": "संलग्न की जाने वाली फ़ाइलें। var निर्देशिका के सापेक्ष पथ, केवल download/, upload/ और modules/ से।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "fed": {
+            "note": "फ़्रंटएंड संपादन सक्षम होने पर किसी रिकॉर्ड को संपादित करने के लिए बटन बनाता है। उसी पेज पर CMS:FED_SCRIPT आवश्यक है।",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "label": {
+                    "description": "बटन का लेबल।",
+                    "value": "पाठ",
+                    "default": "[»]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "वह रिकॉर्ड जो खोला जाता है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "info": {
+                    "description": "true: बटन इनपुट मास्क के स्थान पर रिकॉर्ड का विवरण दृश्य खोलता है।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "बटन से पहले आउटपुट होने वाला पाठ (बटन न होने पर नहीं)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "बटन के बाद आउटपुट होने वाला पाठ (बटन न होने पर नहीं)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "बटन आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_code": {
+            "note": "फ़्रंटएंड संपादन सक्षम होने पर HTML कोड आउटपुट करता है।",
+            "do": "code",
+            "oneof": "",
+            "params": {
+                "code": {
+                    "description": "फ़्रंटएंड संपादन सक्षम होने पर आउटपुट होने वाला HTML कोड।",
+                    "value": "HTML कोड",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "फ़्रंटएंड संपादन अक्षम होने पर वैकल्पिक आउटपुट।",
+                    "value": "HTML कोड",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "कोड आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_script": {
+            "note": "JavaScript फ़ंक्शन cFED() और CMS:FED के बटनों के लिए क्लिक लिसनर (पेज के nonce के साथ) प्रदान करता है - प्रति पेज एक बार, आमतौर पर फ़ुटर में।",
+            "do": "set",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "स्क्रिप्ट ब्लॉक आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "header": {
+            "note": "एक HTTP हेडर भेजता है।",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "पाठ की वह पंक्ति जो हेडर के रूप में ब्राउज़र को भेजी जाती है। मान के बिना (\"Name:\") हेडर हटा दिया जाता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "false: उसी प्रकार का पिछला हेडर अधिलेखित नहीं होता; एक नया हेडर जोड़ा जाता है।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "include": {
+            "note": "एक टेम्पलेट शामिल करता है - आउटपुट कैश (IncludeCache) से कैशिंग के साथ।",
+            "do": "template",
+            "oneof": "",
+            "params": {
+                "caching": {
+                    "description": "टेम्पलेट का आउटपुट इतनी अवधि तक कैश होता है और फिर दोबारा प्रोसेस किए बिना दिया जाता है। निर्दिष्ट न होने, खाली या 0 होने पर: कोई कैश नहीं।",
+                    "value": "सेकंड, 30s, 5m, 1h, 1d या infinite",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cacheparams": {
+                    "description": "वह सब कुछ जिस पर आउटपुट निर्भर करता है (रिकॉर्ड, पेज, ग्राहक …): हर मान अपनी कैश फ़ाइल बनाता है। इंस्टेंस और भाषा का ध्यान अपने आप रखा जाता है।",
+                    "value": "null, bool, int, string या array (वेरिएबल के रूप में भी: cacheparams=$params)",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "पूरा आउटपुट (शामिल किए गए टेम्पलेट सहित) आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "शामिल किया जाने वाला विवरण टेम्पलेट।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_list": {
+            "note": "पेज नेविगेशन (पेजिनेशन) बनाता है, उदाहरण के लिए 1 … 5 | 6 | 7 | 8 | 9 … 15।",
+            "do": "separator",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "वर्तमान पेज का ऑफ़सेट (छोड़े गए परिणामों की संख्या)। मान के बिना अनुरोध पैरामीटर skip लागू होता है।",
+                    "value": "संख्या >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maximum": {
+                    "description": "एक साथ दिखाए जाने वाले पेज लिंक की संख्या (साथ-साथ खिसकते हुए), पहले और अंतिम पेज के लिंक को छोड़कर।",
+                    "value": "संख्या >= 1",
+                    "default": "7",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "boundaries": {
+                    "description": "true: पहले और अंतिम पेज के लिंक हमेशा दिखाए जाते हैं, जैसे ही वे खिसकने वाली सीमा से बाहर हों।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "दो पेज लिंक के बीच का पाठ। यह लोप-चिह्न ('ellipsis') से पहले और बाद में नहीं डाला जाता।",
+                    "value": "विभाजक",
+                    "default": " ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "पेज लिंक के लिए टेम्पलेट। {page} को पेज संख्या से, {href} को पेज URL से बदला जाता है।",
+                    "value": "HTML टेम्पलेट",
+                    "default": " <a href=\"{href}\">{page}</a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_active": {
+                    "description": "वर्तमान पेज के लिए टेम्पलेट। {page} को पेज संख्या से, {href} को पेज URL से बदला जाता है।",
+                    "value": "HTML टेम्पलेट",
+                    "default": " <strong>{page}</strong> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ellipsis": {
+                    "description": "छोड़े गए पेजों के लिए प्लेसहोल्डर - सीमा लिंक और खिसकने वाली सीमा के बीच दिखता है।",
+                    "value": "कोड",
+                    "default": " … ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "तैयार HTML में सरल पाठ प्रतिस्थापन। विभाजक प्रश्नचिह्न है: \"search?replace\"।",
+                    "value": "पाठ?पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "नेविगेशन से पहले का पाठ, केवल तब जब नेविगेशन आउटपुट हो।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "नेविगेशन के बाद का पाठ, केवल तब जब नेविगेशन आउटपुट हो।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "आउटपुट, यदि परिणाम एक ही पेज में समा जाता है, या यदि CMS:SELECT की कोई limit नहीं है और इसलिए नेविगेशन की आवश्यकता नहीं है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "नेविगेशन आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_next": {
+            "note": "अगले पेज का लिंक बनाता है।",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "वर्तमान पेज का ऑफ़सेट (छोड़े गए परिणामों की संख्या)। मान के बिना अनुरोध पैरामीटर skip लागू होता है।",
+                    "value": "संख्या >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "लिंक के लिए टेम्पलेट, जब तक अगला पेज है। {href} को लक्ष्य URL से बदला जाता है।",
+                    "value": "HTML टेम्पलेट",
+                    "default": " <a href=\"{href}\"><strong>❯❯</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "न चुने जा सकने वाले लिंक के लिए टेम्पलेट, यदि अगला पेज नहीं है। यहाँ भी {href} बदला जाता है।",
+                    "value": "HTML टेम्पलेट",
+                    "default": " <span>❯❯</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "तैयार HTML में सरल पाठ प्रतिस्थापन। विभाजक प्रश्नचिह्न है: \"search?replace\"।",
+                    "value": "पाठ?पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "लिंक से पहले का पाठ, केवल तब जब लिंक आउटपुट हो।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "लिंक के बाद का पाठ, केवल तब जब लिंक आउटपुट हो।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "आउटपुट, यदि CMS:SELECT की कोई limit नहीं है (तब कोई पेज नहीं होते)। यदि सब कुछ एक पेज में समा जाता है, तो tpl_inactive दिखता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "लिंक आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_prev": {
+            "note": "पिछले पेज का लिंक बनाता है।",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "वर्तमान पेज का ऑफ़सेट (छोड़े गए परिणामों की संख्या)। मान के बिना अनुरोध पैरामीटर skip लागू होता है।",
+                    "value": "संख्या >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "लिंक के लिए टेम्पलेट, जब तक पिछला पेज है। {href} को लक्ष्य URL से बदला जाता है।",
+                    "value": "HTML टेम्पलेट",
+                    "default": " <a href=\"{href}\"><strong>❮❮</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "न चुने जा सकने वाले लिंक के लिए टेम्पलेट, यदि पिछला पेज नहीं है। यहाँ भी {href} बदला जाता है।",
+                    "value": "HTML टेम्पलेट",
+                    "default": " <span>❮❮</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "तैयार HTML में सरल पाठ प्रतिस्थापन। विभाजक प्रश्नचिह्न है: \"search?replace\"।",
+                    "value": "पाठ?पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "लिंक से पहले का पाठ, केवल तब जब लिंक आउटपुट हो।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "लिंक के बाद का पाठ, केवल तब जब लिंक आउटपुट हो।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "आउटपुट, यदि CMS:SELECT की कोई limit नहीं है (तब कोई पेज नहीं होते)। यदि सब कुछ एक पेज में समा जाता है, तो tpl_inactive दिखता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "लिंक आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "media": {
+            "note": "इमेज टैग बनाता है या किसी मीडिया फ़ाइल की सामग्री पाठ रूप में आउटपुट करता है।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "वह रिकॉर्ड जिससे पढ़ा जाता है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "अपलोड या थंबनेल फ़ील्ड का नाम।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subfield": {
+                    "description": "IMG टैग के स्थान पर एकल मान: path (src/href के लिए DOCUMENT_ROOT से पथ, पढ़ने योग्य फ़ाइल नाम के साथ; auth/download/user_auth के साथ file.php के माध्यम से), file (फ़ाइल सिस्टम में निरपेक्ष पथ), filename (मूल फ़ाइल नाम), mime_type, extension (बिंदु के बिना), size (बाइट; autoformat के साथ पढ़ने योग्य), width / height (पिक्सेल, अज्ञात होने पर 0), version (फ़ाइल का संस्करण काउंटर)।",
+                    "value": "path / file / filename / mime_type / extension / size / width / height / version",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "auth": {
+                    "description": "true: लिंक मीडिया निर्देशिका के स्थान पर /file.php की ओर इंगित करता है। \"केवल लॉगिन किए हुए फ्रंटएंड उपयोगकर्ताओं के लिए\" (user_auth) वाले फ़ील्ड में यह अपने आप लागू होता है - वहाँ file.php फ्रंटएंड सत्र की जाँच करता है।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "फ़ाइल दिए गए फ़ाइल नाम से /file.php के माध्यम से डाउनलोड के लिए दी जाती है (फ़ाइल एक्सटेंशन अपने आप जुड़ जाता है)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "IMG टैग की चौड़ाई, CSS इकाई के साथ या बिना (डिफ़ॉल्ट: px)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "IMG टैग की ऊँचाई, CSS इकाई के साथ या बिना (डिफ़ॉल्ट: px)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "attr": {
+                    "description": "IMG टैग के अतिरिक्त एट्रिब्यूट (कुंजी: एट्रिब्यूट नाम, मान: एट्रिब्यूट मान)।",
+                    "value": "ऐरे",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "autoformat": {
+                    "description": "true: 'subfield' से चुनी गई सामग्री उसके प्रकार के अनुसार फ़ॉर्मैट की जाती है (जैसे फ़ाइल आकार मान के अनुसार गतिशील रूप से bytes/KB/MB में)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली न होने पर उसे अधिलेखित करता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली (या \"0\") होने पर वैकल्पिक पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली (या \"0\") न होने पर उससे पहले रखा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली (या \"0\") न होने पर अंत में जोड़ा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "फ़ाइल ऐरे (जैसे CMS:SAVEDATA से) field_id और record_id के साथ - केवल सीधे PHP कॉल के माध्यम से, field के बिना (उदाहरण देखें)।",
+                    "value": "ऐरे",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "फ़ॉर्मैट किया गया मान आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "message": {
+            "note": "वर्तमान त्रुटि संदेशों से पाठ आउटपुट बनाता है।",
+            "do": "useval",
+            "oneof": "",
+            "params": {
+                "useval": {
+                    "description": "पाठ रूप में मान जो स्रोत के रूप में उपयोग होता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "संदेशों से पहले आउटपुट होने वाला पाठ, यदि कोई संदेश हो।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "संदेशों के बाद आउटपुट होने वाला पाठ, यदि कोई संदेश हो।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "कोई संदेश न होने पर पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "संदेशों के स्थान पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "संदेश दिखाया नहीं जाता, बल्कि वेरिएबल $set में लिखा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "nonce": {
+            "note": "पेज का nonce आउटपुट करता है: <script(CMS:NONCE)>। जैसे ही वेबसाइट की स्क्रिप्ट नीति लागू होती है, टेम्पलेट की हर स्क्रिप्ट को इसकी आवश्यकता होती है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "format": {
+                    "description": "attribute: nonce=\"…\" (आगे एक स्पेस के साथ, <script> टैग के लिए)। value: केवल मान।",
+                    "value": "\"attribute\" / \"value\"",
+                    "default": "\"attribute\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "आउटपुट दिखाया नहीं जाता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "number": {
+            "note": "एक संख्यात्मक मान फ़ॉर्मैट करके आउटपुट करता है।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "वह रिकॉर्ड जिससे पढ़ा जाता है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "रिकॉर्ड के उस फ़ील्ड का नाम जिसकी सामग्री स्रोत के रूप में उपयोग होती है।",
+                    "value": "फ़ील्ड",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "पाठ रूप में मान जो स्रोत के रूप में उपयोग होता है।",
+                    "value": "संख्या",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "स्रोत खाली होने या संख्यात्मक मान (mul/add के बाद) 0 होने पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "वह संख्या जो स्रोत बनती है, यदि मूल स्रोत खाली नहीं है।",
+                    "value": "संख्या",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mul": {
+                    "description": "वह संख्या जिससे स्रोत को गुणा किया जाता है।",
+                    "value": "संख्या",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "add": {
+                    "description": "वह संख्या जो स्रोत में जोड़ी जाती है।",
+                    "value": "संख्या",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "PHP कमांड sprintf() के अनुरूप फ़ॉर्मैटिंग।",
+                    "value": "प्रारूप",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimals": {
+                    "description": "दशमलव स्थानों की निश्चित संख्या (पूर्णांकित); decimal और thousands_separator फिर भी लागू होते हैं। निर्दिष्ट न होने पर उतने जितने संख्या में हैं।",
+                    "value": "संख्या 0-10",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimal": {
+                    "description": "वह वर्ण जो दशमलव बिंदु को बदलता है।",
+                    "value": "वर्ण",
+                    "default": ".",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "thousands_separator": {
+                    "description": "हज़ार विभाजक के रूप में डाला जाने वाला वर्ण (दाएँ से बाएँ हर तीन अंकों पर)।",
+                    "value": "वर्ण",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nullcent": {
+                    "description": "वह पाठ जो अनुपस्थित दशमलव मान को बदलता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "यदि प्रश्नचिह्न से पहले का पाठ फ़ॉर्मैट किए गए मान में आता है, तो उसे प्रश्नचिह्न के बाद के पाठ से बदल दिया जाता है (जैसे \".00?\" खाली दशमलव स्थान हटाता है)।",
+                    "value": "पाठ?पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "फ़ॉर्मैट किया गया मान \"0\" या खाली न होने पर उससे पहले रखा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "फ़ॉर्मैट किया गया मान \"0\" या खाली न होने पर उसके अंत में जोड़ा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "फ़ॉर्मैट किया गया मान आउटपुट नहीं होता, बल्कि उसके स्थान पर वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sizefactor": {
+                    "description": "1000 या 1024। यदि > 0, तो पढ़ने योग्य फ़ाइल आकार की गणना होती है (जैसे 15.2 GB)।",
+                    "value": "एक किलोबाइट में बाइट की संख्या",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_cell": {
+            "note": "Zelle der aktuellen Zeile. Schrift ist die zu diesem Zeitpunkt eingestellte (CMS:PDF_FONT).",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Zelltext; bricht innerhalb der Spalte um, soweit fit= ihn nicht einpasst.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "col": {
+                    "description": "Spaltenindex ab 0; ohne Angabe die nächste Spalte.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Horizontale Ausrichtung.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "valign": {
+                    "description": "Vertikale Ausrichtung in der Zeile.",
+                    "value": "T / C / B",
+                    "default": "T",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fit": {
+                    "description": "Text auf eine Zeile in der Spaltenbreite einpassen: fontsize verkleinert die Schrift (bis min_size), spacing verringert den Zeichenabstand, scale beides, force staucht horizontal. Was auch so nicht passt, bricht um.",
+                    "value": "none / scale / fontsize / spacing / force",
+                    "default": "none",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "min_size": {
+                    "description": "Kleinste Schriftgröße beim Einpassen.",
+                    "value": "Punkt",
+                    "default": "6",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenseiten: L links, T oben, R rechts, B unten; 1 alle, 0 keine.",
+                    "value": "LTRB / 1 / 0",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke; sonst die der Tabelle.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_color": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand dieser Zelle; sonst der der Tabelle.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe der Zelle. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_color": {
+            "note": "Definiert ein Farbfeld mit RGB- und/oder CMYK-Wert. Der Farbraum des Dokuments (PDF_INIT) wählt den Wert; ein fehlender wird umgerechnet.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Name des Farbfelds (Buchstaben, Ziffern, _ und -).",
+                    "value": "Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "rgb": {
+                    "description": "RGB-Wert als Hex-Farbe, z. B. #0066FF.",
+                    "value": "#rrggbb",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cmyk": {
+                    "description": "CMYK-Wert in Prozent, z. B. 0,100,100,0.",
+                    "value": "c,m,y,k",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_fill_color": {
+            "note": "Füllfarbe für die folgenden CMS:PDF_RECT. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Füllfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_font": {
+            "note": "Stellt die Schrift für die folgenden Texte und Zellen ein. Gilt über Seiten hinweg.",
+            "do": "font",
+            "oneof": "",
+            "params": {
+                "font": {
+                    "description": "Name einer Schrift aus var/modules/pdf/fonts/ ({name}.json; mitgeliefert: helvetica, times, courier, symbol, zapfdingbats). Eine Datei {name}.ttf/.otf wird beim ersten Aufruf konvertiert.",
+                    "value": "Schriftname",
+                    "default": "helvetica",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "Schriftschnitt: B fett, I kursiv, U unterstrichen, D durchgestrichen, O überstrichen. Leer = regulär.",
+                    "value": "B / I / U / D / O, kombinierbar",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße in Punkt.",
+                    "value": "Punkt",
+                    "default": "12",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_html": {
+            "note": "Schreibt einen HTML-Block (Umbruch und Seitenumbruch durch tc-lib-pdf). Der Cursor bleibt stehen - die Höhe des Blocks ist nicht bekannt.",
+            "do": "html",
+            "oneof": "",
+            "params": {
+                "html": {
+                    "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
+                    "value": "HTML",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_image": {
+            "note": "Platziert ein Bild (JPEG, PNG, GIF, ...) aus dem Medienverzeichnis. Der Cursor rückt unter das Bild.",
+            "do": "file",
+            "oneof": "",
+            "params": {
+                "file": {
+                    "description": "Bilddatei: absoluter Pfad aus (CMS:MEDIA subfield=file), Webpfad aus subfield=path oder Pfad relativ zu public/media. Nur Dateien unterhalb des Medienverzeichnisses.",
+                    "value": "Pfad",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite; 0 = aus der Höhe (bzw. aus den Pixeln bei 72 dpi, wenn beide fehlen).",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe; 0 = proportional zur Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "link": {
+                    "description": "Verweis, der beim Klick auf das Bild geöffnet wird.",
+                    "value": "URL",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_init": {
+            "note": "Vorgaben für das Dokument: Farbraum, ICC-Profil, Seitenformat und Ränder. Vor der ersten CMS:PDF_PAGE.",
+            "do": "colorspace",
+            "oneof": "",
+            "params": {
+                "colorspace": {
+                    "description": "Farbraum, in dem Farben ins PDF geschrieben werden.",
+                    "value": "RGB / CMYK",
+                    "default": "RGB",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "icc_profile": {
+                    "description": "ICC-Profil aus var/modules/pdf/profiles/, wird als Output Intent eingebettet.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "output_condition": {
+                    "description": "Bezeichner der Druckbedingung für den Output Intent (z. B. FOGRA39). Ohne Angabe der Dateiname des Profils.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat leerer Seiten (Namen wie in tc-lib-pdf).",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "A4",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Hoch- (P) oder Querformat (L) leerer Seiten.",
+                    "value": "P / L",
+                    "default": "P",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Seitenränder in mm (ein Wert: alle; zwei: oben/unten, rechts/links). Linker Rand = x-Vorgabe, rechter Rand = Breitenvorgabe, unterer Rand = Umbruchgrenze der Tabellen.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "20,20,20,20",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line": {
+            "note": "Zeichnet eine Linie.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x1": {
+                    "description": "Startpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y1": {
+                    "description": "Startpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x2": {
+                    "description": "Endpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y2": {
+                    "description": "Endpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Liniendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Linienfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line_color": {
+            "note": "Linienfarbe für die folgenden CMS:PDF_LINE, Rahmen von CMS:PDF_RECT und Zellenrahmen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Linienfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_meta": {
+            "note": "Dokumenteigenschaften (werden bei CMS:PDF_PRINT geschrieben).",
+            "do": "title",
+            "oneof": "",
+            "params": {
+                "title": {
+                    "description": "Titel.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "author": {
+                    "description": "Autor.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "Thema.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keywords": {
+                    "description": "Stichwörter.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "creator": {
+                    "description": "Erzeugende Anwendung.",
+                    "value": "Text",
+                    "default": "camindo CMS",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_page": {
+            "note": "Legt eine neue Seite an - leer oder auf einer Seite einer Layout-Vorlage. Der erste Aufruf beginnt das Dokument.",
+            "do": "layout",
+            "oneof": "",
+            "params": {
+                "layout": {
+                    "description": "PDF-Vorlage aus var/modules/pdf/layouts/, deren Seite als Hintergrund übernommen wird. Ohne Angabe eine leere Seite.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "page": {
+                    "description": "Seite der Vorlage (ab 1), die übernommen wird.",
+                    "value": "Zahl",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Ausrichtung einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "P / L",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Ränder nur dieser Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_print": {
+            "note": "Sendet das Dokument an den Browser und beendet den Request. Vor CMS:PDF_PAGE darf das Template nichts ausgegeben haben.",
+            "do": "filename",
+            "oneof": "",
+            "params": {
+                "filename": {
+                    "description": "Dateiname, den der Browser anzeigt bzw. beim Speichern vorschlägt.",
+                    "value": "Dateiname",
+                    "default": "document.pdf",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "Leer oder false: im Browser anzeigen. true: als Download unter filename. Ein Dateiname: als Download unter diesem Namen.",
+                    "value": "false / true / Dateiname",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_rect": {
+            "note": "Zeichnet ein Rechteck, umrandet und/oder gefüllt.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x": {
+                    "description": "Linke Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "D Rahmen, F Füllung, DF beides.",
+                    "value": "D / F / DF",
+                    "default": "D",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Füllfarbe; sonst CMS:PDF_FILL_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "line_width": {
+                    "description": "Rahmendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_row": {
+            "note": "Beginnt eine Tabellenzeile.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "is_header": {
+                    "description": "Kopfzeile: wird nach einem Seitenumbruch auf der Folgeseite wiederholt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keep_together": {
+                    "description": "Zeile nicht über Seiten teilen. Derzeit werden Zeilen grundsätzlich nicht geteilt; der Parameter ist für spätere Versionen reserviert.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table": {
+            "note": "Beginnt eine Tabelle; Zeilen und Zellen folgen mit CMS:PDF_ROW / CMS:PDF_CELL, gezeichnet wird bei CMS:PDF_TABLE_END. Zeilen werden nie geteilt: was nicht mehr auf die Seite passt, beginnt auf einer Folgeseite, Kopfzeilen werden dort wiederholt.",
+            "do": "cols",
+            "oneof": "",
+            "params": {
+                "cols": {
+                    "description": "Spaltenbreiten in mm, kommasepariert.",
+                    "value": "b1,b2,...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Linke Kante; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand aller Zellen in mm (ein Wert: alle; zwei: oben/unten, rechts/links).",
+                    "value": "oben,rechts,unten,links",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke der Zellen.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_layout": {
+                    "description": "Layout-Vorlage der Folgeseiten bei Seitenumbruch; sonst wie die letzte CMS:PDF_PAGE (leer = leere Seite).",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_page": {
+                    "description": "Seite der Vorlage für Folgeseiten.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table_end": {
+            "note": "Zeichnet die Tabelle. Der Cursor rückt unter die Tabelle.",
+            "do": "",
+            "oneof": "",
+            "params": {}
+        },
+        "pdf_text": {
+            "note": "Schreibt einen Textblock mit Zeilenumbruch innerhalb der Breite. Der Cursor rückt unter den Block.",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Der Text (UTF-8; Zeilenumbrüche werden umgebrochen). Leer = keine Ausgabe.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand (Oberkante des Blocks); ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Ausrichtung: links, zentriert, rechts, Blocksatz.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße nur für diesen Block; sonst die von CMS:PDF_FONT.",
+                    "value": "Punkt",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe nur für diesen Block; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe des Blocks. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_text_color": {
+            "note": "Textfarbe für die folgenden CMS:PDF_TEXT und Zellen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Textfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "raw": {
+            "note": "सामग्री को बिना फ़ॉर्मैट किए आउटपुट करता है।",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "वह रिकॉर्ड जिससे पढ़ा जाता है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "उस फ़ील्ड का नाम जिसकी सामग्री आउटपुट होती है।",
+                    "value": "फ़ील्ड",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "फ़ील्ड खाली होने पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "फ़ील्ड की सामग्री खाली न होने पर उसके स्थान पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "फ़ील्ड की सामग्री खाली न होने पर उससे पहले रखा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "फ़ील्ड की सामग्री खाली न होने पर अंत में जोड़ा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "सामग्री आउटपुट नहीं होती, बल्कि वेरिएबल $set में सहेजी जाती है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "relation": {
+            "note": "वर्तमान रिकॉर्ड से जुड़े सभी रिकॉर्ड का मुख्य फ़ील्ड (शीर्षक) आउटपुट करता है।",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "वह रिकॉर्ड जिसके लिंक आउटपुट होते हैं। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "लिंक फ़ील्ड (फ़ील्ड प्रकार relation, pointer या link) का नाम जिसके लक्ष्य आउटपुट होते हैं। कोई अन्य फ़ील्ड प्रकार त्रुटि संदेश देता है।",
+                    "value": "फ़ील्ड",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "परिणाम सेट में शामिल रिकॉर्ड की अधिकतम संख्या।",
+                    "value": "संख्या >0",
+                    "default": "1000",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: अभी तक प्रकाशित न हुए लक्ष्य (online_at अभी नहीं पहुँचा) भी आउटपुट होते हैं (CMS:SELECT की तरह)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: समाप्त हो चुके लक्ष्य (offline_at पहुँच गया) भी आउटपुट होते हैं (CMS:SELECT की तरह)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "निर्दिष्ट न होने पर केवल स्वीकृत लक्ष्य (status_id 0)। स्थिति ID > 0 होने पर केवल उस स्थिति वाले लक्ष्य, \"any\" होने पर किसी भी स्थिति के लक्ष्य (CMS:SELECT की तरह)।",
+                    "value": "स्थिति ID या any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "उस भाषा संस्करण का कोड जिसकी सामग्री माँगी जाती है (बहुभाषी फ़ील्ड पर प्रभाव डालता है)। अभी लागू नहीं - फ़िलहाल हमेशा कॉल की भाषा लागू होती है।",
+                    "value": "भाषा कोड",
+                    "default": "(वर्तमान भाषा)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "परिणामों के बीच रखा जाने वाला पाठ।",
+                    "value": "विभाजक",
+                    "default": "|",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "स्रोत खाली न होने पर उससे पहले रखा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "स्रोत खाली न होने पर उसके अंत में जोड़ा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "वह पाठ जो स्रोत बनता है यदि मूल स्रोत खाली है (आगे के पैरामीटर, 'set' को छोड़कर, अनदेखे किए जाते हैं)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "आउटपुट खाली न होने पर उसे अधिलेखित करता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "स्रोत का आउटपुट पुनर्निर्देशित होकर $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "result_end": {
+            "note": "CMS:SELECT के परिणामों को प्रोसेस करने वाले लूप का अंत चिह्नित करता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "result_start": {
+            "note": "CMS:SELECT के परिणामों को प्रोसेस करने वाले लूप की शुरुआत चिह्नित करता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "savedata": {
+            "note": "वर्तमान रिकॉर्ड का डेटा निर्दिष्ट वेरिएबल में सहेजता है।",
+            "do": "phpvar",
+            "oneof": "",
+            "params": {
+                "phpvar": {
+                    "description": "वह वेरिएबल जिसमें वर्तमान रिकॉर्ड का डेटा सहेजा जाना है।",
+                    "value": "$GLOBALS के भीतर इंडेक्स",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "वह रिकॉर्ड जिसका डेटा लोड किया जाना है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम। निर्दिष्ट न होने पर वर्तमान में लोड किया गया रिकॉर्ड।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "बताता है कि बहुभाषी फ़ील्ड की सामग्री किस भाषा में लोड की जाए। अभी लागू नहीं - फ़िलहाल हमेशा कॉल की भाषा लागू होती है।",
+                    "value": "भाषा संस्करण कोड",
+                    "default": "$lang",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select": {
+            "note": "दिए गए (फ़िल्टर) मानदंडों से डेटाबेस में खोजता है और मिले रिकॉर्ड लौटाता है।",
+            "do": "resulttemplate",
+            "oneof": "filter,relation",
+            "params": {
+                "set": {
+                    "description": "पूरा आउटपुट (शामिल किए गए टेम्पलेट सहित) आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "परिणामों को प्रोसेस करने के लिए शामिल किया जाने वाला सूची टेम्पलेट।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresulttemplate": {
+                    "description": "क्वेरी का कोई परिणाम न होने पर शामिल किया जाने वाला विवरण टेम्पलेट।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresult": {
+                    "description": "क्वेरी का कोई परिणाम न होने पर सीधे आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "कुंजी में: खोजे जाने वाले फ़ील्ड का नाम (किसी भी लिंक फ़ील्ड के लिए relation_any; सामग्री क्षेत्र के नाम के लिए area, वहाँ संख्या area_id मानी जाती है)। मान में: खोजा जाने वाला मान।",
+                    "value": "मान या EMPTY",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_mode": {
+                    "description": "वह तरीका जिससे एक ही फ़ील्ड के कई मान जोड़े जाते हैं (filter_mode[field]=AND)।",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "filter_op": {
+                    "description": "दिए गए फ़ील्ड के लिए तुलना ऑपरेटर (filter_op[field]=\">\")। वैकल्पिक रूप से ऑपरेटर कुंजी और मान के बीच (filter[price] > 100) या सीधे मान से पहले (filter[price]=\">100\") होता है।",
+                    "value": "=, ==, !=, !!, >, <, >>, <<, >=, <=",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "skip": {
+                    "description": "परिणाम सेट में छोड़े जाने वाले रिकॉर्ड की संख्या। केवल limit के साथ काम करता है।",
+                    "value": "संख्या >= 0",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "परिणाम सेट में शामिल रिकॉर्ड की अधिकतम संख्या - साथ ही CMS:JUMP_LIST, CMS:JUMP_PREV और CMS:JUMP_NEXT के लिए पेज आकार। मान के बिना या 0: असीमित, कोई पेज नेविगेशन नहीं।",
+                    "value": "संख्या >0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "वह फ़ील्ड जिसके अनुसार क्रमबद्ध किया जाए (order देखें); कई फ़ील्ड कॉमा से अलग या sort[]=… के रूप में; area सामग्री क्षेत्र के नाम से, pointerfield.field जुड़े रिकॉर्ड के किसी फ़ील्ड से क्रमबद्ध करता है।",
+                    "value": "फ़ील्ड का नाम/के नाम, कॉमा से अलग",
+                    "default": "changed_at",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "क्रमबद्ध करने की दिशा (sort देखें)। sort के बिना changed_at desc लागू होता है।",
+                    "value": "desc / asc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "उस भाषा संस्करण का कोड जिसकी सामग्री माँगी जाती है (बहुभाषी फ़ील्ड पर प्रभाव डालता है)। अभी लागू नहीं - फ़िलहाल हमेशा कॉल की भाषा लागू होती है।",
+                    "value": "भाषा कोड",
+                    "default": "(वर्तमान भाषा)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "संबंध/पॉइंटर फ़ील्ड के फ़ील्ड नाम जिनमें खोजे गए रिकॉर्ड सहेजे हैं (src_id के साथ); dest_id के साथ वे फ़ील्ड जिनके माध्यम से खोजे गए रिकॉर्ड dest_id की ओर इंगित करते हैं। ANY: कोई भी पॉइंटर फ़ील्ड।",
+                    "value": "फ़ील्ड का नाम/के नाम कॉमा से अलग या 'ANY'",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "स्रोत रिकॉर्ड जिसके लिंक का मूल्यांकन होता है (मान के बिना: वर्तमान रिकॉर्ड)।",
+                    "value": "रिकॉर्ड ID (एक या अधिक)",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "dest_id": {
+                    "description": "relation की उलटी दिशा: वे रिकॉर्ड जो relation के माध्यम से इस रिकॉर्ड की ओर इंगित करते हैं (relation=ANY: किसी भी पॉइंटर फ़ील्ड के माध्यम से)। src_id के बिना तब कोई वर्तमान रिकॉर्ड स्रोत के रूप में उपयोग नहीं होता।",
+                    "value": "रिकॉर्ड ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nextof": {
+                    "description": "केवल relation के साथ: लिंक सूची में दिए गए रिकॉर्ड के पड़ोसी - उसके बाद की प्रविष्टियाँ (order=asc) या उससे पहले की (order=desc), सूची के क्रम में; limit=1 के साथ अगला या पिछला रिकॉर्ड।",
+                    "value": "रिकॉर्ड ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "count": {
+                    "description": "true: परिणाम सेट में रिकॉर्ड की संख्या निर्धारित की जाती है, \"limit\" और \"skip\" से स्वतंत्र (resulttemplate में $this->db->num_rows_unlimited में; JUMP कमांड का आधार)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hits": {
+                    "description": "false: केवल गिनती करता है (count=true शामिल); कोई रिकॉर्ड लोड नहीं होता और कोई resulttemplate शामिल नहीं होता। कुल संख्या तब कॉल करने वाले टेम्पलेट में $this->db->num_rows_unlimited में उपलब्ध होती है; 0 होने पर noresult/noresulttemplate लागू होते हैं।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: समाप्त हो चुके रिकॉर्ड (offline_at पहुँच गया) भी क्वेरी में शामिल होते हैं।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: आगे की तारीख वाले रिकॉर्ड (online_at अभी नहीं पहुँचा) भी क्वेरी में शामिल होते हैं।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: सहायता विश्लेषण के लिए बनाई गई डेटाबेस क्वेरी आउटपुट की जाती है।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sql": {
+                    "description": "WHERE क्लॉज़ में कच्चा SQL जोड़ (सावधानी: केवल सहायता के लिए!)।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "मान के बिना केवल स्वीकृत रिकॉर्ड (status_id 0)। स्थिति ID > 0 केवल उस स्थिति वाले रिकॉर्ड खोजता है; \"any\" हर स्थिति के रिकॉर्ड खोजता है।",
+                    "value": "स्थिति ID या any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select_langversion": {
+            "note": "उपलब्ध भाषाओं को रिकॉर्ड के रूप में लौटाता है।",
+            "do": "resulttemplate",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "पूरा आउटपुट (शामिल किए गए टेम्पलेट सहित) आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "परिणामों को प्रोसेस करने के लिए शामिल किया जाने वाला सूची टेम्पलेट।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "snippet": {
+            "note": "कॉल की भाषा में एक स्निपेट (पाठ मॉड्यूल) आउटपुट करता है।",
+            "do": "key",
+            "oneof": "",
+            "params": {
+                "key": {
+                    "description": "स्निपेट की कुंजी, जैसे custom.read_more (इंस्टेंस का स्निपेट सेट) या बिना उपसर्ग का कोर स्निपेट।",
+                    "value": "स्निपेट कुंजी",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "param": {
+                    "description": "प्लेसहोल्डर के मान: param[name]=value स्निपेट में {name} को बदलता है और ICU पैरामीटर (plural, select) भरता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: विशेष वर्ण उनके HTML समतुल्य में बदले जाते हैं (एट्रिब्यूट के लिए)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "स्निपेट मौजूद न होने पर आउटपुट होने वाला पाठ (ifempty के बिना कुंजी दिखती है)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "स्निपेट खाली न होने पर उससे पहले रखा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "स्निपेट खाली न होने पर अंत में जोड़ा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "पाठ आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "text": {
+            "note": "फ़ॉर्मैटिंग लागू करके पाठ आउटपुट करता है।",
+            "do": "field",
+            "oneof": "field,useval,id",
+            "params": {
+                "id": {
+                    "description": "वह रिकॉर्ड जिससे पढ़ा जाता है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम। 'field' के बिना फ़ील्ड \"text\" पढ़ा जाता है।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "रिकॉर्ड के उस फ़ील्ड का नाम जिसकी सामग्री स्रोत के रूप में उपयोग होती है।",
+                    "value": "फ़ील्ड",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "पाठ रूप में मान जो स्रोत के रूप में उपयोग होता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "वह पाठ जो स्रोत बनता है यदि मूल स्रोत खाली है (तब आगे के पैरामीटर, 'set' को छोड़कर, अनदेखे किए जाते हैं)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "वह पाठ जो स्रोत बनता है यदि मूल स्रोत खाली नहीं है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "entitydecode": {
+                    "description": "true: &...; प्रारूप की एंटिटी वापस Unicode वर्णों में बदली जाती हैं।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: पाठ के आरंभ और अंत के स्पेस हटा दिए जाते हैं।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "striptags": {
+                    "description": "true: HTML और स्क्रिप्ट टैग हटा दिए जाते हैं।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "if": {
+                    "description": "यदि स्रोत प्रश्नचिह्न से पहले के पाठ से मेल खाता है, तो प्रश्नचिह्न के बाद का पाठ नया स्रोत बन जाता है।",
+                    "value": "पाठ?पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "else": {
+                    "description": "यदि पिछली IF शर्तों में से कोई लागू नहीं होती, तो यह मान स्रोत बन जाता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "यदि प्रश्नचिह्न से पहले का पाठ स्रोत में आता है, तो उसे प्रश्नचिह्न के बाद के पाठ से बदल दिया जाता है।",
+                    "value": "पाठ?पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "पाठ को दी गई वर्ण संख्या तक छोटा करता है और \"…\" जोड़ता है; अंत में s जोड़ने पर (जैसे 200s) पाठ अंतिम शब्द के अंत पर छोटा होता है।",
+                    "value": "संख्या >= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lbrconvert": {
+                    "description": "true: लाइन ब्रेक HTML लाइन ब्रेक (<br> टैग) में बदले जाते हैं।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: विशेष वर्ण उनके HTML समतुल्य में बदले जाते हैं।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlconvert": {
+                    "description": "true: इंटरनेट पते अपने आप क्लिक करने योग्य लिंक में बदले जाते हैं।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailconvert": {
+                    "description": "true: ईमेल पते लिंक किए जाते हैं। encrypt: लिंक JavaScript द्वारा हल्के रूप से एन्क्रिप्ट किए जाते हैं।",
+                    "value": "true / false / encrypt",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emaillimit": {
+                    "description": "लिंक किए गए ईमेल पतों को अपने आप x दिखने वाले वर्णों तक छोटा करता है।",
+                    "value": ">= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailtext": {
+                    "description": "लिंक किया गया पाठ जो ईमेल पते के स्थान पर दिखाया जाता है (केवल \"emailconvert\" सक्षम होने पर)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "target": {
+                    "description": "अपने आप बने लिंक (urlconvert, emailconvert) के लिए लिंक लक्ष्य सेट करता है।",
+                    "value": "विंडो / फ़्रेम",
+                    "default": "_self",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "markdown": {
+                    "description": "true: पाठ Markdown है और HTML में बदला जाता है (पाठ में HTML एस्केप किया जाता है); अन्य रूपांतरण लागू नहीं होते।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlencode": {
+                    "description": "true: पाठ RFC 1738 के अनुसार एन्कोड किया जाता है।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urllimit": {
+                    "description": "अपने आप बने लिंक के दिखने वाले पाठ की अधिकतम लंबाई (केवल बाहरी लिंक के लिए उपयुक्त!)।",
+                    "value": "वर्णों की संख्या",
+                    "default": "80",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ampconvert": {
+                    "description": "true: अकेला & अपने आप HTML एंटिटी &amp; में बदला जाता है।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "स्रोत खाली न होने पर स्रोत से पहले रखा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "स्रोत खाली न होने पर स्रोत के अंत में जोड़ा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "iso": {
+                    "description": "true: आउटपुट वर्ण सेट ISO-8859-1 में बदला जाता है।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "charset": {
+                    "description": "वह वर्ण सेट जिसमें आउटपुट बदला जाना चाहिए।",
+                    "value": "पाठ",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "फ़ॉर्मैट किया गया मान आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "time": {
+            "note": "किसी दिनांक या समय मान का समय फ़ॉर्मैट करके आउटपुट करता है।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "वह रिकॉर्ड जिससे पढ़ा जाता है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "रिकॉर्ड के उस फ़ील्ड का नाम जिसकी सामग्री स्रोत के रूप में उपयोग होती है।",
+                    "value": "फ़ील्ड",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "पाठ रूप में मान जो स्रोत के रूप में उपयोग होता है।",
+                    "value": "समय मान",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU पैटर्न, जैसे \"HH:mm\"। निर्दिष्ट न होने पर पेज का लोकेल लेखन-शैली तय करता है; पूरे मिनट सेकंड के बिना दिखाए जाते हैं।",
+                    "value": "प्रारूप निर्देश",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: समय क्षेत्र का नाम जोड़ा जाता है (जैसे \"Europe/Berlin\")।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "यदि प्रश्नचिह्न से पहले का पाठ फ़ॉर्मैट किए गए मान में आता है, तो उसे प्रश्नचिह्न के बाद के पाठ से बदल दिया जाता है (जैसे \"Jan?January\")।",
+                    "value": "पाठ?पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "स्रोत ('field' या 'useval') खाली होने पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "स्रोत खाली न होने पर उसके स्थान पर आउटपुट होने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली न होने पर उससे पहले रखा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "फ़ॉर्मैट किया गया मान खाली न होने पर अंत में जोड़ा जाने वाला पाठ।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "फ़ॉर्मैट किया गया मान आउटपुट नहीं होता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "url": {
+            "note": "किसी रिकॉर्ड का URL बनाता है।",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "area": {
+                    "description": "क्षेत्र के अवलोकन का लिंक: उसके Slug उपसर्ग से बना पता (/en/models), जिसे उसका अवलोकन टेम्पलेट दिखाता है।",
+                    "value": "क्षेत्र का नाम या ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "वह रिकॉर्ड जिसका लिंक बनाना है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
+                    "value": "रिकॉर्ड ID या Slug",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "वह टेम्पलेट जिससे रिकॉर्ड दिखाया जाना है (URL में कॉमा के बाद का दूसरा भाग): name या area.name। निर्दिष्ट न होने पर वह टेम्पलेट जो क्षेत्र असाइन करता है।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "वह भाषा संस्करण जिसका लिंक बनाना है (डिफ़ॉल्ट रूप से वर्तमान कॉल का)। यदि इंस्टेंस एक से अधिक भाषाएँ चलाता है, तो कोड हमेशा URL में आता है; केवल एक भाषा होने पर कभी नहीं। वेबसाइट द्वारा न चलाया जाने वाला कोड अनदेखा किया जाता है।",
+                    "value": "भाषा कोड",
+                    "default": "(वर्तमान भाषा)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "protocol": {
+                    "description": "http या https, केवल absolute या host के साथ। निर्दिष्ट न होने पर इंस्टेंस का प्रोटोकॉल, अन्यथा कॉल का।",
+                    "value": "ट्रांसफ़र प्रोटोकॉल",
+                    "default": "(इंस्टेंस का प्रोटोकॉल)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "host": {
+                    "description": "जैसे example.com, उस डोमेन को बदलने के लिए जिसके माध्यम से वेबसाइट खोली जाती है।",
+                    "value": "होस्ट नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "absolute": {
+                    "description": "true: पथ प्रोटोकॉल और डोमेन सहित बनाया जाता है। false: पथ सर्वर-सापेक्ष होता है और स्लैश से शुरू होता है।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "URL आउटपुट नहीं होता, बल्कि $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_2fa": {
+            "note": "लॉगिन किए हुए फ्रंटएंड उपयोगकर्ता का दूसरा कारक दिखाता है, सेट अप करता है (ऑथेंटिकेटर ऐप या ईमेल से कोड) और बंद करता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: अनुरोध में CMS:USER_TOKEN का एक वैध टोकन होना चाहिए (CSRF से सुरक्षा)। false इस कमांड के लिए जाँच बंद करता है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "status: केवल पढ़ें। totp_setup: ऐप के लिए एक नई कुंजी बनाता है ($set['totp_setup'])। totp_enable: data[token] और data[code] जाँचता और सहेजता है ($set['recovery_codes'])। code_enable: ईमेल से कोड चुनता है (पासवर्ड से पुष्टि)। disable: बंद करता है (ऐप कोड या पासवर्ड)। recovery_renew: नए रिकवरी कोड (ऐप कोड)।",
+                    "value": "status / totp_setup / totp_enable / code_enable / disable / recovery_renew",
+                    "default": "status",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "लिखने वाले फ़ंक्शन केवल तभी चलते हैं जब इस फ़ील्ड में कोई पाठ हो।",
+                    "value": "पाठ मान",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "उस PHP ऐरे का नाम जिसमें इनपुट हैं।",
+                    "value": "PHP वेरिएबल का नाम",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "data[…] में कोड के इनपुट फ़ील्ड का नाम।",
+                    "value": "फ़ील्ड का नाम",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "data[…] में पासवर्ड के इनपुट फ़ील्ड का नाम (code_enable, कोड के साथ disable)।",
+                    "value": "फ़ील्ड का नाम",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "त्रुटि संदेश। इंडेक्स में: उपयोग का मामला; मान में: संदेश का पाठ (तालिका देखें)।",
+                    "value": "डिफ़ॉल्ट संदेश",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "सत्र कुकी का नाम [a-z0-9]।",
+                    "value": "कुकी का नाम",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_auth": {
+            "note": "किसी सत्र ID की वैधता जाँचता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "sessionid": {
+                    "description": "कुकी का उपयोग करने के बजाय दिए गए सत्र ID से फ्रंटएंड उपयोगकर्ता का सत्र फिर से शुरू करता है।",
+                    "value": "सत्र ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "प्रोफ़ाइल रिकॉर्ड के लिए फ़िल्टर मानदंड जिन्हें लॉगिन किए हुए फ्रंटएंड उपयोगकर्ता को पूरा करना होगा।",
+                    "value": "CMS:SELECT का पैरामीटर \"filter[]\" देखें",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "mode": {
+                    "description": "वह तरीका जिससे एक ही फ़ील्ड से संबंधित मान जोड़े जाते हैं।",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "सत्र कुकी का नाम [a-z0-9]।",
+                    "value": "कुकी का नाम",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_basket": {
+            "note": "शॉपिंग बास्केट संपादित करता है।",
+            "do": "function",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: अनुरोध में CMS:USER_TOKEN का एक वैध टोकन होना चाहिए (CSRF से सुरक्षा)। false इस कमांड के लिए जाँच बंद करता है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "निष्पादित किया जाने वाला फ़ंक्शन।",
+                    "value": "\"load\" / \"add\" / \"update\" / \"update_addon\"",
+                    "default": "\"load\"",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "function=add + overwrite=true: जोड़ते समय पहले से सहेजे गए आइटम की संख्या अपडेट की जाती है।",
+                    "value": "false / true",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "शॉपिंग बास्केट श्रेणी।",
+                    "value": "श्रेणी ID",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "केवल इन कंटेनरों के रिकॉर्ड बास्केट में आते हैं। निर्दिष्ट न होने पर: “record” या “ugc” प्रकार के कंटेनरों के प्रकाशित रिकॉर्ड (प्रोफ़ाइल कभी नहीं)।",
+                    "value": "कंटेनर ID या नाम, कॉमा से अलग",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "variable": {
+                    "description": "उस वेरिएबल का नाम जिसमें आइटम ID ऐरे के रूप में सहेजे जाते हैं।",
+                    "value": "वेरिएबल का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "duration": {
+                    "description": "दिनों की संख्या जितने समय बास्केट सहेजी रहती है, बशर्ते कोई बदलाव न हो।",
+                    "value": "दिनों की संख्या",
+                    "default": "30",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "basket_addon": {
+                    "description": "सहेजा जाने वाला पाठ (सीरियलाइज़्ड डेटा)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_delete": {
+            "note": "लॉगिन किए हुए फ्रंटएंड उपयोगकर्ता का कोई रिकॉर्ड हटाता है।",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: अनुरोध में CMS:USER_TOKEN का एक वैध टोकन होना चाहिए (CSRF से सुरक्षा)। false इस कमांड के लिए जाँच बंद करता है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "हटाया जाने वाला रिकॉर्ड।",
+                    "value": "रिकॉर्ड ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: हटाए जाने वाले रिकॉर्ड का लॉगिन किए हुए फ्रंटएंड उपयोगकर्ता का होना आवश्यक नहीं है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "प्रविष्टि सफलतापूर्वक हटाए जाने पर शामिल किया जाने वाला टेम्पलेट।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message_error": {
+                    "description": "उपयोगकर्ता की रिकॉर्ड तक पहुँच न होने पर त्रुटि संदेश।",
+                    "value": "पाठ",
+                    "default": "पहुँच अस्वीकृत!",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_input": {
+            "note": "फ्रंटएंड उपयोगकर्ता द्वारा दर्ज डेटा से रिकॉर्ड बनाता या अपडेट करता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: अनुरोध में CMS:USER_TOKEN का एक वैध टोकन होना चाहिए (CSRF से सुरक्षा)। false इस कमांड के लिए जाँच बंद करता है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "प्रविष्टि सफलतापूर्वक सहेजे जाने पर शामिल किया जाने वाला टेम्पलेट।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "उस PHP ऐरे का नाम जिसमें सहेजा जाने वाला डेटा है।",
+                    "value": "PHP वेरिएबल का नाम",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "फ्रंटएंड उपयोगकर्ता के इनपुट को स्पष्ट रूप से अधिलेखित करता है (मेटा फ़ील्ड सहित, record_id, area_id, instance_id, tmp, deleted, origin_id, owner_id, created_by, changed_by को छोड़कर)। यहाँ फ्रंटएंड उपयोगकर्ता का कोई इनपुट आगे न भेजें!",
+                    "value": "कुंजी-मान जोड़े",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "container": {
+                    "description": "उस सामग्री क्षेत्र का ID या नाम जिसमें नया रिकॉर्ड सहेजा जाना है।",
+                    "value": "कंटेनर ID या नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "इंडेक्स के अनुसार त्रुटि संदेश (तालिका देखें)।",
+                    "value": "पाठ",
+                    "default": "डिफ़ॉल्ट पाठ",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "कमांड केवल तभी चलता है जब इस फ़ील्ड में कोई पाठ हो।",
+                    "value": "पाठ मान",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "उन इनपुट फ़ील्ड के नाम जिनमें लिखा जा सकता है। खाली = कंटेनर के लिए परिभाषित सभी फ़ील्ड।",
+                    "value": "कॉमा से अलग सूची",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "यदि दिया गया है, तो इस रिकॉर्ड को अपडेट (UPDATE) करने का प्रयास किया जाता है। अन्यथा एक नया बनाया जाता है (CREATE)।",
+                    "value": "रिकॉर्ड ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: समायोजित किए जाने वाले रिकॉर्ड का लॉगिन किए हुए फ्रंटएंड उपयोगकर्ता का होना आवश्यक नहीं है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "forceupdate": {
+                    "description": "true: पैरामीटर “id” से दिए गए रिकॉर्ड का अपडेट बाध्य करता है। त्रुटि होने पर संदेश आउटपुट होता है।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "masterid": {
+                    "description": "केवल ट्री संरचना वाले क्षेत्रों में बनाते समय: नए रिकॉर्ड का पैरेंट नोड (parent_id)।",
+                    "value": "रिकॉर्ड ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "केवल बनाते समय: बैकएंड स्वामी का admin_id (record.owner_id, created_by)। न दिए जाने पर user.default_owner_id लागू होता है।",
+                    "value": "उपयोगकर्ता ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "removefiles": {
+                    "description": "उन अपलोड फ़ील्ड के नाम जिनकी सामग्री हटाई जानी है।",
+                    "value": "कॉमा से अलग सूची",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "केवल प्रोफ़ाइल कंटेनर: वर्तमान पासवर्ड वाले फ़ॉर्म फ़ील्ड data[…] का नाम। नया पासवर्ड केवल वर्तमान पासवर्ड के साथ सहेजा जाता है - रीसेट लिंक से लॉगिन करने के तुरंत बाद को छोड़कर ($set['password_reset'])। संदेश \"current\"।",
+                    "value": "फ़ील्ड का नाम",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login": {
+            "note": "फ्रंटएंड उपयोगकर्ता का लॉगिन डेटा जाँचता है और एक नया सत्र बनाता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "लॉगिन के दूसरे चरण के लिए टेम्पलेट, यदि प्रोफ़ाइल क्षेत्र को दूसरे कारक (ऐप से कोड या ईमेल से कोड) की आवश्यकता है। ईमेल से कोड के लिए यह $set['login_code'] को CMS:EMAIL से भेजता है और CMS:USER_LOGIN_CODE के लिए कोड फ़ॉर्म दिखाता है। जैसे ही क्षेत्र दूसरे कारक का उपयोग करता है, आवश्यक है।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: अनुरोध में CMS:USER_TOKEN का एक वैध टोकन होना चाहिए (CSRF से सुरक्षा)। false इस कमांड के लिए जाँच बंद करता है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "सफल लॉगिन के बाद शामिल किया जाने वाला विवरण टेम्पलेट।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "उस प्रोफ़ाइल कंटेनर का ID या नाम जिसमें फ्रंटएंड उपयोगकर्ताओं का डेटा सहेजा है।",
+                    "value": "कंटेनर ID या नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "उस PHP ऐरे का नाम जिसमें लॉगिन डेटा है।",
+                    "value": "PHP वेरिएबल का नाम",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "त्रुटि संदेश। इंडेक्स में: उपयोग का मामला; मान में: संदेश का पाठ (तालिका देखें)।",
+                    "value": "डिफ़ॉल्ट संदेश",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "लॉगिन हैश (CMS:USER_PW का टोकन, भूला हुआ पासवर्ड) के माध्यम से भी किया जा सकता है।",
+                    "value": "हैश",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: इनपुट के आरंभ और अंत के स्पेस हटाएँ।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookie": {
+                    "description": "true: कई पेजों पर लॉगिन बनाए रखने के लिए डिफ़ॉल्ट रूप से एक कुकी सेट की जाती है।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "कमांड केवल तभी चलता है जब इस फ़ील्ड में कोई पाठ हो। “hash” द्वारा लॉगिन पर लागू नहीं।",
+                    "value": "पाठ मान",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "सत्र कुकी का नाम [a-z0-9]।",
+                    "value": "कुकी का नाम",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login_code": {
+            "note": "लॉगिन का दूसरा चरण: ऑथेंटिकेटर ऐप का कोड, ईमेल से कोड या रिकवरी कोड जाँचता है और फ्रंटएंड उपयोगकर्ता को लॉगिन करता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "\"resend\" के बाद शामिल किया जाने वाला टेम्पलेट जो नया कोड ($set['login_code']) CMS:EMAIL से भेजता है - आमतौर पर CMS:USER_LOGIN के \"codetemplate\" जैसा ही।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: अनुरोध में CMS:USER_TOKEN का एक वैध टोकन होना चाहिए (CSRF से सुरक्षा)। false इस कमांड के लिए जाँच बंद करता है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "सफल लॉगिन के बाद शामिल किया जाने वाला विवरण टेम्पलेट।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "कोड केवल तभी जाँचा जाता है जब इस फ़ील्ड में कोई पाठ हो।",
+                    "value": "पाठ मान",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resend": {
+                    "description": "true: ईमेल से एक नया कोड बनाता है (थ्रॉटल किया हुआ)। वह तब $set['login_code'] में होता है; \"codetemplate\" शामिल किया जाता है, जो इसे CMS:EMAIL से भेजता है।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "उस PHP ऐरे का नाम जिसमें इनपुट हैं।",
+                    "value": "PHP वेरिएबल का नाम",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "data[…] में कोड के इनपुट फ़ील्ड का नाम।",
+                    "value": "फ़ील्ड का नाम",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "त्रुटि संदेश। इंडेक्स में: उपयोग का मामला; मान में: संदेश का पाठ (तालिका देखें)।",
+                    "value": "डिफ़ॉल्ट संदेश",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "sessionid": {
+                    "description": "प्रतीक्षारत लॉगिन का सत्र, बिना कुकी के (ऐप से कॉल) - CMS:USER_LOGIN के बाद $set['user_session_id']।",
+                    "value": "सत्र ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "सत्र कुकी का नाम [a-z0-9]।",
+                    "value": "कुकी का नाम",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_logout": {
+            "note": "लॉगिन किए हुए फ्रंटएंड उपयोगकर्ता का सत्र समाप्त करता और हटाता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "submit": {
+                    "description": "यदि पैरामीटर दिया गया है, तो कमांड केवल तभी लॉग आउट करता है जब उसमें कोई पाठ हो (जैसे लॉग आउट फ़ॉर्म से submit=\"$logout\") - खाली होने पर कुछ नहीं होता, संदेश टोकन भी नहीं। पैरामीटर के बिना कमांड हर कॉल पर लॉग आउट करता है (एक वैध टोकन मान लिया जाता है)।",
+                    "value": "पाठ मान",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: अनुरोध में CMS:USER_TOKEN का एक वैध टोकन होना चाहिए (CSRF से सुरक्षा)। false इस कमांड के लिए जाँच बंद करता है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "deletecookie": {
+                    "description": "false: केवल सर्वर-साइड सत्र हटाया जाता है। true: ब्राउज़र कुकी भी हटाई जाती है।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "सत्र कुकी का नाम [a-z0-9]।",
+                    "value": "कुकी का नाम",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_password_rules": {
+            "note": "पासवर्ड नियम और पाठ एट्रिब्यूट data-c9-password के लिए JSON के रूप में आउटपुट करता है (एक्सटेंशन Password, इनलाइन शामिल) - वही नियम जो सर्वर सहेजते समय जाँचता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "container": {
+                    "description": "प्रोफ़ाइल कंटेनर जिसका पासवर्ड फ़ील्ड अभिप्रेत है।",
+                    "value": "कंटेनर ID या नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "कंटेनर का पासवर्ड फ़ील्ड। यदि उस पर एक्सटेंशन Password है, तो उसके नियम लागू होते हैं, अन्यथा security.password_policy (तब सर्वर जाँच नहीं करता)।",
+                    "value": "फ़ील्ड का नाम",
+                    "default": "लॉगिन पासवर्ड फ़ील्ड",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "आउटपुट दिखाया नहीं जाता, बल्कि वेरिएबल $set में सहेजा जाता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_protect": {
+            "note": "किसी टेम्पलेट को लॉगिन न किए हुए विज़िटर की पहुँच से सुरक्षित करता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "errortemplate": {
+                    "description": "विवरण टेम्पलेट जो शामिल किया जाता है यदि फ्रंटएंड उपयोगकर्ता की कंटेनर तक पहुँच नहीं है या वह लॉगिन नहीं है।",
+                    "value": "टेम्पलेट का नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "प्रोफ़ाइल रिकॉर्ड के लिए फ़िल्टर मानदंड जिन्हें लॉगिन किए हुए फ्रंटएंड उपयोगकर्ता को पूरा करना होगा।",
+                    "value": "CMS:SELECT का पैरामीटर \"filter[]\" देखें",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "sessionid": {
+                    "description": "कुकी का उपयोग करने के बजाय दिए गए सत्र ID से फ्रंटएंड उपयोगकर्ता का सत्र फिर से शुरू करता है।",
+                    "value": "सत्र ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "सत्र कुकी का नाम [a-z0-9]।",
+                    "value": "कुकी का नाम",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_pw": {
+            "note": "पासवर्ड रीसेट करने की तैयारी करता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: रोबोट से फ़ॉर्म सुरक्षा - फ़ॉर्म में (CMS:USER_TOKEN formguard=true) के फ़ील्ड (टाइमस्टैम्प, खाली हनीपॉट फ़ील्ड) होने चाहिए और इसे user.formguard_min_seconds (3) के बाद ही भेजा जा सकता है। कोई संख्या इस फ़ॉर्म के लिए यह न्यूनतम समय तय करती है (formguard=5); 0 या false सुरक्षा बंद करता है। अन्यथा थ्रॉटलिंग की तरह संदेश \"throttled\"।",
+                    "value": "true / false / सेकंड",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: अनुरोध में CMS:USER_TOKEN का एक वैध टोकन होना चाहिए (CSRF से सुरक्षा)। false इस कमांड के लिए जाँच बंद करता है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "विवरण टेम्पलेट जो शामिल किया जाता है यदि “uniquevalue” को फ़ील्ड “uniquefield” में किसी प्रोफ़ाइल से जोड़ा जा सका।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "errortemplate": {
+                    "description": "विवरण टेम्पलेट जो शामिल किया जाता है यदि “uniquevalue” दिया गया था पर किसी प्रोफ़ाइल से जोड़ा नहीं जा सका।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "उस प्रोफ़ाइल कंटेनर का ID या नाम जिसमें मिलान किए जाने वाले प्रोफ़ाइल सहेजे हैं।",
+                    "value": "कंटेनर ID या नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquefield": {
+                    "description": "उस फ़ील्ड का नाम जिससे खोजा जाता है (फ़ील्ड प्रकार chars, text या encrypted, जैसे “email”)। मान ठीक एक प्रोफ़ाइल से मेल खाना चाहिए।",
+                    "value": "फ़ील्ड का नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquevalue": {
+                    "description": "फ़ील्ड “uniquefield” में खोजा जाने वाला मान, जैसे $_POST[email]।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "कमांड केवल तभी चलता है जब इस फ़ील्ड में कोई पाठ हो।",
+                    "value": "पाठ मान",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "त्रुटि संदेश। इंडेक्स में: उपयोग का मामला; मान में: संदेश का पाठ (तालिका देखें)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_register": {
+            "note": "दिए गए डेटा से एक प्रोफ़ाइल रिकॉर्ड बनाता है और स्थिति को status=2 पर सेट करता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: रोबोट से फ़ॉर्म सुरक्षा - फ़ॉर्म में (CMS:USER_TOKEN formguard=true) के फ़ील्ड (टाइमस्टैम्प, खाली हनीपॉट फ़ील्ड) होने चाहिए और इसे user.formguard_min_seconds (3) के बाद ही भेजा जा सकता है। कोई संख्या इस फ़ॉर्म के लिए यह न्यूनतम समय तय करती है (formguard=5); 0 या false सुरक्षा बंद करता है। अन्यथा थ्रॉटलिंग की तरह संदेश \"throttled\"।",
+                    "value": "true / false / सेकंड",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: अनुरोध में CMS:USER_TOKEN का एक वैध टोकन होना चाहिए (CSRF से सुरक्षा)। false इस कमांड के लिए जाँच बंद करता है (सावधानी: सुरक्षा संबंधी निर्देशों का पालन करें!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "सफल पंजीकरण के बाद शामिल किया जाने वाला विवरण टेम्पलेट।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "उस प्रोफ़ाइल कंटेनर का ID या नाम जिसमें फ्रंटएंड उपयोगकर्ताओं का डेटा सहेजा जाना है।",
+                    "value": "कंटेनर ID या नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailfield": {
+                    "description": "उस फ़ील्ड का नाम जिसमें फ्रंटएंड उपयोगकर्ता का ईमेल पता सहेजा जाता है (पुष्टि लिंक वहीं भेजा जाता है)।",
+                    "value": "फ़ील्ड का नाम",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "उन इनपुट फ़ील्ड के नाम जिनमें लिखा जा सकता है। खाली = कंटेनर के लिए परिभाषित सभी फ़ील्ड।",
+                    "value": "कॉमा से अलग सूची",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "फ्रंटएंड उपयोगकर्ता के इनपुट को स्पष्ट रूप से अधिलेखित करता है (मेटा फ़ील्ड सहित, record_id, area_id, instance_id, tmp, deleted, origin_id, owner_id, created_by, changed_by को छोड़कर)। यहाँ फ्रंटएंड उपयोगकर्ता का कोई इनपुट आगे न भेजें!",
+                    "value": "कुंजी-मान जोड़े",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "message": {
+                    "description": "त्रुटि संदेश। इंडेक्स में: उपयोग का मामला; मान में: संदेश का पाठ (CMS:USER_INPUT पर तालिका देखें)।",
+                    "value": "संदेश",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "कमांड केवल तभी चलता है जब इस फ़ील्ड में कोई पाठ हो।",
+                    "value": "पाठ मान",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "नए प्रोफ़ाइल के बैकएंड स्वामी का admin_id (record.owner_id, created_by)। न दिए जाने पर user.default_owner_id लागू होता है।",
+                    "value": "उपयोगकर्ता ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "उस PHP ऐरे का नाम जिसमें सहेजा जाने वाला डेटा है।",
+                    "value": "PHP वेरिएबल का नाम",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_register_confirm": {
+            "note": "एक प्रोफ़ाइल रिकॉर्ड सक्रिय करता है और status=0 सेट करता है।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "successtemplate": {
+                    "description": "विवरण टेम्पलेट जो शामिल किया जाता है यदि पंजीकरण सफलतापूर्वक पूरा हो सका।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "CMS:USER_REGISTER द्वारा बनाया गया और ईमेल से भेजा गया हैश ID।",
+                    "value": "हैश ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "त्रुटि संदेश। इंडेक्स में: उपयोग का मामला; मान में: संदेश का पाठ (तालिका देखें)।",
+                    "value": "संदेश",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_token": {
+            "note": "लिखने वाले CMS:USER_* कमांड वाले फ़ॉर्म के लिए CSRF टोकन आउटपुट करता है (छिपा फ़ील्ड _token)।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: अतिरिक्त रूप से एक टाइमस्टैम्प और एक अदृश्य हनीपॉट फ़ील्ड (रोबोट से फ़ॉर्म सुरक्षा) आउटपुट करता है - USER_REGISTER, USER_PW या CMS:EMAIL formguard=true वाले फ़ॉर्म के लिए।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "field: छिपा इनपुट फ़ील्ड <input type=\"hidden\" name=\"_token\">। value: केवल टोकन (Ajax के लिए: हेडर X-Camindo-Token या POST फ़ील्ड _token)।",
+                    "value": "\"field\" / \"value\"",
+                    "default": "\"field\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "आउटपुट दिखाया नहीं जाता, बल्कि वेरिएबल $set में सहेजा जाता है। टोकन इसके अतिरिक्त हमेशा $set['user_token'] में होता है।",
+                    "value": "$set का ऐरे इंडेक्स",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "xml": {
+            "note": "XML घोषणा बनाता है।",
+            "do": "encoding",
+            "oneof": "",
+            "params": {
+                "encoding": {
+                    "description": "उपयोग की जाने वाली वर्ण एन्कोडिंग।",
+                    "value": "encoding",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "version": {
+                    "description": "XML संस्करण।",
+                    "value": "version",
+                    "default": "1.0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "zip": {
+            "note": "कई रिकॉर्ड की फ़ाइलें ZIP संग्रह के रूप में डाउनलोड के लिए देता है और पेज समाप्त करता है।",
+            "do": "field",
+            "oneof": "filter,relation,ids,source",
+            "params": {
+                "field": {
+                    "description": "अपलोड/थंबनेल फ़ील्ड। हर रिकॉर्ड के लिए वह पहला फ़ील्ड लागू होता है जिसे विज़िटर प्राप्त कर सकता है (जैसे fil_print,fil_upload: प्रेस के लिए प्रिंट संस्करण, अन्यथा वेब संस्करण)।",
+                    "value": "फ़ील्ड का नाम/के नाम, कॉमा से अलग",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "रिकॉर्ड का चयन, CMS:SELECT की तरह।",
+                    "value": "मान",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_op": {
+                    "description": "तुलना ऑपरेटर, CMS:SELECT की तरह।",
+                    "value": "ऑपरेटर",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "filter_mode": {
+                    "description": "कई मानों का संयोजन, CMS:SELECT की तरह।",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "जुड़े हुए रिकॉर्ड, CMS:SELECT की तरह।",
+                    "value": "फ़ील्ड का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "relation के लिए स्रोत रिकॉर्ड; खाली या 0: कोई फ़ाइल नहीं।",
+                    "value": "रिकॉर्ड ID",
+                    "default": "(वर्तमान रिकॉर्ड)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ids": {
+                    "description": "स्पष्ट रूप से निर्दिष्ट रिकॉर्ड (प्रकाशित, इसी वेबसाइट के)।",
+                    "value": "रिकॉर्ड ID, कॉमा से अलग",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "source": {
+                    "description": "basket: सत्र की बास्केट में मौजूद रिकॉर्ड (श्रेणी category से) - उदाहरण के लिए लाइटबॉक्स।",
+                    "value": "basket",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "source=basket के लिए बास्केट श्रेणी।",
+                    "value": "संख्या",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "क्रम, CMS:SELECT की तरह; निर्दिष्ट न होने पर ids का या बास्केट का क्रम।",
+                    "value": "फ़ील्ड का नाम",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "क्रमबद्ध करने की दिशा।",
+                    "value": "asc / desc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "name": {
+                    "description": "संग्रह का नाम, .zip के बिना।",
+                    "value": "पाठ",
+                    "default": "download",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filenames": {
+                    "description": "संग्रह में फ़ाइल नाम: {slug}, {id}, {filename} (मूल नाम), {extension}, {fieldname}; दोहराए गए नामों को -2, -3 ... मिलता है।",
+                    "value": "पैटर्न",
+                    "default": "{slug}.{extension}",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "credits": {
+                    "description": "एक CREDITS.txt जोड़ता है: हर फ़ाइल के लिए उसका नाम और इन फ़ील्ड की सामग्री (जैसे शीर्षक, कैप्शन, चित्र श्रेय)।",
+                    "value": "फ़ील्ड के नाम, कॉमा से अलग",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxfiles": {
+                    "description": "फ़ाइलों की अधिकतम संख्या (केवल सेटिंग से कम)।",
+                    "value": "संख्या",
+                    "default": "(user.zip.max_files)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxsize": {
+                    "description": "MB में अधिकतम आकार (केवल सेटिंग से कम)।",
+                    "value": "MB",
+                    "default": "(user.zip.max_mb)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "आगे की तारीख वाले रिकॉर्ड भी (CMS:SELECT की तरह)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "समाप्त हो चुके रिकॉर्ड भी (CMS:SELECT की तरह)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "सत्र कुकी (CMS:USER_LOGIN cookiename)।",
+                    "value": "कुकी का नाम",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "संदेश: message[empty] (कोई फ़ाइल नहीं), message[limit] (बहुत बड़ा), message[throttled] (बहुत अधिक संग्रह)।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        }
+    }
+}

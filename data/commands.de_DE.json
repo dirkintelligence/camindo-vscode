@@ -1,0 +1,3892 @@
+{
+    "version": "9.0.8",
+    "lang": "de_DE",
+    "commands": {
+        "continue": {
+            "note": "Setzt die Template-Abarbeitung trotz eines Success-Templates fort.",
+            "do": "field",
+            "oneof": "",
+            "params": {}
+        },
+        "csp": {
+            "note": "Ändert die Script-Policy (Content-Security-Policy) dieser Seite: weitere Script-Quellen, Formularziele oder ein anderer Modus. Muss vor der ersten Ausgabe stehen.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "script": {
+                    "description": "Weitere Script-Quellen, durch Leerzeichen oder Komma getrennt (https://js.example.com, *.example.com). Schlüsselwörter wie 'unsafe-inline' werden verworfen.",
+                    "value": "Quellen",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "form": {
+                    "description": "Weitere Formularziele (schaltet form-action ein), z. B. der Zahlungsanbieter.",
+                    "value": "Quellen",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mode": {
+                    "description": "Modus für diese Seite: off = keine Script-Policy, report = nur melden, enforce = durchsetzen. Leer: Einstellung der Instanz.",
+                    "value": "off / report / enforce",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "date": {
+            "note": "Gibt den Datumsteil eines Datumswertes formatiert aus.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "Datensatz, aus dem gelesen wird. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "Name eines Datensatzfeldes, dessen Inhalt als Quelle genutzt wird.",
+                    "value": "Feld",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "Wert in Textform, der als Quelle genutzt wird.",
+                    "value": "Datumswert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU-Muster, z. B. \"dd.MM.y\". Ohne Angabe entscheidet die Locale der Seite über die Schreibweise.",
+                    "value": "Formatangaben",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: Der Name der Zeitzone wird angehängt (z. B. \"Europe/Berlin\").",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "Kommt der Text vor dem Fragezeichen im formatierten Wert vor, wird er durch den Text nach dem Fragezeichen ersetzt (z. B. \"Jan?Januar\").",
+                    "value": "Text?Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Text, der ausgegeben wird, falls die Quelle ('field' oder 'useval') leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Text, der anstelle der Quelle ausgegeben wird, sofern diese nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der vorangestellt wird, sofern der formatierte Wert nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der angehängt wird, sofern der formatierte Wert nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der formatierte Wert wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "datetime": {
+            "note": "Gibt Datum und Uhrzeit eines Datumswertes formatiert aus.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "Datensatz, aus dem gelesen wird. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "Name eines Datensatzfeldes, dessen Inhalt als Quelle genutzt wird.",
+                    "value": "Feld",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "Wert in Textform, der als Quelle genutzt wird.",
+                    "value": "Datumswert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU-Muster, z. B. \"dd.MM.y HH:mm\". Ohne Angabe entscheidet die Locale der Seite über die Schreibweise.",
+                    "value": "Formatangaben",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "autotime": {
+                    "description": "true: Wenn keine Uhrzeit vorhanden ist (00:00), wird diese nicht angezeigt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: Der Name der Zeitzone wird angehängt (z. B. \"Europe/Berlin\").",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "Kommt der Text vor dem Fragezeichen im formatierten Wert vor, wird er durch den Text nach dem Fragezeichen ersetzt (z. B. \"Jan?Januar\").",
+                    "value": "Text?Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Text, der ausgegeben wird, falls die Quelle ('field' oder 'useval') leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Text, der anstelle der Quelle ausgegeben wird, sofern diese nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der vorangestellt wird, sofern der formatierte Wert nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der angehängt wird, sofern der formatierte Wert nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der formatierte Wert wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "email": {
+            "note": "Versendet eine E-Mail. Prüft auf Wunsch vorab die Pflichtfelder eines Formulars.",
+            "do": "do",
+            "oneof": "subject,subjecttemplate,body,bodytemplate",
+            "params": {
+                "formguard": {
+                    "description": "true: Formularschutz gegen Robots - das Formular muss die Felder aus (CMS:USER_TOKEN formguard=true) enthalten (Zeitstempel, leeres Köderfeld) und darf frühestens nach user.formguard_min_seconds (3) abgeschickt werden. Eine Zahl setzt diese Mindestzeit für das Formular (formguard=5); 0 oder false schaltet den Schutz ab. Sonst Meldung \"throttled\", wie bei der Drosselung.",
+                    "value": "true / false / Sekunden",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "throttle": {
+                    "description": "Drosselung je Herkunft (IP): true = Grenze user.throttle.email_ip (5 je Stunde), sonst ein eigener Bucket aus user.throttle. Gedrosselt: Meldung \"throttled\", keine E-Mail. Für Kontaktformulare, in die jeder eine Adresse eintragen kann.",
+                    "value": "true / Bucket-Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "to": {
+                    "description": "Empfänger-E-Mail-Adresse. Mehrere Empfänger als to[]=… oder kommasepariert (höchstens 20).",
+                    "value": "E-Mail-Adresse",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "toname": {
+                    "description": "Empfängername (nur bei genau einem Empfänger).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "from": {
+                    "description": "Absender-E-Mail-Adresse.",
+                    "value": "E-Mail-Adresse",
+                    "default": "email.noreply bzw. email.reply (.camindo.php)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fromname": {
+                    "description": "Absendername.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "contenttype": {
+                    "description": "MIME-Type der E-Mail.",
+                    "value": "text/plain oder text/html",
+                    "default": "text/plain",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "Betreff der E-Mail.",
+                    "value": "Text",
+                    "default": "(no subject)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subjecttemplate": {
+                    "description": "Template für den Betreff (Tags und Zeilenumbrüche fallen weg). Hat Vorrang vor subject.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "body": {
+                    "description": "Nachrichtentext (Text oder HTML).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "bodytemplate": {
+                    "description": "Template für den E-Mail-Body. Hat Vorrang vor body.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "paths_absolute": {
+                    "description": "true: Alle serverrelativen Pfade im E-Mail-Body werden in absolute Pfade umgewandelt (nur bei contenttype=\"text/html\").",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sender_url": {
+                    "description": "(Optional mit Protokoll) + Domain, um serverrelative Pfade in absolute Pfade wandeln zu können.",
+                    "value": "(http://)Domain",
+                    "default": "Protokoll und Hauptdomain der Instanz",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: E-Mail wird in das Logfile var/log/{Datum}_mail-debug.log geschrieben, aber nicht versendet.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "requiredfields": {
+                    "description": "Angabe der Pflichtfelder. Feldnamen (Index-Namen) im Request-Array data[…] (siehe Parameter data).",
+                    "value": "Feldnamen, kommasepariert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "Name des Request-Arrays, das die von 'requiredfields' erwarteten Daten enthält (Standard data, also $_POST['data']).",
+                    "value": "PHP-Variablenname",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "'requiredfields' wird nur ausgewertet, wenn 'submit' einen Wert enthält. Ansonsten wird der CMS:EMAIL-Befehl ignoriert.",
+                    "value": "Textwert",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "Template, das nach erfolgreichem Absenden eingebunden wird; danach endet die Seite (außer mit CMS:CONTINUE).",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "Fehlermeldung. Im Index: Anwendungsfall (required, to, from, content, attachment, send); im Wert: Meldungstext.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "attachment": {
+                    "description": "Dateien, die angehängt werden sollen. Pfad relativ zum var-Verzeichnis, nur aus download/, upload/ und modules/.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "fed": {
+            "note": "Erzeugt einen Knopf zum Bearbeiten eines Datensatzes, wenn das Frontend-Editing aktiviert ist. Braucht CMS:FED_SCRIPT auf derselben Seite.",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "label": {
+                    "description": "Beschriftung des Knopfes.",
+                    "value": "Text",
+                    "default": "[»]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "Datensatz, der geöffnet wird. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "info": {
+                    "description": "true: Der Knopf öffnet die Detailansicht des Datensatzes statt der Eingabemaske.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der (ohne Knopf) vor dem Knopf ausgegeben wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der (ohne Knopf) nach dem Knopf ausgegeben wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der Knopf wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_code": {
+            "note": "Blendet HTML-Code ein, wenn das Frontend-Editing aktiviert ist.",
+            "do": "code",
+            "oneof": "",
+            "params": {
+                "code": {
+                    "description": "HTML-Code, der ausgegeben werden soll, wenn das Frontend-Editing eingeschaltet ist.",
+                    "value": "HTML-Code",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Alternative Ausgabe, wenn das Frontend-Editing ausgeschaltet ist.",
+                    "value": "HTML-Code",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der Code wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_script": {
+            "note": "Stellt die Javascript-Funktion cFED() und den Klick-Listener für die Knöpfe aus CMS:FED bereit (mit der Nonce der Seite) - einmal je Seite, üblicherweise im Footer.",
+            "do": "set",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "Der Script-Block wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "header": {
+            "note": "Sendet einen HTTP-Header.",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Textzeile, die als Header an den Browser gesendet werden soll. Ohne Wert (\"Name:\") wird der Header entfernt.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "false: Ein vorausgegangener Header desselben Typs wird nicht überschrieben; es wird ein neuer Header hinzugefügt.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "include": {
+            "note": "Bindet ein Template ein - mit caching aus dem Ausgabe-Cache (IncludeCache).",
+            "do": "template",
+            "oneof": "",
+            "params": {
+                "caching": {
+                    "description": "Die Ausgabe des Templates wird so lange zwischengespeichert und danach ohne erneute Abarbeitung ausgeliefert. Ohne Angabe, leer oder 0: kein Cache.",
+                    "value": "Sekunden, 30s, 5m, 1h, 1d oder infinite",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cacheparams": {
+                    "description": "Alles, wovon die Ausgabe abhängt (Datensatz, Seite, Kunde …): je Wert entsteht eine eigene Cache-Datei. Instanz und Sprache zählen von selbst mit.",
+                    "value": "null, bool, int, string oder Array (auch als Variable: cacheparams=$params)",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Die gesamte Ausgabe (samt eingebundenem Template) wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "Detailtemplate, das eingebunden wird.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_list": {
+            "note": "Erzeugt eine Blätter-Navigation (Pagination), z. B. 1 … 5 | 6 | 7 | 8 | 9 … 15.",
+            "do": "separator",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "Versatz der aktuellen Seite (Anzahl übersprungener Ergebnisse). Ohne Angabe gilt der Request-Parameter skip.",
+                    "value": "Zahl >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maximum": {
+                    "description": "Anzahl der gleichzeitig angezeigten (mitwandernden) Seitenverweise, ohne die Verweise auf erste und letzte Seite.",
+                    "value": "Zahl >= 1",
+                    "default": "7",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "boundaries": {
+                    "description": "true: Verweise auf die erste und die letzte Seite werden immer angezeigt, sobald sie außerhalb des mitwandernden Bereichs liegen.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "Text zwischen zwei Seitenverweisen. Vor und hinter der Auslassung ('ellipsis') wird er nicht eingefügt.",
+                    "value": "Trennzeichen",
+                    "default": " ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "Vorlage für einen Seitenverweis. {page} wird durch die Seitennummer ersetzt, {href} durch die Seiten-URL.",
+                    "value": "HTML-Vorlage",
+                    "default": " <a href=\"{href}\">{page}</a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_active": {
+                    "description": "Vorlage für die aktuelle Seite. {page} wird durch die Seitennummer ersetzt, {href} durch die Seiten-URL.",
+                    "value": "HTML-Vorlage",
+                    "default": " <strong>{page}</strong> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ellipsis": {
+                    "description": "Platzhalter für ausgelassene Seiten - erscheint zwischen einem Boundary-Verweis und dem mitwandernden Bereich.",
+                    "value": "Code",
+                    "default": " … ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "Einfache Textersetzung im fertigen HTML. Trenner ist das Fragezeichen: \"suchen?ersetzen\".",
+                    "value": "Text?Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text vor der Navigation, nur wenn eine Navigation ausgegeben wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text nach der Navigation, nur wenn eine Navigation ausgegeben wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Ausgabe, wenn das Ergebnis auf eine einzige Seite passt oder das CMS:SELECT kein limit hat und deshalb keine Navigation nötig ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Die Navigation wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_next": {
+            "note": "Erzeugt einen Weiterblättern-Verweis.",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "Versatz der aktuellen Seite (Anzahl übersprungener Ergebnisse). Ohne Angabe gilt der Request-Parameter skip.",
+                    "value": "Zahl >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "Vorlage für den Verweis, solange es eine nächste Seite gibt. {href} wird durch die Ziel-URL ersetzt.",
+                    "value": "HTML-Vorlage",
+                    "default": " <a href=\"{href}\"><strong>❯❯</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "Vorlage für den nicht anwählbaren Verweis, wenn es keine nächste Seite gibt. {href} wird ebenfalls ersetzt.",
+                    "value": "HTML-Vorlage",
+                    "default": " <span>❯❯</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "Einfache Textersetzung im fertigen HTML. Trenner ist das Fragezeichen: \"suchen?ersetzen\".",
+                    "value": "Text?Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text vor dem Verweis, nur wenn ein Verweis ausgegeben wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text nach dem Verweis, nur wenn ein Verweis ausgegeben wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Ausgabe, wenn das CMS:SELECT kein limit hat (dann gibt es keine Seiten). Passt alles auf eine Seite, erscheint tpl_inactive.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der Verweis wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_prev": {
+            "note": "Erzeugt einen Zurückblättern-Verweis.",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "Versatz der aktuellen Seite (Anzahl übersprungener Ergebnisse). Ohne Angabe gilt der Request-Parameter skip.",
+                    "value": "Zahl >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "Vorlage für den Verweis, solange es eine vorherige Seite gibt. {href} wird durch die Ziel-URL ersetzt.",
+                    "value": "HTML-Vorlage",
+                    "default": " <a href=\"{href}\"><strong>❮❮</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "Vorlage für den nicht anwählbaren Verweis, wenn es keine vorherige Seite gibt. {href} wird ebenfalls ersetzt.",
+                    "value": "HTML-Vorlage",
+                    "default": " <span>❮❮</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "Einfache Textersetzung im fertigen HTML. Trenner ist das Fragezeichen: \"suchen?ersetzen\".",
+                    "value": "Text?Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text vor dem Verweis, nur wenn ein Verweis ausgegeben wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text nach dem Verweis, nur wenn ein Verweis ausgegeben wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Ausgabe, wenn das CMS:SELECT kein limit hat (dann gibt es keine Seiten). Passt alles auf eine Seite, erscheint tpl_inactive.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der Verweis wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "media": {
+            "note": "Erzeugt ein Image-Tag oder gibt den Inhalt einer Mediendatei in Textform aus.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "Datensatz, aus dem gelesen wird. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "Name eines Upload- oder Thumbnail-Feldes.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subfield": {
+                    "description": "Einzelwert statt IMG-Tag: path (Pfad ab DOCUMENT_ROOT für src/href, mit sprechendem Dateinamen; bei auth/download/user_auth über file.php), file (absoluter Pfad im Dateisystem), filename (ursprünglicher Dateiname), mime_type, extension (ohne Punkt), size (Bytes; mit autoformat lesbar), width / height (Pixel, 0 wenn unbekannt), version (Versionszähler der Datei).",
+                    "value": "path / file / filename / mime_type / extension / size / width / height / version",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "auth": {
+                    "description": "true: Der Verweis zeigt auf /file.php statt ins Medienverzeichnis. Für Felder mit \"Nur für angemeldete Frontend-User\" (user_auth) gilt das automatisch - file.php prüft dort die Frontend-Session.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "Datei wird über /file.php unter dem angegebenen Dateinamen zum Download angeboten (Dateiendung wird automatisch ergänzt).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des IMG-Tags, mit oder ohne CSS-Einheit (Standard: px).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe des IMG-Tags, mit oder ohne CSS-Einheit (Standard: px).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "attr": {
+                    "description": "Zusätzliche Attribute für das IMG-Tag (Schlüssel: Attributname, Wert: Attributwert).",
+                    "value": "Array",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "autoformat": {
+                    "description": "true: Der via 'subfield' gewählte Inhalt wird je nach Typ formatiert (z. B. Dateigrößen in Bytes/KB/MB dynamisch nach Wert).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Überschreibt den formatierten Wert, sofern dieser nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Alternativtext, falls der formatierte Wert leer (oder \"0\") ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der vorangestellt wird, sofern der formatierte Wert nicht leer (oder \"0\") ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der angehängt wird, sofern der formatierte Wert nicht leer (oder \"0\") ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "Datei-Array (etwa aus CMS:SAVEDATA) samt field_id und record_id - nur per PHP-Aufruf, ohne field (siehe Beispiel).",
+                    "value": "Array",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der formatierte Wert wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "message": {
+            "note": "Erzeugt eine Textausgabe aus aktuellen Fehlermeldungen.",
+            "do": "useval",
+            "oneof": "",
+            "params": {
+                "useval": {
+                    "description": "Wert in Textform, der als Quelle genutzt wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der vor den Meldungen ausgegeben wird, sofern es welche gibt.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der nach den Meldungen ausgegeben wird, sofern es welche gibt.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Text, falls keine Meldung vorhanden ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Text, der anstelle der Meldungen ausgegeben wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Die Meldung wird nicht angezeigt, sondern in die Variable $set geschrieben.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "nonce": {
+            "note": "Gibt die Nonce der Seite aus: <script(CMS:NONCE)>. Jedes Script im Template braucht sie, sobald die Script-Policy der Website durchgesetzt wird.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "format": {
+                    "description": "attribute: nonce=\"…\" (mit führendem Leerzeichen, für ein <script>-Tag). value: nur der Wert.",
+                    "value": "\"attribute\" / \"value\"",
+                    "default": "\"attribute\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Die Ausgabe wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "number": {
+            "note": "Gibt einen Zahlenwert formatiert aus.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "Datensatz, aus dem gelesen wird. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "Name eines Datensatzfeldes, dessen Inhalt als Quelle genutzt wird.",
+                    "value": "Feld",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "Wert in Textform, der als Quelle genutzt wird.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Text, der ausgegeben wird, wenn die Quelle leer ist oder der Zahlenwert (nach mul/add) 0 ergibt.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Zahl, die zur Quelle wird, sofern die ursprüngliche Quelle nicht leer ist.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mul": {
+                    "description": "Zahl, mit der die Quelle multipliziert wird.",
+                    "value": "Zahl",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "add": {
+                    "description": "Zahl, die zur Quelle addiert wird.",
+                    "value": "Zahl",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Formatierung analog zum PHP-Befehl sprintf().",
+                    "value": "Formatierung",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimals": {
+                    "description": "Feste Anzahl Nachkommastellen (gerundet); decimal und thousands_separator wirken weiter. Ohne Angabe so viele, wie die Zahl hat.",
+                    "value": "Zahl 0-10",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimal": {
+                    "description": "Zeichen, durch das der Dezimalpunkt ersetzt wird.",
+                    "value": "Zeichen",
+                    "default": ".",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "thousands_separator": {
+                    "description": "Zeichen, das als Tausendertrennzeichen (alle drei Stellen von rechts nach links) eingefügt wird.",
+                    "value": "Zeichen",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nullcent": {
+                    "description": "Text, durch den ein fehlender Nachkommawert ersetzt wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "Kommt der Text vor dem Fragezeichen im formatierten Wert vor, wird er durch den Text nach dem Fragezeichen ersetzt (z. B. \".00?\" entfernt leere Nachkommastellen).",
+                    "value": "Text?Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der dem formatierten Wert vorangestellt wird, sofern dieser nicht \"0\" oder leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der dem formatierten Wert angehängt wird, sofern dieser nicht \"0\" oder leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der formatierte Wert wird nicht ausgegeben, sondern stattdessen in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sizefactor": {
+                    "description": "1000 oder 1024. Wenn > 0, wird eine lesbare Dateigröße berechnet (z. B. 15.2 GB).",
+                    "value": "Anzahl Bytes eines Kilobytes",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_cell": {
+            "note": "Zelle der aktuellen Zeile. Schrift ist die zu diesem Zeitpunkt eingestellte (CMS:PDF_FONT).",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Zelltext; bricht innerhalb der Spalte um, soweit fit= ihn nicht einpasst.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "col": {
+                    "description": "Spaltenindex ab 0; ohne Angabe die nächste Spalte.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Horizontale Ausrichtung.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "valign": {
+                    "description": "Vertikale Ausrichtung in der Zeile.",
+                    "value": "T / C / B",
+                    "default": "T",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fit": {
+                    "description": "Text auf eine Zeile in der Spaltenbreite einpassen: fontsize verkleinert die Schrift (bis min_size), spacing verringert den Zeichenabstand, scale beides, force staucht horizontal. Was auch so nicht passt, bricht um.",
+                    "value": "none / scale / fontsize / spacing / force",
+                    "default": "none",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "min_size": {
+                    "description": "Kleinste Schriftgröße beim Einpassen.",
+                    "value": "Punkt",
+                    "default": "6",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenseiten: L links, T oben, R rechts, B unten; 1 alle, 0 keine.",
+                    "value": "LTRB / 1 / 0",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke; sonst die der Tabelle.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_color": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand dieser Zelle; sonst der der Tabelle.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe der Zelle. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_color": {
+            "note": "Definiert ein Farbfeld mit RGB- und/oder CMYK-Wert. Der Farbraum des Dokuments (PDF_INIT) wählt den Wert; ein fehlender wird umgerechnet.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Name des Farbfelds (Buchstaben, Ziffern, _ und -).",
+                    "value": "Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "rgb": {
+                    "description": "RGB-Wert als Hex-Farbe, z. B. #0066FF.",
+                    "value": "#rrggbb",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cmyk": {
+                    "description": "CMYK-Wert in Prozent, z. B. 0,100,100,0.",
+                    "value": "c,m,y,k",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_fill_color": {
+            "note": "Füllfarbe für die folgenden CMS:PDF_RECT. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Füllfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_font": {
+            "note": "Stellt die Schrift für die folgenden Texte und Zellen ein. Gilt über Seiten hinweg.",
+            "do": "font",
+            "oneof": "",
+            "params": {
+                "font": {
+                    "description": "Name einer Schrift aus var/modules/pdf/fonts/ ({name}.json; mitgeliefert: helvetica, times, courier, symbol, zapfdingbats). Eine Datei {name}.ttf/.otf wird beim ersten Aufruf konvertiert.",
+                    "value": "Schriftname",
+                    "default": "helvetica",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "Schriftschnitt: B fett, I kursiv, U unterstrichen, D durchgestrichen, O überstrichen. Leer = regulär.",
+                    "value": "B / I / U / D / O, kombinierbar",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße in Punkt.",
+                    "value": "Punkt",
+                    "default": "12",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_html": {
+            "note": "Schreibt einen HTML-Block (Umbruch und Seitenumbruch durch tc-lib-pdf). Der Cursor bleibt stehen - die Höhe des Blocks ist nicht bekannt.",
+            "do": "html",
+            "oneof": "",
+            "params": {
+                "html": {
+                    "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
+                    "value": "HTML",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_image": {
+            "note": "Platziert ein Bild (JPEG, PNG, GIF, ...) aus dem Medienverzeichnis. Der Cursor rückt unter das Bild.",
+            "do": "file",
+            "oneof": "",
+            "params": {
+                "file": {
+                    "description": "Bilddatei: absoluter Pfad aus (CMS:MEDIA subfield=file), Webpfad aus subfield=path oder Pfad relativ zu public/media. Nur Dateien unterhalb des Medienverzeichnisses.",
+                    "value": "Pfad",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite; 0 = aus der Höhe (bzw. aus den Pixeln bei 72 dpi, wenn beide fehlen).",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe; 0 = proportional zur Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "link": {
+                    "description": "Verweis, der beim Klick auf das Bild geöffnet wird.",
+                    "value": "URL",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_init": {
+            "note": "Vorgaben für das Dokument: Farbraum, ICC-Profil, Seitenformat und Ränder. Vor der ersten CMS:PDF_PAGE.",
+            "do": "colorspace",
+            "oneof": "",
+            "params": {
+                "colorspace": {
+                    "description": "Farbraum, in dem Farben ins PDF geschrieben werden.",
+                    "value": "RGB / CMYK",
+                    "default": "RGB",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "icc_profile": {
+                    "description": "ICC-Profil aus var/modules/pdf/profiles/, wird als Output Intent eingebettet.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "output_condition": {
+                    "description": "Bezeichner der Druckbedingung für den Output Intent (z. B. FOGRA39). Ohne Angabe der Dateiname des Profils.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat leerer Seiten (Namen wie in tc-lib-pdf).",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "A4",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Hoch- (P) oder Querformat (L) leerer Seiten.",
+                    "value": "P / L",
+                    "default": "P",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Seitenränder in mm (ein Wert: alle; zwei: oben/unten, rechts/links). Linker Rand = x-Vorgabe, rechter Rand = Breitenvorgabe, unterer Rand = Umbruchgrenze der Tabellen.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "20,20,20,20",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line": {
+            "note": "Zeichnet eine Linie.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x1": {
+                    "description": "Startpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y1": {
+                    "description": "Startpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x2": {
+                    "description": "Endpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y2": {
+                    "description": "Endpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Liniendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Linienfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line_color": {
+            "note": "Linienfarbe für die folgenden CMS:PDF_LINE, Rahmen von CMS:PDF_RECT und Zellenrahmen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Linienfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_meta": {
+            "note": "Dokumenteigenschaften (werden bei CMS:PDF_PRINT geschrieben).",
+            "do": "title",
+            "oneof": "",
+            "params": {
+                "title": {
+                    "description": "Titel.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "author": {
+                    "description": "Autor.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "Thema.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keywords": {
+                    "description": "Stichwörter.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "creator": {
+                    "description": "Erzeugende Anwendung.",
+                    "value": "Text",
+                    "default": "camindo CMS",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_page": {
+            "note": "Legt eine neue Seite an - leer oder auf einer Seite einer Layout-Vorlage. Der erste Aufruf beginnt das Dokument.",
+            "do": "layout",
+            "oneof": "",
+            "params": {
+                "layout": {
+                    "description": "PDF-Vorlage aus var/modules/pdf/layouts/, deren Seite als Hintergrund übernommen wird. Ohne Angabe eine leere Seite.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "page": {
+                    "description": "Seite der Vorlage (ab 1), die übernommen wird.",
+                    "value": "Zahl",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Ausrichtung einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "P / L",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Ränder nur dieser Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_print": {
+            "note": "Sendet das Dokument an den Browser und beendet den Request. Vor CMS:PDF_PAGE darf das Template nichts ausgegeben haben.",
+            "do": "filename",
+            "oneof": "",
+            "params": {
+                "filename": {
+                    "description": "Dateiname, den der Browser anzeigt bzw. beim Speichern vorschlägt.",
+                    "value": "Dateiname",
+                    "default": "document.pdf",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "Leer oder false: im Browser anzeigen. true: als Download unter filename. Ein Dateiname: als Download unter diesem Namen.",
+                    "value": "false / true / Dateiname",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_rect": {
+            "note": "Zeichnet ein Rechteck, umrandet und/oder gefüllt.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x": {
+                    "description": "Linke Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "D Rahmen, F Füllung, DF beides.",
+                    "value": "D / F / DF",
+                    "default": "D",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Füllfarbe; sonst CMS:PDF_FILL_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "line_width": {
+                    "description": "Rahmendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_row": {
+            "note": "Beginnt eine Tabellenzeile.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "is_header": {
+                    "description": "Kopfzeile: wird nach einem Seitenumbruch auf der Folgeseite wiederholt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keep_together": {
+                    "description": "Zeile nicht über Seiten teilen. Derzeit werden Zeilen grundsätzlich nicht geteilt; der Parameter ist für spätere Versionen reserviert.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table": {
+            "note": "Beginnt eine Tabelle; Zeilen und Zellen folgen mit CMS:PDF_ROW / CMS:PDF_CELL, gezeichnet wird bei CMS:PDF_TABLE_END. Zeilen werden nie geteilt: was nicht mehr auf die Seite passt, beginnt auf einer Folgeseite, Kopfzeilen werden dort wiederholt.",
+            "do": "cols",
+            "oneof": "",
+            "params": {
+                "cols": {
+                    "description": "Spaltenbreiten in mm, kommasepariert.",
+                    "value": "b1,b2,...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Linke Kante; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand aller Zellen in mm (ein Wert: alle; zwei: oben/unten, rechts/links).",
+                    "value": "oben,rechts,unten,links",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke der Zellen.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_layout": {
+                    "description": "Layout-Vorlage der Folgeseiten bei Seitenumbruch; sonst wie die letzte CMS:PDF_PAGE (leer = leere Seite).",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_page": {
+                    "description": "Seite der Vorlage für Folgeseiten.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table_end": {
+            "note": "Zeichnet die Tabelle. Der Cursor rückt unter die Tabelle.",
+            "do": "",
+            "oneof": "",
+            "params": {}
+        },
+        "pdf_text": {
+            "note": "Schreibt einen Textblock mit Zeilenumbruch innerhalb der Breite. Der Cursor rückt unter den Block.",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Der Text (UTF-8; Zeilenumbrüche werden umgebrochen). Leer = keine Ausgabe.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand (Oberkante des Blocks); ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Ausrichtung: links, zentriert, rechts, Blocksatz.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße nur für diesen Block; sonst die von CMS:PDF_FONT.",
+                    "value": "Punkt",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe nur für diesen Block; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe des Blocks. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_text_color": {
+            "note": "Textfarbe für die folgenden CMS:PDF_TEXT und Zellen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Textfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "raw": {
+            "note": "Gibt einen Inhalt unformatiert aus.",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "Datensatz, aus dem gelesen wird. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "Name des Feldes, dessen Inhalt ausgegeben wird.",
+                    "value": "Feld",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Text, der ausgegeben wird, falls das Feld leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Text, der anstelle des Feldinhalts ausgegeben wird, sofern dieser nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der vorangestellt wird, sofern der Feldinhalt nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der angehängt wird, sofern der Feldinhalt nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der Inhalt wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "relation": {
+            "note": "Gibt das Haupt-Feld (Titel) aller Datensätze aus, die mit dem aktuellen Datensatz verknüpft sind.",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "Datensatz, dessen Verweise ausgegeben werden. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "Name des Verweisfeldes (Feldtyp relation, pointer oder link), dessen Ziele ausgegeben werden. Ein anderer Feldtyp ergibt eine Fehlermeldung.",
+                    "value": "Feld",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "Maximale Anzahl der einbezogenen Datensätze in der Ergebnismenge.",
+                    "value": "Zahl >0",
+                    "default": "1000",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: Auch vordatierte Ziele (online_at noch nicht erreicht) werden ausgegeben (wie bei CMS:SELECT).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: Auch abgelaufene Ziele (offline_at erreicht) werden ausgegeben (wie bei CMS:SELECT).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "Ohne Angabe nur freigegebene Ziele (status_id 0). Eine Status-Id > 0 nur Ziele mit diesem Status, \"any\" Ziele jeden Status (wie bei CMS:SELECT).",
+                    "value": "Status-Id oder any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "Kürzel der Sprachversion, deren Inhalte angefordert werden (wirkt sich auf mehrsprachige Felder aus). Noch nicht umgesetzt - derzeit gilt immer die Sprache des Aufrufs.",
+                    "value": "Sprachkürzel",
+                    "default": "(aktuelle Sprache)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "Text, der zwischen den Ergebnissen stehen soll.",
+                    "value": "Trennzeichen",
+                    "default": "|",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der der Quelle vorangestellt wird, sofern diese nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der an die Quelle angehängt wird, sofern diese nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Text, der zur Quelle wird, wenn die ursprüngliche Quelle leer ist (weitere Parameter, außer 'set', werden ignoriert).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Überschreibt die Ausgabe, falls diese nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Die Ausgabe der Quelle wird umgeleitet und in $set eingetragen.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "result_end": {
+            "note": "Markiert das Ende einer Schleife zur Verarbeitung von CMS:SELECT-Ergebnissen.",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "result_start": {
+            "note": "Markiert den Beginn einer Schleife zur Verarbeitung von CMS:SELECT-Ergebnissen.",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "savedata": {
+            "note": "Speichert die Daten des aktuellen Datensatzes in der angegebenen Variable.",
+            "do": "phpvar",
+            "oneof": "",
+            "params": {
+                "phpvar": {
+                    "description": "Variable, in der die Daten des aktuellen Datensatzes abgelegt werden sollen.",
+                    "value": "Index innerhalb $GLOBALS",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "Datensatz, dessen Daten geladen werden sollen. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL. Ohne Angabe der aktuell geladene Datensatz.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "Gibt an, in welcher Sprache die Inhalte mehrsprachiger Felder geladen werden sollen. Noch nicht umgesetzt - derzeit gilt immer die Sprache des Aufrufs.",
+                    "value": "Sprachversions-Kürzel",
+                    "default": "$lang",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select": {
+            "note": "Durchsucht die Datenbank anhand der angegebenen (Filter-)Kriterien und liefert die gefundenen Datensätze zurück.",
+            "do": "resulttemplate",
+            "oneof": "filter,relation",
+            "params": {
+                "set": {
+                    "description": "Die gesamte Ausgabe (samt eingebundenem Template) wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "Listentemplate, das zur Verarbeitung der Ergebnisse eingebunden wird.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresulttemplate": {
+                    "description": "Detailtemplate, das eingebunden wird, falls die Abfrage keine Ergebnisse liefert.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresult": {
+                    "description": "Text, der unmittelbar ausgegeben wird, falls die Abfrage keine Ergebnisse liefert.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "Im Index: Name des zu durchsuchenden Feldes (relation_any für ein beliebiges Verweisfeld; area für den Namen des Inhaltsbereichs, eine Zahl gilt dort als area_id). Im Wert: der zu suchende Wert.",
+                    "value": "Wert oder EMPTY",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_mode": {
+                    "description": "Modus, mit dem mehrere Werte desselben Feldes verknüpft werden (filter_mode[feld]=AND).",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "filter_op": {
+                    "description": "Vergleichsoperator für das angegebene Feld (filter_op[feld]=\">\"). Alternativ steht der Operator zwischen Schlüssel und Wert (filter[preis] > 100) oder direkt vor dem Wert (filter[preis]=\">100\").",
+                    "value": "=, ==, !=, !!, >, <, >>, <<, >=, <=",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "skip": {
+                    "description": "Anzahl der übersprungenen Datensätze in der Ergebnismenge. Wirkt nur zusammen mit limit.",
+                    "value": "Zahl >= 0",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "Maximale Anzahl der einbezogenen Datensätze in der Ergebnismenge - zugleich die Seitengröße für CMS:JUMP_LIST, CMS:JUMP_PREV und CMS:JUMP_NEXT. Ohne Angabe oder 0: unbegrenzt, keine Blätterleiste.",
+                    "value": "Zahl >0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "Feld, nach dem sortiert wird (vgl. order); mehrere kommasepariert oder als sort[]=…; area sortiert nach dem Namen des Inhaltsbereichs, verweisfeld.feld nach einem Feld des verknüpften Datensatzes.",
+                    "value": "Feldname(n), kommasepariert",
+                    "default": "changed_at",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "Reihenfolge, in der sortiert wird (vgl. sort). Ohne sort gilt changed_at desc.",
+                    "value": "desc / asc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "Kürzel der Sprachversion, deren Inhalte angefordert werden (wirkt sich auf mehrsprachige Felder aus). Noch nicht umgesetzt - derzeit gilt immer die Sprache des Aufrufs.",
+                    "value": "Sprachkürzel",
+                    "default": "(aktuelle Sprache)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "Feldnamen von Beziehungs-/Verweisfeldern, in denen die gesuchten Datensätze gespeichert sind (mit src_id); mit dest_id die Felder, über die die gesuchten Datensätze auf dest_id verweisen. ANY: irgendein Verweisfeld.",
+                    "value": "Feldname(n) kommasepariert oder 'ANY'",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "Quell-Datensatz, dessen Verknüpfungen ausgewertet werden (ohne Angabe: aktueller Datensatz).",
+                    "value": "Datensatz-ID(s)",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "dest_id": {
+                    "description": "Rückrichtung zu relation: die Datensätze, die über relation auf diesen Datensatz verweisen (relation=ANY: über irgendein Verweisfeld). Ohne src_id wird dann kein aktueller Datensatz als Quelle eingesetzt.",
+                    "value": "Datensatz-ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nextof": {
+                    "description": "Nur mit relation: Nachbarn des angegebenen Datensatzes in der Verweisliste - die Einträge hinter ihm (order=asc) bzw. vor ihm (order=desc), in der Reihenfolge der Liste; mit limit=1 der nächste bzw. vorige Datensatz.",
+                    "value": "Datensatz-ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "count": {
+                    "description": "true: Die Anzahl der Datensätze in der Ergebnismenge wird ermittelt, unabhängig von \"limit\" und \"skip\" (im resulttemplate in $this->db->num_rows_unlimited; Grundlage der JUMP-Befehle).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hits": {
+                    "description": "false: Es wird nur gezählt (schließt count=true ein), es werden keine Datensätze geladen und kein resulttemplate eingebunden. Die Gesamtzahl steht danach im aufrufenden Template in $this->db->num_rows_unlimited; noresult/noresulttemplate gelten, wenn sie 0 ist.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: Auch abgelaufene Datensätze (offline_at erreicht) werden in die Abfrage einbezogen.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: Auch vordatierte Datensätze (online_at noch nicht erreicht) werden in die Abfrage einbezogen.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: Der erzeugte Datenbank-Query wird für Support-Analysen ausgegeben.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sql": {
+                    "description": "Raw SQL-Zusatz in der WHERE-Klausel (Achtung: nur für den Support!).",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "Ohne Angabe nur freigegebene Datensätze (status_id 0). Eine Status-Id > 0 findet nur Datensätze mit diesem Status, \"any\" Datensätze jeden Status.",
+                    "value": "Status-Id oder any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select_langversion": {
+            "note": "Liefert die verfügbaren Sprachen als Datensätze zurück.",
+            "do": "resulttemplate",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "Die gesamte Ausgabe (samt eingebundenem Template) wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "Listentemplate, das zur Verarbeitung der Ergebnisse eingebunden wird.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "snippet": {
+            "note": "Gibt ein Snippet (Textbaustein) in der Sprache des Aufrufs aus.",
+            "do": "key",
+            "oneof": "",
+            "params": {
+                "key": {
+                    "description": "Schlüssel des Snippets, z. B. custom.weiterlesen (Snippet-Set der Instanz) oder ein Core-Snippet ohne Präfix.",
+                    "value": "Snippet-Schlüssel",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "param": {
+                    "description": "Werte für Platzhalter: param[name]=Wert ersetzt {name} im Snippet und füllt ICU-Parameter (plural, select).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: Sonderzeichen werden in ihr HTML-Äquivalent umgewandelt (für Attribute).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Text, der ausgegeben wird, wenn es das Snippet nicht gibt (ohne ifempty erscheint der Schlüssel).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der vorangestellt wird, sofern das Snippet nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der angehängt wird, sofern das Snippet nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der Text wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "text": {
+            "note": "Gibt einen Text formatiert aus.",
+            "do": "field",
+            "oneof": "field,useval,id",
+            "params": {
+                "id": {
+                    "description": "Datensatz, aus dem gelesen wird. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL. Ohne 'field' wird das Feld \"text\" gelesen.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "Name eines Datensatzfeldes, dessen Inhalt als Quelle genutzt wird.",
+                    "value": "Feld",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "Wert in Textform, der als Quelle genutzt wird.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Text, der zur Quelle wird, wenn die ursprüngliche Quelle leer ist (weitere Parameter, außer 'set', werden dann ignoriert).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Text, der zur Quelle wird, wenn die ursprüngliche Quelle nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "entitydecode": {
+                    "description": "true: Entities im Format &...; werden zurück in Unicode-Zeichen gewandelt.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: Leerzeichen am Textanfang und -ende werden entfernt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "striptags": {
+                    "description": "true: HTML- und Script-Tags werden entfernt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "if": {
+                    "description": "Wenn die Quelle dem Text vor dem Fragezeichen entspricht, wird der Text nach dem Fragezeichen zur neuen Quelle.",
+                    "value": "Text?Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "else": {
+                    "description": "Trifft keine der vorherigen IF-Abfragen zu, wird dieser Wert zur Quelle.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "Kommt der Text vor dem Fragezeichen in der Quelle vor, wird er durch den Text nach dem Fragezeichen ersetzt.",
+                    "value": "Text?Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "Kürzt den Text auf die angegebene Anzahl an Zeichen und hängt \"…\" an; mit angehängtem s (z. B. 200s) wird am letzten Wortende gekürzt.",
+                    "value": "Zahl >= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lbrconvert": {
+                    "description": "true: Zeilenumbrüche werden in HTML-Zeilenumbrüche (<br>-Tags) umgewandelt.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: Sonderzeichen werden in ihr HTML-Äquivalent umgewandelt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlconvert": {
+                    "description": "true: Internet-Adressen werden automatisch in klickbare Links umgewandelt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailconvert": {
+                    "description": "true: E-Mail-Adressen werden verlinkt. encrypt: Die Links werden mittels JavaScript leicht verschlüsselt.",
+                    "value": "true / false / encrypt",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emaillimit": {
+                    "description": "Kürzt automatisch verlinkte E-Mail-Adressen auf x sichtbare Zeichen.",
+                    "value": ">= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailtext": {
+                    "description": "Verlinkter Text, der anstelle einer E-Mail-Adresse angezeigt wird (nur bei aktiviertem \"emailconvert\").",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "target": {
+                    "description": "Setzt das Link-Target für automatisch erzeugte Links (urlconvert, emailconvert).",
+                    "value": "Fenster / Frame",
+                    "default": "_self",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "markdown": {
+                    "description": "true: Der Text ist Markdown und wird in HTML umgewandelt (HTML im Text wird maskiert); die übrigen Umwandlungen entfallen.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlencode": {
+                    "description": "true: Der Text wird nach RFC 1738 kodiert.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urllimit": {
+                    "description": "Maximale Länge des sichtbaren Textes für automatisch erzeugte Links (nur für externe Links geeignet!).",
+                    "value": "Anzahl Zeichen",
+                    "default": "80",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ampconvert": {
+                    "description": "true: Ein alleinstehendes & wird automatisch in das HTML-Entity &amp; umgewandelt.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der der Quelle vorangestellt wird, sofern diese nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der an die Quelle angehängt wird, sofern diese nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "iso": {
+                    "description": "true: Die Ausgabe wird in den Zeichensatz ISO-8859-1 konvertiert.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "charset": {
+                    "description": "Zeichensatz, in den die Ausgabe konvertiert werden soll.",
+                    "value": "Text",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der formatierte Wert wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "time": {
+            "note": "Gibt die Uhrzeit eines Datums- oder Zeitwertes formatiert aus.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "Datensatz, aus dem gelesen wird. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "Name eines Datensatzfeldes, dessen Inhalt als Quelle genutzt wird.",
+                    "value": "Feld",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "Wert in Textform, der als Quelle genutzt wird.",
+                    "value": "Zeitwert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU-Muster, z. B. \"HH:mm\". Ohne Angabe entscheidet die Locale der Seite über die Schreibweise; volle Minuten werden ohne Sekunden gezeigt.",
+                    "value": "Formatangaben",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: Der Name der Zeitzone wird angehängt (z. B. \"Europe/Berlin\").",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "Kommt der Text vor dem Fragezeichen im formatierten Wert vor, wird er durch den Text nach dem Fragezeichen ersetzt (z. B. \"Jan?Januar\").",
+                    "value": "Text?Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "Text, der ausgegeben wird, falls die Quelle ('field' oder 'useval') leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "Text, der anstelle der Quelle ausgegeben wird, sofern diese nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "Text, der vorangestellt wird, sofern der formatierte Wert nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "Text, der angehängt wird, sofern der formatierte Wert nicht leer ist.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Der formatierte Wert wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "url": {
+            "note": "Erzeugt die URL eines Datensatzes.",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "area": {
+                    "description": "Verweis auf die Übersicht des Bereichs: die Adresse aus seinem Slug-Präfix (/de/modelle), die sein Übersichts-Template zeigt.",
+                    "value": "Bereichsname oder -Id",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "Datensatz, auf den verwiesen werden soll. Reine Ziffernfolge = record_id, alles andere = Slug - dieselbe Regel wie in der URL.",
+                    "value": "Datensatz-Id oder Slug",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "Template, mit dem der Datensatz gezeigt werden soll (zweiter URL-Teil nach dem Komma): Name oder bereich.name. Ohne Angabe das Template, das der Bereich zuweist.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "Sprachversion, auf die verwiesen werden soll (standardmäßig die des laufenden Aufrufs). Führt die Instanz mehr als eine Sprache, steht das Kürzel immer in der URL; bei nur einer Sprache nie. Ein Kürzel, das die Website nicht führt, wird übergangen.",
+                    "value": "Sprachkürzel",
+                    "default": "(aktuelle Sprache)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "protocol": {
+                    "description": "http oder https, nur mit absolute bzw. host. Ohne Angabe das Protokoll der Instanz, sonst das des Aufrufs.",
+                    "value": "Übertragungsprotokoll",
+                    "default": "(Protokoll der Instanz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "host": {
+                    "description": "z. B. example.com für den Wechsel der Domain, über die die Website aufgerufen wird.",
+                    "value": "Hostname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "absolute": {
+                    "description": "true: Der Pfad wird inkl. Protokoll und Domain erzeugt. false: Der Pfad ist serverrelativ und beginnt mit einem Slash.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Die URL wird nicht ausgegeben, sondern in $set eingetragen.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_2fa": {
+            "note": "Zweiten Faktor des angemeldeten Frontend-Users anzeigen, einrichten (Authenticator-App oder Code per E-Mail) und abschalten.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: Der Request muss ein gültiges Token aus CMS:USER_TOKEN enthalten (Schutz gegen CSRF). false schaltet die Prüfung für diesen Befehl ab (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "status: nur lesen. totp_setup: neuen Schlüssel für die App erzeugen ($set['totp_setup']). totp_enable: data[token] und data[code] prüfen und speichern ($set['recovery_codes']). code_enable: Code per E-Mail wählen (bestätigt mit dem Passwort). disable: abschalten (App-Code bzw. Passwort). recovery_renew: neue Wiederherstellungscodes (App-Code).",
+                    "value": "status / totp_setup / totp_enable / code_enable / disable / recovery_renew",
+                    "default": "status",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "Schreibende Funktionen laufen nur, wenn in diesem Feld ein Text enthalten ist.",
+                    "value": "Textwert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "Name des PHP-Arrays, in dem die Eingaben enthalten sind.",
+                    "value": "PHP-Variablenname",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "Name des Eingabefelds für den Code in data[…].",
+                    "value": "Feldname",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "Name des Eingabefelds für das Passwort in data[…] (code_enable, disable beim Code).",
+                    "value": "Feldname",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "Fehlermeldungen. Im Index: Anwendungsfall; im Wert: Meldungstext (vgl. Tabelle).",
+                    "value": "Standardmeldung",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "Name des Session-Cookies [a-z0-9].",
+                    "value": "Cookiename",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_auth": {
+            "note": "Prüft eine Session-ID auf Gültigkeit.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "sessionid": {
+                    "description": "Session des Frontend-Users anhand der angegebenen sessionid wieder aufnehmen anstatt über ein Cookie.",
+                    "value": "Session-ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "Filterkriterien für den Profil-Datensatz, die beim angemeldeten Frontend-User erfüllt sein müssen.",
+                    "value": "vgl. Parameter \"filter[]\" von CMS:SELECT",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "mode": {
+                    "description": "Modus, mit dem Werte verknüpft werden, die dasselbe Feld betreffen.",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "Name des Session-Cookies [a-z0-9].",
+                    "value": "Cookiename",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_basket": {
+            "note": "Bearbeiten eines Warenkorbs.",
+            "do": "function",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: Der Request muss ein gültiges Token aus CMS:USER_TOKEN enthalten (Schutz gegen CSRF). false schaltet die Prüfung für diesen Befehl ab (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "Funktion, die ausgeführt werden soll.",
+                    "value": "\"load\" / \"add\" / \"update\" / \"update_addon\"",
+                    "default": "\"load\"",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "function=add + overwrite=true: Die Anzahl der bereits gespeicherten Artikel wird beim Hinzufügen aktualisiert.",
+                    "value": "false / true",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "Warenkorb-Kategorie.",
+                    "value": "Kategorie-ID",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "Nur Datensätze aus diesen Containern kommen in den Warenkorb. Ohne Angabe: veröffentlichte Datensätze aus Containern vom Typ \"record\" oder \"ugc\" (nie Profile).",
+                    "value": "Container-IDs oder -Namen, kommasepariert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "variable": {
+                    "description": "Name der Variable, in der Artikel-IDs als Array gespeichert sind.",
+                    "value": "Variablenname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "duration": {
+                    "description": "Anzahl der Tage, die der Warenkorb gespeichert bleibt, sofern keine Änderungen durchgeführt werden.",
+                    "value": "Anzahl Tage",
+                    "default": "30",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "basket_addon": {
+                    "description": "Text (serialisierte Daten), die gespeichert werden sollen.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_delete": {
+            "note": "Löscht einen Datensatz, der dem angemeldeten Frontend-User gehört.",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: Der Request muss ein gültiges Token aus CMS:USER_TOKEN enthalten (Schutz gegen CSRF). false schaltet die Prüfung für diesen Befehl ab (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "Datensatz, der gelöscht werden soll.",
+                    "value": "Datensatz-ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: Der zu löschende Datensatz muss nicht dem angemeldeten Frontend-User gehören (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "Template, das eingebunden wird, wenn der Eintrag erfolgreich gelöscht wurde.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message_error": {
+                    "description": "Fehlermeldung, falls der Benutzer keinen Zugriff auf den Datensatz hat.",
+                    "value": "Text",
+                    "default": "Zugriff verweigert!",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_input": {
+            "note": "Erzeugt oder aktualisiert einen Datensatz aus Daten, die ein Frontend-User angegeben hat.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: Der Request muss ein gültiges Token aus CMS:USER_TOKEN enthalten (Schutz gegen CSRF). false schaltet die Prüfung für diesen Befehl ab (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "Template, das eingebunden wird, wenn der Eintrag erfolgreich gespeichert wurde.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "Name des PHP-Arrays, das die zu speichernden Daten enthält.",
+                    "value": "PHP-Variablenname",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "Explizites Überschreiben der Eingaben des Frontend-Users (auch Metafelder, außer record_id, area_id, instance_id, tmp, deleted, origin_id, owner_id, created_by, changed_by). Hier keine Eingaben des Frontend-Users weiterreichen!",
+                    "value": "Schlüssel-Wert-Paare",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "container": {
+                    "description": "ID oder Name des Content-Containers, in dem der neue Datensatz gespeichert werden soll.",
+                    "value": "Container-ID oder -Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "Fehlermeldung abhängig vom Index (siehe Tabelle).",
+                    "value": "Text",
+                    "default": "Standardtext",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "Der Befehl wird nur ausgeführt, wenn in diesem Feld ein Text enthalten ist.",
+                    "value": "Textwert",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "Namen der Eingabefelder, die geschrieben werden dürfen. Leer = alle definierten Felder des Containers.",
+                    "value": "kommaseparierte Liste",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "Falls angegeben, wird versucht diesen Datensatz zu aktualisieren (UPDATE). Andernfalls wird ein neuer erstellt (CREATE).",
+                    "value": "Datensatz-ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: Der anzupassende Datensatz muss nicht dem angemeldeten Frontend-User gehören (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "forceupdate": {
+                    "description": "true: Es wird erzwungen, den über Parameter \"id\" angegebenen Datensatz zu aktualisieren. Wirft im Fehlerfall eine Meldung.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "masterid": {
+                    "description": "Nur beim Anlegen in Bereichen mit Baumstruktur: Elternknoten des neuen Datensatzes (parent_id).",
+                    "value": "Datensatz-ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "Nur beim Anlegen: admin_id des Backend-Owners (record.owner_id, created_by). Ohne Angabe gilt user.default_owner_id.",
+                    "value": "Benutzer-ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "removefiles": {
+                    "description": "Namen der Upload-Felder, deren Inhalt gelöscht werden soll.",
+                    "value": "kommaseparierte Liste",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "Nur Profil-Container: Name des Formularfeldes data[…] mit dem bisherigen Passwort. Ein neues Passwort wird nur mit dem bisherigen gespeichert - außer direkt nach der Anmeldung über den Reset-Link ($set['password_reset']). Meldung \"current\".",
+                    "value": "Feldname",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login": {
+            "note": "Überprüft die Anmeldedaten eines Frontend-Users und erzeugt eine neue Session.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "Template für den zweiten Schritt der Anmeldung, wenn der Profil-Bereich einen zweiten Faktor verlangt (Code aus der App oder per E-Mail). Es verschickt beim Code per E-Mail $set['login_code'] mit CMS:EMAIL und zeigt das Code-Formular für CMS:USER_LOGIN_CODE. Pflicht, sobald der Bereich einen zweiten Faktor einsetzt.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: Der Request muss ein gültiges Token aus CMS:USER_TOKEN enthalten (Schutz gegen CSRF). false schaltet die Prüfung für diesen Befehl ab (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "Detailtemplate, das nach einer erfolgreichen Anmeldung eingebunden wird.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "ID oder Name des Profil-Containers, in dem die Daten der Frontend-User gespeichert sind.",
+                    "value": "Container-ID oder -Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "Name des PHP-Arrays, in dem die Anmeldedaten enthalten sind.",
+                    "value": "PHP-Variablenname",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "Fehlermeldungen. Im Index: Anwendungsfall; im Wert: Meldungstext (vgl. Tabelle).",
+                    "value": "Standardmeldung",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "Ein Login kann auch mittels Hash durchgeführt werden (Token aus CMS:USER_PW, Passwort vergessen).",
+                    "value": "Hash",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: Leerzeichen am Anfang und Ende der Eingaben entfernen.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookie": {
+                    "description": "true: Es wird standardmäßig ein Cookie gesetzt, um die Anmeldung über mehrere Seiten hinweg aufrechtzuerhalten.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "Der Befehl wird nur ausgeführt, wenn in diesem Feld ein Text enthalten ist. Entfällt bei der Anmeldung per \"hash\".",
+                    "value": "Textwert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "Name des Session-Cookies [a-z0-9].",
+                    "value": "Cookiename",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login_code": {
+            "note": "Zweiter Schritt der Anmeldung: prüft den Code aus der Authenticator-App, per E-Mail oder einen Wiederherstellungscode und meldet den Frontend-User an.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "Template, das nach \"resend\" eingebunden wird und den neuen Code ($set['login_code']) mit CMS:EMAIL verschickt - üblicherweise dasselbe wie \"codetemplate\" von CMS:USER_LOGIN.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: Der Request muss ein gültiges Token aus CMS:USER_TOKEN enthalten (Schutz gegen CSRF). false schaltet die Prüfung für diesen Befehl ab (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "Detailtemplate, das nach der erfolgreichen Anmeldung eingebunden wird.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "Der Code wird nur geprüft, wenn in diesem Feld ein Text enthalten ist.",
+                    "value": "Textwert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resend": {
+                    "description": "true: neuen Code per E-Mail erzeugen (gedrosselt). Er steht danach in $set['login_code'], eingebunden wird \"codetemplate\", das ihn mit CMS:EMAIL verschickt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "Name des PHP-Arrays, in dem die Eingaben enthalten sind.",
+                    "value": "PHP-Variablenname",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "Name des Eingabefelds für den Code in data[…].",
+                    "value": "Feldname",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "Fehlermeldungen. Im Index: Anwendungsfall; im Wert: Meldungstext (vgl. Tabelle).",
+                    "value": "Standardmeldung",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "sessionid": {
+                    "description": "Session der wartenden Anmeldung ohne Cookie (Aufrufe aus Apps) - $set['user_session_id'] nach CMS:USER_LOGIN.",
+                    "value": "Session-ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "Name des Session-Cookies [a-z0-9].",
+                    "value": "Cookiename",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_logout": {
+            "note": "Beendet und löscht die Session eines angemeldeten Frontend-Users.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "submit": {
+                    "description": "Ist der Parameter angegeben, meldet der Befehl nur ab, wenn er einen Text enthält (z. B. submit=\"$logout\" aus dem Abmelde-Formular) - leer passiert nichts, auch keine Meldung token. Ohne den Parameter meldet der Befehl bei jedem Aufruf ab (gültiges Token vorausgesetzt).",
+                    "value": "Textwert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: Der Request muss ein gültiges Token aus CMS:USER_TOKEN enthalten (Schutz gegen CSRF). false schaltet die Prüfung für diesen Befehl ab (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "deletecookie": {
+                    "description": "false: Nur die serverseitige Session wird gelöscht. true: Auch der Browser-Cookie wird gelöscht.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "Name des Session-Cookies [a-z0-9].",
+                    "value": "Cookiename",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_password_rules": {
+            "note": "Gibt Passwort-Regeln und Texte als JSON für das Attribut data-c9-password aus (Extension Password, inline eingebunden) - dieselben Regeln, die der Server beim Speichern prüft.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "container": {
+                    "description": "Profil-Container, dessen Passwort-Feld gemeint ist.",
+                    "value": "Container-ID oder -Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "Passwort-Feld des Containers. Trägt es die Extension Password, gelten deren Regeln, sonst security.password_policy (der Server prüft dann nicht).",
+                    "value": "Feldname",
+                    "default": "Anmelde-Passwortfeld",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Die Ausgabe wird nicht ausgegeben, sondern in der Variable $set gespeichert.",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_protect": {
+            "note": "Schützt ein Template vor dem Zugriff nicht angemeldeter Website-Besucher.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "errortemplate": {
+                    "description": "Detailtemplate, das eingebunden wird, falls der Frontend-User keinen Zugriff auf den Container hat oder nicht angemeldet ist.",
+                    "value": "Template-Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "Filterkriterien für den Profil-Datensatz, die beim angemeldeten Frontend-User erfüllt sein müssen.",
+                    "value": "vgl. Parameter \"filter[]\" von CMS:SELECT",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "sessionid": {
+                    "description": "Session des Frontend-Users anhand der angegebenen sessionid wieder aufnehmen anstatt über ein Cookie.",
+                    "value": "Session-ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "Name des Session-Cookies [a-z0-9].",
+                    "value": "Cookiename",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_pw": {
+            "note": "Bereitet das Zurücksetzen eines Passworts vor.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: Formularschutz gegen Robots - das Formular muss die Felder aus (CMS:USER_TOKEN formguard=true) enthalten (Zeitstempel, leeres Köderfeld) und darf frühestens nach user.formguard_min_seconds (3) abgeschickt werden. Eine Zahl setzt diese Mindestzeit für das Formular (formguard=5); 0 oder false schaltet den Schutz ab. Sonst Meldung \"throttled\", wie bei der Drosselung.",
+                    "value": "true / false / Sekunden",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: Der Request muss ein gültiges Token aus CMS:USER_TOKEN enthalten (Schutz gegen CSRF). false schaltet die Prüfung für diesen Befehl ab (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "Detailtemplate, das eingebunden wird, falls \"uniquevalue\" im Feld \"uniquefield\" einem Profil zugeordnet werden konnte.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "errortemplate": {
+                    "description": "Detailtemplate, das eingebunden wird, falls \"uniquevalue\" angegeben wurde, aber keinem Profil zugeordnet werden konnte.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "ID oder Name des Profil-Containers, in dem die abzugleichenden Profile gespeichert sind.",
+                    "value": "Container-ID oder -Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquefield": {
+                    "description": "Name des Feldes, über das gesucht wird (Feldtyp chars, text oder encrypted, z. B. \"email\"). Der Wert muss genau ein Profil treffen.",
+                    "value": "Feldname",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquevalue": {
+                    "description": "Gesuchter Wert im Feld \"uniquefield\", z. B. $_POST[email].",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "Der Befehl wird nur ausgeführt, wenn in diesem Feld ein Text enthalten ist.",
+                    "value": "Textwert",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "Fehlermeldung. Im Index: Anwendungsfall; im Wert: Meldungstext (vgl. Tabelle).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_register": {
+            "note": "Erzeugt einen Profil-Datensatz aus den angegebenen Daten und setzt den Status auf status=2.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: Formularschutz gegen Robots - das Formular muss die Felder aus (CMS:USER_TOKEN formguard=true) enthalten (Zeitstempel, leeres Köderfeld) und darf frühestens nach user.formguard_min_seconds (3) abgeschickt werden. Eine Zahl setzt diese Mindestzeit für das Formular (formguard=5); 0 oder false schaltet den Schutz ab. Sonst Meldung \"throttled\", wie bei der Drosselung.",
+                    "value": "true / false / Sekunden",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: Der Request muss ein gültiges Token aus CMS:USER_TOKEN enthalten (Schutz gegen CSRF). false schaltet die Prüfung für diesen Befehl ab (Achtung: Sicherheitshinweise beachten!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "Detailtemplate, das nach erfolgreicher Registrierung eingebunden wird.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "ID oder Name des Profil-Containers, in dem die Daten der Frontend-User gespeichert werden sollen.",
+                    "value": "Container-ID oder -Name",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailfield": {
+                    "description": "Feldname, in dem die E-Mail des Frontend-Users gespeichert ist (dorthin wird der Freischalt-Link gesendet).",
+                    "value": "Feldname",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "Namen der Eingabefelder, die geschrieben werden dürfen. Leer = alle definierten Felder des Containers.",
+                    "value": "kommaseparierte Liste",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "Explizites Überschreiben der Eingaben des Frontend-Users (auch Metafelder, außer record_id, area_id, instance_id, tmp, deleted, origin_id, owner_id, created_by, changed_by). Hier keine Eingaben des Frontend-Users weiterreichen!",
+                    "value": "Schlüssel-Wert-Paare",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "message": {
+                    "description": "Fehlermeldung. Im Index: Anwendungsfall; im Wert: Meldungstext (vgl. Tabelle bei CMS:USER_INPUT).",
+                    "value": "Meldung",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "Der Befehl wird nur ausgeführt, wenn in diesem Feld ein Text enthalten ist.",
+                    "value": "Textwert",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "admin_id des Backend-Owners des neuen Profils (record.owner_id, created_by). Ohne Angabe gilt user.default_owner_id.",
+                    "value": "Benutzer-ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "Name des PHP-Arrays, das die zu speichernden Daten enthält.",
+                    "value": "PHP-Variablenname",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_register_confirm": {
+            "note": "Schaltet einen Profil-Datensatz frei und setzt status=0.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "successtemplate": {
+                    "description": "Detailtemplate, das eingebunden wird, wenn die Registrierung erfolgreich abgeschlossen werden konnte.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "Hash-ID, die mittels CMS:USER_REGISTER erzeugt und per E-Mail versendet wurde.",
+                    "value": "Hash-ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "Fehlermeldung. Im Index: Anwendungsfall; im Wert: Meldungstext (vgl. Tabelle).",
+                    "value": "Meldung",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_token": {
+            "note": "Gibt das CSRF-Token für ein Formular mit schreibendem CMS:USER_*-Befehl aus (verstecktes Feld _token).",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: zusätzlich Zeitstempel und ein unsichtbares Köderfeld ausgeben (Formularschutz gegen Robots) - für Formulare mit USER_REGISTER, USER_PW oder CMS:EMAIL formguard=true.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "field: verstecktes Eingabefeld <input type=\"hidden\" name=\"_token\">. value: nur das Token (für Ajax: Header X-Camindo-Token oder POST-Feld _token).",
+                    "value": "\"field\" / \"value\"",
+                    "default": "\"field\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "Die Ausgabe wird nicht ausgegeben, sondern in der Variable $set gespeichert. Das Token steht zusätzlich immer in $set['user_token'].",
+                    "value": "Array-Index von $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "xml": {
+            "note": "Erzeugt eine XML-Deklaration.",
+            "do": "encoding",
+            "oneof": "",
+            "params": {
+                "encoding": {
+                    "description": "Zeichenkodierung, die verwendet werden soll.",
+                    "value": "encoding",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "version": {
+                    "description": "XML-Version.",
+                    "value": "version",
+                    "default": "1.0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "zip": {
+            "note": "Bietet die Dateien mehrerer Datensätze als ZIP-Archiv zum Download an und beendet die Seite.",
+            "do": "field",
+            "oneof": "filter,relation,ids,source",
+            "params": {
+                "field": {
+                    "description": "Upload-/Thumbnail-Feld(er). Je Datensatz gilt das erste, das der Besucher abrufen darf (etwa fil_print,fil_upload: Druckversion für die Presse, sonst Web-Version).",
+                    "value": "Feldname(n), kommasepariert",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "Auswahl der Datensätze wie bei CMS:SELECT.",
+                    "value": "Wert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_op": {
+                    "description": "Vergleichsoperator wie bei CMS:SELECT.",
+                    "value": "Operator",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "filter_mode": {
+                    "description": "Verknüpfung mehrerer Werte wie bei CMS:SELECT.",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "Verknüpfte Datensätze wie bei CMS:SELECT.",
+                    "value": "Feldname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "Quell-Datensatz für relation; leer oder 0: keine Dateien.",
+                    "value": "Datensatz-ID",
+                    "default": "(aktueller Datensatz)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ids": {
+                    "description": "Ausdrücklich genannte Datensätze (veröffentlicht, aus dieser Website).",
+                    "value": "Datensatz-Ids, kommasepariert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "source": {
+                    "description": "basket: die Datensätze im Warenkorb der Session (Kategorie aus category) - etwa ein Leuchtkasten.",
+                    "value": "basket",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "Warenkorb-Kategorie für source=basket.",
+                    "value": "Zahl",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "Reihenfolge wie bei CMS:SELECT; ohne Angabe die von ids bzw. des Warenkorbs.",
+                    "value": "Feldname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "Sortierrichtung.",
+                    "value": "asc / desc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "name": {
+                    "description": "Name des Archivs ohne .zip.",
+                    "value": "Text",
+                    "default": "download",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filenames": {
+                    "description": "Dateinamen im Archiv: {slug}, {id}, {filename} (ursprünglicher Name), {extension}, {feldname}; doppelte Namen erhalten -2, -3 ...",
+                    "value": "Muster",
+                    "default": "{slug}.{extension}",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "credits": {
+                    "description": "Legt eine CREDITS.txt bei: je Datei ihr Name und die Inhalte dieser Felder (z. B. Titel, Bildunterschrift, Bildnachweis).",
+                    "value": "Feldnamen, kommasepariert",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxfiles": {
+                    "description": "Höchstzahl der Dateien (nur kleiner als die Einstellung).",
+                    "value": "Zahl",
+                    "default": "(user.zip.max_files)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxsize": {
+                    "description": "Höchstgröße in MB (nur kleiner als die Einstellung).",
+                    "value": "MB",
+                    "default": "(user.zip.max_mb)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "Auch vordatierte Datensätze (wie bei CMS:SELECT).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "Auch abgelaufene Datensätze (wie bei CMS:SELECT).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "Session-Cookie (CMS:USER_LOGIN cookiename).",
+                    "value": "Cookiename",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "Meldungen: message[empty] (keine Datei), message[limit] (zu groß), message[throttled] (zu viele Archive).",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        }
+    }
+}
