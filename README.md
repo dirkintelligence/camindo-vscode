@@ -1,48 +1,76 @@
 # camindo CMS Templates for VS Code
 
-Support for camindo CMS template files (`*.cms.php`):
+Editor support for [camindo CMS](https://github.com/dirkintelligence/camindo-cms) template
+files (`*.cms.php`):
 
 - **Colors** – `(CMS:…)` commands in purple, PHP expressions inside them (`{$…}`, `$var`,
-  `$this->cms`) in orange, like the colored view in the backend. PHP and HTML outside
-  the commands keep the colors of your theme. Commands inside PHP comments are colored
-  too – the template compiler translates them as well.
+  `$this->cms`) in orange, like the colored view in the camindo backend. PHP and HTML
+  outside the commands keep the colors of your theme. Commands inside PHP comments are
+  colored too – the template compiler translates them as well.
 - **Completion** – after `(CMS:` the command names; after a space the parameters of the
-  command (mandatory ones first, already used ones left out unless they take keys such as
+  command (mandatory ones first, used ones left out unless they take keys such as
   `filter[…]`); after `=` the fixed values (`true / false`, `asc / desc` …).
-- **Hover** – description of the command (with its parameters) or of a parameter.
+- **Hover** – description of a command (with its parameters) or of a parameter.
+- **Twelve languages** – the descriptions come from the camindo backend snippets:
+  Arabic, Bengali, Chinese, English, French, German, Hindi, Japanese, Korean,
+  Portuguese, Spanish and Urdu.
 
-The grammar (`syntaxes/cms.injection.tmLanguage.json`) is injected into PHP files and reads
-each command as one unit, so quotes or HTML snippets in parameter values
-(`prefix="<div class='x'>"`) do not confuse the HTML highlighting.
+The grammar is injected into PHP files and reads each command as one unit, so quotes or
+HTML snippets in parameter values (`prefix="<div class='x'>"`) do not confuse the HTML
+highlighting.
 
 ## Installation
 
-Without packaging – link the folder into the VS Code extensions directory and reload the window:
+- Visual Studio Marketplace or Open VSX: search for *camindo CMS Templates*.
+- Or download the `.vsix` of a [release](https://github.com/dirkintelligence/camindo-vscode/releases)
+  and use *Extensions › … › Install from VSIX…*.
+
+## Language
+
+The descriptions follow the display language of VS Code; if camindo has no such language,
+English. The setting `camindo.language` (e.g. `de_DE`) chooses one explicitly.
+
+## Commands of your own modules
+
+The shipped files contain the commands of the camindo core and its standard modules. A
+project with additional modules writes its own files with the camindo command line and
+points the setting `camindo.commandsFile` to the directory (or to a single JSON file):
 
 ```bash
-ln -s "$PWD" ~/.vscode/extensions/camindo.camindo-cms-templates-0.1.0
+php Core/cron/camindo.php template commands --all --out=var/vscode
 ```
 
-As a package: `npx @vscode/vsce package`, then *Extensions › … › Install from VSIX*.
-
-## Command definitions
-
-Completion and hover read `data/commands.json`. It is generated from the core
-`commands.php` plus the commands of the active modules; after a change there run (in
-the PHP container, from the project directory):
-
-```bash
-php vscode-camindo/tools/export-commands.php > vscode-camindo/data/commands.json
+```json
+"camindo.commandsFile": "var/vscode"
 ```
 
-and then *camindo: Reload command definitions* (command palette). The setting
-`camindo.commandsFile` points to another file (absolute or relative to the workspace), for
-example one per project with its own modules.
+After a change run *camindo: Reload command definitions* from the command palette.
 
 ## Settings
 
 | Setting | Default |
 |---|---|
-| `camindo.commandsFile` | the file shipped with the extension |
+| `camindo.language` | display language of VS Code |
+| `camindo.commandsFile` | the files shipped with the extension |
 | `camindo.commandColor` | purple (`#a000a0`, lighter in dark themes) |
 | `camindo.phpColor` | orange (`#ff8800`) |
+
+## Development
+
+```bash
+npm install
+npm test                # scanner, grammar (VS Code tokenizer), data
+npm run commands        # data/commands.{lang}.json from ../Core (camindo checkout next to it)
+```
+
+To try changes without packaging, link the folder into the extensions directory and reload
+the window: `ln -s "$PWD" ~/.vscode/extensions/camindo.camindo-cms-templates-dev`.
+
+A release is a tag `vX.Y.Z` matching the version in `package.json`: GitHub Actions run the
+tests, attach the `.vsix` to a GitHub release and publish to the Visual Studio Marketplace
+and Open VSX when the secrets `VSCE_PAT` and `OVSX_PAT` are set. When the camindo commands
+change, regenerate `data/` and release a new patch version.
+
+## License
+
+AGPL-3.0-or-later, like camindo CMS – the command descriptions in `data/` come from it.

@@ -1,0 +1,3892 @@
+{
+    "version": "9.0.8",
+    "lang": "bn_BD",
+    "commands": {
+        "continue": {
+            "note": "সাফল্য টেমপ্লেট থাকা সত্ত্বেও টেমপ্লেটের প্রক্রিয়াকরণ চালিয়ে যায়।",
+            "do": "field",
+            "oneof": "",
+            "params": {}
+        },
+        "csp": {
+            "note": "এই পেজের স্ক্রিপ্ট নীতি (Content Security Policy) পরিবর্তন করে: অতিরিক্ত স্ক্রিপ্ট উৎস, ফর্মের লক্ষ্য বা অন্য মোড। প্রথম আউটপুটের আগে থাকতে হবে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "script": {
+                    "description": "অতিরিক্ত স্ক্রিপ্ট উৎস, স্পেস বা কমা দিয়ে আলাদা (https://js.example.com, *.example.com)। 'unsafe-inline'-এর মতো কীওয়ার্ড বাদ দেওয়া হয়।",
+                    "value": "উৎস",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "form": {
+                    "description": "অতিরিক্ত ফর্মের লক্ষ্য (form-action সক্রিয় করে), যেমন পেমেন্ট প্রদানকারী।",
+                    "value": "উৎস",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mode": {
+                    "description": "এই পেজের মোড: off = কোনো স্ক্রিপ্ট নীতি নেই, report = শুধু রিপোর্ট, enforce = প্রয়োগ। খালি: ইনস্ট্যান্সের সেটিং।",
+                    "value": "off / report / enforce",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "date": {
+            "note": "একটি তারিখ মানের তারিখ অংশ ফরম্যাট করে আউটপুট করে।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "যে রেকর্ড থেকে পড়া হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "রেকর্ডের সেই ফিল্ডের নাম যার বিষয়বস্তু উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "ফিল্ড",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "পাঠ্য আকারে মান যা উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "তারিখ মান",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU প্যাটার্ন, যেমন \"dd.MM.y\"। উল্লেখ না থাকলে পেজের লোকেল লেখার ধরন নির্ধারণ করে।",
+                    "value": "ফরম্যাট নির্দেশনা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: সময় অঞ্চলের নাম যুক্ত করা হয় (যেমন \"Europe/Berlin\")।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "প্রশ্নবোধক চিহ্নের আগের পাঠ্য ফরম্যাট করা মানে থাকলে তা প্রশ্নবোধক চিহ্নের পরের পাঠ্য দিয়ে প্রতিস্থাপিত হয় (যেমন \"Jan?January\")।",
+                    "value": "পাঠ্য?পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "উৎস ('field' বা 'useval') খালি থাকলে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "উৎস খালি না থাকলে তার পরিবর্তে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ফরম্যাট করা মান খালি না থাকলে তার আগে যে পাঠ্য বসানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ফরম্যাট করা মান খালি না থাকলে শেষে যে পাঠ্য যুক্ত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "ফরম্যাট করা মান আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "datetime": {
+            "note": "একটি তারিখ মানের তারিখ ও সময় ফরম্যাট করে আউটপুট করে।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "যে রেকর্ড থেকে পড়া হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "রেকর্ডের সেই ফিল্ডের নাম যার বিষয়বস্তু উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "ফিল্ড",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "পাঠ্য আকারে মান যা উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "তারিখ মান",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU প্যাটার্ন, যেমন \"dd.MM.y HH:mm\"। উল্লেখ না থাকলে পেজের লোকেল লেখার ধরন নির্ধারণ করে।",
+                    "value": "ফরম্যাট নির্দেশনা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "autotime": {
+                    "description": "true: কোনো সময় না থাকলে (00:00) তা দেখানো হয় না।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: সময় অঞ্চলের নাম যুক্ত করা হয় (যেমন \"Europe/Berlin\")।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "প্রশ্নবোধক চিহ্নের আগের পাঠ্য ফরম্যাট করা মানে থাকলে তা প্রশ্নবোধক চিহ্নের পরের পাঠ্য দিয়ে প্রতিস্থাপিত হয় (যেমন \"Jan?January\")।",
+                    "value": "পাঠ্য?পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "উৎস ('field' বা 'useval') খালি থাকলে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "উৎস খালি না থাকলে তার পরিবর্তে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ফরম্যাট করা মান খালি না থাকলে তার আগে যে পাঠ্য বসানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ফরম্যাট করা মান খালি না থাকলে শেষে যে পাঠ্য যুক্ত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "ফরম্যাট করা মান আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "email": {
+            "note": "একটি ইমেল পাঠায়। অনুরোধ করলে আগে একটি ফর্মের আবশ্যক ফিল্ডগুলো যাচাই করে।",
+            "do": "do",
+            "oneof": "subject,subjecttemplate,body,bodytemplate",
+            "params": {
+                "formguard": {
+                    "description": "true: রোবটের বিরুদ্ধে ফর্ম সুরক্ষা - ফর্মে (CMS:USER_TOKEN formguard=true)-এর ফিল্ডগুলো (টাইমস্ট্যাম্প, খালি হানিপট ফিল্ড) থাকতে হবে এবং user.formguard_min_seconds (3)-এর আগে পাঠানো যাবে না। একটি সংখ্যা এই ফর্মের জন্য এই ন্যূনতম সময় নির্ধারণ করে (formguard=5); 0 বা false সুরক্ষা বন্ধ করে। অন্যথায় থ্রটলিংয়ের মতো বার্তা \"throttled\"।",
+                    "value": "true / false / সেকেন্ড",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "throttle": {
+                    "description": "উৎস (IP) অনুযায়ী থ্রটলিং: true = সীমা user.throttle.email_ip (প্রতি ঘণ্টায় 5), অন্যথায় user.throttle থেকে একটি আলাদা বাকেট। সীমিত হলে: বার্তা \"throttled\", কোনো ইমেল নয়। এমন যোগাযোগ ফর্মের জন্য যেখানে যে কেউ ঠিকানা লিখতে পারে।",
+                    "value": "true / বাকেটের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "to": {
+                    "description": "প্রাপকের ইমেল ঠিকানা। একাধিক প্রাপক to[]=… হিসেবে বা কমা দিয়ে আলাদা করে (সর্বোচ্চ 20)।",
+                    "value": "ইমেল ঠিকানা",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "toname": {
+                    "description": "প্রাপকের নাম (শুধু ঠিক একজন প্রাপক থাকলে)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "from": {
+                    "description": "প্রেরকের ইমেল ঠিকানা।",
+                    "value": "ইমেল ঠিকানা",
+                    "default": "email.noreply বা email.reply (.camindo.php)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fromname": {
+                    "description": "প্রেরকের নাম।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "contenttype": {
+                    "description": "ইমেলের MIME টাইপ।",
+                    "value": "text/plain বা text/html",
+                    "default": "text/plain",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "ইমেলের বিষয়।",
+                    "value": "পাঠ্য",
+                    "default": "(no subject)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subjecttemplate": {
+                    "description": "বিষয়ের জন্য টেমপ্লেট (ট্যাগ ও লাইন ব্রেক সরানো হয়)। subject-এর চেয়ে অগ্রাধিকার পায়।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "body": {
+                    "description": "বার্তার পাঠ্য (পাঠ্য বা HTML)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "bodytemplate": {
+                    "description": "ইমেলের মূল অংশের জন্য টেমপ্লেট। body-এর চেয়ে অগ্রাধিকার পায়।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "paths_absolute": {
+                    "description": "true: ইমেলের মূল অংশের সব সার্ভার-আপেক্ষিক পাথ পরম পাথে রূপান্তরিত হয় (শুধু contenttype=\"text/html\" হলে)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sender_url": {
+                    "description": "(ঐচ্ছিকভাবে প্রোটোকলসহ) + ডোমেন, যাতে সার্ভার-আপেক্ষিক পাথ পরম পাথে রূপান্তর করা যায়।",
+                    "value": "(http://)ডোমেন",
+                    "default": "ইনস্ট্যান্সের প্রোটোকল ও প্রধান ডোমেন",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: ইমেলটি লগ ফাইল var/log/{date}_mail-debug.log-এ লেখা হয়, কিন্তু পাঠানো হয় না।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "requiredfields": {
+                    "description": "আবশ্যক ফিল্ডগুলোর নির্ধারণ। অনুরোধ অ্যারে data[…]-এর ফিল্ডের নাম (ইনডেক্স নাম) (প্যারামিটার data দেখুন)।",
+                    "value": "ফিল্ডের নাম, কমা দিয়ে আলাদা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "সেই অনুরোধ অ্যারের নাম যাতে 'requiredfields'-এর প্রত্যাশিত ডেটা থাকে (ডিফল্ট data, অর্থাৎ $_POST['data'])।",
+                    "value": "PHP ভেরিয়েবলের নাম",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "'submit'-এ কোনো মান থাকলেই কেবল 'requiredfields' মূল্যায়িত হয়। অন্যথায় CMS:EMAIL কমান্ড উপেক্ষা করা হয়।",
+                    "value": "পাঠ্য মান",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "সফলভাবে পাঠানোর পর যে টেমপ্লেট অন্তর্ভুক্ত হয়; এরপর পেজ শেষ হয় (CMS:CONTINUE ব্যবহার না করলে)।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "ত্রুটি বার্তা। ইনডেক্সে: ব্যবহারের ক্ষেত্র (required, to, from, content, attachment, send); মানে: বার্তার পাঠ্য।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "attachment": {
+                    "description": "সংযুক্ত করার ফাইল। var ডিরেক্টরির আপেক্ষিক পাথ, শুধু download/, upload/ ও modules/ থেকে।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "fed": {
+            "note": "ফ্রন্টএন্ড সম্পাদনা সক্রিয় থাকলে একটি রেকর্ড সম্পাদনার জন্য বোতাম তৈরি করে। একই পেজে CMS:FED_SCRIPT প্রয়োজন।",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "label": {
+                    "description": "বোতামের লেবেল।",
+                    "value": "পাঠ্য",
+                    "default": "[»]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "যে রেকর্ড খোলা হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "info": {
+                    "description": "true: বোতামটি ইনপুট মাস্কের পরিবর্তে রেকর্ডের বিস্তারিত ভিউ খোলে।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "বোতামের আগে যে পাঠ্য আউটপুট হয় (বোতাম না থাকলে নয়)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "বোতামের পরে যে পাঠ্য আউটপুট হয় (বোতাম না থাকলে নয়)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "বোতামটি আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_code": {
+            "note": "ফ্রন্টএন্ড সম্পাদনা সক্রিয় থাকলে HTML কোড আউটপুট করে।",
+            "do": "code",
+            "oneof": "",
+            "params": {
+                "code": {
+                    "description": "ফ্রন্টএন্ড সম্পাদনা সক্রিয় থাকলে যে HTML কোড আউটপুট হয়।",
+                    "value": "HTML কোড",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "ফ্রন্টএন্ড সম্পাদনা নিষ্ক্রিয় থাকলে বিকল্প আউটপুট।",
+                    "value": "HTML কোড",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "কোড আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_script": {
+            "note": "JavaScript ফাংশন cFED() এবং CMS:FED-এর বোতামগুলোর জন্য ক্লিক লিসেনার (পেজের nonce সহ) সরবরাহ করে - প্রতি পেজে একবার, সাধারণত ফুটারে।",
+            "do": "set",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "স্ক্রিপ্ট ব্লক আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "header": {
+            "note": "একটি HTTP হেডার পাঠায়।",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "পাঠ্যের লাইন যা হেডার হিসেবে ব্রাউজারে পাঠানো হয়। মান ছাড়া (\"Name:\") হেডারটি সরানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "false: একই ধরনের আগের হেডার ওভাররাইট হয় না; একটি নতুন হেডার যুক্ত হয়।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "include": {
+            "note": "একটি টেমপ্লেট অন্তর্ভুক্ত করে - আউটপুট ক্যাশ (IncludeCache) থেকে ক্যাশিংসহ।",
+            "do": "template",
+            "oneof": "",
+            "params": {
+                "caching": {
+                    "description": "টেমপ্লেটের আউটপুট এত সময় ক্যাশ হয় এবং তারপর আবার প্রক্রিয়া না করে সরবরাহ করা হয়। উল্লেখ না থাকলে, খালি বা 0: কোনো ক্যাশ নয়।",
+                    "value": "সেকেন্ড, 30s, 5m, 1h, 1d বা infinite",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cacheparams": {
+                    "description": "আউটপুট যা কিছুর উপর নির্ভর করে (রেকর্ড, পেজ, গ্রাহক …): প্রতিটি মান নিজস্ব ক্যাশ ফাইল তৈরি করে। ইনস্ট্যান্স ও ভাষা স্বয়ংক্রিয়ভাবে বিবেচিত হয়।",
+                    "value": "null, bool, int, string বা array (ভেরিয়েবল হিসেবেও: cacheparams=$params)",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "সম্পূর্ণ আউটপুট (অন্তর্ভুক্ত টেমপ্লেটসহ) আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_list": {
+            "note": "একটি পেজ নেভিগেশন (পেজিনেশন) তৈরি করে, যেমন 1 … 5 | 6 | 7 | 8 | 9 … 15।",
+            "do": "separator",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "বর্তমান পেজের অফসেট (বাদ দেওয়া ফলাফলের সংখ্যা)। মান ছাড়া অনুরোধ প্যারামিটার skip প্রযোজ্য।",
+                    "value": "সংখ্যা >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maximum": {
+                    "description": "একসাথে দেখানো পেজ লিংকের সংখ্যা (সাথে সাথে সরে যায়), প্রথম ও শেষ পেজের লিংক বাদে।",
+                    "value": "সংখ্যা >= 1",
+                    "default": "7",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "boundaries": {
+                    "description": "true: প্রথম ও শেষ পেজের লিংক সবসময় দেখানো হয়, যখনই সেগুলো সরে যাওয়া পরিসরের বাইরে থাকে।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "দুটি পেজ লিংকের মাঝের পাঠ্য। বাদ দেওয়ার চিহ্নের ('ellipsis') আগে ও পরে এটি বসানো হয় না।",
+                    "value": "বিভাজক",
+                    "default": " ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "একটি পেজ লিংকের টেমপ্লেট। {page} পেজ নম্বর দিয়ে, {href} পেজের URL দিয়ে প্রতিস্থাপিত হয়।",
+                    "value": "HTML টেমপ্লেট",
+                    "default": " <a href=\"{href}\">{page}</a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_active": {
+                    "description": "বর্তমান পেজের টেমপ্লেট। {page} পেজ নম্বর দিয়ে, {href} পেজের URL দিয়ে প্রতিস্থাপিত হয়।",
+                    "value": "HTML টেমপ্লেট",
+                    "default": " <strong>{page}</strong> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ellipsis": {
+                    "description": "বাদ দেওয়া পেজের প্লেসহোল্ডার - সীমানা লিংক ও সরে যাওয়া পরিসরের মাঝে দেখা যায়।",
+                    "value": "কোড",
+                    "default": " … ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "তৈরি HTML-এ সরল পাঠ্য প্রতিস্থাপন। বিভাজক হলো প্রশ্নবোধক চিহ্ন: \"search?replace\"।",
+                    "value": "পাঠ্য?পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "নেভিগেশনের আগের পাঠ্য, শুধু নেভিগেশন আউটপুট হলে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "নেভিগেশনের পরের পাঠ্য, শুধু নেভিগেশন আউটপুট হলে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "আউটপুট, যদি ফলাফল একটি পেজেই এঁটে যায়, অথবা CMS:SELECT-এর কোনো limit না থাকায় নেভিগেশনের প্রয়োজন না হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "নেভিগেশন আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_next": {
+            "note": "পরবর্তী পেজের লিংক তৈরি করে।",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "বর্তমান পেজের অফসেট (বাদ দেওয়া ফলাফলের সংখ্যা)। মান ছাড়া অনুরোধ প্যারামিটার skip প্রযোজ্য।",
+                    "value": "সংখ্যা >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "লিংকের টেমপ্লেট, যতক্ষণ পরবর্তী পেজ আছে। {href} লক্ষ্য URL দিয়ে প্রতিস্থাপিত হয়।",
+                    "value": "HTML টেমপ্লেট",
+                    "default": " <a href=\"{href}\"><strong>❯❯</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "পরবর্তী পেজ না থাকলে নির্বাচন করা যায় না এমন লিংকের টেমপ্লেট। এখানেও {href} প্রতিস্থাপিত হয়।",
+                    "value": "HTML টেমপ্লেট",
+                    "default": " <span>❯❯</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "তৈরি HTML-এ সরল পাঠ্য প্রতিস্থাপন। বিভাজক হলো প্রশ্নবোধক চিহ্ন: \"search?replace\"।",
+                    "value": "পাঠ্য?পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "লিংকের আগের পাঠ্য, শুধু লিংক আউটপুট হলে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "লিংকের পরের পাঠ্য, শুধু লিংক আউটপুট হলে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "আউটপুট, যদি CMS:SELECT-এর কোনো limit না থাকে (তখন কোনো পেজ নেই)। সবকিছু একটি পেজে এঁটে গেলে tpl_inactive দেখা যায়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "লিংক আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_prev": {
+            "note": "আগের পেজের লিংক তৈরি করে।",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "বর্তমান পেজের অফসেট (বাদ দেওয়া ফলাফলের সংখ্যা)। মান ছাড়া অনুরোধ প্যারামিটার skip প্রযোজ্য।",
+                    "value": "সংখ্যা >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "লিংকের টেমপ্লেট, যতক্ষণ আগের পেজ আছে। {href} লক্ষ্য URL দিয়ে প্রতিস্থাপিত হয়।",
+                    "value": "HTML টেমপ্লেট",
+                    "default": " <a href=\"{href}\"><strong>❮❮</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "আগের পেজ না থাকলে নির্বাচন করা যায় না এমন লিংকের টেমপ্লেট। এখানেও {href} প্রতিস্থাপিত হয়।",
+                    "value": "HTML টেমপ্লেট",
+                    "default": " <span>❮❮</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "তৈরি HTML-এ সরল পাঠ্য প্রতিস্থাপন। বিভাজক হলো প্রশ্নবোধক চিহ্ন: \"search?replace\"।",
+                    "value": "পাঠ্য?পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "লিংকের আগের পাঠ্য, শুধু লিংক আউটপুট হলে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "লিংকের পরের পাঠ্য, শুধু লিংক আউটপুট হলে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "আউটপুট, যদি CMS:SELECT-এর কোনো limit না থাকে (তখন কোনো পেজ নেই)। সবকিছু একটি পেজে এঁটে গেলে tpl_inactive দেখা যায়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "লিংক আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "media": {
+            "note": "একটি ইমেজ ট্যাগ তৈরি করে বা একটি মিডিয়া ফাইলের বিষয়বস্তু পাঠ্য আকারে আউটপুট করে।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "যে রেকর্ড থেকে পড়া হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "একটি আপলোড বা থাম্বনেইল ফিল্ডের নাম।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subfield": {
+                    "description": "IMG ট্যাগের পরিবর্তে একক মান: path (src/href-এর জন্য DOCUMENT_ROOT থেকে পাথ, পাঠযোগ্য ফাইল নামসহ; auth/download/user_auth হলে file.php-এর মাধ্যমে), file (ফাইল সিস্টেমে পরম পাথ), filename (মূল ফাইল নাম), mime_type, extension (ডট ছাড়া), size (বাইট; autoformat দিয়ে পাঠযোগ্য), width / height (পিক্সেল, অজানা হলে 0), version (ফাইলের সংস্করণ কাউন্টার)।",
+                    "value": "path / file / filename / mime_type / extension / size / width / height / version",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "auth": {
+                    "description": "true: লিংকটি মিডিয়া ডিরেক্টরির পরিবর্তে /file.php-এর দিকে নির্দেশ করে। \"শুধু লগইন করা ফ্রন্টএন্ড ব্যবহারকারীদের জন্য\" (user_auth) ফিল্ডে এটি স্বয়ংক্রিয়ভাবে প্রযোজ্য - সেখানে file.php ফ্রন্টএন্ড সেশন যাচাই করে।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "ফাইলটি প্রদত্ত ফাইল নামে /file.php-এর মাধ্যমে ডাউনলোডের জন্য দেওয়া হয় (ফাইল এক্সটেনশন স্বয়ংক্রিয়ভাবে যুক্ত হয়)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "IMG ট্যাগের প্রস্থ, CSS একক সহ বা ছাড়া (ডিফল্ট: px)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "IMG ট্যাগের উচ্চতা, CSS একক সহ বা ছাড়া (ডিফল্ট: px)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "attr": {
+                    "description": "IMG ট্যাগের অতিরিক্ত অ্যাট্রিবিউট (কী: অ্যাট্রিবিউটের নাম, মান: অ্যাট্রিবিউটের মান)।",
+                    "value": "অ্যারে",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "autoformat": {
+                    "description": "true: 'subfield' দিয়ে নির্বাচিত বিষয়বস্তু তার ধরন অনুযায়ী ফরম্যাট করা হয় (যেমন ফাইলের আকার মান অনুযায়ী গতিশীলভাবে bytes/KB/MB-এ)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "ফরম্যাট করা মান খালি না থাকলে তা ওভাররাইড করে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "ফরম্যাট করা মান খালি (বা \"0\") হলে বিকল্প পাঠ্য।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ফরম্যাট করা মান খালি (বা \"0\") না হলে তার আগে যে পাঠ্য বসানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ফরম্যাট করা মান খালি (বা \"0\") না হলে শেষে যে পাঠ্য যুক্ত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "ফাইল অ্যারে (যেমন CMS:SAVEDATA থেকে) field_id ও record_id সহ - শুধু সরাসরি PHP কলের মাধ্যমে, field ছাড়া (উদাহরণ দেখুন)।",
+                    "value": "অ্যারে",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "ফরম্যাট করা মান আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "message": {
+            "note": "বর্তমান ত্রুটি বার্তাগুলো থেকে একটি পাঠ্য আউটপুট তৈরি করে।",
+            "do": "useval",
+            "oneof": "",
+            "params": {
+                "useval": {
+                    "description": "পাঠ্য আকারে মান যা উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "বার্তার আগে যে পাঠ্য আউটপুট হয়, যদি বার্তা থাকে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "বার্তার পরে যে পাঠ্য আউটপুট হয়, যদি বার্তা থাকে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "কোনো বার্তা না থাকলে পাঠ্য।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "বার্তার পরিবর্তে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "বার্তাটি দেখানো হয় না, বরং ভেরিয়েবল $set-এ লেখা হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "nonce": {
+            "note": "পেজের nonce আউটপুট করে: <script(CMS:NONCE)>। ওয়েবসাইটের স্ক্রিপ্ট নীতি প্রয়োগ হওয়ার সাথে সাথে টেমপ্লেটের প্রতিটি স্ক্রিপ্টে এটি লাগে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "format": {
+                    "description": "attribute: nonce=\"…\" (শুরুতে একটি স্পেসসহ, একটি <script> ট্যাগের জন্য)। value: শুধু মান।",
+                    "value": "\"attribute\" / \"value\"",
+                    "default": "\"attribute\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "আউটপুট দেখানো হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "number": {
+            "note": "একটি সংখ্যাগত মান ফরম্যাট করে আউটপুট করে।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "যে রেকর্ড থেকে পড়া হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "রেকর্ডের সেই ফিল্ডের নাম যার বিষয়বস্তু উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "ফিল্ড",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "পাঠ্য আকারে মান যা উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "সংখ্যা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "উৎস খালি থাকলে বা সংখ্যাগত মান (mul/add-এর পরে) 0 হলে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "যে সংখ্যা উৎস হয়, যদি মূল উৎস খালি না থাকে।",
+                    "value": "সংখ্যা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mul": {
+                    "description": "যে সংখ্যা দিয়ে উৎসকে গুণ করা হয়।",
+                    "value": "সংখ্যা",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "add": {
+                    "description": "যে সংখ্যা উৎসের সাথে যোগ করা হয়।",
+                    "value": "সংখ্যা",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "PHP কমান্ড sprintf()-এর অনুরূপ ফরম্যাটিং।",
+                    "value": "ফরম্যাট",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimals": {
+                    "description": "দশমিক স্থানের নির্দিষ্ট সংখ্যা (রাউন্ড করা); decimal ও thousands_separator তবুও প্রযোজ্য। উল্লেখ না থাকলে সংখ্যাটিতে যতগুলো আছে ততগুলো।",
+                    "value": "সংখ্যা 0-10",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimal": {
+                    "description": "যে অক্ষর দশমিক বিন্দুকে প্রতিস্থাপন করে।",
+                    "value": "অক্ষর",
+                    "default": ".",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "thousands_separator": {
+                    "description": "হাজারের বিভাজক হিসেবে বসানো অক্ষর (ডান থেকে বামে প্রতি তিন অঙ্কে)।",
+                    "value": "অক্ষর",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nullcent": {
+                    "description": "যে পাঠ্য অনুপস্থিত দশমিক মানকে প্রতিস্থাপন করে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "প্রশ্নবোধক চিহ্নের আগের পাঠ্য ফরম্যাট করা মানে থাকলে তা প্রশ্নবোধক চিহ্নের পরের পাঠ্য দিয়ে প্রতিস্থাপিত হয় (যেমন \".00?\" খালি দশমিক স্থান সরায়)।",
+                    "value": "পাঠ্য?পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ফরম্যাট করা মান \"0\" বা খালি না হলে তার আগে যে পাঠ্য বসানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ফরম্যাট করা মান \"0\" বা খালি না হলে তার শেষে যে পাঠ্য যুক্ত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "ফরম্যাট করা মান আউটপুট হয় না, বরং তার পরিবর্তে ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sizefactor": {
+                    "description": "1000 বা 1024। > 0 হলে একটি পাঠযোগ্য ফাইলের আকার গণনা করা হয় (যেমন 15.2 GB)।",
+                    "value": "এক কিলোবাইটে বাইটের সংখ্যা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_cell": {
+            "note": "Zelle der aktuellen Zeile. Schrift ist die zu diesem Zeitpunkt eingestellte (CMS:PDF_FONT).",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Zelltext; bricht innerhalb der Spalte um, soweit fit= ihn nicht einpasst.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "col": {
+                    "description": "Spaltenindex ab 0; ohne Angabe die nächste Spalte.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Horizontale Ausrichtung.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "valign": {
+                    "description": "Vertikale Ausrichtung in der Zeile.",
+                    "value": "T / C / B",
+                    "default": "T",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fit": {
+                    "description": "Text auf eine Zeile in der Spaltenbreite einpassen: fontsize verkleinert die Schrift (bis min_size), spacing verringert den Zeichenabstand, scale beides, force staucht horizontal. Was auch so nicht passt, bricht um.",
+                    "value": "none / scale / fontsize / spacing / force",
+                    "default": "none",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "min_size": {
+                    "description": "Kleinste Schriftgröße beim Einpassen.",
+                    "value": "Punkt",
+                    "default": "6",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenseiten: L links, T oben, R rechts, B unten; 1 alle, 0 keine.",
+                    "value": "LTRB / 1 / 0",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke; sonst die der Tabelle.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_color": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand dieser Zelle; sonst der der Tabelle.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe der Zelle. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_color": {
+            "note": "Definiert ein Farbfeld mit RGB- und/oder CMYK-Wert. Der Farbraum des Dokuments (PDF_INIT) wählt den Wert; ein fehlender wird umgerechnet.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Name des Farbfelds (Buchstaben, Ziffern, _ und -).",
+                    "value": "Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "rgb": {
+                    "description": "RGB-Wert als Hex-Farbe, z. B. #0066FF.",
+                    "value": "#rrggbb",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cmyk": {
+                    "description": "CMYK-Wert in Prozent, z. B. 0,100,100,0.",
+                    "value": "c,m,y,k",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_fill_color": {
+            "note": "Füllfarbe für die folgenden CMS:PDF_RECT. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Füllfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_font": {
+            "note": "Stellt die Schrift für die folgenden Texte und Zellen ein. Gilt über Seiten hinweg.",
+            "do": "font",
+            "oneof": "",
+            "params": {
+                "font": {
+                    "description": "Name einer Schrift aus var/modules/pdf/fonts/ ({name}.json; mitgeliefert: helvetica, times, courier, symbol, zapfdingbats). Eine Datei {name}.ttf/.otf wird beim ersten Aufruf konvertiert.",
+                    "value": "Schriftname",
+                    "default": "helvetica",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "Schriftschnitt: B fett, I kursiv, U unterstrichen, D durchgestrichen, O überstrichen. Leer = regulär.",
+                    "value": "B / I / U / D / O, kombinierbar",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße in Punkt.",
+                    "value": "Punkt",
+                    "default": "12",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_html": {
+            "note": "Schreibt einen HTML-Block (Umbruch und Seitenumbruch durch tc-lib-pdf). Der Cursor bleibt stehen - die Höhe des Blocks ist nicht bekannt.",
+            "do": "html",
+            "oneof": "",
+            "params": {
+                "html": {
+                    "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
+                    "value": "HTML",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_image": {
+            "note": "Platziert ein Bild (JPEG, PNG, GIF, ...) aus dem Medienverzeichnis. Der Cursor rückt unter das Bild.",
+            "do": "file",
+            "oneof": "",
+            "params": {
+                "file": {
+                    "description": "Bilddatei: absoluter Pfad aus (CMS:MEDIA subfield=file), Webpfad aus subfield=path oder Pfad relativ zu public/media. Nur Dateien unterhalb des Medienverzeichnisses.",
+                    "value": "Pfad",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite; 0 = aus der Höhe (bzw. aus den Pixeln bei 72 dpi, wenn beide fehlen).",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe; 0 = proportional zur Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "link": {
+                    "description": "Verweis, der beim Klick auf das Bild geöffnet wird.",
+                    "value": "URL",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_init": {
+            "note": "Vorgaben für das Dokument: Farbraum, ICC-Profil, Seitenformat und Ränder. Vor der ersten CMS:PDF_PAGE.",
+            "do": "colorspace",
+            "oneof": "",
+            "params": {
+                "colorspace": {
+                    "description": "Farbraum, in dem Farben ins PDF geschrieben werden.",
+                    "value": "RGB / CMYK",
+                    "default": "RGB",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "icc_profile": {
+                    "description": "ICC-Profil aus var/modules/pdf/profiles/, wird als Output Intent eingebettet.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "output_condition": {
+                    "description": "Bezeichner der Druckbedingung für den Output Intent (z. B. FOGRA39). Ohne Angabe der Dateiname des Profils.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat leerer Seiten (Namen wie in tc-lib-pdf).",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "A4",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Hoch- (P) oder Querformat (L) leerer Seiten.",
+                    "value": "P / L",
+                    "default": "P",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Seitenränder in mm (ein Wert: alle; zwei: oben/unten, rechts/links). Linker Rand = x-Vorgabe, rechter Rand = Breitenvorgabe, unterer Rand = Umbruchgrenze der Tabellen.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "20,20,20,20",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line": {
+            "note": "Zeichnet eine Linie.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x1": {
+                    "description": "Startpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y1": {
+                    "description": "Startpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x2": {
+                    "description": "Endpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y2": {
+                    "description": "Endpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Liniendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Linienfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line_color": {
+            "note": "Linienfarbe für die folgenden CMS:PDF_LINE, Rahmen von CMS:PDF_RECT und Zellenrahmen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Linienfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_meta": {
+            "note": "Dokumenteigenschaften (werden bei CMS:PDF_PRINT geschrieben).",
+            "do": "title",
+            "oneof": "",
+            "params": {
+                "title": {
+                    "description": "Titel.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "author": {
+                    "description": "Autor.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "Thema.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keywords": {
+                    "description": "Stichwörter.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "creator": {
+                    "description": "Erzeugende Anwendung.",
+                    "value": "Text",
+                    "default": "camindo CMS",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_page": {
+            "note": "Legt eine neue Seite an - leer oder auf einer Seite einer Layout-Vorlage. Der erste Aufruf beginnt das Dokument.",
+            "do": "layout",
+            "oneof": "",
+            "params": {
+                "layout": {
+                    "description": "PDF-Vorlage aus var/modules/pdf/layouts/, deren Seite als Hintergrund übernommen wird. Ohne Angabe eine leere Seite.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "page": {
+                    "description": "Seite der Vorlage (ab 1), die übernommen wird.",
+                    "value": "Zahl",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Ausrichtung einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "P / L",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Ränder nur dieser Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_print": {
+            "note": "Sendet das Dokument an den Browser und beendet den Request. Vor CMS:PDF_PAGE darf das Template nichts ausgegeben haben.",
+            "do": "filename",
+            "oneof": "",
+            "params": {
+                "filename": {
+                    "description": "Dateiname, den der Browser anzeigt bzw. beim Speichern vorschlägt.",
+                    "value": "Dateiname",
+                    "default": "document.pdf",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "Leer oder false: im Browser anzeigen. true: als Download unter filename. Ein Dateiname: als Download unter diesem Namen.",
+                    "value": "false / true / Dateiname",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_rect": {
+            "note": "Zeichnet ein Rechteck, umrandet und/oder gefüllt.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x": {
+                    "description": "Linke Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "D Rahmen, F Füllung, DF beides.",
+                    "value": "D / F / DF",
+                    "default": "D",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Füllfarbe; sonst CMS:PDF_FILL_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "line_width": {
+                    "description": "Rahmendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_row": {
+            "note": "Beginnt eine Tabellenzeile.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "is_header": {
+                    "description": "Kopfzeile: wird nach einem Seitenumbruch auf der Folgeseite wiederholt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keep_together": {
+                    "description": "Zeile nicht über Seiten teilen. Derzeit werden Zeilen grundsätzlich nicht geteilt; der Parameter ist für spätere Versionen reserviert.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table": {
+            "note": "Beginnt eine Tabelle; Zeilen und Zellen folgen mit CMS:PDF_ROW / CMS:PDF_CELL, gezeichnet wird bei CMS:PDF_TABLE_END. Zeilen werden nie geteilt: was nicht mehr auf die Seite passt, beginnt auf einer Folgeseite, Kopfzeilen werden dort wiederholt.",
+            "do": "cols",
+            "oneof": "",
+            "params": {
+                "cols": {
+                    "description": "Spaltenbreiten in mm, kommasepariert.",
+                    "value": "b1,b2,...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Linke Kante; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand aller Zellen in mm (ein Wert: alle; zwei: oben/unten, rechts/links).",
+                    "value": "oben,rechts,unten,links",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke der Zellen.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_layout": {
+                    "description": "Layout-Vorlage der Folgeseiten bei Seitenumbruch; sonst wie die letzte CMS:PDF_PAGE (leer = leere Seite).",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_page": {
+                    "description": "Seite der Vorlage für Folgeseiten.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table_end": {
+            "note": "Zeichnet die Tabelle. Der Cursor rückt unter die Tabelle.",
+            "do": "",
+            "oneof": "",
+            "params": {}
+        },
+        "pdf_text": {
+            "note": "Schreibt einen Textblock mit Zeilenumbruch innerhalb der Breite. Der Cursor rückt unter den Block.",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Der Text (UTF-8; Zeilenumbrüche werden umgebrochen). Leer = keine Ausgabe.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand (Oberkante des Blocks); ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Ausrichtung: links, zentriert, rechts, Blocksatz.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße nur für diesen Block; sonst die von CMS:PDF_FONT.",
+                    "value": "Punkt",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe nur für diesen Block; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe des Blocks. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_text_color": {
+            "note": "Textfarbe für die folgenden CMS:PDF_TEXT und Zellen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Textfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "raw": {
+            "note": "বিষয়বস্তু ফরম্যাট না করে আউটপুট করে।",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "যে রেকর্ড থেকে পড়া হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "সেই ফিল্ডের নাম যার বিষয়বস্তু আউটপুট হয়।",
+                    "value": "ফিল্ড",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "ফিল্ড খালি থাকলে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "ফিল্ডের বিষয়বস্তু খালি না থাকলে তার পরিবর্তে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ফিল্ডের বিষয়বস্তু খালি না থাকলে তার আগে যে পাঠ্য বসানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ফিল্ডের বিষয়বস্তু খালি না থাকলে শেষে যে পাঠ্য যুক্ত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "বিষয়বস্তু আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "relation": {
+            "note": "বর্তমান রেকর্ডের সাথে সংযুক্ত সব রেকর্ডের প্রধান ফিল্ড (শিরোনাম) আউটপুট করে।",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "যে রেকর্ডের সংযোগগুলো আউটপুট হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "সংযোগ ফিল্ডের (ফিল্ড টাইপ relation, pointer বা link) নাম যার লক্ষ্যগুলো আউটপুট হয়। অন্য ফিল্ড টাইপ ত্রুটি বার্তা দেয়।",
+                    "value": "ফিল্ড",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "ফলাফল সেটে অন্তর্ভুক্ত রেকর্ডের সর্বোচ্চ সংখ্যা।",
+                    "value": "সংখ্যা >0",
+                    "default": "1000",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: এখনো প্রকাশিত হয়নি এমন লক্ষ্যগুলোও (online_at এখনো আসেনি) আউটপুট হয় (CMS:SELECT-এর মতো)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: মেয়াদোত্তীর্ণ লক্ষ্যগুলোও (offline_at এসে গেছে) আউটপুট হয় (CMS:SELECT-এর মতো)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "উল্লেখ না থাকলে শুধু অনুমোদিত লক্ষ্য (status_id 0)। স্ট্যাটাস ID > 0 হলে শুধু সেই স্ট্যাটাসের লক্ষ্য, \"any\" হলে যেকোনো স্ট্যাটাসের লক্ষ্য (CMS:SELECT-এর মতো)।",
+                    "value": "স্ট্যাটাস ID বা any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "সেই ভাষা সংস্করণের কোড যার বিষয়বস্তু চাওয়া হয় (বহুভাষিক ফিল্ডে প্রভাব ফেলে)। এখনো বাস্তবায়িত হয়নি - বর্তমানে সবসময় কলের ভাষা প্রযোজ্য।",
+                    "value": "ভাষার কোড",
+                    "default": "(বর্তমান ভাষা)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "ফলাফলগুলোর মাঝে বসানো পাঠ্য।",
+                    "value": "বিভাজক",
+                    "default": "|",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "উৎস খালি না থাকলে তার আগে যে পাঠ্য বসানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "উৎস খালি না থাকলে তার শেষে যে পাঠ্য যুক্ত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "মূল উৎস খালি থাকলে যে পাঠ্য উৎস হয় (অন্যান্য প্যারামিটার, 'set' বাদে, উপেক্ষা করা হয়)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "আউটপুট খালি না থাকলে তা ওভাররাইড করে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "উৎসের আউটপুট পুনর্নির্দেশিত হয়ে $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "result_end": {
+            "note": "CMS:SELECT-এর ফলাফল প্রক্রিয়াকরণের লুপের শেষ চিহ্নিত করে।",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "result_start": {
+            "note": "CMS:SELECT-এর ফলাফল প্রক্রিয়াকরণের লুপের শুরু চিহ্নিত করে।",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "savedata": {
+            "note": "বর্তমান রেকর্ডের ডেটা নির্দিষ্ট ভেরিয়েবলে সংরক্ষণ করে।",
+            "do": "phpvar",
+            "oneof": "",
+            "params": {
+                "phpvar": {
+                    "description": "যে ভেরিয়েবলে বর্তমান রেকর্ডের ডেটা সংরক্ষণ করতে হবে।",
+                    "value": "$GLOBALS-এর মধ্যে ইনডেক্স",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "যে রেকর্ডের ডেটা লোড করতে হবে। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম। উল্লেখ না থাকলে বর্তমানে লোড করা রেকর্ড।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "বহুভাষিক ফিল্ডের বিষয়বস্তু কোন ভাষায় লোড হবে তা নির্ধারণ করে। এখনো বাস্তবায়িত হয়নি - বর্তমানে সবসময় কলের ভাষা প্রযোজ্য।",
+                    "value": "ভাষা সংস্করণের কোড",
+                    "default": "$lang",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select": {
+            "note": "প্রদত্ত (ফিল্টার) মানদণ্ড অনুযায়ী ডেটাবেসে অনুসন্ধান করে এবং পাওয়া রেকর্ডগুলো ফেরত দেয়।",
+            "do": "resulttemplate",
+            "oneof": "filter,relation",
+            "params": {
+                "set": {
+                    "description": "সম্পূর্ণ আউটপুট (অন্তর্ভুক্ত টেমপ্লেটসহ) আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "ফলাফল প্রক্রিয়াকরণের জন্য যে তালিকা টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresulttemplate": {
+                    "description": "কোয়েরির কোনো ফলাফল না থাকলে যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresult": {
+                    "description": "কোয়েরির কোনো ফলাফল না থাকলে সরাসরি যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "কী-তে: অনুসন্ধান করা ফিল্ডের নাম (যেকোনো সংযোগ ফিল্ডের জন্য relation_any; কন্টেন্ট এলাকার নামের জন্য area, সেখানে একটি সংখ্যা area_id হিসেবে গণ্য)। মানে: অনুসন্ধানের মান।",
+                    "value": "মান বা EMPTY",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_mode": {
+                    "description": "একই ফিল্ডের একাধিক মান যেভাবে একত্রিত হয় (filter_mode[field]=AND)।",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "filter_op": {
+                    "description": "প্রদত্ত ফিল্ডের জন্য তুলনা অপারেটর (filter_op[field]=\">\")। বিকল্পভাবে অপারেটরটি কী ও মানের মাঝে (filter[price] > 100) অথবা সরাসরি মানের আগে (filter[price]=\">100\") থাকে।",
+                    "value": "=, ==, !=, !!, >, <, >>, <<, >=, <=",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "skip": {
+                    "description": "ফলাফল সেটে বাদ দেওয়া রেকর্ডের সংখ্যা। শুধু limit-এর সাথে কাজ করে।",
+                    "value": "সংখ্যা >= 0",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "ফলাফল সেটে অন্তর্ভুক্ত রেকর্ডের সর্বোচ্চ সংখ্যা - একই সাথে CMS:JUMP_LIST, CMS:JUMP_PREV ও CMS:JUMP_NEXT-এর পেজ আকার। মান ছাড়া বা 0: সীমাহীন, কোনো পেজ নেভিগেশন নেই।",
+                    "value": "সংখ্যা >0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "যে ফিল্ড অনুযায়ী সাজানো হবে (order দেখুন); একাধিক কমা দিয়ে আলাদা করে বা sort[]=… হিসেবে; area কন্টেন্ট এলাকার নাম অনুযায়ী, pointerfield.field সংযুক্ত রেকর্ডের একটি ফিল্ড অনুযায়ী সাজায়।",
+                    "value": "ফিল্ডের নাম (এক বা একাধিক), কমা দিয়ে আলাদা",
+                    "default": "changed_at",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "সাজানোর দিক (sort দেখুন)। sort ছাড়া changed_at desc প্রযোজ্য।",
+                    "value": "desc / asc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "সেই ভাষা সংস্করণের কোড যার বিষয়বস্তু চাওয়া হয় (বহুভাষিক ফিল্ডে প্রভাব ফেলে)। এখনো বাস্তবায়িত হয়নি - বর্তমানে সবসময় কলের ভাষা প্রযোজ্য।",
+                    "value": "ভাষার কোড",
+                    "default": "(বর্তমান ভাষা)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "সম্পর্ক/পয়েন্টার ফিল্ডের ফিল্ডের নাম যেখানে খোঁজা রেকর্ডগুলো সংরক্ষিত (src_id সহ); dest_id সহ সেই ফিল্ডগুলো যার মাধ্যমে খোঁজা রেকর্ডগুলো dest_id-এর দিকে নির্দেশ করে। ANY: যেকোনো পয়েন্টার ফিল্ড।",
+                    "value": "ফিল্ডের নাম (এক বা একাধিক) কমা দিয়ে আলাদা বা 'ANY'",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "উৎস রেকর্ড যার সংযোগগুলো মূল্যায়িত হয় (মান ছাড়া: বর্তমান রেকর্ড)।",
+                    "value": "রেকর্ড ID (এক বা একাধিক)",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "dest_id": {
+                    "description": "relation-এর বিপরীত দিক: যে রেকর্ডগুলো relation-এর মাধ্যমে এই রেকর্ডের দিকে নির্দেশ করে (relation=ANY: যেকোনো পয়েন্টার ফিল্ডের মাধ্যমে)। src_id ছাড়া তখন কোনো বর্তমান রেকর্ড উৎস হিসেবে ব্যবহৃত হয় না।",
+                    "value": "রেকর্ড ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nextof": {
+                    "description": "শুধু relation সহ: সংযোগ তালিকায় প্রদত্ত রেকর্ডের প্রতিবেশী - তার পরের এন্ট্রিগুলো (order=asc) বা আগের এন্ট্রিগুলো (order=desc), তালিকার ক্রমে; limit=1 হলে পরবর্তী বা আগের রেকর্ড।",
+                    "value": "রেকর্ড ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "count": {
+                    "description": "true: \"limit\" ও \"skip\" নির্বিশেষে ফলাফল সেটের রেকর্ডের সংখ্যা নির্ধারণ করা হয় (resulttemplate-এ $this->db->num_rows_unlimited-এ; JUMP কমান্ডগুলোর ভিত্তি)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hits": {
+                    "description": "false: শুধু গণনা করে (count=true অন্তর্ভুক্ত); কোনো রেকর্ড লোড হয় না এবং কোনো resulttemplate অন্তর্ভুক্ত হয় না। মোট সংখ্যা তখন কলকারী টেমপ্লেটে $this->db->num_rows_unlimited-এ পাওয়া যায়; 0 হলে noresult/noresulttemplate প্রযোজ্য।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: মেয়াদোত্তীর্ণ রেকর্ডগুলোও (offline_at এসে গেছে) কোয়েরিতে অন্তর্ভুক্ত হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: অগ্রিম তারিখের রেকর্ডগুলোও (online_at এখনো আসেনি) কোয়েরিতে অন্তর্ভুক্ত হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: সহায়তা বিশ্লেষণের জন্য তৈরি ডেটাবেস কোয়েরি আউটপুট করা হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sql": {
+                    "description": "WHERE ক্লজে কাঁচা SQL সংযোজন (সতর্কতা: শুধু সহায়তার জন্য!)।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "মান ছাড়া শুধু অনুমোদিত রেকর্ড (status_id 0)। স্ট্যাটাস ID > 0 শুধু সেই স্ট্যাটাসের রেকর্ড খোঁজে; \"any\" প্রতিটি স্ট্যাটাসের রেকর্ড খোঁজে।",
+                    "value": "স্ট্যাটাস ID বা any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select_langversion": {
+            "note": "উপলব্ধ ভাষাগুলো রেকর্ড হিসেবে ফেরত দেয়।",
+            "do": "resulttemplate",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "সম্পূর্ণ আউটপুট (অন্তর্ভুক্ত টেমপ্লেটসহ) আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "ফলাফল প্রক্রিয়াকরণের জন্য যে তালিকা টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "snippet": {
+            "note": "কলের ভাষায় একটি স্নিপেট (পাঠ্য মডিউল) আউটপুট করে।",
+            "do": "key",
+            "oneof": "",
+            "params": {
+                "key": {
+                    "description": "স্নিপেটের কী, যেমন custom.read_more (ইনস্ট্যান্সের স্নিপেট সেট) বা উপসর্গ ছাড়া একটি কোর স্নিপেট।",
+                    "value": "স্নিপেট কী",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "param": {
+                    "description": "প্লেসহোল্ডারের মান: param[name]=value স্নিপেটে {name} প্রতিস্থাপন করে এবং ICU প্যারামিটার (plural, select) পূরণ করে।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: বিশেষ অক্ষরগুলো তাদের HTML সমতুল্যে রূপান্তরিত হয় (অ্যাট্রিবিউটের জন্য)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "স্নিপেট না থাকলে যে পাঠ্য আউটপুট হয় (ifempty ছাড়া কী-টি দেখা যায়)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "স্নিপেট খালি না থাকলে তার আগে যে পাঠ্য বসানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "স্নিপেট খালি না থাকলে শেষে যে পাঠ্য যুক্ত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "পাঠ্য আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "text": {
+            "note": "ফরম্যাটিং প্রয়োগ করে একটি পাঠ্য আউটপুট করে।",
+            "do": "field",
+            "oneof": "field,useval,id",
+            "params": {
+                "id": {
+                    "description": "যে রেকর্ড থেকে পড়া হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম। 'field' ছাড়া ফিল্ড \"text\" পড়া হয়।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "রেকর্ডের সেই ফিল্ডের নাম যার বিষয়বস্তু উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "ফিল্ড",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "পাঠ্য আকারে মান যা উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "মূল উৎস খালি থাকলে যে পাঠ্য উৎস হয় (তখন অন্যান্য প্যারামিটার, 'set' বাদে, উপেক্ষা করা হয়)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "মূল উৎস খালি না থাকলে যে পাঠ্য উৎস হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "entitydecode": {
+                    "description": "true: &...; ফরম্যাটের এনটিটিগুলো আবার Unicode অক্ষরে রূপান্তরিত হয়।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: পাঠ্যের শুরু ও শেষের স্পেস সরানো হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "striptags": {
+                    "description": "true: HTML ও স্ক্রিপ্ট ট্যাগ সরানো হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "if": {
+                    "description": "উৎস প্রশ্নবোধক চিহ্নের আগের পাঠ্যের সাথে মিললে প্রশ্নবোধক চিহ্নের পরের পাঠ্য নতুন উৎস হয়।",
+                    "value": "পাঠ্য?পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "else": {
+                    "description": "আগের IF শর্তগুলোর কোনোটি প্রযোজ্য না হলে এই মান উৎস হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "প্রশ্নবোধক চিহ্নের আগের পাঠ্য উৎসে থাকলে তা প্রশ্নবোধক চিহ্নের পরের পাঠ্য দিয়ে প্রতিস্থাপিত হয়।",
+                    "value": "পাঠ্য?পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "পাঠ্যকে প্রদত্ত অক্ষর সংখ্যায় ছোট করে এবং \"…\" যুক্ত করে; শেষে s যুক্ত করলে (যেমন 200s) পাঠ্যটি শেষ শব্দের শেষে ছোট করা হয়।",
+                    "value": "সংখ্যা >= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lbrconvert": {
+                    "description": "true: লাইন ব্রেক HTML লাইন ব্রেকে (<br> ট্যাগ) রূপান্তরিত হয়।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: বিশেষ অক্ষরগুলো তাদের HTML সমতুল্যে রূপান্তরিত হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlconvert": {
+                    "description": "true: ইন্টারনেট ঠিকানাগুলো স্বয়ংক্রিয়ভাবে ক্লিকযোগ্য লিংকে রূপান্তরিত হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailconvert": {
+                    "description": "true: ইমেল ঠিকানাগুলো লিংক করা হয়। encrypt: লিংকগুলো JavaScript-এর মাধ্যমে হালকাভাবে এনক্রিপ্ট করা হয়।",
+                    "value": "true / false / encrypt",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emaillimit": {
+                    "description": "লিংক করা ইমেল ঠিকানাগুলো স্বয়ংক্রিয়ভাবে x দৃশ্যমান অক্ষরে ছোট করে।",
+                    "value": ">= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailtext": {
+                    "description": "লিংক করা পাঠ্য যা ইমেল ঠিকানার পরিবর্তে দেখানো হয় (শুধু \"emailconvert\" সক্রিয় থাকলে)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "target": {
+                    "description": "স্বয়ংক্রিয়ভাবে তৈরি লিংকের (urlconvert, emailconvert) লিংক লক্ষ্য নির্ধারণ করে।",
+                    "value": "উইন্ডো / ফ্রেম",
+                    "default": "_self",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "markdown": {
+                    "description": "true: পাঠ্যটি Markdown এবং HTML-এ রূপান্তরিত হয় (পাঠ্যের HTML এস্কেপ করা হয়); অন্যান্য রূপান্তর প্রযোজ্য নয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlencode": {
+                    "description": "true: পাঠ্যটি RFC 1738 অনুযায়ী এনকোড করা হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urllimit": {
+                    "description": "স্বয়ংক্রিয়ভাবে তৈরি লিংকের দৃশ্যমান পাঠ্যের সর্বোচ্চ দৈর্ঘ্য (শুধু বাহ্যিক লিংকের জন্য উপযুক্ত!)।",
+                    "value": "অক্ষরের সংখ্যা",
+                    "default": "80",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ampconvert": {
+                    "description": "true: একটি একক & স্বয়ংক্রিয়ভাবে HTML এনটিটি &amp;-এ রূপান্তরিত হয়।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "উৎস খালি না থাকলে উৎসের আগে যে পাঠ্য বসানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "উৎস খালি না থাকলে উৎসের শেষে যে পাঠ্য যুক্ত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "iso": {
+                    "description": "true: আউটপুট ক্যারেক্টার সেট ISO-8859-1-এ রূপান্তরিত হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "charset": {
+                    "description": "যে ক্যারেক্টার সেটে আউটপুট রূপান্তরিত হবে।",
+                    "value": "পাঠ্য",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "ফরম্যাট করা মান আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "time": {
+            "note": "একটি তারিখ বা সময় মানের সময় ফরম্যাট করে আউটপুট করে।",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "যে রেকর্ড থেকে পড়া হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "রেকর্ডের সেই ফিল্ডের নাম যার বিষয়বস্তু উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "ফিল্ড",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "পাঠ্য আকারে মান যা উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "সময় মান",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU প্যাটার্ন, যেমন \"HH:mm\"। উল্লেখ না থাকলে পেজের লোকেল লেখার ধরন নির্ধারণ করে; পূর্ণ মিনিট সেকেন্ড ছাড়া দেখানো হয়।",
+                    "value": "ফরম্যাট নির্দেশনা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: সময় অঞ্চলের নাম যুক্ত করা হয় (যেমন \"Europe/Berlin\")।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "প্রশ্নবোধক চিহ্নের আগের পাঠ্য ফরম্যাট করা মানে থাকলে তা প্রশ্নবোধক চিহ্নের পরের পাঠ্য দিয়ে প্রতিস্থাপিত হয় (যেমন \"Jan?January\")।",
+                    "value": "পাঠ্য?পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "উৎস ('field' বা 'useval') খালি থাকলে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "উৎস খালি না থাকলে তার পরিবর্তে যে পাঠ্য আউটপুট হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ফরম্যাট করা মান খালি না থাকলে তার আগে যে পাঠ্য বসানো হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ফরম্যাট করা মান খালি না থাকলে শেষে যে পাঠ্য যুক্ত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "ফরম্যাট করা মান আউটপুট হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "url": {
+            "note": "একটি রেকর্ডের URL তৈরি করে।",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "area": {
+                    "description": "এলাকার ওভারভিউয়ের লিংক: এর Slug উপসর্গ দিয়ে তৈরি ঠিকানা (/en/models), যা এর ওভারভিউ টেমপ্লেট দেখায়।",
+                    "value": "এলাকার নাম বা ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "যে রেকর্ডে লিংক করা হবে। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
+                    "value": "রেকর্ড ID বা Slug",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "যে টেমপ্লেট দিয়ে রেকর্ডটি দেখানো হবে (URL-এ কমার পরের দ্বিতীয় অংশ): name বা area.name। উল্লেখ না থাকলে এলাকা যে টেমপ্লেট নির্ধারণ করে।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "যে ভাষা সংস্করণে লিংক করা হবে (ডিফল্টভাবে বর্তমান কলের)। ইনস্ট্যান্স একাধিক ভাষা চালালে কোডটি সবসময় URL-এ থাকে; শুধু একটি ভাষা থাকলে কখনো নয়। ওয়েবসাইট যে কোড চালায় না তা উপেক্ষা করা হয়।",
+                    "value": "ভাষার কোড",
+                    "default": "(বর্তমান ভাষা)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "protocol": {
+                    "description": "http বা https, শুধু absolute বা host সহ। উল্লেখ না থাকলে ইনস্ট্যান্সের প্রোটোকল, অন্যথায় কলের প্রোটোকল।",
+                    "value": "স্থানান্তর প্রোটোকল",
+                    "default": "(ইনস্ট্যান্সের প্রোটোকল)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "host": {
+                    "description": "যেমন example.com, যে ডোমেনের মাধ্যমে ওয়েবসাইট খোলা হয় তা পরিবর্তন করতে।",
+                    "value": "হোস্টের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "absolute": {
+                    "description": "true: প্রোটোকল ও ডোমেনসহ পাথ তৈরি হয়। false: পাথ সার্ভার-আপেক্ষিক এবং স্ল্যাশ দিয়ে শুরু হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "URL আউটপুট হয় না, বরং $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_2fa": {
+            "note": "লগইন করা ফ্রন্টএন্ড ব্যবহারকারীর দ্বিতীয় ফ্যাক্টর দেখায়, সেট আপ করে (অথেন্টিকেটর অ্যাপ বা ইমেলে কোড) এবং বন্ধ করে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: অনুরোধে CMS:USER_TOKEN-এর একটি বৈধ টোকেন থাকতে হবে (CSRF থেকে সুরক্ষা)। false এই কমান্ডের জন্য যাচাই বন্ধ করে (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "status: শুধু পড়া। totp_setup: অ্যাপের জন্য একটি নতুন কী তৈরি করে ($set['totp_setup'])। totp_enable: data[token] ও data[code] যাচাই ও সংরক্ষণ করে ($set['recovery_codes'])। code_enable: ইমেলে কোড বেছে নেয় (পাসওয়ার্ড দিয়ে নিশ্চিত)। disable: বন্ধ করে (অ্যাপ কোড বা পাসওয়ার্ড)। recovery_renew: নতুন রিকভারি কোড (অ্যাপ কোড)।",
+                    "value": "status / totp_setup / totp_enable / code_enable / disable / recovery_renew",
+                    "default": "status",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "এই ফিল্ডে কোনো পাঠ্য থাকলেই কেবল লেখার ফাংশনগুলো চলে।",
+                    "value": "পাঠ্য মান",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "সেই PHP অ্যারের নাম যাতে ইনপুটগুলো থাকে।",
+                    "value": "PHP ভেরিয়েবলের নাম",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "data[…]-এ কোডের ইনপুট ফিল্ডের নাম।",
+                    "value": "ফিল্ডের নাম",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "data[…]-এ পাসওয়ার্ডের ইনপুট ফিল্ডের নাম (code_enable, কোড দিয়ে disable)।",
+                    "value": "ফিল্ডের নাম",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "ত্রুটি বার্তা। ইনডেক্সে: ব্যবহারের ক্ষেত্র; মানে: বার্তার পাঠ্য (টেবিল দেখুন)।",
+                    "value": "ডিফল্ট বার্তা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "সেশন কুকির নাম [a-z0-9]।",
+                    "value": "কুকির নাম",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_auth": {
+            "note": "একটি সেশন ID-এর বৈধতা যাচাই করে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "sessionid": {
+                    "description": "কুকি ব্যবহারের পরিবর্তে প্রদত্ত সেশন ID দিয়ে ফ্রন্টএন্ড ব্যবহারকারীর সেশন আবার শুরু করে।",
+                    "value": "সেশন ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "প্রোফাইল রেকর্ডের জন্য ফিল্টার মানদণ্ড যা লগইন করা ফ্রন্টএন্ড ব্যবহারকারীকে পূরণ করতে হবে।",
+                    "value": "CMS:SELECT-এর প্যারামিটার \"filter[]\" দেখুন",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "mode": {
+                    "description": "একই ফিল্ড সংক্রান্ত মানগুলো যেভাবে একত্রিত হয়।",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "সেশন কুকির নাম [a-z0-9]।",
+                    "value": "কুকির নাম",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_basket": {
+            "note": "একটি শপিং বাস্কেট সম্পাদনা করে।",
+            "do": "function",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: অনুরোধে CMS:USER_TOKEN-এর একটি বৈধ টোকেন থাকতে হবে (CSRF থেকে সুরক্ষা)। false এই কমান্ডের জন্য যাচাই বন্ধ করে (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "সম্পাদনযোগ্য ফাংশন।",
+                    "value": "\"load\" / \"add\" / \"update\" / \"update_addon\"",
+                    "default": "\"load\"",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "function=add + overwrite=true: যোগ করার সময় আগে থেকে সংরক্ষিত আইটেমের সংখ্যা হালনাগাদ করা হয়।",
+                    "value": "false / true",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "শপিং বাস্কেটের বিভাগ।",
+                    "value": "বিভাগ ID",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "শুধু এই কন্টেইনারগুলোর রেকর্ড বাস্কেটে যায়। উল্লেখ না থাকলে: “record” বা “ugc” ধরনের কন্টেইনারের প্রকাশিত রেকর্ড (কখনো প্রোফাইল নয়)।",
+                    "value": "কন্টেইনার ID বা নাম, কমা দিয়ে আলাদা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "variable": {
+                    "description": "সেই ভেরিয়েবলের নাম যেখানে আইটেম ID-গুলো অ্যারে হিসেবে সংরক্ষিত হয়।",
+                    "value": "ভেরিয়েবলের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "duration": {
+                    "description": "কোনো পরিবর্তন না হলে বাস্কেট যত দিন সংরক্ষিত থাকে।",
+                    "value": "দিনের সংখ্যা",
+                    "default": "30",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "basket_addon": {
+                    "description": "সংরক্ষণের জন্য পাঠ্য (সিরিয়ালাইজ করা ডেটা)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_delete": {
+            "note": "লগইন করা ফ্রন্টএন্ড ব্যবহারকারীর একটি রেকর্ড মুছে ফেলে।",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: অনুরোধে CMS:USER_TOKEN-এর একটি বৈধ টোকেন থাকতে হবে (CSRF থেকে সুরক্ষা)। false এই কমান্ডের জন্য যাচাই বন্ধ করে (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "যে রেকর্ড মুছতে হবে।",
+                    "value": "রেকর্ড ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: মুছে ফেলার রেকর্ডটি লগইন করা ফ্রন্টএন্ড ব্যবহারকারীর হওয়ার প্রয়োজন নেই (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "এন্ট্রি সফলভাবে মুছে ফেলা হলে যে টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message_error": {
+                    "description": "রেকর্ডে ব্যবহারকারীর প্রবেশাধিকার না থাকলে ত্রুটি বার্তা।",
+                    "value": "পাঠ্য",
+                    "default": "প্রবেশাধিকার প্রত্যাখ্যাত!",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_input": {
+            "note": "একজন ফ্রন্টএন্ড ব্যবহারকারীর প্রবেশ করানো ডেটা থেকে একটি রেকর্ড তৈরি বা হালনাগাদ করে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: অনুরোধে CMS:USER_TOKEN-এর একটি বৈধ টোকেন থাকতে হবে (CSRF থেকে সুরক্ষা)। false এই কমান্ডের জন্য যাচাই বন্ধ করে (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "এন্ট্রি সফলভাবে সংরক্ষিত হলে যে টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "সেই PHP অ্যারের নাম যাতে সংরক্ষণের ডেটা থাকে।",
+                    "value": "PHP ভেরিয়েবলের নাম",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "ফ্রন্টএন্ড ব্যবহারকারীর ইনপুট স্পষ্টভাবে ওভাররাইট করে (মেটা ফিল্ডসহ, record_id, area_id, instance_id, tmp, deleted, origin_id, owner_id, created_by, changed_by বাদে)। এখানে ফ্রন্টএন্ড ব্যবহারকারীর কোনো ইনপুট পাঠাবেন না!",
+                    "value": "কী-মান জোড়া",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "container": {
+                    "description": "সেই কন্টেন্ট এলাকার ID বা নাম যেখানে নতুন রেকর্ড সংরক্ষণ করতে হবে।",
+                    "value": "কন্টেইনার ID বা নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "ইনডেক্স অনুযায়ী ত্রুটি বার্তা (টেবিল দেখুন)।",
+                    "value": "পাঠ্য",
+                    "default": "ডিফল্ট পাঠ্য",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "এই ফিল্ডে কোনো পাঠ্য থাকলেই কেবল কমান্ডটি চলে।",
+                    "value": "পাঠ্য মান",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "যে ইনপুট ফিল্ডগুলোতে লেখা যাবে তাদের নাম। খালি = কন্টেইনারের জন্য সংজ্ঞায়িত সব ফিল্ড।",
+                    "value": "কমা দিয়ে আলাদা তালিকা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "দেওয়া থাকলে এই রেকর্ডটি হালনাগাদ (UPDATE) করার চেষ্টা করা হয়। অন্যথায় একটি নতুন তৈরি হয় (CREATE)।",
+                    "value": "রেকর্ড ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: সমন্বয় করার রেকর্ডটি লগইন করা ফ্রন্টএন্ড ব্যবহারকারীর হওয়ার প্রয়োজন নেই (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "forceupdate": {
+                    "description": "true: প্যারামিটার “id” দিয়ে দেওয়া রেকর্ডের হালনাগাদ বাধ্যতামূলক করে। ত্রুটি হলে একটি বার্তা আউটপুট হয়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "masterid": {
+                    "description": "শুধু ট্রি কাঠামোর এলাকায় তৈরির সময়: নতুন রেকর্ডের প্যারেন্ট নোড (parent_id)।",
+                    "value": "রেকর্ড ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "শুধু তৈরির সময়: ব্যাকএন্ড মালিকের admin_id (record.owner_id, created_by)। দেওয়া না থাকলে user.default_owner_id প্রযোজ্য।",
+                    "value": "ব্যবহারকারী ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "removefiles": {
+                    "description": "যে আপলোড ফিল্ডগুলোর বিষয়বস্তু মুছতে হবে তাদের নাম।",
+                    "value": "কমা দিয়ে আলাদা তালিকা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "শুধু প্রোফাইল কন্টেইনার: বর্তমান পাসওয়ার্ডসহ ফর্ম ফিল্ড data[…]-এর নাম। নতুন পাসওয়ার্ড শুধু বর্তমানটির সাথে সংরক্ষিত হয় - রিসেট লিংক দিয়ে লগইনের ঠিক পরে ছাড়া ($set['password_reset'])। বার্তা \"current\"।",
+                    "value": "ফিল্ডের নাম",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login": {
+            "note": "একজন ফ্রন্টএন্ড ব্যবহারকারীর লগইন ডেটা যাচাই করে এবং একটি নতুন সেশন তৈরি করে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "লগইনের দ্বিতীয় ধাপের টেমপ্লেট, যদি প্রোফাইল এলাকা দ্বিতীয় ফ্যাক্টর (অ্যাপ থেকে কোড বা ইমেলে কোড) চায়। ইমেলে কোডের ক্ষেত্রে এটি $set['login_code'] CMS:EMAIL দিয়ে পাঠায় এবং CMS:USER_LOGIN_CODE-এর জন্য কোড ফর্ম দেখায়। এলাকা দ্বিতীয় ফ্যাক্টর ব্যবহার করলেই আবশ্যক।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: অনুরোধে CMS:USER_TOKEN-এর একটি বৈধ টোকেন থাকতে হবে (CSRF থেকে সুরক্ষা)। false এই কমান্ডের জন্য যাচাই বন্ধ করে (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "সফল লগইনের পরে যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "সেই প্রোফাইল কন্টেইনারের ID বা নাম যেখানে ফ্রন্টএন্ড ব্যবহারকারীদের ডেটা সংরক্ষিত।",
+                    "value": "কন্টেইনার ID বা নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "সেই PHP অ্যারের নাম যাতে লগইন ডেটা থাকে।",
+                    "value": "PHP ভেরিয়েবলের নাম",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "ত্রুটি বার্তা। ইনডেক্সে: ব্যবহারের ক্ষেত্র; মানে: বার্তার পাঠ্য (টেবিল দেখুন)।",
+                    "value": "ডিফল্ট বার্তা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "হ্যাশের মাধ্যমেও লগইন করা যায় (CMS:USER_PW-এর টোকেন, ভুলে যাওয়া পাসওয়ার্ড)।",
+                    "value": "হ্যাশ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: ইনপুটের শুরু ও শেষের স্পেস সরান।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookie": {
+                    "description": "true: একাধিক পেজে লগইন বজায় রাখতে ডিফল্টভাবে একটি কুকি সেট করা হয়।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "এই ফিল্ডে কোনো পাঠ্য থাকলেই কেবল কমান্ডটি চলে। “hash” দিয়ে লগইনের ক্ষেত্রে প্রযোজ্য নয়।",
+                    "value": "পাঠ্য মান",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "সেশন কুকির নাম [a-z0-9]।",
+                    "value": "কুকির নাম",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login_code": {
+            "note": "লগইনের দ্বিতীয় ধাপ: অথেন্টিকেটর অ্যাপের কোড, ইমেলে পাঠানো কোড বা একটি রিকভারি কোড যাচাই করে এবং ফ্রন্টএন্ড ব্যবহারকারীকে লগইন করায়।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "\"resend\"-এর পরে যে টেমপ্লেট অন্তর্ভুক্ত হয় এবং নতুন কোড ($set['login_code']) CMS:EMAIL দিয়ে পাঠায় - সাধারণত CMS:USER_LOGIN-এর \"codetemplate\"-এর মতোই।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: অনুরোধে CMS:USER_TOKEN-এর একটি বৈধ টোকেন থাকতে হবে (CSRF থেকে সুরক্ষা)। false এই কমান্ডের জন্য যাচাই বন্ধ করে (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "সফল লগইনের পরে যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "এই ফিল্ডে কোনো পাঠ্য থাকলেই কেবল কোড যাচাই করা হয়।",
+                    "value": "পাঠ্য মান",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resend": {
+                    "description": "true: ইমেলে একটি নতুন কোড তৈরি করে (থ্রটল করা)। এটি তখন $set['login_code']-এ থাকে; \"codetemplate\" অন্তর্ভুক্ত হয়, যা এটি CMS:EMAIL দিয়ে পাঠায়।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "সেই PHP অ্যারের নাম যাতে ইনপুটগুলো থাকে।",
+                    "value": "PHP ভেরিয়েবলের নাম",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "data[…]-এ কোডের ইনপুট ফিল্ডের নাম।",
+                    "value": "ফিল্ডের নাম",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "ত্রুটি বার্তা। ইনডেক্সে: ব্যবহারের ক্ষেত্র; মানে: বার্তার পাঠ্য (টেবিল দেখুন)।",
+                    "value": "ডিফল্ট বার্তা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "sessionid": {
+                    "description": "কুকি ছাড়া অপেক্ষমাণ লগইনের সেশন (অ্যাপ থেকে কল) - CMS:USER_LOGIN-এর পরে $set['user_session_id']।",
+                    "value": "সেশন ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "সেশন কুকির নাম [a-z0-9]।",
+                    "value": "কুকির নাম",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_logout": {
+            "note": "লগইন করা ফ্রন্টএন্ড ব্যবহারকারীর সেশন শেষ করে এবং মুছে ফেলে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "submit": {
+                    "description": "প্যারামিটার দেওয়া থাকলে কমান্ডটি শুধু তখনই লগআউট করে যখন এতে কোনো পাঠ্য থাকে (যেমন লগআউট ফর্ম থেকে submit=\"$logout\") - খালি হলে কিছুই হয় না, বার্তা টোকেনও নয়। প্যারামিটার ছাড়া কমান্ডটি প্রতিটি কলে লগআউট করে (একটি বৈধ টোকেন ধরে নেওয়া হয়)।",
+                    "value": "পাঠ্য মান",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: অনুরোধে CMS:USER_TOKEN-এর একটি বৈধ টোকেন থাকতে হবে (CSRF থেকে সুরক্ষা)। false এই কমান্ডের জন্য যাচাই বন্ধ করে (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "deletecookie": {
+                    "description": "false: শুধু সার্ভার-পার্শ্বের সেশন মুছে ফেলা হয়। true: ব্রাউজারের কুকিও মুছে ফেলা হয়।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "সেশন কুকির নাম [a-z0-9]।",
+                    "value": "কুকির নাম",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_password_rules": {
+            "note": "পাসওয়ার্ডের নিয়ম ও পাঠ্য অ্যাট্রিবিউট data-c9-password-এর জন্য JSON হিসেবে আউটপুট করে (এক্সটেনশন Password, ইনলাইন অন্তর্ভুক্ত) - সংরক্ষণের সময় সার্ভার যে নিয়মগুলো যাচাই করে সেগুলোই।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "container": {
+                    "description": "প্রোফাইল কন্টেইনার যার পাসওয়ার্ড ফিল্ড বোঝানো হয়েছে।",
+                    "value": "কন্টেইনার ID বা নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "কন্টেইনারের পাসওয়ার্ড ফিল্ড। এতে এক্সটেনশন Password থাকলে তার নিয়ম প্রযোজ্য, অন্যথায় security.password_policy (তখন সার্ভার যাচাই করে না)।",
+                    "value": "ফিল্ডের নাম",
+                    "default": "লগইন পাসওয়ার্ড ফিল্ড",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "আউটপুট দেখানো হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_protect": {
+            "note": "লগইন না করা দর্শনার্থীদের প্রবেশ থেকে একটি টেমপ্লেট সুরক্ষিত রাখে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "errortemplate": {
+                    "description": "যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয় যদি ফ্রন্টএন্ড ব্যবহারকারীর কন্টেইনারে প্রবেশাধিকার না থাকে বা তিনি লগইন না করে থাকেন।",
+                    "value": "টেমপ্লেটের নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "প্রোফাইল রেকর্ডের জন্য ফিল্টার মানদণ্ড যা লগইন করা ফ্রন্টএন্ড ব্যবহারকারীকে পূরণ করতে হবে।",
+                    "value": "CMS:SELECT-এর প্যারামিটার \"filter[]\" দেখুন",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "sessionid": {
+                    "description": "কুকি ব্যবহারের পরিবর্তে প্রদত্ত সেশন ID দিয়ে ফ্রন্টএন্ড ব্যবহারকারীর সেশন আবার শুরু করে।",
+                    "value": "সেশন ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "সেশন কুকির নাম [a-z0-9]।",
+                    "value": "কুকির নাম",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_pw": {
+            "note": "একটি পাসওয়ার্ড রিসেটের প্রস্তুতি নেয়।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: রোবটের বিরুদ্ধে ফর্ম সুরক্ষা - ফর্মে (CMS:USER_TOKEN formguard=true)-এর ফিল্ডগুলো (টাইমস্ট্যাম্প, খালি হানিপট ফিল্ড) থাকতে হবে এবং user.formguard_min_seconds (3)-এর আগে পাঠানো যাবে না। একটি সংখ্যা এই ফর্মের জন্য এই ন্যূনতম সময় নির্ধারণ করে (formguard=5); 0 বা false সুরক্ষা বন্ধ করে। অন্যথায় থ্রটলিংয়ের মতো বার্তা \"throttled\"।",
+                    "value": "true / false / সেকেন্ড",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: অনুরোধে CMS:USER_TOKEN-এর একটি বৈধ টোকেন থাকতে হবে (CSRF থেকে সুরক্ষা)। false এই কমান্ডের জন্য যাচাই বন্ধ করে (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয় যদি “uniquevalue” ফিল্ড “uniquefield”-এ একটি প্রোফাইলের সাথে মেলানো গেছে।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "errortemplate": {
+                    "description": "যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয় যদি “uniquevalue” দেওয়া হয়েছে কিন্তু কোনো প্রোফাইলের সাথে মেলানো যায়নি।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "সেই প্রোফাইল কন্টেইনারের ID বা নাম যেখানে মেলানোর প্রোফাইলগুলো সংরক্ষিত।",
+                    "value": "কন্টেইনার ID বা নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquefield": {
+                    "description": "যে ফিল্ড দিয়ে অনুসন্ধান করা হয় তার নাম (ফিল্ড টাইপ chars, text বা encrypted, যেমন “email”)। মানটি ঠিক একটি প্রোফাইলের সাথে মিলতে হবে।",
+                    "value": "ফিল্ডের নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquevalue": {
+                    "description": "ফিল্ড “uniquefield”-এ অনুসন্ধানের মান, যেমন $_POST[email]।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "এই ফিল্ডে কোনো পাঠ্য থাকলেই কেবল কমান্ডটি চলে।",
+                    "value": "পাঠ্য মান",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "ত্রুটি বার্তা। ইনডেক্সে: ব্যবহারের ক্ষেত্র; মানে: বার্তার পাঠ্য (টেবিল দেখুন)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_register": {
+            "note": "সরবরাহকৃত ডেটা থেকে একটি প্রোফাইল রেকর্ড তৈরি করে এবং স্ট্যাটাস status=2-এ সেট করে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: রোবটের বিরুদ্ধে ফর্ম সুরক্ষা - ফর্মে (CMS:USER_TOKEN formguard=true)-এর ফিল্ডগুলো (টাইমস্ট্যাম্প, খালি হানিপট ফিল্ড) থাকতে হবে এবং user.formguard_min_seconds (3)-এর আগে পাঠানো যাবে না। একটি সংখ্যা এই ফর্মের জন্য এই ন্যূনতম সময় নির্ধারণ করে (formguard=5); 0 বা false সুরক্ষা বন্ধ করে। অন্যথায় থ্রটলিংয়ের মতো বার্তা \"throttled\"।",
+                    "value": "true / false / সেকেন্ড",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: অনুরোধে CMS:USER_TOKEN-এর একটি বৈধ টোকেন থাকতে হবে (CSRF থেকে সুরক্ষা)। false এই কমান্ডের জন্য যাচাই বন্ধ করে (সতর্কতা: নিরাপত্তা নির্দেশনা মেনে চলুন!)।",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "সফল নিবন্ধনের পরে যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "সেই প্রোফাইল কন্টেইনারের ID বা নাম যেখানে ফ্রন্টএন্ড ব্যবহারকারীদের ডেটা সংরক্ষণ করতে হবে।",
+                    "value": "কন্টেইনার ID বা নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailfield": {
+                    "description": "সেই ফিল্ডের নাম যেখানে ফ্রন্টএন্ড ব্যবহারকারীর ইমেল ঠিকানা সংরক্ষিত হয় (নিশ্চিতকরণ লিংক সেখানে পাঠানো হয়)।",
+                    "value": "ফিল্ডের নাম",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "যে ইনপুট ফিল্ডগুলোতে লেখা যাবে তাদের নাম। খালি = কন্টেইনারের জন্য সংজ্ঞায়িত সব ফিল্ড।",
+                    "value": "কমা দিয়ে আলাদা তালিকা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "ফ্রন্টএন্ড ব্যবহারকারীর ইনপুট স্পষ্টভাবে ওভাররাইট করে (মেটা ফিল্ডসহ, record_id, area_id, instance_id, tmp, deleted, origin_id, owner_id, created_by, changed_by বাদে)। এখানে ফ্রন্টএন্ড ব্যবহারকারীর কোনো ইনপুট পাঠাবেন না!",
+                    "value": "কী-মান জোড়া",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "message": {
+                    "description": "ত্রুটি বার্তা। ইনডেক্সে: ব্যবহারের ক্ষেত্র; মানে: বার্তার পাঠ্য (CMS:USER_INPUT-এর টেবিল দেখুন)।",
+                    "value": "বার্তা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "এই ফিল্ডে কোনো পাঠ্য থাকলেই কেবল কমান্ডটি চলে।",
+                    "value": "পাঠ্য মান",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "নতুন প্রোফাইলের ব্যাকএন্ড মালিকের admin_id (record.owner_id, created_by)। দেওয়া না থাকলে user.default_owner_id প্রযোজ্য।",
+                    "value": "ব্যবহারকারী ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "সেই PHP অ্যারের নাম যাতে সংরক্ষণের ডেটা থাকে।",
+                    "value": "PHP ভেরিয়েবলের নাম",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_register_confirm": {
+            "note": "একটি প্রোফাইল রেকর্ড সক্রিয় করে এবং status=0 সেট করে।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "successtemplate": {
+                    "description": "যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয় যদি নিবন্ধন সফলভাবে সম্পন্ন করা গেছে।",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "CMS:USER_REGISTER দ্বারা তৈরি এবং ইমেলে পাঠানো হ্যাশ ID।",
+                    "value": "হ্যাশ ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "ত্রুটি বার্তা। ইনডেক্সে: ব্যবহারের ক্ষেত্র; মানে: বার্তার পাঠ্য (টেবিল দেখুন)।",
+                    "value": "বার্তা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_token": {
+            "note": "লেখার কাজ করে এমন CMS:USER_* কমান্ডসহ একটি ফর্মের জন্য CSRF টোকেন আউটপুট করে (লুকানো ফিল্ড _token)।",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: অতিরিক্তভাবে একটি টাইমস্ট্যাম্প ও একটি অদৃশ্য হানিপট ফিল্ড (রোবটের বিরুদ্ধে ফর্ম সুরক্ষা) আউটপুট করে - USER_REGISTER, USER_PW বা CMS:EMAIL formguard=true সহ ফর্মের জন্য।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "field: লুকানো ইনপুট ফিল্ড <input type=\"hidden\" name=\"_token\">। value: শুধু টোকেন (Ajax-এর জন্য: হেডার X-Camindo-Token বা POST ফিল্ড _token)।",
+                    "value": "\"field\" / \"value\"",
+                    "default": "\"field\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "আউটপুট দেখানো হয় না, বরং ভেরিয়েবল $set-এ সংরক্ষিত হয়। টোকেনটি এছাড়াও সবসময় $set['user_token']-এ থাকে।",
+                    "value": "$set-এর অ্যারে ইনডেক্স",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "xml": {
+            "note": "একটি XML ঘোষণা তৈরি করে।",
+            "do": "encoding",
+            "oneof": "",
+            "params": {
+                "encoding": {
+                    "description": "ব্যবহার করার অক্ষর এনকোডিং।",
+                    "value": "encoding",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "version": {
+                    "description": "XML সংস্করণ।",
+                    "value": "version",
+                    "default": "1.0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "zip": {
+            "note": "একাধিক রেকর্ডের ফাইল ZIP আর্কাইভ হিসেবে ডাউনলোডের জন্য দেয় এবং পেজ শেষ করে।",
+            "do": "field",
+            "oneof": "filter,relation,ids,source",
+            "params": {
+                "field": {
+                    "description": "আপলোড/থাম্বনেইল ফিল্ড। প্রতিটি রেকর্ডের জন্য প্রথম যে ফিল্ডটি দর্শনার্থী পেতে পারেন সেটি প্রযোজ্য (যেমন fil_print,fil_upload: প্রেসের জন্য মুদ্রণ সংস্করণ, অন্যথায় ওয়েব সংস্করণ)।",
+                    "value": "ফিল্ডের নাম (এক বা একাধিক), কমা দিয়ে আলাদা",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "রেকর্ড নির্বাচন, CMS:SELECT-এর মতো।",
+                    "value": "মান",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_op": {
+                    "description": "তুলনা অপারেটর, CMS:SELECT-এর মতো।",
+                    "value": "অপারেটর",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "filter_mode": {
+                    "description": "একাধিক মানের সমন্বয়, CMS:SELECT-এর মতো।",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "সংযুক্ত রেকর্ড, CMS:SELECT-এর মতো।",
+                    "value": "ফিল্ডের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "relation-এর জন্য উৎস রেকর্ড; খালি বা 0: কোনো ফাইল নয়।",
+                    "value": "রেকর্ড ID",
+                    "default": "(বর্তমান রেকর্ড)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ids": {
+                    "description": "স্পষ্টভাবে উল্লেখিত রেকর্ড (প্রকাশিত, এই ওয়েবসাইটের)।",
+                    "value": "রেকর্ড ID, কমা দিয়ে আলাদা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "source": {
+                    "description": "basket: সেশনের বাস্কেটে থাকা রেকর্ড (বিভাগ category থেকে) - যেমন একটি লাইটবক্স।",
+                    "value": "basket",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "source=basket-এর জন্য বাস্কেট বিভাগ।",
+                    "value": "সংখ্যা",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "ক্রম, CMS:SELECT-এর মতো; উল্লেখ না থাকলে ids-এর বা বাস্কেটের ক্রম।",
+                    "value": "ফিল্ডের নাম",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "সাজানোর দিক।",
+                    "value": "asc / desc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "name": {
+                    "description": "আর্কাইভের নাম, .zip ছাড়া।",
+                    "value": "পাঠ্য",
+                    "default": "download",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filenames": {
+                    "description": "আর্কাইভে ফাইলের নাম: {slug}, {id}, {filename} (মূল নাম), {extension}, {fieldname}; একই নামের ক্ষেত্রে -2, -3 ... যুক্ত হয়।",
+                    "value": "প্যাটার্ন",
+                    "default": "{slug}.{extension}",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "credits": {
+                    "description": "একটি CREDITS.txt যুক্ত করে: প্রতিটি ফাইলের জন্য তার নাম এবং এই ফিল্ডগুলোর বিষয়বস্তু (যেমন শিরোনাম, ক্যাপশন, ছবির কৃতিত্ব)।",
+                    "value": "ফিল্ডের নাম, কমা দিয়ে আলাদা",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxfiles": {
+                    "description": "ফাইলের সর্বোচ্চ সংখ্যা (শুধু সেটিংয়ের চেয়ে কম)।",
+                    "value": "সংখ্যা",
+                    "default": "(user.zip.max_files)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxsize": {
+                    "description": "MB-তে সর্বোচ্চ আকার (শুধু সেটিংয়ের চেয়ে কম)।",
+                    "value": "MB",
+                    "default": "(user.zip.max_mb)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "অগ্রিম তারিখের রেকর্ডও (CMS:SELECT-এর মতো)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "মেয়াদোত্তীর্ণ রেকর্ডও (CMS:SELECT-এর মতো)।",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "সেশন কুকি (CMS:USER_LOGIN cookiename)।",
+                    "value": "কুকির নাম",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "বার্তা: message[empty] (কোনো ফাইল নেই), message[limit] (খুব বড়), message[throttled] (অনেক বেশি আর্কাইভ)।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "description": "Farben, Autovervollständigung und Hover für (CMS:…)-Befehle in camindo-CMS-Templates (*.cms.php)",
+  "command.reload": "camindo: Befehlsdefinitionen neu laden",
+  "config.language": "Sprache der Befehlsbeschreibungen. Leer: die Anzeigesprache von VS Code (Englisch, wenn camindo diese Sprache nicht hat).",
+  "config.commandsFile": "JSON-Datei oder Verzeichnis mit den Befehlsdefinitionen (php Core/cron/camindo.php template commands --all --out=DIR), absolut oder relativ zum Arbeitsbereich. Leer: die mitgelieferten Dateien.",
+  "config.commandColor": "Farbe der (CMS:…)-Befehle, z. B. #a000a0. Leer: Lila, in dunklen Farbschemata heller.",
+  "config.phpColor": "Farbe der PHP-Ausdrücke in Befehlen ({$…}, $var), z. B. #ff8800. Leer: Orange."
+}

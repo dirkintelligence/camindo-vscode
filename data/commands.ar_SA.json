@@ -1,0 +1,3892 @@
+{
+    "version": "9.0.8",
+    "lang": "ar_SA",
+    "commands": {
+        "continue": {
+            "note": "يواصل معالجة القالب رغم وجود قالب النجاح.",
+            "do": "field",
+            "oneof": "",
+            "params": {}
+        },
+        "csp": {
+            "note": "يغيّر سياسة البرامج النصية (Content Security Policy) لهذه الصفحة: مصادر برامج نصية إضافية، أو أهداف نماذج، أو وضع مختلف. يجب أن يأتي قبل أول إخراج.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "script": {
+                    "description": "مصادر برامج نصية إضافية، مفصولة بمسافات أو فواصل (https://js.example.com, *.example.com). تُحذف الكلمات المفتاحية مثل 'unsafe-inline'.",
+                    "value": "المصادر",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "form": {
+                    "description": "أهداف نماذج إضافية (يفعّل form-action)، مثل مزوّد الدفع.",
+                    "value": "المصادر",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mode": {
+                    "description": "وضع هذه الصفحة: off = بلا سياسة برامج نصية، report = إبلاغ فقط، enforce = فرض. فارغ: إعداد المثيل.",
+                    "value": "off / report / enforce",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "date": {
+            "note": "يُخرج جزء التاريخ من قيمة تاريخ بعد تنسيقه.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "السجل الذي تتم القراءة منه. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "اسم حقل في السجل يُستخدم محتواه كمصدر.",
+                    "value": "الحقل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "قيمة بصيغة نصية تُستخدم كمصدر.",
+                    "value": "قيمة تاريخ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "نمط ICU، مثل \"dd.MM.y\". إذا لم يُحدَّد، تحدّد إعدادات اللغة المحلية للصفحة طريقة الكتابة.",
+                    "value": "مواصفات التنسيق",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: يُضاف اسم المنطقة الزمنية (مثل \"Europe/Berlin\").",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "إذا ورد النص الذي قبل علامة الاستفهام في القيمة المنسّقة، يُستبدل بالنص الذي بعدها (مثل \"Jan?January\").",
+                    "value": "نص?نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "النص الذي يُخرج إذا كان المصدر ('field' أو 'useval') فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "النص الذي يُخرج بدلًا من المصدر إذا لم يكن فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يوضع قبل القيمة المنسّقة إذا لم تكن فارغة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُضاف في النهاية إذا لم تكن القيمة المنسّقة فارغة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا تُخرج القيمة المنسّقة، بل تُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "datetime": {
+            "note": "يُخرج تاريخ ووقت قيمة تاريخ بعد تنسيقهما.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "السجل الذي تتم القراءة منه. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "اسم حقل في السجل يُستخدم محتواه كمصدر.",
+                    "value": "الحقل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "قيمة بصيغة نصية تُستخدم كمصدر.",
+                    "value": "قيمة تاريخ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "نمط ICU، مثل \"dd.MM.y HH:mm\". إذا لم يُحدَّد، تحدّد إعدادات اللغة المحلية للصفحة طريقة الكتابة.",
+                    "value": "مواصفات التنسيق",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "autotime": {
+                    "description": "true: إذا لم يوجد وقت (00:00)، فلا يُعرض.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: يُضاف اسم المنطقة الزمنية (مثل \"Europe/Berlin\").",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "إذا ورد النص الذي قبل علامة الاستفهام في القيمة المنسّقة، يُستبدل بالنص الذي بعدها (مثل \"Jan?January\").",
+                    "value": "نص?نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "النص الذي يُخرج إذا كان المصدر ('field' أو 'useval') فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "النص الذي يُخرج بدلًا من المصدر إذا لم يكن فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يوضع قبل القيمة المنسّقة إذا لم تكن فارغة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُضاف في النهاية إذا لم تكن القيمة المنسّقة فارغة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا تُخرج القيمة المنسّقة، بل تُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "email": {
+            "note": "يرسل بريدًا إلكترونيًا. ويتحقق عند الطلب مسبقًا من الحقول الإلزامية في النموذج.",
+            "do": "do",
+            "oneof": "subject,subjecttemplate,body,bodytemplate",
+            "params": {
+                "formguard": {
+                    "description": "true: حماية النموذج من الروبوتات - يجب أن يحتوي النموذج على حقول (CMS:USER_TOKEN formguard=true) (طابع زمني، حقل مصيدة فارغ)، ولا يجوز إرساله قبل انقضاء user.formguard_min_seconds (3). يحدّد رقمٌ هذا الحد الأدنى من الوقت لهذا النموذج (formguard=5)؛ و0 أو false يوقف الحماية. وإلا فالرسالة \"throttled\" كما في حالة التقييد.",
+                    "value": "true / false / ثوانٍ",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "throttle": {
+                    "description": "التقييد حسب المصدر (IP): true = الحد user.throttle.email_ip (5 في الساعة)، وإلا فدلو مستقل من user.throttle. عند التقييد: الرسالة \"throttled\"، ولا يُرسل بريد. مخصص لنماذج الاتصال التي يمكن لأي شخص إدخال عنوان فيها.",
+                    "value": "true / اسم الدلو",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "to": {
+                    "description": "عنوان البريد الإلكتروني للمستلم. عدة مستلمين على شكل to[]=… أو مفصولين بفواصل (20 كحد أقصى).",
+                    "value": "عنوان البريد الإلكتروني",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "toname": {
+                    "description": "اسم المستلم (فقط عند وجود مستلم واحد بالضبط).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "from": {
+                    "description": "عنوان البريد الإلكتروني للمرسل.",
+                    "value": "عنوان البريد الإلكتروني",
+                    "default": "email.noreply أو email.reply (.camindo.php)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fromname": {
+                    "description": "اسم المرسل.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "contenttype": {
+                    "description": "نوع MIME للبريد الإلكتروني.",
+                    "value": "text/plain أو text/html",
+                    "default": "text/plain",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "موضوع البريد الإلكتروني.",
+                    "value": "نص",
+                    "default": "(no subject)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subjecttemplate": {
+                    "description": "قالب للموضوع (تُزال الوسوم وفواصل الأسطر). له الأولوية على subject.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "body": {
+                    "description": "نص الرسالة (نص أو HTML).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "bodytemplate": {
+                    "description": "قالب لمتن البريد الإلكتروني. له الأولوية على body.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "paths_absolute": {
+                    "description": "true: تُحوَّل جميع المسارات النسبية للخادم في متن البريد إلى مسارات مطلقة (فقط مع contenttype=\"text/html\").",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sender_url": {
+                    "description": "(اختياريًا مع البروتوكول) + النطاق، لكي يمكن تحويل المسارات النسبية للخادم إلى مسارات مطلقة.",
+                    "value": "(http://)النطاق",
+                    "default": "بروتوكول المثيل ونطاقه الرئيسي",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: يُكتب البريد في ملف السجل var/log/{date}_mail-debug.log، لكنه لا يُرسل.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "requiredfields": {
+                    "description": "تحديد الحقول الإلزامية. أسماء الحقول (أسماء الفهارس) في مصفوفة الطلب data[…] (انظر المعامل data).",
+                    "value": "أسماء الحقول، مفصولة بفواصل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "اسم مصفوفة الطلب التي تحتوي على البيانات التي يتوقعها 'requiredfields' (الافتراضي data، أي $_POST['data']).",
+                    "value": "اسم متغير PHP",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "لا يُقيَّم 'requiredfields' إلا إذا احتوى 'submit' على قيمة. وإلا يُتجاهل الأمر CMS:EMAIL.",
+                    "value": "قيمة نصية",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "القالب الذي يُدرج بعد الإرسال الناجح؛ ثم تنتهي الصفحة (إلا مع CMS:CONTINUE).",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "رسالة خطأ. في الفهرس: حالة الاستخدام (required, to, from, content, attachment, send)؛ في القيمة: نص الرسالة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "attachment": {
+                    "description": "الملفات المراد إرفاقها. مسار نسبي إلى المجلد var، فقط من download/ وupload/ وmodules/.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "fed": {
+            "note": "ينشئ زرًا لتحرير سجل عند تفعيل التحرير في الواجهة الأمامية. يتطلب CMS:FED_SCRIPT في الصفحة نفسها.",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "label": {
+                    "description": "تسمية الزر.",
+                    "value": "نص",
+                    "default": "[»]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "السجل الذي يُفتح. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "info": {
+                    "description": "true: يفتح الزر عرض تفاصيل السجل بدلًا من نموذج الإدخال.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يُخرج قبل الزر (ولا يُخرج إذا لم يوجد زر).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُخرج بعد الزر (ولا يُخرج إذا لم يوجد زر).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُخرج الزر، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_code": {
+            "note": "يُخرج شفرة HTML عند تفعيل التحرير في الواجهة الأمامية.",
+            "do": "code",
+            "oneof": "",
+            "params": {
+                "code": {
+                    "description": "شفرة HTML التي تُخرج عند تفعيل التحرير في الواجهة الأمامية.",
+                    "value": "شفرة HTML",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "الإخراج البديل عند تعطيل التحرير في الواجهة الأمامية.",
+                    "value": "شفرة HTML",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا تُخرج الشفرة، بل تُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_script": {
+            "note": "يوفّر دالة JavaScript المسماة cFED() ومستمع النقر لأزرار CMS:FED (مع nonce الصفحة) - مرة واحدة لكل صفحة، عادةً في التذييل.",
+            "do": "set",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "لا تُخرج كتلة البرنامج النصي، بل تُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "header": {
+            "note": "يرسل ترويسة HTTP.",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "سطر النص الذي يُرسل إلى المتصفح كترويسة. بدون قيمة (\"Name:\") تُزال الترويسة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "false: لا تُستبدل ترويسة سابقة من النوع نفسه؛ بل تُضاف ترويسة جديدة.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "include": {
+            "note": "يُدرج قالبًا - مع التخزين المؤقت من ذاكرة الإخراج المؤقتة (IncludeCache).",
+            "do": "template",
+            "oneof": "",
+            "params": {
+                "caching": {
+                    "description": "يُخزَّن إخراج القالب مؤقتًا لهذه المدة ثم يُقدَّم دون معالجته من جديد. بدون تحديد أو فارغ أو 0: بلا تخزين مؤقت.",
+                    "value": "ثوانٍ، 30s، 5m، 1h، 1d أو infinite",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cacheparams": {
+                    "description": "كل ما يعتمد عليه الإخراج (السجل، الصفحة، العميل …): كل قيمة تنشئ ملف تخزين مؤقت خاصًا بها. يُراعى المثيل واللغة تلقائيًا.",
+                    "value": "null أو bool أو int أو string أو array (وأيضًا كمتغير: cacheparams=$params)",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُخرج الإخراج الكامل (بما في ذلك القالب المُدرج)، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "قالب التفاصيل الذي يُدرج.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_list": {
+            "note": "ينشئ تنقلًا بين الصفحات (ترقيم الصفحات)، مثل 1 … 5 | 6 | 7 | 8 | 9 … 15.",
+            "do": "separator",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "إزاحة الصفحة الحالية (عدد النتائج المتخطاة). بدون قيمة يُطبَّق معامل الطلب skip.",
+                    "value": "رقم >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maximum": {
+                    "description": "عدد روابط الصفحات المعروضة في الوقت نفسه (تتحرك مع الصفحة)، دون احتساب روابط الصفحة الأولى والأخيرة.",
+                    "value": "رقم >= 1",
+                    "default": "7",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "boundaries": {
+                    "description": "true: تُعرض روابط الصفحة الأولى والأخيرة دائمًا متى وقعت خارج النطاق المتحرك.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "النص بين رابطي صفحتين. لا يُدرج قبل علامة الحذف ('ellipsis') ولا بعدها.",
+                    "value": "الفاصل",
+                    "default": " ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "قالب رابط الصفحة. يُستبدل {page} برقم الصفحة، و{href} بعنوان URL للصفحة.",
+                    "value": "قالب HTML",
+                    "default": " <a href=\"{href}\">{page}</a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_active": {
+                    "description": "قالب الصفحة الحالية. يُستبدل {page} برقم الصفحة، و{href} بعنوان URL للصفحة.",
+                    "value": "قالب HTML",
+                    "default": " <strong>{page}</strong> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ellipsis": {
+                    "description": "عنصر نائب للصفحات المحذوفة - يظهر بين رابط الحد والنطاق المتحرك.",
+                    "value": "رمز",
+                    "default": " … ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "استبدال نصي بسيط في HTML النهائي. الفاصل هو علامة الاستفهام: \"search?replace\".",
+                    "value": "نص?نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص قبل التنقل، فقط إذا أُخرج تنقل.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص بعد التنقل، فقط إذا أُخرج تنقل.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "الإخراج إذا كانت النتيجة تتسع في صفحة واحدة، أو إذا لم يكن لـ CMS:SELECT حد limit وبالتالي لا حاجة إلى تنقل.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُخرج التنقل، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_next": {
+            "note": "ينشئ رابطًا إلى الصفحة التالية.",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "إزاحة الصفحة الحالية (عدد النتائج المتخطاة). بدون قيمة يُطبَّق معامل الطلب skip.",
+                    "value": "رقم >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "قالب الرابط ما دامت هناك صفحة تالية. يُستبدل {href} بعنوان URL الهدف.",
+                    "value": "قالب HTML",
+                    "default": " <a href=\"{href}\"><strong>❯❯</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "قالب الرابط غير القابل للتحديد إذا لم توجد صفحة تالية. يُستبدل {href} هنا أيضًا.",
+                    "value": "قالب HTML",
+                    "default": " <span>❯❯</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "استبدال نصي بسيط في HTML النهائي. الفاصل هو علامة الاستفهام: \"search?replace\".",
+                    "value": "نص?نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص قبل الرابط، فقط إذا أُخرج رابط.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص بعد الرابط، فقط إذا أُخرج رابط.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "الإخراج إذا لم يكن لـ CMS:SELECT حد limit (فلا توجد صفحات حينها). إذا اتسع كل شيء في صفحة واحدة، يظهر tpl_inactive.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُخرج الرابط، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_prev": {
+            "note": "ينشئ رابطًا إلى الصفحة السابقة.",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "إزاحة الصفحة الحالية (عدد النتائج المتخطاة). بدون قيمة يُطبَّق معامل الطلب skip.",
+                    "value": "رقم >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "قالب الرابط ما دامت هناك صفحة سابقة. يُستبدل {href} بعنوان URL الهدف.",
+                    "value": "قالب HTML",
+                    "default": " <a href=\"{href}\"><strong>❮❮</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "قالب الرابط غير القابل للتحديد إذا لم توجد صفحة سابقة. يُستبدل {href} هنا أيضًا.",
+                    "value": "قالب HTML",
+                    "default": " <span>❮❮</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "استبدال نصي بسيط في HTML النهائي. الفاصل هو علامة الاستفهام: \"search?replace\".",
+                    "value": "نص?نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص قبل الرابط، فقط إذا أُخرج رابط.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص بعد الرابط، فقط إذا أُخرج رابط.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "الإخراج إذا لم يكن لـ CMS:SELECT حد limit (فلا توجد صفحات حينها). إذا اتسع كل شيء في صفحة واحدة، يظهر tpl_inactive.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُخرج الرابط، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "media": {
+            "note": "ينشئ وسم صورة أو يُخرج محتوى ملف وسائط بصيغة نصية.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "السجل الذي تتم القراءة منه. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "اسم حقل رفع أو حقل صورة مصغّرة.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subfield": {
+                    "description": "قيمة منفردة بدلًا من وسم IMG: path (المسار من DOCUMENT_ROOT لـ src/href، مع اسم ملف مقروء؛ ومع auth/download/user_auth عبر file.php)، file (المسار المطلق في نظام الملفات)، filename (اسم الملف الأصلي)، mime_type، extension (بدون نقطة)، size (بالبايت؛ مقروء مع autoformat)، width / height (بالبكسل، 0 إذا كان غير معروف)، version (عدّاد إصدار الملف).",
+                    "value": "path / file / filename / mime_type / extension / size / width / height / version",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "auth": {
+                    "description": "true: يشير الرابط إلى /file.php بدلًا من مجلد الوسائط. في الحقول ذات الخيار \"فقط لمستخدمي الواجهة الأمامية المسجلين دخولهم\" (user_auth) يُطبَّق ذلك تلقائيًا - ويتحقق file.php هناك من جلسة الواجهة الأمامية.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "يُعرض الملف للتنزيل عبر /file.php باسم الملف المحدد (يُضاف امتداد الملف تلقائيًا).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "عرض وسم IMG، مع وحدة CSS أو بدونها (الافتراضي: px).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "ارتفاع وسم IMG، مع وحدة CSS أو بدونها (الافتراضي: px).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "attr": {
+                    "description": "سمات إضافية لوسم IMG (المفتاح: اسم السمة، القيمة: قيمة السمة).",
+                    "value": "مصفوفة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "autoformat": {
+                    "description": "true: يُنسَّق المحتوى المحدد عبر 'subfield' حسب نوعه (مثل أحجام الملفات بـ bytes/KB/MB ديناميكيًا حسب القيمة).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "يستبدل القيمة المنسّقة إذا لم تكن فارغة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "نص بديل إذا كانت القيمة المنسّقة فارغة (أو \"0\").",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يوضع قبل القيمة المنسّقة إذا لم تكن فارغة (أو \"0\").",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُضاف في النهاية إذا لم تكن القيمة المنسّقة فارغة (أو \"0\").",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "مصفوفة ملف (مثلًا من CMS:SAVEDATA) مع field_id وrecord_id - فقط عبر استدعاء PHP مباشر، بدون field (انظر المثال).",
+                    "value": "مصفوفة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا تُخرج القيمة المنسّقة، بل تُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "message": {
+            "note": "ينتج إخراجًا نصيًا من رسائل الخطأ الحالية.",
+            "do": "useval",
+            "oneof": "",
+            "params": {
+                "useval": {
+                    "description": "قيمة بصيغة نصية تُستخدم كمصدر.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يُخرج قبل الرسائل، إن وُجدت.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُخرج بعد الرسائل، إن وُجدت.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "النص عند عدم وجود أي رسالة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "النص الذي يُخرج بدلًا من الرسائل.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا تُعرض الرسالة، بل تُكتب في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "nonce": {
+            "note": "يُخرج nonce الصفحة: <script(CMS:NONCE)>. يحتاج إليه كل برنامج نصي في القالب بمجرد فرض سياسة البرامج النصية للموقع.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "format": {
+                    "description": "attribute: nonce=\"…\" (مع مسافة في البداية، لوسم <script>). value: القيمة فقط.",
+                    "value": "\"attribute\" / \"value\"",
+                    "default": "\"attribute\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُطبع الإخراج، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "number": {
+            "note": "يُخرج قيمة رقمية بعد تنسيقها.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "السجل الذي تتم القراءة منه. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "اسم حقل في السجل يُستخدم محتواه كمصدر.",
+                    "value": "الحقل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "قيمة بصيغة نصية تُستخدم كمصدر.",
+                    "value": "رقم",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "النص الذي يُخرج إذا كان المصدر فارغًا أو كانت القيمة الرقمية (بعد mul/add) تساوي 0.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "الرقم الذي يصبح المصدر إذا لم يكن المصدر الأصلي فارغًا.",
+                    "value": "رقم",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mul": {
+                    "description": "الرقم الذي يُضرب فيه المصدر.",
+                    "value": "رقم",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "add": {
+                    "description": "الرقم الذي يُضاف إلى المصدر.",
+                    "value": "رقم",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "تنسيق مماثل لأمر PHP المسمى sprintf().",
+                    "value": "التنسيق",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimals": {
+                    "description": "عدد ثابت من المنازل العشرية (مع التقريب)؛ ويبقى decimal وthousands_separator مطبَّقين. بدون تحديد: بقدر ما يحتويه الرقم.",
+                    "value": "رقم 0-10",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimal": {
+                    "description": "الحرف الذي يحل محل الفاصلة العشرية.",
+                    "value": "حرف",
+                    "default": ".",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "thousands_separator": {
+                    "description": "الحرف الذي يُدرج كفاصل للآلاف (كل ثلاثة أرقام من اليمين إلى اليسار).",
+                    "value": "حرف",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nullcent": {
+                    "description": "النص الذي يحل محل القيمة العشرية المفقودة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "إذا ورد النص الذي قبل علامة الاستفهام في القيمة المنسّقة، يُستبدل بالنص الذي بعدها (مثلًا \".00?\" يزيل المنازل العشرية الفارغة).",
+                    "value": "نص?نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يوضع قبل القيمة المنسّقة إذا لم تكن \"0\" أو فارغة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُضاف إلى القيمة المنسّقة إذا لم تكن \"0\" أو فارغة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا تُخرج القيمة المنسّقة، بل تُخزَّن بدلًا من ذلك في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sizefactor": {
+                    "description": "1000 أو 1024. إذا كان > 0، يُحسب حجم ملف مقروء (مثل 15.2 GB).",
+                    "value": "عدد البايتات في الكيلوبايت",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_cell": {
+            "note": "Zelle der aktuellen Zeile. Schrift ist die zu diesem Zeitpunkt eingestellte (CMS:PDF_FONT).",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Zelltext; bricht innerhalb der Spalte um, soweit fit= ihn nicht einpasst.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "col": {
+                    "description": "Spaltenindex ab 0; ohne Angabe die nächste Spalte.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Horizontale Ausrichtung.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "valign": {
+                    "description": "Vertikale Ausrichtung in der Zeile.",
+                    "value": "T / C / B",
+                    "default": "T",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fit": {
+                    "description": "Text auf eine Zeile in der Spaltenbreite einpassen: fontsize verkleinert die Schrift (bis min_size), spacing verringert den Zeichenabstand, scale beides, force staucht horizontal. Was auch so nicht passt, bricht um.",
+                    "value": "none / scale / fontsize / spacing / force",
+                    "default": "none",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "min_size": {
+                    "description": "Kleinste Schriftgröße beim Einpassen.",
+                    "value": "Punkt",
+                    "default": "6",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenseiten: L links, T oben, R rechts, B unten; 1 alle, 0 keine.",
+                    "value": "LTRB / 1 / 0",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke; sonst die der Tabelle.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_color": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand dieser Zelle; sonst der der Tabelle.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe der Zelle. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_color": {
+            "note": "Definiert ein Farbfeld mit RGB- und/oder CMYK-Wert. Der Farbraum des Dokuments (PDF_INIT) wählt den Wert; ein fehlender wird umgerechnet.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Name des Farbfelds (Buchstaben, Ziffern, _ und -).",
+                    "value": "Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "rgb": {
+                    "description": "RGB-Wert als Hex-Farbe, z. B. #0066FF.",
+                    "value": "#rrggbb",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cmyk": {
+                    "description": "CMYK-Wert in Prozent, z. B. 0,100,100,0.",
+                    "value": "c,m,y,k",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_fill_color": {
+            "note": "Füllfarbe für die folgenden CMS:PDF_RECT. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Füllfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_font": {
+            "note": "Stellt die Schrift für die folgenden Texte und Zellen ein. Gilt über Seiten hinweg.",
+            "do": "font",
+            "oneof": "",
+            "params": {
+                "font": {
+                    "description": "Name einer Schrift aus var/modules/pdf/fonts/ ({name}.json; mitgeliefert: helvetica, times, courier, symbol, zapfdingbats). Eine Datei {name}.ttf/.otf wird beim ersten Aufruf konvertiert.",
+                    "value": "Schriftname",
+                    "default": "helvetica",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "Schriftschnitt: B fett, I kursiv, U unterstrichen, D durchgestrichen, O überstrichen. Leer = regulär.",
+                    "value": "B / I / U / D / O, kombinierbar",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße in Punkt.",
+                    "value": "Punkt",
+                    "default": "12",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_html": {
+            "note": "Schreibt einen HTML-Block (Umbruch und Seitenumbruch durch tc-lib-pdf). Der Cursor bleibt stehen - die Höhe des Blocks ist nicht bekannt.",
+            "do": "html",
+            "oneof": "",
+            "params": {
+                "html": {
+                    "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
+                    "value": "HTML",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_image": {
+            "note": "Platziert ein Bild (JPEG, PNG, GIF, ...) aus dem Medienverzeichnis. Der Cursor rückt unter das Bild.",
+            "do": "file",
+            "oneof": "",
+            "params": {
+                "file": {
+                    "description": "Bilddatei: absoluter Pfad aus (CMS:MEDIA subfield=file), Webpfad aus subfield=path oder Pfad relativ zu public/media. Nur Dateien unterhalb des Medienverzeichnisses.",
+                    "value": "Pfad",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite; 0 = aus der Höhe (bzw. aus den Pixeln bei 72 dpi, wenn beide fehlen).",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe; 0 = proportional zur Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "link": {
+                    "description": "Verweis, der beim Klick auf das Bild geöffnet wird.",
+                    "value": "URL",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_init": {
+            "note": "Vorgaben für das Dokument: Farbraum, ICC-Profil, Seitenformat und Ränder. Vor der ersten CMS:PDF_PAGE.",
+            "do": "colorspace",
+            "oneof": "",
+            "params": {
+                "colorspace": {
+                    "description": "Farbraum, in dem Farben ins PDF geschrieben werden.",
+                    "value": "RGB / CMYK",
+                    "default": "RGB",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "icc_profile": {
+                    "description": "ICC-Profil aus var/modules/pdf/profiles/, wird als Output Intent eingebettet.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "output_condition": {
+                    "description": "Bezeichner der Druckbedingung für den Output Intent (z. B. FOGRA39). Ohne Angabe der Dateiname des Profils.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat leerer Seiten (Namen wie in tc-lib-pdf).",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "A4",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Hoch- (P) oder Querformat (L) leerer Seiten.",
+                    "value": "P / L",
+                    "default": "P",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Seitenränder in mm (ein Wert: alle; zwei: oben/unten, rechts/links). Linker Rand = x-Vorgabe, rechter Rand = Breitenvorgabe, unterer Rand = Umbruchgrenze der Tabellen.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "20,20,20,20",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line": {
+            "note": "Zeichnet eine Linie.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x1": {
+                    "description": "Startpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y1": {
+                    "description": "Startpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x2": {
+                    "description": "Endpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y2": {
+                    "description": "Endpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Liniendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Linienfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line_color": {
+            "note": "Linienfarbe für die folgenden CMS:PDF_LINE, Rahmen von CMS:PDF_RECT und Zellenrahmen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Linienfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_meta": {
+            "note": "Dokumenteigenschaften (werden bei CMS:PDF_PRINT geschrieben).",
+            "do": "title",
+            "oneof": "",
+            "params": {
+                "title": {
+                    "description": "Titel.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "author": {
+                    "description": "Autor.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "Thema.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keywords": {
+                    "description": "Stichwörter.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "creator": {
+                    "description": "Erzeugende Anwendung.",
+                    "value": "Text",
+                    "default": "camindo CMS",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_page": {
+            "note": "Legt eine neue Seite an - leer oder auf einer Seite einer Layout-Vorlage. Der erste Aufruf beginnt das Dokument.",
+            "do": "layout",
+            "oneof": "",
+            "params": {
+                "layout": {
+                    "description": "PDF-Vorlage aus var/modules/pdf/layouts/, deren Seite als Hintergrund übernommen wird. Ohne Angabe eine leere Seite.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "page": {
+                    "description": "Seite der Vorlage (ab 1), die übernommen wird.",
+                    "value": "Zahl",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Ausrichtung einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "P / L",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Ränder nur dieser Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_print": {
+            "note": "Sendet das Dokument an den Browser und beendet den Request. Vor CMS:PDF_PAGE darf das Template nichts ausgegeben haben.",
+            "do": "filename",
+            "oneof": "",
+            "params": {
+                "filename": {
+                    "description": "Dateiname, den der Browser anzeigt bzw. beim Speichern vorschlägt.",
+                    "value": "Dateiname",
+                    "default": "document.pdf",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "Leer oder false: im Browser anzeigen. true: als Download unter filename. Ein Dateiname: als Download unter diesem Namen.",
+                    "value": "false / true / Dateiname",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_rect": {
+            "note": "Zeichnet ein Rechteck, umrandet und/oder gefüllt.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x": {
+                    "description": "Linke Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "D Rahmen, F Füllung, DF beides.",
+                    "value": "D / F / DF",
+                    "default": "D",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Füllfarbe; sonst CMS:PDF_FILL_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "line_width": {
+                    "description": "Rahmendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_row": {
+            "note": "Beginnt eine Tabellenzeile.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "is_header": {
+                    "description": "Kopfzeile: wird nach einem Seitenumbruch auf der Folgeseite wiederholt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keep_together": {
+                    "description": "Zeile nicht über Seiten teilen. Derzeit werden Zeilen grundsätzlich nicht geteilt; der Parameter ist für spätere Versionen reserviert.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table": {
+            "note": "Beginnt eine Tabelle; Zeilen und Zellen folgen mit CMS:PDF_ROW / CMS:PDF_CELL, gezeichnet wird bei CMS:PDF_TABLE_END. Zeilen werden nie geteilt: was nicht mehr auf die Seite passt, beginnt auf einer Folgeseite, Kopfzeilen werden dort wiederholt.",
+            "do": "cols",
+            "oneof": "",
+            "params": {
+                "cols": {
+                    "description": "Spaltenbreiten in mm, kommasepariert.",
+                    "value": "b1,b2,...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Linke Kante; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand aller Zellen in mm (ein Wert: alle; zwei: oben/unten, rechts/links).",
+                    "value": "oben,rechts,unten,links",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke der Zellen.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_layout": {
+                    "description": "Layout-Vorlage der Folgeseiten bei Seitenumbruch; sonst wie die letzte CMS:PDF_PAGE (leer = leere Seite).",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_page": {
+                    "description": "Seite der Vorlage für Folgeseiten.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table_end": {
+            "note": "Zeichnet die Tabelle. Der Cursor rückt unter die Tabelle.",
+            "do": "",
+            "oneof": "",
+            "params": {}
+        },
+        "pdf_text": {
+            "note": "Schreibt einen Textblock mit Zeilenumbruch innerhalb der Breite. Der Cursor rückt unter den Block.",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Der Text (UTF-8; Zeilenumbrüche werden umgebrochen). Leer = keine Ausgabe.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand (Oberkante des Blocks); ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Ausrichtung: links, zentriert, rechts, Blocksatz.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße nur für diesen Block; sonst die von CMS:PDF_FONT.",
+                    "value": "Punkt",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe nur für diesen Block; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe des Blocks. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_text_color": {
+            "note": "Textfarbe für die folgenden CMS:PDF_TEXT und Zellen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Textfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "raw": {
+            "note": "يُخرج المحتوى دون تنسيق.",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "السجل الذي تتم القراءة منه. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "اسم الحقل الذي يُخرج محتواه.",
+                    "value": "الحقل",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "النص الذي يُخرج إذا كان الحقل فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "النص الذي يُخرج بدلًا من محتوى الحقل إذا لم يكن فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يوضع قبل محتوى الحقل إذا لم يكن فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُضاف في النهاية إذا لم يكن محتوى الحقل فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُخرج المحتوى، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "relation": {
+            "note": "يُخرج الحقل الرئيسي (العنوان) لجميع السجلات المرتبطة بالسجل الحالي.",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "السجل الذي تُخرج ارتباطاته. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "اسم حقل الربط (نوع الحقل relation أو pointer أو link) الذي تُخرج أهدافه. أي نوع حقل آخر يؤدي إلى رسالة خطأ.",
+                    "value": "الحقل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "الحد الأقصى لعدد السجلات المضمّنة في مجموعة النتائج.",
+                    "value": "رقم >0",
+                    "default": "1000",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: تُخرج أيضًا الأهداف التي لم تُنشر بعد (لم يُبلغ online_at بعد) (كما في CMS:SELECT).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: تُخرج أيضًا الأهداف المنتهية (بُلغ offline_at) (كما في CMS:SELECT).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "بدون تحديد: الأهداف المعتمدة فقط (status_id 0). معرّف حالة > 0: الأهداف ذات هذه الحالة فقط، و\"any\": أهداف أي حالة (كما في CMS:SELECT).",
+                    "value": "معرّف الحالة أو any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "رمز نسخة اللغة المطلوب محتواها (يؤثر في الحقول متعددة اللغات). غير مُنفَّذ بعد - حاليًا تُطبَّق دائمًا لغة الاستدعاء.",
+                    "value": "رمز اللغة",
+                    "default": "(اللغة الحالية)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "النص الذي يوضع بين النتائج.",
+                    "value": "الفاصل",
+                    "default": "|",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يوضع قبل المصدر إذا لم يكن فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُضاف إلى المصدر إذا لم يكن فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "النص الذي يصبح المصدر إذا كان المصدر الأصلي فارغًا (تُتجاهل المعاملات الأخرى باستثناء 'set').",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "يستبدل الإخراج إذا لم يكن فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "يُعاد توجيه إخراج المصدر ويُخزَّن في $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "result_end": {
+            "note": "يحدد نهاية حلقة لمعالجة نتائج CMS:SELECT.",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "result_start": {
+            "note": "يحدد بداية حلقة لمعالجة نتائج CMS:SELECT.",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "savedata": {
+            "note": "يخزّن بيانات السجل الحالي في المتغير المحدد.",
+            "do": "phpvar",
+            "oneof": "",
+            "params": {
+                "phpvar": {
+                    "description": "المتغير الذي ستُخزَّن فيه بيانات السجل الحالي.",
+                    "value": "فهرس داخل $GLOBALS",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "السجل المراد تحميل بياناته. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL. بدون تحديد: السجل المحمَّل حاليًا.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "يحدد اللغة التي تُحمَّل بها محتويات الحقول متعددة اللغات. غير مُنفَّذ بعد - حاليًا تُطبَّق دائمًا لغة الاستدعاء.",
+                    "value": "رمز نسخة اللغة",
+                    "default": "$lang",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select": {
+            "note": "يبحث في قاعدة البيانات وفق معايير (التصفية) المحددة ويعيد السجلات التي عُثر عليها.",
+            "do": "resulttemplate",
+            "oneof": "filter,relation",
+            "params": {
+                "set": {
+                    "description": "لا يُخرج الإخراج الكامل (بما في ذلك القالب المُدرج)، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "قالب القائمة الذي يُدرج لمعالجة النتائج.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresulttemplate": {
+                    "description": "قالب التفاصيل الذي يُدرج إذا لم يُرجع الاستعلام أي نتائج.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresult": {
+                    "description": "النص الذي يُخرج مباشرة إذا لم يُرجع الاستعلام أي نتائج.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "في المفتاح: اسم الحقل المراد البحث فيه (relation_any لأي حقل ربط؛ area لاسم منطقة المحتوى، والرقم هناك يُعدّ area_id). في القيمة: القيمة المراد البحث عنها.",
+                    "value": "قيمة أو EMPTY",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_mode": {
+                    "description": "طريقة الجمع بين عدة قيم للحقل نفسه (filter_mode[field]=AND).",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "filter_op": {
+                    "description": "عامل المقارنة للحقل المحدد (filter_op[field]=\">\"). بديلًا عن ذلك يقع العامل بين المفتاح والقيمة (filter[price] > 100) أو مباشرة قبل القيمة (filter[price]=\">100\").",
+                    "value": "=, ==, !=, !!, >, <, >>, <<, >=, <=",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "skip": {
+                    "description": "عدد السجلات المتخطاة في مجموعة النتائج. يعمل فقط مع limit.",
+                    "value": "رقم >= 0",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "الحد الأقصى لعدد السجلات المضمّنة في مجموعة النتائج - وهو في الوقت نفسه حجم الصفحة لـ CMS:JUMP_LIST وCMS:JUMP_PREV وCMS:JUMP_NEXT. بدون قيمة أو 0: غير محدود، بلا تنقل بين الصفحات.",
+                    "value": "رقم >0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "الحقل الذي يُفرز حسبه (انظر order)؛ عدة حقول مفصولة بفواصل أو على شكل sort[]=…؛ area يفرز حسب اسم منطقة المحتوى، وpointerfield.field حسب حقل في السجل المرتبط.",
+                    "value": "اسم (أسماء) الحقل، مفصولة بفواصل",
+                    "default": "changed_at",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "اتجاه الفرز (انظر sort). بدون sort يُطبَّق changed_at desc.",
+                    "value": "desc / asc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "رمز نسخة اللغة المطلوب محتواها (يؤثر في الحقول متعددة اللغات). غير مُنفَّذ بعد - حاليًا تُطبَّق دائمًا لغة الاستدعاء.",
+                    "value": "رمز اللغة",
+                    "default": "(اللغة الحالية)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "أسماء حقول العلاقة/المؤشر التي خُزّنت فيها السجلات المطلوبة (مع src_id)؛ ومع dest_id الحقول التي تشير عبرها السجلات المطلوبة إلى dest_id. ANY: أي حقل مؤشر.",
+                    "value": "اسم (أسماء) الحقل مفصولة بفواصل أو 'ANY'",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "السجل المصدر الذي تُقيَّم ارتباطاته (بدون قيمة: السجل الحالي).",
+                    "value": "معرّف (معرّفات) السجل",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "dest_id": {
+                    "description": "الاتجاه المعاكس لـ relation: السجلات التي تشير إلى هذا السجل عبر relation (relation=ANY: عبر أي حقل مؤشر). بدون src_id لا يُستخدم حينها أي سجل حالي كمصدر.",
+                    "value": "معرّف السجل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nextof": {
+                    "description": "فقط مع relation: جيران السجل المحدد في قائمة الربط - الإدخالات التي بعده (order=asc) أو قبله (order=desc)، بترتيب القائمة؛ ومع limit=1 السجل التالي أو السابق.",
+                    "value": "معرّف السجل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "count": {
+                    "description": "true: يُحدَّد عدد السجلات في مجموعة النتائج بغض النظر عن \"limit\" و\"skip\" (في resulttemplate ضمن $this->db->num_rows_unlimited؛ وهو أساس أوامر JUMP).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hits": {
+                    "description": "false: العدّ فقط (يتضمن count=true)؛ لا تُحمَّل أي سجلات ولا يُدرج أي resulttemplate. يكون المجموع متاحًا حينها في القالب المستدعي ضمن $this->db->num_rows_unlimited؛ ويُطبَّق noresult/noresulttemplate إذا كان 0.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: تُضمَّن في الاستعلام أيضًا السجلات المنتهية (بُلغ offline_at).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: تُضمَّن في الاستعلام أيضًا السجلات ذات التاريخ المستقبلي (لم يُبلغ online_at بعد).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: يُخرج استعلام قاعدة البيانات المُنشأ لأغراض تحليل الدعم.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sql": {
+                    "description": "إضافة SQL خام في جملة WHERE (تنبيه: للدعم فقط!).",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "بدون قيمة: السجلات المعتمدة فقط (status_id 0). معرّف حالة > 0 يجد السجلات ذات هذه الحالة فقط؛ و\"any\" يجد سجلات كل الحالات.",
+                    "value": "معرّف الحالة أو any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select_langversion": {
+            "note": "يعيد اللغات المتاحة على شكل سجلات.",
+            "do": "resulttemplate",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "لا يُخرج الإخراج الكامل (بما في ذلك القالب المُدرج)، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "قالب القائمة الذي يُدرج لمعالجة النتائج.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "snippet": {
+            "note": "يُخرج مقتطفًا (وحدة نصية) بلغة الاستدعاء.",
+            "do": "key",
+            "oneof": "",
+            "params": {
+                "key": {
+                    "description": "مفتاح المقتطف، مثل custom.read_more (مجموعة مقتطفات المثيل) أو مقتطف أساسي بدون بادئة.",
+                    "value": "مفتاح المقتطف",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "param": {
+                    "description": "قيم العناصر النائبة: param[name]=value يستبدل {name} في المقتطف ويملأ معاملات ICU (plural, select).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: تُحوَّل الأحرف الخاصة إلى مكافئها في HTML (للسمات).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "النص الذي يُخرج إذا لم يوجد المقتطف (بدون ifempty يظهر المفتاح).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يوضع قبل المقتطف إذا لم يكن فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُضاف في النهاية إذا لم يكن المقتطف فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُخرج النص، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "text": {
+            "note": "يُخرج نصًا مع تطبيق التنسيق.",
+            "do": "field",
+            "oneof": "field,useval,id",
+            "params": {
+                "id": {
+                    "description": "السجل الذي تتم القراءة منه. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL. بدون 'field' يُقرأ الحقل \"text\".",
+                    "value": "معرّف السجل أو slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "اسم حقل في السجل يُستخدم محتواه كمصدر.",
+                    "value": "الحقل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "قيمة بصيغة نصية تُستخدم كمصدر.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "النص الذي يصبح المصدر إذا كان المصدر الأصلي فارغًا (وتُتجاهل حينها المعاملات الأخرى باستثناء 'set').",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "النص الذي يصبح المصدر إذا لم يكن المصدر الأصلي فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "entitydecode": {
+                    "description": "true: تُعاد الكيانات بالصيغة &...; إلى أحرف Unicode.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: تُزال المسافات في بداية النص ونهايته.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "striptags": {
+                    "description": "true: تُزال وسوم HTML والبرامج النصية.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "if": {
+                    "description": "إذا طابق المصدر النص الذي قبل علامة الاستفهام، يصبح النص الذي بعدها هو المصدر الجديد.",
+                    "value": "نص?نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "else": {
+                    "description": "إذا لم ينطبق أي من شروط IF السابقة، تصبح هذه القيمة هي المصدر.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "إذا ورد النص الذي قبل علامة الاستفهام في المصدر، يُستبدل بالنص الذي بعدها.",
+                    "value": "نص?نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "يقصّر النص إلى عدد الأحرف المحدد ويضيف \"…\"؛ ومع إلحاق s (مثل 200s) يُقصَّر النص عند نهاية آخر كلمة.",
+                    "value": "رقم >= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lbrconvert": {
+                    "description": "true: تُحوَّل فواصل الأسطر إلى فواصل أسطر HTML (وسوم <br>).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: تُحوَّل الأحرف الخاصة إلى مكافئها في HTML.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlconvert": {
+                    "description": "true: تُحوَّل عناوين الإنترنت تلقائيًا إلى روابط قابلة للنقر.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailconvert": {
+                    "description": "true: تُربط عناوين البريد الإلكتروني. encrypt: تُشفَّر الروابط تشفيرًا خفيفًا بواسطة JavaScript.",
+                    "value": "true / false / encrypt",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emaillimit": {
+                    "description": "يقصّر عناوين البريد الإلكتروني المرتبطة تلقائيًا إلى x من الأحرف المرئية.",
+                    "value": ">= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailtext": {
+                    "description": "النص المرتبط الذي يُعرض بدلًا من عنوان البريد الإلكتروني (فقط إذا كان \"emailconvert\" مفعّلًا).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "target": {
+                    "description": "يحدد هدف الرابط للروابط المُنشأة تلقائيًا (urlconvert, emailconvert).",
+                    "value": "نافذة / إطار",
+                    "default": "_self",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "markdown": {
+                    "description": "true: النص بصيغة Markdown ويُحوَّل إلى HTML (يُهرَّب HTML الموجود في النص)؛ ولا تُطبَّق التحويلات الأخرى.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlencode": {
+                    "description": "true: يُرمَّز النص وفق RFC 1738.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urllimit": {
+                    "description": "الحد الأقصى لطول النص المرئي للروابط المُنشأة تلقائيًا (مناسب للروابط الخارجية فقط!).",
+                    "value": "عدد الأحرف",
+                    "default": "80",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ampconvert": {
+                    "description": "true: يُحوَّل الرمز & المنفرد تلقائيًا إلى كيان HTML &amp;.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يوضع قبل المصدر إذا لم يكن المصدر فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُضاف إلى المصدر إذا لم يكن المصدر فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "iso": {
+                    "description": "true: يُحوَّل الإخراج إلى مجموعة الأحرف ISO-8859-1.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "charset": {
+                    "description": "مجموعة الأحرف التي يُحوَّل إليها الإخراج.",
+                    "value": "نص",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا تُخرج القيمة المنسّقة، بل تُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "time": {
+            "note": "يُخرج وقت قيمة تاريخ أو وقت بعد تنسيقه.",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "السجل الذي تتم القراءة منه. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "اسم حقل في السجل يُستخدم محتواه كمصدر.",
+                    "value": "الحقل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "قيمة بصيغة نصية تُستخدم كمصدر.",
+                    "value": "قيمة وقت",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "نمط ICU، مثل \"HH:mm\". إذا لم يُحدَّد، تحدّد إعدادات اللغة المحلية للصفحة طريقة الكتابة؛ وتُعرض الدقائق الكاملة بدون ثوانٍ.",
+                    "value": "مواصفات التنسيق",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: يُضاف اسم المنطقة الزمنية (مثل \"Europe/Berlin\").",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "إذا ورد النص الذي قبل علامة الاستفهام في القيمة المنسّقة، يُستبدل بالنص الذي بعدها (مثل \"Jan?January\").",
+                    "value": "نص?نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "النص الذي يُخرج إذا كان المصدر ('field' أو 'useval') فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "النص الذي يُخرج بدلًا من المصدر إذا لم يكن فارغًا.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "النص الذي يوضع قبل القيمة المنسّقة إذا لم تكن فارغة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "النص الذي يُضاف في النهاية إذا لم تكن القيمة المنسّقة فارغة.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا تُخرج القيمة المنسّقة، بل تُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "url": {
+            "note": "ينشئ عنوان URL لسجل.",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "area": {
+                    "description": "رابط إلى نظرة عامة على المنطقة: العنوان المكوَّن من بادئة slug الخاصة بها (/en/models)، والذي يعرضه قالب النظرة العامة الخاص بها.",
+                    "value": "اسم المنطقة أو معرّفها",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "السجل المراد الربط إليه. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
+                    "value": "معرّف السجل أو slug",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "القالب الذي سيُعرض به السجل (الجزء الثاني من عنوان URL بعد الفاصلة): name أو area.name. بدون تحديد: القالب الذي تُسنده المنطقة.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "نسخة اللغة المراد الربط إليها (افتراضيًا لغة الاستدعاء الحالي). إذا كان المثيل يشغّل أكثر من لغة، يظهر الرمز دائمًا في عنوان URL؛ ومع لغة واحدة فقط لا يظهر أبدًا. يُتجاهل الرمز الذي لا يشغّله الموقع.",
+                    "value": "رمز اللغة",
+                    "default": "(اللغة الحالية)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "protocol": {
+                    "description": "http أو https، فقط مع absolute أو host. بدون تحديد: بروتوكول المثيل، وإلا فبروتوكول الاستدعاء.",
+                    "value": "بروتوكول النقل",
+                    "default": "(بروتوكول المثيل)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "host": {
+                    "description": "مثل example.com، لتغيير النطاق الذي يُستدعى الموقع من خلاله.",
+                    "value": "اسم المضيف",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "absolute": {
+                    "description": "true: يُنشأ المسار متضمنًا البروتوكول والنطاق. false: يكون المسار نسبيًا للخادم ويبدأ بشرطة مائلة.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُخرج عنوان URL، بل يُخزَّن في $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_2fa": {
+            "note": "يعرض العامل الثاني لمستخدم الواجهة الأمامية المسجّل دخوله ويُعدّه (تطبيق مصادقة أو رمز عبر البريد الإلكتروني) ويوقفه.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: يجب أن يحتوي الطلب على رمز صالح من CMS:USER_TOKEN (حماية من CSRF). false يوقف التحقق لهذا الأمر (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "status: قراءة فقط. totp_setup: ينشئ مفتاحًا جديدًا للتطبيق ($set['totp_setup']). totp_enable: يتحقق من data[token] وdata[code] ويحفظهما ($set['recovery_codes']). code_enable: يختار الرمز عبر البريد الإلكتروني (يُؤكَّد بكلمة المرور). disable: يوقف (رمز التطبيق أو كلمة المرور). recovery_renew: رموز استرداد جديدة (رمز التطبيق).",
+                    "value": "status / totp_setup / totp_enable / code_enable / disable / recovery_renew",
+                    "default": "status",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "لا تُنفَّذ وظائف الكتابة إلا إذا احتوى هذا الحقل على نص.",
+                    "value": "قيمة نصية",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "اسم مصفوفة PHP التي تحتوي على المدخلات.",
+                    "value": "اسم متغير PHP",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "اسم حقل الإدخال الخاص بالرمز في data[…].",
+                    "value": "اسم الحقل",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "اسم حقل الإدخال الخاص بكلمة المرور في data[…] (code_enable، وdisable مع الرمز).",
+                    "value": "اسم الحقل",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "رسائل الخطأ. في الفهرس: حالة الاستخدام؛ في القيمة: نص الرسالة (انظر الجدول).",
+                    "value": "الرسالة الافتراضية",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "اسم ملف تعريف ارتباط الجلسة [a-z0-9].",
+                    "value": "اسم ملف تعريف الارتباط",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_auth": {
+            "note": "يتحقق من صلاحية معرّف جلسة.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "sessionid": {
+                    "description": "يستأنف جلسة مستخدم الواجهة الأمامية بمعرّف الجلسة المحدد بدلًا من استخدام ملف تعريف ارتباط.",
+                    "value": "معرّف الجلسة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "معايير التصفية لسجل الملف الشخصي التي يجب أن يستوفيها مستخدم الواجهة الأمامية المسجّل دخوله.",
+                    "value": "انظر المعامل \"filter[]\" في CMS:SELECT",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "mode": {
+                    "description": "طريقة الجمع بين القيم المتعلقة بالحقل نفسه.",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "اسم ملف تعريف ارتباط الجلسة [a-z0-9].",
+                    "value": "اسم ملف تعريف الارتباط",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_basket": {
+            "note": "يحرّر سلة تسوق.",
+            "do": "function",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: يجب أن يحتوي الطلب على رمز صالح من CMS:USER_TOKEN (حماية من CSRF). false يوقف التحقق لهذا الأمر (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "الوظيفة المراد تنفيذها.",
+                    "value": "\"load\" / \"add\" / \"update\" / \"update_addon\"",
+                    "default": "\"load\"",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "function=add + overwrite=true: يُحدَّث عدد العناصر المحفوظة مسبقًا عند الإضافة.",
+                    "value": "false / true",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "فئة سلة التسوق.",
+                    "value": "معرّف الفئة",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "تدخل السلة فقط سجلات هذه الحاويات. بدون تحديد: السجلات المنشورة من حاويات من النوع “record” أو “ugc” (وليس الملفات الشخصية أبدًا).",
+                    "value": "معرّفات الحاويات أو أسماؤها، مفصولة بفواصل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "variable": {
+                    "description": "اسم المتغير الذي تُخزَّن فيه معرّفات العناصر كمصفوفة.",
+                    "value": "اسم المتغير",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "duration": {
+                    "description": "عدد الأيام التي تبقى فيها السلة محفوظة، ما لم تُجرَ تغييرات.",
+                    "value": "عدد الأيام",
+                    "default": "30",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "basket_addon": {
+                    "description": "النص المراد تخزينه (بيانات مُسلسلة).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_delete": {
+            "note": "يحذف سجلًا يخص مستخدم الواجهة الأمامية المسجّل دخوله.",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: يجب أن يحتوي الطلب على رمز صالح من CMS:USER_TOKEN (حماية من CSRF). false يوقف التحقق لهذا الأمر (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "السجل المراد حذفه.",
+                    "value": "معرّف السجل",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: لا يلزم أن يخص السجل المراد حذفه مستخدم الواجهة الأمامية المسجّل دخوله (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "القالب الذي يُدرج عند حذف الإدخال بنجاح.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message_error": {
+                    "description": "رسالة الخطأ إذا لم يكن للمستخدم وصول إلى السجل.",
+                    "value": "نص",
+                    "default": "تم رفض الوصول!",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_input": {
+            "note": "ينشئ سجلًا أو يحدّثه من بيانات أدخلها مستخدم الواجهة الأمامية.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: يجب أن يحتوي الطلب على رمز صالح من CMS:USER_TOKEN (حماية من CSRF). false يوقف التحقق لهذا الأمر (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "القالب الذي يُدرج عند حفظ الإدخال بنجاح.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "اسم مصفوفة PHP التي تحتوي على البيانات المراد حفظها.",
+                    "value": "اسم متغير PHP",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "يستبدل صراحةً إدخال مستخدم الواجهة الأمامية (بما في ذلك الحقول الوصفية، باستثناء record_id, area_id, instance_id, tmp, deleted, origin_id, owner_id, created_by, changed_by). لا تمرّر هنا أي إدخال من مستخدم الواجهة الأمامية!",
+                    "value": "أزواج مفتاح-قيمة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "container": {
+                    "description": "معرّف أو اسم منطقة المحتوى التي سيُحفظ فيها السجل الجديد.",
+                    "value": "معرّف الحاوية أو اسمها",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "رسالة الخطأ حسب الفهرس (انظر الجدول).",
+                    "value": "نص",
+                    "default": "النص الافتراضي",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "لا يُنفَّذ الأمر إلا إذا احتوى هذا الحقل على نص.",
+                    "value": "قيمة نصية",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "أسماء حقول الإدخال التي يجوز الكتابة فيها. فارغ = جميع الحقول المعرّفة للحاوية.",
+                    "value": "قائمة مفصولة بفواصل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "إذا حُدّد، تتم محاولة تحديث هذا السجل (UPDATE). وإلا يُنشأ سجل جديد (CREATE).",
+                    "value": "معرّف السجل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: لا يلزم أن يخص السجل المراد تعديله مستخدم الواجهة الأمامية المسجّل دخوله (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "forceupdate": {
+                    "description": "true: يفرض تحديث السجل المحدد عبر المعامل “id”. عند حدوث خطأ تُخرج رسالة.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "masterid": {
+                    "description": "فقط عند الإنشاء في مناطق ذات بنية شجرية: العقدة الأم للسجل الجديد (parent_id).",
+                    "value": "معرّف السجل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "فقط عند الإنشاء: admin_id لمالك الواجهة الخلفية (record.owner_id, created_by). إذا لم يُحدَّد، يُطبَّق user.default_owner_id.",
+                    "value": "معرّف المستخدم",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "removefiles": {
+                    "description": "أسماء حقول الرفع المراد حذف محتواها.",
+                    "value": "قائمة مفصولة بفواصل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "حاويات الملفات الشخصية فقط: اسم حقل النموذج data[…] الذي يحتوي على كلمة المرور الحالية. لا تُحفظ كلمة مرور جديدة إلا مع الحالية - باستثناء ما بعد تسجيل الدخول مباشرة عبر رابط إعادة التعيين ($set['password_reset']). الرسالة \"current\".",
+                    "value": "اسم الحقل",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login": {
+            "note": "يتحقق من بيانات تسجيل الدخول لمستخدم الواجهة الأمامية وينشئ جلسة جديدة.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "قالب الخطوة الثانية من تسجيل الدخول إذا كانت منطقة الملفات الشخصية تتطلب عاملًا ثانيًا (رمز من التطبيق أو عبر البريد الإلكتروني). في حالة الرمز عبر البريد، يرسل $set['login_code'] باستخدام CMS:EMAIL ويعرض نموذج الرمز لـ CMS:USER_LOGIN_CODE. إلزامي بمجرد أن تستخدم المنطقة عاملًا ثانيًا.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: يجب أن يحتوي الطلب على رمز صالح من CMS:USER_TOKEN (حماية من CSRF). false يوقف التحقق لهذا الأمر (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "قالب التفاصيل الذي يُدرج بعد تسجيل دخول ناجح.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "معرّف أو اسم حاوية الملفات الشخصية التي تُخزَّن فيها بيانات مستخدمي الواجهة الأمامية.",
+                    "value": "معرّف الحاوية أو اسمها",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "اسم مصفوفة PHP التي تحتوي على بيانات تسجيل الدخول.",
+                    "value": "اسم متغير PHP",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "رسائل الخطأ. في الفهرس: حالة الاستخدام؛ في القيمة: نص الرسالة (انظر الجدول).",
+                    "value": "الرسالة الافتراضية",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "يمكن أيضًا تسجيل الدخول بواسطة قيمة تجزئة (رمز من CMS:USER_PW، كلمة مرور منسية).",
+                    "value": "قيمة التجزئة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: إزالة المسافات في بداية الإدخال ونهايته.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookie": {
+                    "description": "true: يُعيَّن افتراضيًا ملف تعريف ارتباط للإبقاء على تسجيل الدخول عبر عدة صفحات.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "لا يُنفَّذ الأمر إلا إذا احتوى هذا الحقل على نص. لا ينطبق على تسجيل الدخول عبر “hash”.",
+                    "value": "قيمة نصية",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "اسم ملف تعريف ارتباط الجلسة [a-z0-9].",
+                    "value": "اسم ملف تعريف الارتباط",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login_code": {
+            "note": "الخطوة الثانية من تسجيل الدخول: يتحقق من الرمز من تطبيق المصادقة، أو الرمز عبر البريد الإلكتروني، أو رمز استرداد، ويسجّل دخول مستخدم الواجهة الأمامية.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "القالب الذي يُدرج بعد \"resend\" ويرسل الرمز الجديد ($set['login_code']) باستخدام CMS:EMAIL - وهو عادةً نفس \"codetemplate\" في CMS:USER_LOGIN.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: يجب أن يحتوي الطلب على رمز صالح من CMS:USER_TOKEN (حماية من CSRF). false يوقف التحقق لهذا الأمر (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "قالب التفاصيل الذي يُدرج بعد تسجيل الدخول الناجح.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "لا يُتحقق من الرمز إلا إذا احتوى هذا الحقل على نص.",
+                    "value": "قيمة نصية",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resend": {
+                    "description": "true: ينشئ رمزًا جديدًا عبر البريد الإلكتروني (مع التقييد). ويكون حينها في $set['login_code']؛ ويُدرج \"codetemplate\" الذي يرسله باستخدام CMS:EMAIL.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "اسم مصفوفة PHP التي تحتوي على المدخلات.",
+                    "value": "اسم متغير PHP",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "اسم حقل الإدخال الخاص بالرمز في data[…].",
+                    "value": "اسم الحقل",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "رسائل الخطأ. في الفهرس: حالة الاستخدام؛ في القيمة: نص الرسالة (انظر الجدول).",
+                    "value": "الرسالة الافتراضية",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "sessionid": {
+                    "description": "جلسة تسجيل الدخول المنتظر بدون ملف تعريف ارتباط (استدعاءات من التطبيقات) - $set['user_session_id'] بعد CMS:USER_LOGIN.",
+                    "value": "معرّف الجلسة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "اسم ملف تعريف ارتباط الجلسة [a-z0-9].",
+                    "value": "اسم ملف تعريف الارتباط",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_logout": {
+            "note": "يُنهي جلسة مستخدم الواجهة الأمامية المسجّل دخوله ويحذفها.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "submit": {
+                    "description": "إذا حُدّد المعامل، لا يسجّل الأمر الخروج إلا إذا احتوى على نص (مثل submit=\"$logout\" من نموذج تسجيل الخروج) - وإذا كان فارغًا لا يحدث شيء، ولا حتى رمز الرسالة. بدون المعامل يسجّل الأمر الخروج عند كل استدعاء (يُفترض وجود رمز صالح).",
+                    "value": "قيمة نصية",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: يجب أن يحتوي الطلب على رمز صالح من CMS:USER_TOKEN (حماية من CSRF). false يوقف التحقق لهذا الأمر (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "deletecookie": {
+                    "description": "false: تُحذف الجلسة على جانب الخادم فقط. true: يُحذف ملف تعريف ارتباط المتصفح أيضًا.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "اسم ملف تعريف ارتباط الجلسة [a-z0-9].",
+                    "value": "اسم ملف تعريف الارتباط",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_password_rules": {
+            "note": "يُخرج قواعد كلمة المرور ونصوصها بصيغة JSON للسمة data-c9-password (الإضافة Password، مُدرجة مضمّنة) - وهي القواعد نفسها التي يتحقق منها الخادم عند الحفظ.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "container": {
+                    "description": "حاوية الملف الشخصي المقصود حقل كلمة المرور فيها.",
+                    "value": "معرّف الحاوية أو اسمها",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "حقل كلمة المرور في الحاوية. إذا كان يحمل الإضافة Password، تُطبَّق قواعدها، وإلا فـ security.password_policy (ولا يتحقق الخادم حينها).",
+                    "value": "اسم الحقل",
+                    "default": "حقل كلمة مرور تسجيل الدخول",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُطبع الإخراج، بل يُخزَّن في المتغير $set.",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_protect": {
+            "note": "يحمي قالبًا من وصول الزوار غير المسجلين دخولهم.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "errortemplate": {
+                    "description": "قالب التفاصيل الذي يُدرج إذا لم يكن لمستخدم الواجهة الأمامية وصول إلى الحاوية أو لم يكن مسجّل الدخول.",
+                    "value": "اسم القالب",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "معايير التصفية لسجل الملف الشخصي التي يجب أن يستوفيها مستخدم الواجهة الأمامية المسجّل دخوله.",
+                    "value": "انظر المعامل \"filter[]\" في CMS:SELECT",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "sessionid": {
+                    "description": "يستأنف جلسة مستخدم الواجهة الأمامية بمعرّف الجلسة المحدد بدلًا من استخدام ملف تعريف ارتباط.",
+                    "value": "معرّف الجلسة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "اسم ملف تعريف ارتباط الجلسة [a-z0-9].",
+                    "value": "اسم ملف تعريف الارتباط",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_pw": {
+            "note": "يُعدّ لإعادة تعيين كلمة مرور.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: حماية النموذج من الروبوتات - يجب أن يحتوي النموذج على حقول (CMS:USER_TOKEN formguard=true) (طابع زمني، حقل مصيدة فارغ)، ولا يجوز إرساله قبل انقضاء user.formguard_min_seconds (3). يحدّد رقمٌ هذا الحد الأدنى من الوقت لهذا النموذج (formguard=5)؛ و0 أو false يوقف الحماية. وإلا فالرسالة \"throttled\" كما في حالة التقييد.",
+                    "value": "true / false / ثوانٍ",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: يجب أن يحتوي الطلب على رمز صالح من CMS:USER_TOKEN (حماية من CSRF). false يوقف التحقق لهذا الأمر (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "قالب التفاصيل الذي يُدرج إذا أمكن ربط “uniquevalue” بملف شخصي في الحقل “uniquefield”.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "errortemplate": {
+                    "description": "قالب التفاصيل الذي يُدرج إذا حُدّد “uniquevalue” لكن تعذّر ربطه بملف شخصي.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "معرّف أو اسم حاوية الملفات الشخصية التي تُخزَّن فيها الملفات الشخصية المراد مطابقتها.",
+                    "value": "معرّف الحاوية أو اسمها",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquefield": {
+                    "description": "اسم الحقل الذي يُبحث فيه (نوع الحقل chars أو text أو encrypted، مثل “email”). يجب أن تطابق القيمة ملفًا شخصيًا واحدًا بالضبط.",
+                    "value": "اسم الحقل",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquevalue": {
+                    "description": "القيمة المبحوث عنها في الحقل “uniquefield”، مثل $_POST[email].",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "لا يُنفَّذ الأمر إلا إذا احتوى هذا الحقل على نص.",
+                    "value": "قيمة نصية",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "رسالة خطأ. في الفهرس: حالة الاستخدام؛ في القيمة: نص الرسالة (انظر الجدول).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_register": {
+            "note": "ينشئ سجل ملف شخصي من البيانات المقدَّمة ويضبط الحالة على status=2.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: حماية النموذج من الروبوتات - يجب أن يحتوي النموذج على حقول (CMS:USER_TOKEN formguard=true) (طابع زمني، حقل مصيدة فارغ)، ولا يجوز إرساله قبل انقضاء user.formguard_min_seconds (3). يحدّد رقمٌ هذا الحد الأدنى من الوقت لهذا النموذج (formguard=5)؛ و0 أو false يوقف الحماية. وإلا فالرسالة \"throttled\" كما في حالة التقييد.",
+                    "value": "true / false / ثوانٍ",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: يجب أن يحتوي الطلب على رمز صالح من CMS:USER_TOKEN (حماية من CSRF). false يوقف التحقق لهذا الأمر (تنبيه: يُرجى مراعاة إرشادات الأمان!).",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "قالب التفاصيل الذي يُدرج بعد تسجيل ناجح.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "معرّف أو اسم حاوية الملفات الشخصية التي ستُحفظ فيها بيانات مستخدمي الواجهة الأمامية.",
+                    "value": "معرّف الحاوية أو اسمها",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailfield": {
+                    "description": "اسم الحقل الذي يُحفظ فيه عنوان البريد الإلكتروني لمستخدم الواجهة الأمامية (ويُرسل رابط التأكيد إليه).",
+                    "value": "اسم الحقل",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "أسماء حقول الإدخال التي يجوز الكتابة فيها. فارغ = جميع الحقول المعرّفة للحاوية.",
+                    "value": "قائمة مفصولة بفواصل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "يستبدل صراحةً إدخال مستخدم الواجهة الأمامية (بما في ذلك الحقول الوصفية، باستثناء record_id, area_id, instance_id, tmp, deleted, origin_id, owner_id, created_by, changed_by). لا تمرّر هنا أي إدخال من مستخدم الواجهة الأمامية!",
+                    "value": "أزواج مفتاح-قيمة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "message": {
+                    "description": "رسالة خطأ. في الفهرس: حالة الاستخدام؛ في القيمة: نص الرسالة (انظر الجدول في CMS:USER_INPUT).",
+                    "value": "رسالة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "لا يُنفَّذ الأمر إلا إذا احتوى هذا الحقل على نص.",
+                    "value": "قيمة نصية",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "admin_id لمالك الواجهة الخلفية للملف الشخصي الجديد (record.owner_id, created_by). إذا لم يُحدَّد، يُطبَّق user.default_owner_id.",
+                    "value": "معرّف المستخدم",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "اسم مصفوفة PHP التي تحتوي على البيانات المراد حفظها.",
+                    "value": "اسم متغير PHP",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_register_confirm": {
+            "note": "يفعّل سجل ملف شخصي ويضبط status=0.",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "successtemplate": {
+                    "description": "قالب التفاصيل الذي يُدرج إذا أمكن إكمال التسجيل بنجاح.",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "معرّف التجزئة الذي أنشأه CMS:USER_REGISTER وأُرسل عبر البريد الإلكتروني.",
+                    "value": "معرّف التجزئة",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "رسالة خطأ. في الفهرس: حالة الاستخدام؛ في القيمة: نص الرسالة (انظر الجدول).",
+                    "value": "رسالة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_token": {
+            "note": "يُخرج رمز CSRF لنموذج يحتوي على أمر CMS:USER_* يكتب بيانات (الحقل المخفي _token).",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: يُخرج إضافةً إلى ذلك طابعًا زمنيًا وحقل مصيدة غير مرئي (حماية النموذج من الروبوتات) - للنماذج التي تحتوي على USER_REGISTER أو USER_PW أو CMS:EMAIL formguard=true.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "field: حقل إدخال مخفي <input type=\"hidden\" name=\"_token\">. value: الرمز فقط (لـ Ajax: الترويسة X-Camindo-Token أو حقل POST المسمى _token).",
+                    "value": "\"field\" / \"value\"",
+                    "default": "\"field\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "لا يُطبع الإخراج، بل يُخزَّن في المتغير $set. ويكون الرمز أيضًا دائمًا في $set['user_token'].",
+                    "value": "فهرس المصفوفة $set",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "xml": {
+            "note": "ينشئ تصريح XML.",
+            "do": "encoding",
+            "oneof": "",
+            "params": {
+                "encoding": {
+                    "description": "ترميز الأحرف المراد استخدامه.",
+                    "value": "encoding",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "version": {
+                    "description": "إصدار XML.",
+                    "value": "version",
+                    "default": "1.0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "zip": {
+            "note": "يعرض ملفات عدة سجلات كأرشيف ZIP للتنزيل ويُنهي الصفحة.",
+            "do": "field",
+            "oneof": "filter,relation,ids,source",
+            "params": {
+                "field": {
+                    "description": "حقل (حقول) الرفع/الصورة المصغّرة. لكل سجل يُطبَّق أول حقل يُسمح للزائر باسترداده (مثل fil_print,fil_upload: نسخة الطباعة للصحافة، وإلا فنسخة الويب).",
+                    "value": "اسم (أسماء) الحقل، مفصولة بفواصل",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "اختيار السجلات كما في CMS:SELECT.",
+                    "value": "قيمة",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_op": {
+                    "description": "عامل المقارنة كما في CMS:SELECT.",
+                    "value": "عامل",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "filter_mode": {
+                    "description": "الجمع بين عدة قيم كما في CMS:SELECT.",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "السجلات المرتبطة كما في CMS:SELECT.",
+                    "value": "اسم الحقل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "السجل المصدر لـ relation؛ فارغ أو 0: بلا ملفات.",
+                    "value": "معرّف السجل",
+                    "default": "(السجل الحالي)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ids": {
+                    "description": "سجلات محددة صراحة (منشورة، من هذا الموقع).",
+                    "value": "معرّفات السجلات، مفصولة بفواصل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "source": {
+                    "description": "basket: السجلات الموجودة في سلة الجلسة (الفئة من category) - مثل صندوق العرض الضوئي.",
+                    "value": "basket",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "فئة السلة لـ source=basket.",
+                    "value": "رقم",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "الترتيب كما في CMS:SELECT؛ بدون تحديد: ترتيب ids أو السلة.",
+                    "value": "اسم الحقل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "اتجاه الفرز.",
+                    "value": "asc / desc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "name": {
+                    "description": "اسم الأرشيف بدون .zip.",
+                    "value": "نص",
+                    "default": "download",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filenames": {
+                    "description": "أسماء الملفات في الأرشيف: {slug}، {id}، {filename} (الاسم الأصلي)، {extension}، {fieldname}؛ وتحصل الأسماء المكررة على -2، -3 ...",
+                    "value": "نمط",
+                    "default": "{slug}.{extension}",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "credits": {
+                    "description": "يضيف ملف CREDITS.txt: لكل ملف اسمه ومحتويات هذه الحقول (مثل العنوان، والتعليق، وحقوق الصورة).",
+                    "value": "أسماء الحقول، مفصولة بفواصل",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxfiles": {
+                    "description": "الحد الأقصى لعدد الملفات (أصغر من الإعداد فقط).",
+                    "value": "رقم",
+                    "default": "(user.zip.max_files)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxsize": {
+                    "description": "الحجم الأقصى بالميغابايت (أصغر من الإعداد فقط).",
+                    "value": "MB",
+                    "default": "(user.zip.max_mb)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "السجلات ذات التاريخ المستقبلي أيضًا (كما في CMS:SELECT).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "السجلات المنتهية أيضًا (كما في CMS:SELECT).",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "ملف تعريف ارتباط الجلسة (cookiename في CMS:USER_LOGIN).",
+                    "value": "اسم ملف تعريف الارتباط",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "الرسائل: message[empty] (لا يوجد ملف)، message[limit] (كبير جدًا)، message[throttled] (أرشيفات كثيرة جدًا).",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        }
+    }
+}

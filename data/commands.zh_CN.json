@@ -1,0 +1,3892 @@
+{
+    "version": "9.0.8",
+    "lang": "zh_CN",
+    "commands": {
+        "continue": {
+            "note": "即使存在成功模板，也继续处理模板。",
+            "do": "field",
+            "oneof": "",
+            "params": {}
+        },
+        "csp": {
+            "note": "更改此页面的脚本策略（Content Security Policy）：额外的脚本来源、表单目标或其他模式。必须位于第一次输出之前。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "script": {
+                    "description": "额外的脚本来源，以空格或逗号分隔（https://js.example.com, *.example.com）。诸如 'unsafe-inline' 之类的关键字会被丢弃。",
+                    "value": "来源",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "form": {
+                    "description": "额外的表单目标（启用 form-action），例如支付服务商。",
+                    "value": "来源",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mode": {
+                    "description": "此页面的模式：off = 无脚本策略，report = 仅报告，enforce = 强制执行。为空：使用实例的设置。",
+                    "value": "off / report / enforce",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "date": {
+            "note": "格式化输出日期值的日期部分。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "要读取的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "记录字段的名称，其内容用作来源。",
+                    "value": "字段",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "用作来源的文本形式的值。",
+                    "value": "日期值",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU 模式，例如 \"dd.MM.y\"。未指定时，由页面的区域设置决定写法。",
+                    "value": "格式说明",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true：附加时区名称（例如 \"Europe/Berlin\"）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "如果问号前的文本出现在格式化后的值中，则替换为问号后的文本（例如 \"Jan?January\"）。",
+                    "value": "文本?文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "来源（'field' 或 'useval'）为空时输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "来源不为空时，代替来源输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "格式化后的值不为空时，放在其前面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "格式化后的值不为空时，追加在其后面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "格式化后的值不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "datetime": {
+            "note": "格式化输出日期值的日期和时间。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "要读取的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "记录字段的名称，其内容用作来源。",
+                    "value": "字段",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "用作来源的文本形式的值。",
+                    "value": "日期值",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU 模式，例如 \"dd.MM.y HH:mm\"。未指定时，由页面的区域设置决定写法。",
+                    "value": "格式说明",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "autotime": {
+                    "description": "true：如果没有时间（00:00），则不显示时间。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true：附加时区名称（例如 \"Europe/Berlin\"）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "如果问号前的文本出现在格式化后的值中，则替换为问号后的文本（例如 \"Jan?January\"）。",
+                    "value": "文本?文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "来源（'field' 或 'useval'）为空时输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "来源不为空时，代替来源输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "格式化后的值不为空时，放在其前面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "格式化后的值不为空时，追加在其后面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "格式化后的值不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "email": {
+            "note": "发送电子邮件。可根据需要预先检查表单的必填字段。",
+            "do": "do",
+            "oneof": "subject,subjecttemplate,body,bodytemplate",
+            "params": {
+                "formguard": {
+                    "description": "true：表单防机器人保护——表单必须包含 (CMS:USER_TOKEN formguard=true) 中的字段（时间戳、空的蜜罐字段），并且最早在 user.formguard_min_seconds (3) 之后才能提交。数字可为该表单设定此最短时间（formguard=5）；0 或 false 关闭保护。否则显示消息 \"throttled\"，与限流时相同。",
+                    "value": "true / false / 秒",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "throttle": {
+                    "description": "按来源（IP）限流：true = 上限 user.throttle.email_ip（每小时 5 次），否则使用 user.throttle 中的单独 bucket。被限流时：消息 \"throttled\"，不发送邮件。适用于任何人都可以输入地址的联系表单。",
+                    "value": "true / bucket 名称",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "to": {
+                    "description": "收件人电子邮件地址。多个收件人写作 to[]=… 或以逗号分隔（最多 20 个）。",
+                    "value": "电子邮件地址",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "toname": {
+                    "description": "收件人姓名（仅在恰好一个收件人时）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "from": {
+                    "description": "发件人电子邮件地址。",
+                    "value": "电子邮件地址",
+                    "default": "email.noreply 或 email.reply（.camindo.php）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fromname": {
+                    "description": "发件人姓名。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "contenttype": {
+                    "description": "电子邮件的 MIME 类型。",
+                    "value": "text/plain 或 text/html",
+                    "default": "text/plain",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "电子邮件的主题。",
+                    "value": "文本",
+                    "default": "(no subject)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subjecttemplate": {
+                    "description": "主题模板（标签和换行会被删除）。优先于 subject。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "body": {
+                    "description": "邮件正文（文本或 HTML）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "bodytemplate": {
+                    "description": "邮件正文模板。优先于 body。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "paths_absolute": {
+                    "description": "true：邮件正文中所有相对于服务器的路径都转换为绝对路径（仅在 contenttype=\"text/html\" 时）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sender_url": {
+                    "description": "（可选带协议）+ 域名，以便将相对于服务器的路径转换为绝对路径。",
+                    "value": "(http://)域名",
+                    "default": "实例的协议和主域名",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true：邮件写入日志文件 var/log/{date}_mail-debug.log，但不发送。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "requiredfields": {
+                    "description": "指定必填字段。请求数组 data[…] 中的字段名（索引名）（参见参数 data）。",
+                    "value": "字段名，以逗号分隔",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "包含 'requiredfields' 所需数据的请求数组的名称（默认 data，即 $_POST['data']）。",
+                    "value": "PHP 变量名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "仅当 'submit' 包含值时才评估 'requiredfields'。否则忽略 CMS:EMAIL 命令。",
+                    "value": "文本值",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "发送成功后包含的模板；随后页面结束（使用 CMS:CONTINUE 时除外）。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "错误消息。索引中：使用场景（required、to、from、content、attachment、send）；值中：消息文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "attachment": {
+                    "description": "要附加的文件。相对于 var 目录的路径，仅限 download/、upload/ 和 modules/。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "fed": {
+            "note": "启用前台编辑时，创建用于编辑记录的按钮。需要在同一页面上使用 CMS:FED_SCRIPT。",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "label": {
+                    "description": "按钮的标签。",
+                    "value": "文本",
+                    "default": "[»]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "要打开的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "info": {
+                    "description": "true：按钮打开记录的详情视图，而不是输入表单。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "在按钮之前输出的文本（不含按钮）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "在按钮之后输出的文本（不含按钮）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "按钮不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_code": {
+            "note": "启用前台编辑时输出 HTML 代码。",
+            "do": "code",
+            "oneof": "",
+            "params": {
+                "code": {
+                    "description": "启用前台编辑时输出的 HTML 代码。",
+                    "value": "HTML 代码",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "前台编辑未启用时的替代输出。",
+                    "value": "HTML 代码",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "代码不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_script": {
+            "note": "提供 JavaScript 函数 cFED() 以及 CMS:FED 按钮的点击监听器（带页面的 nonce）——每页一次，通常放在页脚。",
+            "do": "set",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "脚本块不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "header": {
+            "note": "发送 HTTP 标头。",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "作为标头发送给浏览器的一行文本。没有值时（\"Name:\"），删除该标头。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "false：不覆盖之前同类型的标头，而是添加新标头。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "include": {
+            "note": "包含一个模板——可使用输出缓存（IncludeCache）进行缓存。",
+            "do": "template",
+            "oneof": "",
+            "params": {
+                "caching": {
+                    "description": "模板的输出在此时长内被缓存，期间直接提供而不再重新处理。未指定、为空或 0：不缓存。",
+                    "value": "秒、30s、5m、1h、1d 或 infinite",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cacheparams": {
+                    "description": "输出所依赖的一切（记录、页面、客户 …）：每个值生成各自的缓存文件。实例和语言会自动考虑在内。",
+                    "value": "null、bool、int、string 或 array（也可作为变量：cacheparams=$params）",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "整个输出（包括所包含的模板）不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "要包含的详情模板。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_list": {
+            "note": "创建页面导航（分页），例如 1 … 5 | 6 | 7 | 8 | 9 … 15。",
+            "do": "separator",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "当前页面的偏移量（跳过的结果数）。没有值时，使用请求参数 skip。",
+                    "value": "数字 >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maximum": {
+                    "description": "同时显示（随之移动）的页面链接数，不包括指向第一页和最后一页的链接。",
+                    "value": "数字 >= 1",
+                    "default": "7",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "boundaries": {
+                    "description": "true：指向第一页和最后一页的链接一旦位于移动范围之外，就始终显示。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "两个页面链接之间的文本。不会插入到省略（'ellipsis'）的前后。",
+                    "value": "分隔符",
+                    "default": " ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "页面链接模板。{page} 替换为页码，{href} 替换为页面 URL。",
+                    "value": "HTML 模板",
+                    "default": " <a href=\"{href}\">{page}</a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_active": {
+                    "description": "当前页面模板。{page} 替换为页码，{href} 替换为页面 URL。",
+                    "value": "HTML 模板",
+                    "default": " <strong>{page}</strong> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ellipsis": {
+                    "description": "被省略页面的占位符——出现在边界链接与移动范围之间。",
+                    "value": "代码",
+                    "default": " … ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "在完成的 HTML 中进行简单文本替换。分隔符为问号：\"search?replace\"。",
+                    "value": "文本?文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "导航前的文本，仅在输出导航时。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "导航后的文本，仅在输出导航时。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "当结果只占一页，或 CMS:SELECT 没有上限因而不需要导航时的输出。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "导航不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_next": {
+            "note": "创建指向下一页的链接。",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "当前页面的偏移量（跳过的结果数）。没有值时，使用请求参数 skip。",
+                    "value": "数字 >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "存在下一页时的链接模板。{href} 替换为目标 URL。",
+                    "value": "HTML 模板",
+                    "default": " <a href=\"{href}\"><strong>❯❯</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "没有下一页时不可选择的链接的模板。此处 {href} 同样会被替换。",
+                    "value": "HTML 模板",
+                    "default": " <span>❯❯</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "在完成的 HTML 中进行简单文本替换。分隔符为问号：\"search?replace\"。",
+                    "value": "文本?文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "链接前的文本，仅在输出链接时。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "链接后的文本，仅在输出链接时。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "CMS:SELECT 没有上限时的输出（此时没有分页）。如果全部内容只占一页，则显示 tpl_inactive。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "链接不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_prev": {
+            "note": "创建指向上一页的链接。",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "当前页面的偏移量（跳过的结果数）。没有值时，使用请求参数 skip。",
+                    "value": "数字 >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "存在上一页时的链接模板。{href} 替换为目标 URL。",
+                    "value": "HTML 模板",
+                    "default": " <a href=\"{href}\"><strong>❮❮</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "没有上一页时不可选择的链接的模板。此处 {href} 同样会被替换。",
+                    "value": "HTML 模板",
+                    "default": " <span>❮❮</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "在完成的 HTML 中进行简单文本替换。分隔符为问号：\"search?replace\"。",
+                    "value": "文本?文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "链接前的文本，仅在输出链接时。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "链接后的文本，仅在输出链接时。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "CMS:SELECT 没有上限时的输出（此时没有分页）。如果全部内容只占一页，则显示 tpl_inactive。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "链接不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "media": {
+            "note": "创建图片标签，或以文本形式输出媒体文件的内容。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "要读取的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "上传字段或缩略图字段的名称。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subfield": {
+                    "description": "代替 IMG 标签的单个值：path（用于 src/href 的从 DOCUMENT_ROOT 起的路径，带可读文件名；auth/download/user_auth 时经由 file.php）、file（文件系统中的绝对路径）、filename（原始文件名）、mime_type、extension（不含点）、size（字节；配合 autoformat 时为易读格式）、width / height（像素，未知时为 0）、version（文件的版本计数）。",
+                    "value": "path / file / filename / mime_type / extension / size / width / height / version",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "auth": {
+                    "description": "true：链接指向 /file.php 而不是媒体目录。对于设置了“仅限已登录的前台用户”（user_auth）的字段，此项自动生效——此时由 file.php 检查前台会话。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "通过 /file.php 以指定的文件名提供文件下载（文件扩展名自动添加）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "IMG 标签的宽度，可带或不带 CSS 单位（默认：px）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "IMG 标签的高度，可带或不带 CSS 单位（默认：px）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "attr": {
+                    "description": "IMG 标签的附加属性（键：属性名，值：属性值）。",
+                    "value": "数组",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "autoformat": {
+                    "description": "true：通过 'subfield' 选择的内容按其类型进行格式化（例如文件大小根据数值动态显示为字节/KB/MB）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "格式化后的值不为空时，覆盖该值。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "格式化后的值为空（或为 \"0\"）时的替代文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "格式化后的值不为空（或不为 \"0\"）时，放在其前面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "格式化后的值不为空（或不为 \"0\"）时，追加在其后面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "文件数组（例如来自 CMS:SAVEDATA）以及 field_id 和 record_id——仅通过直接的 PHP 调用，不带 field（参见示例）。",
+                    "value": "数组",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "格式化后的值不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "message": {
+            "note": "根据当前的错误消息生成文本输出。",
+            "do": "useval",
+            "oneof": "",
+            "params": {
+                "useval": {
+                    "description": "用作来源的文本形式的值。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "有消息时，在消息之前输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "有消息时，在消息之后输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "没有消息时的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "代替消息输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "消息不显示，而是写入变量 $set。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "nonce": {
+            "note": "输出页面的 nonce：<script(CMS:NONCE)>。一旦网站的脚本策略被强制执行，模板中的每个脚本都需要它。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "format": {
+                    "description": "attribute：nonce=\"…\"（带前导空格，用于 <script> 标签）。value：仅值。",
+                    "value": "\"attribute\" / \"value\"",
+                    "default": "\"attribute\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "输出不打印，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "number": {
+            "note": "格式化输出数值。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "要读取的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "记录字段的名称，其内容用作来源。",
+                    "value": "字段",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "用作来源的文本形式的值。",
+                    "value": "数字",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "来源为空或数值（经 mul/add 后）为 0 时输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "原始来源不为空时成为来源的数字。",
+                    "value": "数字",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mul": {
+                    "description": "来源要乘以的数字。",
+                    "value": "数字",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "add": {
+                    "description": "要加到来源上的数字。",
+                    "value": "数字",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "格式化方式与 PHP 命令 sprintf() 相同。",
+                    "value": "格式",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimals": {
+                    "description": "固定的小数位数（四舍五入）；decimal 和 thousands_separator 仍然生效。未指定时，保留数字本身的位数。",
+                    "value": "数字 0-10",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimal": {
+                    "description": "替换小数点的字符。",
+                    "value": "字符",
+                    "default": ".",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "thousands_separator": {
+                    "description": "作为千位分隔符插入的字符（从右向左每三位）。",
+                    "value": "字符",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nullcent": {
+                    "description": "替换缺失小数值的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "如果问号前的文本出现在格式化后的值中，则替换为问号后的文本（例如 \".00?\" 删除空的小数位）。",
+                    "value": "文本?文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "格式化后的值不为 \"0\" 且不为空时，放在其前面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "格式化后的值不为 \"0\" 且不为空时，追加在其后面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "格式化后的值不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sizefactor": {
+                    "description": "1000 或 1024。如果 > 0，则计算易读的文件大小（例如 15.2 GB）。",
+                    "value": "1 千字节的字节数",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_cell": {
+            "note": "Zelle der aktuellen Zeile. Schrift ist die zu diesem Zeitpunkt eingestellte (CMS:PDF_FONT).",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Zelltext; bricht innerhalb der Spalte um, soweit fit= ihn nicht einpasst.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "col": {
+                    "description": "Spaltenindex ab 0; ohne Angabe die nächste Spalte.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Horizontale Ausrichtung.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "valign": {
+                    "description": "Vertikale Ausrichtung in der Zeile.",
+                    "value": "T / C / B",
+                    "default": "T",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fit": {
+                    "description": "Text auf eine Zeile in der Spaltenbreite einpassen: fontsize verkleinert die Schrift (bis min_size), spacing verringert den Zeichenabstand, scale beides, force staucht horizontal. Was auch so nicht passt, bricht um.",
+                    "value": "none / scale / fontsize / spacing / force",
+                    "default": "none",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "min_size": {
+                    "description": "Kleinste Schriftgröße beim Einpassen.",
+                    "value": "Punkt",
+                    "default": "6",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenseiten: L links, T oben, R rechts, B unten; 1 alle, 0 keine.",
+                    "value": "LTRB / 1 / 0",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke; sonst die der Tabelle.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_color": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand dieser Zelle; sonst der der Tabelle.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe der Zelle. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_color": {
+            "note": "Definiert ein Farbfeld mit RGB- und/oder CMYK-Wert. Der Farbraum des Dokuments (PDF_INIT) wählt den Wert; ein fehlender wird umgerechnet.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Name des Farbfelds (Buchstaben, Ziffern, _ und -).",
+                    "value": "Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "rgb": {
+                    "description": "RGB-Wert als Hex-Farbe, z. B. #0066FF.",
+                    "value": "#rrggbb",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cmyk": {
+                    "description": "CMYK-Wert in Prozent, z. B. 0,100,100,0.",
+                    "value": "c,m,y,k",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_fill_color": {
+            "note": "Füllfarbe für die folgenden CMS:PDF_RECT. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Füllfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_font": {
+            "note": "Stellt die Schrift für die folgenden Texte und Zellen ein. Gilt über Seiten hinweg.",
+            "do": "font",
+            "oneof": "",
+            "params": {
+                "font": {
+                    "description": "Name einer Schrift aus var/modules/pdf/fonts/ ({name}.json; mitgeliefert: helvetica, times, courier, symbol, zapfdingbats). Eine Datei {name}.ttf/.otf wird beim ersten Aufruf konvertiert.",
+                    "value": "Schriftname",
+                    "default": "helvetica",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "Schriftschnitt: B fett, I kursiv, U unterstrichen, D durchgestrichen, O überstrichen. Leer = regulär.",
+                    "value": "B / I / U / D / O, kombinierbar",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße in Punkt.",
+                    "value": "Punkt",
+                    "default": "12",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_html": {
+            "note": "Schreibt einen HTML-Block (Umbruch und Seitenumbruch durch tc-lib-pdf). Der Cursor bleibt stehen - die Höhe des Blocks ist nicht bekannt.",
+            "do": "html",
+            "oneof": "",
+            "params": {
+                "html": {
+                    "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
+                    "value": "HTML",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_image": {
+            "note": "Platziert ein Bild (JPEG, PNG, GIF, ...) aus dem Medienverzeichnis. Der Cursor rückt unter das Bild.",
+            "do": "file",
+            "oneof": "",
+            "params": {
+                "file": {
+                    "description": "Bilddatei: absoluter Pfad aus (CMS:MEDIA subfield=file), Webpfad aus subfield=path oder Pfad relativ zu public/media. Nur Dateien unterhalb des Medienverzeichnisses.",
+                    "value": "Pfad",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite; 0 = aus der Höhe (bzw. aus den Pixeln bei 72 dpi, wenn beide fehlen).",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe; 0 = proportional zur Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "link": {
+                    "description": "Verweis, der beim Klick auf das Bild geöffnet wird.",
+                    "value": "URL",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_init": {
+            "note": "Vorgaben für das Dokument: Farbraum, ICC-Profil, Seitenformat und Ränder. Vor der ersten CMS:PDF_PAGE.",
+            "do": "colorspace",
+            "oneof": "",
+            "params": {
+                "colorspace": {
+                    "description": "Farbraum, in dem Farben ins PDF geschrieben werden.",
+                    "value": "RGB / CMYK",
+                    "default": "RGB",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "icc_profile": {
+                    "description": "ICC-Profil aus var/modules/pdf/profiles/, wird als Output Intent eingebettet.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "output_condition": {
+                    "description": "Bezeichner der Druckbedingung für den Output Intent (z. B. FOGRA39). Ohne Angabe der Dateiname des Profils.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat leerer Seiten (Namen wie in tc-lib-pdf).",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "A4",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Hoch- (P) oder Querformat (L) leerer Seiten.",
+                    "value": "P / L",
+                    "default": "P",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Seitenränder in mm (ein Wert: alle; zwei: oben/unten, rechts/links). Linker Rand = x-Vorgabe, rechter Rand = Breitenvorgabe, unterer Rand = Umbruchgrenze der Tabellen.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "20,20,20,20",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line": {
+            "note": "Zeichnet eine Linie.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x1": {
+                    "description": "Startpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y1": {
+                    "description": "Startpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x2": {
+                    "description": "Endpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y2": {
+                    "description": "Endpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Liniendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Linienfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line_color": {
+            "note": "Linienfarbe für die folgenden CMS:PDF_LINE, Rahmen von CMS:PDF_RECT und Zellenrahmen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Linienfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_meta": {
+            "note": "Dokumenteigenschaften (werden bei CMS:PDF_PRINT geschrieben).",
+            "do": "title",
+            "oneof": "",
+            "params": {
+                "title": {
+                    "description": "Titel.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "author": {
+                    "description": "Autor.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "Thema.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keywords": {
+                    "description": "Stichwörter.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "creator": {
+                    "description": "Erzeugende Anwendung.",
+                    "value": "Text",
+                    "default": "camindo CMS",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_page": {
+            "note": "Legt eine neue Seite an - leer oder auf einer Seite einer Layout-Vorlage. Der erste Aufruf beginnt das Dokument.",
+            "do": "layout",
+            "oneof": "",
+            "params": {
+                "layout": {
+                    "description": "PDF-Vorlage aus var/modules/pdf/layouts/, deren Seite als Hintergrund übernommen wird. Ohne Angabe eine leere Seite.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "page": {
+                    "description": "Seite der Vorlage (ab 1), die übernommen wird.",
+                    "value": "Zahl",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Ausrichtung einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "P / L",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Ränder nur dieser Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_print": {
+            "note": "Sendet das Dokument an den Browser und beendet den Request. Vor CMS:PDF_PAGE darf das Template nichts ausgegeben haben.",
+            "do": "filename",
+            "oneof": "",
+            "params": {
+                "filename": {
+                    "description": "Dateiname, den der Browser anzeigt bzw. beim Speichern vorschlägt.",
+                    "value": "Dateiname",
+                    "default": "document.pdf",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "Leer oder false: im Browser anzeigen. true: als Download unter filename. Ein Dateiname: als Download unter diesem Namen.",
+                    "value": "false / true / Dateiname",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_rect": {
+            "note": "Zeichnet ein Rechteck, umrandet und/oder gefüllt.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x": {
+                    "description": "Linke Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "D Rahmen, F Füllung, DF beides.",
+                    "value": "D / F / DF",
+                    "default": "D",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Füllfarbe; sonst CMS:PDF_FILL_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "line_width": {
+                    "description": "Rahmendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_row": {
+            "note": "Beginnt eine Tabellenzeile.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "is_header": {
+                    "description": "Kopfzeile: wird nach einem Seitenumbruch auf der Folgeseite wiederholt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keep_together": {
+                    "description": "Zeile nicht über Seiten teilen. Derzeit werden Zeilen grundsätzlich nicht geteilt; der Parameter ist für spätere Versionen reserviert.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table": {
+            "note": "Beginnt eine Tabelle; Zeilen und Zellen folgen mit CMS:PDF_ROW / CMS:PDF_CELL, gezeichnet wird bei CMS:PDF_TABLE_END. Zeilen werden nie geteilt: was nicht mehr auf die Seite passt, beginnt auf einer Folgeseite, Kopfzeilen werden dort wiederholt.",
+            "do": "cols",
+            "oneof": "",
+            "params": {
+                "cols": {
+                    "description": "Spaltenbreiten in mm, kommasepariert.",
+                    "value": "b1,b2,...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Linke Kante; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand aller Zellen in mm (ein Wert: alle; zwei: oben/unten, rechts/links).",
+                    "value": "oben,rechts,unten,links",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke der Zellen.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_layout": {
+                    "description": "Layout-Vorlage der Folgeseiten bei Seitenumbruch; sonst wie die letzte CMS:PDF_PAGE (leer = leere Seite).",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_page": {
+                    "description": "Seite der Vorlage für Folgeseiten.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table_end": {
+            "note": "Zeichnet die Tabelle. Der Cursor rückt unter die Tabelle.",
+            "do": "",
+            "oneof": "",
+            "params": {}
+        },
+        "pdf_text": {
+            "note": "Schreibt einen Textblock mit Zeilenumbruch innerhalb der Breite. Der Cursor rückt unter den Block.",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Der Text (UTF-8; Zeilenumbrüche werden umgebrochen). Leer = keine Ausgabe.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand (Oberkante des Blocks); ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Ausrichtung: links, zentriert, rechts, Blocksatz.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße nur für diesen Block; sonst die von CMS:PDF_FONT.",
+                    "value": "Punkt",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe nur für diesen Block; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe des Blocks. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_text_color": {
+            "note": "Textfarbe für die folgenden CMS:PDF_TEXT und Zellen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Textfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "raw": {
+            "note": "不加格式地输出内容。",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "要读取的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "要输出其内容的字段的名称。",
+                    "value": "字段",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "字段为空时输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "字段内容不为空时，代替其输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "字段内容不为空时，放在其前面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "字段内容不为空时，追加在其后面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "内容不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "relation": {
+            "note": "输出与当前记录关联的所有记录的主字段（标题）。",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "要输出其关联的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "关联字段（字段类型 relation、pointer 或 link）的名称，输出其目标。其他字段类型会导致错误消息。",
+                    "value": "字段",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "结果集中包含的最大记录数。",
+                    "value": "数字 >0",
+                    "default": "1000",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true：尚未发布的目标（尚未到达 online_at）也会输出（与 CMS:SELECT 相同）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true：已过期的目标（已到达 offline_at）也会输出（与 CMS:SELECT 相同）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "未指定时，仅输出已批准的目标（status_id 0）。状态 ID > 0 时仅输出该状态的目标，\"any\" 输出任意状态的目标（与 CMS:SELECT 相同）。",
+                    "value": "状态 ID 或 any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "所请求内容的语言版本代码（影响多语言字段）。尚未实现——目前始终使用调用时的语言。",
+                    "value": "语言代码",
+                    "default": "（当前语言）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "放在结果之间的文本。",
+                    "value": "分隔符",
+                    "default": "|",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "来源不为空时，放在其前面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "来源不为空时，追加在其后面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "原始来源为空时成为来源的文本（除 'set' 外的其他参数会被忽略）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "输出不为空时，覆盖该输出。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "来源的输出被重定向并存储在 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "result_end": {
+            "note": "标记处理 CMS:SELECT 结果的循环的结束。",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "result_start": {
+            "note": "标记处理 CMS:SELECT 结果的循环的开始。",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "savedata": {
+            "note": "将当前记录的数据存储在指定的变量中。",
+            "do": "phpvar",
+            "oneof": "",
+            "params": {
+                "phpvar": {
+                    "description": "用于存储当前记录数据的变量。",
+                    "value": "$GLOBALS 中的索引",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "要加载其数据的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。未指定时，为当前已加载的记录。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "指定以哪种语言加载多语言字段的内容。尚未实现——目前始终使用调用时的语言。",
+                    "value": "语言版本代码",
+                    "default": "$lang",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select": {
+            "note": "按指定的（筛选）条件搜索数据库，并返回找到的记录。",
+            "do": "resulttemplate",
+            "oneof": "filter,relation",
+            "params": {
+                "set": {
+                    "description": "整个输出（包括所包含的模板）不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "为处理结果而包含的列表模板。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresulttemplate": {
+                    "description": "查询没有结果时包含的详情模板。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresult": {
+                    "description": "查询没有结果时直接输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "键中：要搜索的字段的名称（relation_any 表示任意链接字段；area 表示内容区域的名称，此处数字视为 area_id）。值中：要搜索的值。",
+                    "value": "值或 EMPTY",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_mode": {
+                    "description": "组合同一字段多个值的方式（filter_mode[field]=AND）。",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "filter_op": {
+                    "description": "所指定字段的比较运算符（filter_op[field]=\">\"）。也可以将运算符放在键和值之间（filter[price] > 100）或直接放在值前面（filter[price]=\">100\"）。",
+                    "value": "=, ==, !=, !!, >, <, >>, <<, >=, <=",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "skip": {
+                    "description": "结果集中跳过的记录数。仅与 limit 一起使用时有效。",
+                    "value": "数字 >= 0",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "结果集中包含的最大记录数——同时也是 CMS:JUMP_LIST、CMS:JUMP_PREV 和 CMS:JUMP_NEXT 的每页大小。没有值或为 0：不限制，无分页导航。",
+                    "value": "数字 >0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "排序依据的字段（参见 order）；多个以逗号分隔或写作 sort[]=…；area 按内容区域的名称排序，pointerfield.field 按所链接记录的字段排序。",
+                    "value": "字段名（可多个），以逗号分隔",
+                    "default": "changed_at",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "排序方向（参见 sort）。没有 sort 时，使用 changed_at desc。",
+                    "value": "desc / asc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "所请求内容的语言版本代码（影响多语言字段）。尚未实现——目前始终使用调用时的语言。",
+                    "value": "语言代码",
+                    "default": "（当前语言）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "存储所查找记录的 relation/pointer 字段的字段名（配合 src_id）；配合 dest_id 时，为所查找记录指向 dest_id 所用的字段。ANY：任意 pointer 字段。",
+                    "value": "字段名（以逗号分隔）或 'ANY'",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "要评估其链接的来源记录（没有值：当前记录）。",
+                    "value": "记录 ID（可多个）",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "dest_id": {
+                    "description": "relation 的反方向：通过 relation 指向此记录的记录（relation=ANY：通过任意 pointer 字段）。此时如果没有 src_id，则不使用当前记录作为来源。",
+                    "value": "记录 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nextof": {
+                    "description": "仅配合 relation：指定记录在链接列表中的相邻项——其后的条目（order=asc）或其前的条目（order=desc），按列表顺序；limit=1 时为下一条或上一条记录。",
+                    "value": "记录 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "count": {
+                    "description": "true：确定结果集中的记录数，与 \"limit\" 和 \"skip\" 无关（在 resulttemplate 中为 $this->db->num_rows_unlimited；JUMP 命令的基础）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hits": {
+                    "description": "false：仅计数（包含 count=true）；不加载记录，也不包含 resulttemplate。总数随后可在调用模板中通过 $this->db->num_rows_unlimited 获得；为 0 时应用 noresult/noresulttemplate。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true：已过期的记录（已到达 offline_at）也包含在查询中。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true：预设日期的记录（尚未到达 online_at）也包含在查询中。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true：输出生成的数据库查询，供支持分析使用。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sql": {
+                    "description": "WHERE 子句中的原始 SQL 附加内容（注意：仅供支持使用！）。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "没有值时仅查找已批准的记录（status_id 0）。状态 ID > 0 仅查找该状态的记录；\"any\" 查找所有状态的记录。",
+                    "value": "状态 ID 或 any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select_langversion": {
+            "note": "将可用的语言作为记录返回。",
+            "do": "resulttemplate",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "整个输出（包括所包含的模板）不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "为处理结果而包含的列表模板。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "snippet": {
+            "note": "以调用时的语言输出文本片段。",
+            "do": "key",
+            "oneof": "",
+            "params": {
+                "key": {
+                    "description": "文本片段的键，例如 custom.read_more（实例的文本片段集）或不带前缀的核心文本片段。",
+                    "value": "文本片段键",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "param": {
+                    "description": "占位符的值：param[name]=value 替换文本片段中的 {name}，并填充 ICU 参数（plural、select）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true：特殊字符转换为对应的 HTML 形式（用于属性）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "文本片段不存在时输出的文本（没有 ifempty 时显示键）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "文本片段不为空时，放在其前面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "文本片段不为空时，追加在其后面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "文本不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "text": {
+            "note": "输出应用了格式的文本。",
+            "do": "field",
+            "oneof": "field,useval,id",
+            "params": {
+                "id": {
+                    "description": "要读取的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。没有 'field' 时，读取字段 \"text\"。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "记录字段的名称，其内容用作来源。",
+                    "value": "字段",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "用作来源的文本形式的值。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "原始来源为空时成为来源的文本（此时除 'set' 外的其他参数会被忽略）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "原始来源不为空时成为来源的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "entitydecode": {
+                    "description": "true：将 &...; 格式的实体转换回 Unicode 字符。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true：删除文本开头和结尾的空格。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "striptags": {
+                    "description": "true：删除 HTML 标签和脚本标签。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "if": {
+                    "description": "如果来源与问号前的文本一致，则问号后的文本成为新的来源。",
+                    "value": "文本?文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "else": {
+                    "description": "如果之前的 IF 条件均不满足，则此值成为来源。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "如果问号前的文本出现在来源中，则替换为问号后的文本。",
+                    "value": "文本?文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "将文本截短为指定的字符数并追加 \"…\"；附加 s 时（例如 200s），在最后一个词尾处截断。",
+                    "value": "数字 >= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lbrconvert": {
+                    "description": "true：将换行转换为 HTML 换行（<br> 标签）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true：特殊字符转换为对应的 HTML 形式。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlconvert": {
+                    "description": "true：网址自动转换为可点击的链接。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailconvert": {
+                    "description": "true：为电子邮件地址加上链接。encrypt：通过 JavaScript 对链接进行轻度加密。",
+                    "value": "true / false / encrypt",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emaillimit": {
+                    "description": "自动将已链接的电子邮件地址截短为 x 个可见字符。",
+                    "value": ">= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailtext": {
+                    "description": "代替电子邮件地址显示的链接文本（仅在启用 \"emailconvert\" 时）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "target": {
+                    "description": "设置自动生成的链接（urlconvert、emailconvert）的链接目标。",
+                    "value": "窗口 / 框架",
+                    "default": "_self",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "markdown": {
+                    "description": "true：文本为 Markdown，并转换为 HTML（文本中的 HTML 会被转义）；其他转换不生效。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlencode": {
+                    "description": "true：按 RFC 1738 对文本进行编码。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urllimit": {
+                    "description": "自动生成的链接中可见文本的最大长度（仅适用于外部链接！）。",
+                    "value": "字符数",
+                    "default": "80",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ampconvert": {
+                    "description": "true：单独的 & 自动转换为 HTML 实体 &amp;。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "来源不为空时，放在来源前面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "来源不为空时，追加在来源后面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "iso": {
+                    "description": "true：输出转换为字符集 ISO-8859-1。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "charset": {
+                    "description": "输出要转换成的字符集。",
+                    "value": "文本",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "格式化后的值不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "time": {
+            "note": "格式化输出日期值或时间值的时间。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "要读取的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "记录字段的名称，其内容用作来源。",
+                    "value": "字段",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "用作来源的文本形式的值。",
+                    "value": "时间值",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU 模式，例如 \"HH:mm\"。未指定时，由页面的区域设置决定写法；整分钟的时间不显示秒。",
+                    "value": "格式说明",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true：附加时区名称（例如 \"Europe/Berlin\"）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "如果问号前的文本出现在格式化后的值中，则替换为问号后的文本（例如 \"Jan?January\"）。",
+                    "value": "文本?文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "来源（'field' 或 'useval'）为空时输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "来源不为空时，代替来源输出的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "格式化后的值不为空时，放在其前面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "格式化后的值不为空时，追加在其后面的文本。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "格式化后的值不输出，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "url": {
+            "note": "创建记录的 URL。",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "area": {
+                    "description": "指向区域概览的链接：由其 Slug 前缀构成的地址（/en/models），由该区域的概览模板显示。",
+                    "value": "区域名称或 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "要链接到的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
+                    "value": "记录 ID 或 Slug",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "用于显示记录的模板（URL 中逗号后的第二部分）：name 或 area.name。未指定时，使用区域所分配的模板。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "要链接到的语言版本（默认为当前调用的语言版本）。如果实例使用多种语言，代码始终出现在 URL 中；只有一种语言时则从不出现。网站未使用的代码会被忽略。",
+                    "value": "语言代码",
+                    "default": "（当前语言）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "protocol": {
+                    "description": "http 或 https，仅配合 absolute 或 host。未指定时，使用实例的协议，否则使用调用的协议。",
+                    "value": "传输协议",
+                    "default": "（实例的协议）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "host": {
+                    "description": "例如 example.com，用于更改访问网站所用的域名。",
+                    "value": "主机名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "absolute": {
+                    "description": "true：生成包含协议和域名的路径。false：路径相对于服务器，并以斜杠开头。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "URL 不输出，而是存储在 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_2fa": {
+            "note": "显示、设置（身份验证器应用或电子邮件验证码）和关闭已登录前台用户的第二因素。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true：请求必须包含来自 CMS:USER_TOKEN 的有效令牌（CSRF 防护）。false 关闭此命令的检查（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "status：仅读取。totp_setup：为应用生成新密钥（$set['totp_setup']）。totp_enable：检查并保存 data[token] 和 data[code]（$set['recovery_codes']）。code_enable：选择电子邮件验证码（用密码确认）。disable：关闭（应用验证码或密码）。recovery_renew：新的恢复代码（应用验证码）。",
+                    "value": "status / totp_setup / totp_enable / code_enable / disable / recovery_renew",
+                    "default": "status",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "仅当此字段包含文本时才执行写入功能。",
+                    "value": "文本值",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "包含输入内容的 PHP 数组的名称。",
+                    "value": "PHP 变量名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "data[…] 中验证码输入字段的名称。",
+                    "value": "字段名",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "data[…] 中密码输入字段的名称（code_enable，以及使用验证码的 disable）。",
+                    "value": "字段名",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "错误消息。索引中：使用场景；值中：消息文本（参见表格）。",
+                    "value": "默认消息",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "会话 Cookie 的名称 [a-z0-9]。",
+                    "value": "Cookie 名称",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_auth": {
+            "note": "检查会话 ID 是否有效。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "sessionid": {
+                    "description": "使用指定的会话 ID 而不是 Cookie 来恢复前台用户的会话。",
+                    "value": "会话 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "已登录的前台用户的档案记录必须满足的筛选条件。",
+                    "value": "参见 CMS:SELECT 的参数 \"filter[]\"",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "mode": {
+                    "description": "组合涉及同一字段的值的方式。",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "会话 Cookie 的名称 [a-z0-9]。",
+                    "value": "Cookie 名称",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_basket": {
+            "note": "编辑购物篮。",
+            "do": "function",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true：请求必须包含来自 CMS:USER_TOKEN 的有效令牌（CSRF 防护）。false 关闭此命令的检查（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "要执行的功能。",
+                    "value": "\"load\" / \"add\" / \"update\" / \"update_addon\"",
+                    "default": "\"load\"",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "function=add + overwrite=true：添加时更新已保存商品的数量。",
+                    "value": "false / true",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "购物篮类别。",
+                    "value": "类别 ID",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "只有这些容器中的记录才能放入购物篮。未指定时：类型为“record”或“ugc”的容器中已发布的记录（从不包括档案）。",
+                    "value": "容器 ID 或名称，以逗号分隔",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "variable": {
+                    "description": "以数组形式存储商品 ID 的变量的名称。",
+                    "value": "变量名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "duration": {
+                    "description": "在没有更改的情况下，购物篮保存的天数。",
+                    "value": "天数",
+                    "default": "30",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "basket_addon": {
+                    "description": "要存储的文本（序列化数据）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_delete": {
+            "note": "删除属于已登录前台用户的记录。",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true：请求必须包含来自 CMS:USER_TOKEN 的有效令牌（CSRF 防护）。false 关闭此命令的检查（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "要删除的记录。",
+                    "value": "记录 ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true：要删除的记录不必属于已登录的前台用户（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "条目成功删除后包含的模板。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message_error": {
+                    "description": "用户无权访问该记录时的错误消息。",
+                    "value": "文本",
+                    "default": "拒绝访问！",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_input": {
+            "note": "根据前台用户输入的数据创建或更新记录。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true：请求必须包含来自 CMS:USER_TOKEN 的有效令牌（CSRF 防护）。false 关闭此命令的检查（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "条目成功保存后包含的模板。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "包含要保存数据的 PHP 数组的名称。",
+                    "value": "PHP 变量名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "明确覆盖前台用户的输入（包括元字段，但 record_id、area_id、instance_id、tmp、deleted、origin_id、owner_id、created_by、changed_by 除外）。请勿在此传递前台用户的任何输入！",
+                    "value": "键值对",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "container": {
+                    "description": "新记录要保存到的内容区域的 ID 或名称。",
+                    "value": "容器 ID 或名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "按索引区分的错误消息（参见表格）。",
+                    "value": "文本",
+                    "default": "默认文本",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "仅当此字段包含文本时才执行命令。",
+                    "value": "文本值",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "允许写入的输入字段的名称。为空 = 为该容器定义的所有字段。",
+                    "value": "逗号分隔的列表",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "如果指定，则尝试更新此记录（UPDATE）。否则创建新记录（CREATE）。",
+                    "value": "记录 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true：要修改的记录不必属于已登录的前台用户（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "forceupdate": {
+                    "description": "true：强制更新通过参数“id”指定的记录。出错时输出消息。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "masterid": {
+                    "description": "仅在具有树结构的区域中创建时：新记录的父节点（parent_id）。",
+                    "value": "记录 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "仅在创建时：后台所有者的 admin_id（record.owner_id、created_by）。未指定时，使用 user.default_owner_id。",
+                    "value": "用户 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "removefiles": {
+                    "description": "要删除其内容的上传字段的名称。",
+                    "value": "逗号分隔的列表",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "仅限资料容器：包含当前密码的表单字段 data[…] 的名称。新密码只有与当前密码一起提交时才会保存——通过重置链接登录后立即修改的情况除外（$set['password_reset']）。消息 \"current\"。",
+                    "value": "字段名",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login": {
+            "note": "检查前台用户的登录数据并创建新会话。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "当档案区域要求第二因素（来自应用的验证码或通过电子邮件发送的验证码）时，用于登录第二步的模板。对于电子邮件验证码，它使用 CMS:EMAIL 发送 $set['login_code']，并显示供 CMS:USER_LOGIN_CODE 使用的验证码表单。一旦区域使用第二因素即为必填。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true：请求必须包含来自 CMS:USER_TOKEN 的有效令牌（CSRF 防护）。false 关闭此命令的检查（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "登录成功后包含的详情模板。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "存储前台用户数据的资料容器的 ID 或名称。",
+                    "value": "容器 ID 或名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "包含登录数据的 PHP 数组的名称。",
+                    "value": "PHP 变量名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "错误消息。索引中：使用场景；值中：消息文本（参见表格）。",
+                    "value": "默认消息",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "也可以通过哈希（来自 CMS:USER_PW 的令牌，忘记密码）进行登录。",
+                    "value": "哈希",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true：删除输入开头和结尾的空格。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookie": {
+                    "description": "true：默认设置 Cookie，以便在多个页面间保持登录。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "仅当此字段包含文本时才执行命令。不适用于通过“hash”登录。",
+                    "value": "文本值",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "会话 Cookie 的名称 [a-z0-9]。",
+                    "value": "Cookie 名称",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login_code": {
+            "note": "登录的第二步：检查来自身份验证器应用的验证码、电子邮件验证码或恢复代码，并让前台用户登录。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "在 \"resend\" 之后包含的模板，使用 CMS:EMAIL 发送新验证码（$set['login_code']）——通常与 CMS:USER_LOGIN 的 \"codetemplate\" 相同。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true：请求必须包含来自 CMS:USER_TOKEN 的有效令牌（CSRF 防护）。false 关闭此命令的检查（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "登录成功后包含的详情模板。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "仅当此字段包含文本时才检查验证码。",
+                    "value": "文本值",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resend": {
+                    "description": "true：通过电子邮件生成新验证码（有限流）。验证码随后位于 $set['login_code'] 中；会包含 \"codetemplate\"，由其使用 CMS:EMAIL 发送。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "包含输入内容的 PHP 数组的名称。",
+                    "value": "PHP 变量名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "data[…] 中验证码输入字段的名称。",
+                    "value": "字段名",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "错误消息。索引中：使用场景；值中：消息文本（参见表格）。",
+                    "value": "默认消息",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "sessionid": {
+                    "description": "不使用 Cookie 时待完成登录的会话（来自应用的调用）——CMS:USER_LOGIN 之后的 $set['user_session_id']。",
+                    "value": "会话 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "会话 Cookie 的名称 [a-z0-9]。",
+                    "value": "Cookie 名称",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_logout": {
+            "note": "结束并删除已登录前台用户的会话。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "submit": {
+                    "description": "如果指定了该参数，则仅当其包含文本时命令才注销（例如来自注销表单的 submit=\"$logout\"）——为空时什么也不发生，连消息令牌也没有。没有该参数时，命令在每次调用时都注销（假定令牌有效）。",
+                    "value": "文本值",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true：请求必须包含来自 CMS:USER_TOKEN 的有效令牌（CSRF 防护）。false 关闭此命令的检查（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "deletecookie": {
+                    "description": "false：仅删除服务器端会话。true：同时删除浏览器 Cookie。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "会话 Cookie 的名称 [a-z0-9]。",
+                    "value": "Cookie 名称",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_password_rules": {
+            "note": "将密码规则和文本以 JSON 形式输出，供属性 data-c9-password 使用（扩展 Password，内联包含）——与服务器保存时检查的规则相同。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "container": {
+                    "description": "所指密码字段所在的资料容器。",
+                    "value": "容器 ID 或名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "容器的密码字段。如果该字段带有扩展 Password，则适用其规则，否则适用 security.password_policy（此时服务器不检查）。",
+                    "value": "字段名",
+                    "default": "登录密码字段",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "输出不打印，而是存储在变量 $set 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_protect": {
+            "note": "保护模板，防止未登录的访问者访问。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "errortemplate": {
+                    "description": "前台用户无权访问容器或未登录时包含的详情模板。",
+                    "value": "模板名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "已登录的前台用户的档案记录必须满足的筛选条件。",
+                    "value": "参见 CMS:SELECT 的参数 \"filter[]\"",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "sessionid": {
+                    "description": "使用指定的会话 ID 而不是 Cookie 来恢复前台用户的会话。",
+                    "value": "会话 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "会话 Cookie 的名称 [a-z0-9]。",
+                    "value": "Cookie 名称",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_pw": {
+            "note": "准备重置密码。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true：表单防机器人保护——表单必须包含 (CMS:USER_TOKEN formguard=true) 中的字段（时间戳、空的蜜罐字段），并且最早在 user.formguard_min_seconds (3) 之后才能提交。数字可为该表单设定此最短时间（formguard=5）；0 或 false 关闭保护。否则显示消息 \"throttled\"，与限流时相同。",
+                    "value": "true / false / 秒",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true：请求必须包含来自 CMS:USER_TOKEN 的有效令牌（CSRF 防护）。false 关闭此命令的检查（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "当“uniquevalue”能在字段“uniquefield”中对应到某个档案时包含的详情模板。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "errortemplate": {
+                    "description": "当已指定“uniquevalue”但无法对应到任何档案时包含的详情模板。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "存储待匹配档案的资料容器的 ID 或名称。",
+                    "value": "容器 ID 或名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquefield": {
+                    "description": "用于搜索的字段的名称（字段类型 chars、text 或 encrypted，例如“email”）。该值必须恰好匹配一个档案。",
+                    "value": "字段名",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquevalue": {
+                    "description": "在字段“uniquefield”中搜索的值，例如 $_POST[email]。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "仅当此字段包含文本时才执行命令。",
+                    "value": "文本值",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "错误消息。索引中：使用场景；值中：消息文本（参见表格）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_register": {
+            "note": "根据提交的数据创建档案记录，并将状态设置为 status=2。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true：表单防机器人保护——表单必须包含 (CMS:USER_TOKEN formguard=true) 中的字段（时间戳、空的蜜罐字段），并且最早在 user.formguard_min_seconds (3) 之后才能提交。数字可为该表单设定此最短时间（formguard=5）；0 或 false 关闭保护。否则显示消息 \"throttled\"，与限流时相同。",
+                    "value": "true / false / 秒",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true：请求必须包含来自 CMS:USER_TOKEN 的有效令牌（CSRF 防护）。false 关闭此命令的检查（注意：请遵守安全提示！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "注册成功后包含的详情模板。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "用于保存前台用户数据的资料容器的 ID 或名称。",
+                    "value": "容器 ID 或名称",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailfield": {
+                    "description": "保存前台用户电子邮件地址的字段的名称（确认链接会发送到该地址）。",
+                    "value": "字段名",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "允许写入的输入字段的名称。为空 = 为该容器定义的所有字段。",
+                    "value": "逗号分隔的列表",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "明确覆盖前台用户的输入（包括元字段，但 record_id、area_id、instance_id、tmp、deleted、origin_id、owner_id、created_by、changed_by 除外）。请勿在此传递前台用户的任何输入！",
+                    "value": "键值对",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "message": {
+                    "description": "错误消息。索引中：使用场景；值中：消息文本（参见 CMS:USER_INPUT 中的表格）。",
+                    "value": "消息",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "仅当此字段包含文本时才执行命令。",
+                    "value": "文本值",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "新档案在后台的所有者的 admin_id（record.owner_id、created_by）。未指定时，使用 user.default_owner_id。",
+                    "value": "用户 ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "包含要保存数据的 PHP 数组的名称。",
+                    "value": "PHP 变量名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_register_confirm": {
+            "note": "激活档案记录并设置 status=0。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "successtemplate": {
+                    "description": "注册成功完成时包含的详情模板。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "由 CMS:USER_REGISTER 生成并通过电子邮件发送的哈希 ID。",
+                    "value": "哈希 ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "错误消息。索引中：使用场景；值中：消息文本（参见表格）。",
+                    "value": "消息",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_token": {
+            "note": "为带有写入型 CMS:USER_* 命令的表单输出 CSRF 令牌（隐藏字段 _token）。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true：另外输出时间戳和不可见的蜜罐字段（表单防机器人保护）——用于带有 USER_REGISTER、USER_PW 或 CMS:EMAIL formguard=true 的表单。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "field：隐藏输入字段 <input type=\"hidden\" name=\"_token\">。value：仅令牌（用于 Ajax：标头 X-Camindo-Token 或 POST 字段 _token）。",
+                    "value": "\"field\" / \"value\"",
+                    "default": "\"field\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "输出不打印，而是存储在变量 $set 中。此外，令牌始终位于 $set['user_token'] 中。",
+                    "value": "$set 的数组索引",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "xml": {
+            "note": "创建 XML 声明。",
+            "do": "encoding",
+            "oneof": "",
+            "params": {
+                "encoding": {
+                    "description": "要使用的字符编码。",
+                    "value": "encoding",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "version": {
+                    "description": "XML 版本。",
+                    "value": "version",
+                    "default": "1.0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "zip": {
+            "note": "将多条记录的文件作为 ZIP 压缩包提供下载，并结束页面。",
+            "do": "field",
+            "oneof": "filter,relation,ids,source",
+            "params": {
+                "field": {
+                    "description": "上传/缩略图字段（可多个）。对于每条记录，使用访问者有权获取的第一个字段（例如 fil_print,fil_upload：面向媒体的印刷版，否则为网页版）。",
+                    "value": "字段名（可多个），以逗号分隔",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "与 CMS:SELECT 相同方式选择记录。",
+                    "value": "值",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_op": {
+                    "description": "与 CMS:SELECT 相同的比较运算符。",
+                    "value": "运算符",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "filter_mode": {
+                    "description": "与 CMS:SELECT 相同的多值组合方式。",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "与 CMS:SELECT 相同方式的关联记录。",
+                    "value": "字段名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "relation 的来源记录；为空或 0：无文件。",
+                    "value": "记录 ID",
+                    "default": "（当前记录）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ids": {
+                    "description": "明确指定的记录（已发布，来自本网站）。",
+                    "value": "记录 ID，以逗号分隔",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "source": {
+                    "description": "basket：会话购物篮中的记录（类别取自 category）——例如灯箱。",
+                    "value": "basket",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "source=basket 时的购物篮类别。",
+                    "value": "数字",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "与 CMS:SELECT 相同的顺序；未指定时，按 ids 或购物篮的顺序。",
+                    "value": "字段名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "排序方向。",
+                    "value": "asc / desc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "name": {
+                    "description": "压缩包名称，不含 .zip。",
+                    "value": "文本",
+                    "default": "download",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filenames": {
+                    "description": "压缩包中的文件名：{slug}、{id}、{filename}（原始名称）、{extension}、{fieldname}；重复的名称会加上 -2、-3 ...",
+                    "value": "模式",
+                    "default": "{slug}.{extension}",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "credits": {
+                    "description": "添加 CREDITS.txt：每个文件的名称及这些字段的内容（例如标题、图片说明、图片来源）。",
+                    "value": "字段名，以逗号分隔",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxfiles": {
+                    "description": "最大文件数（只能小于设置值）。",
+                    "value": "数字",
+                    "default": "(user.zip.max_files)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxsize": {
+                    "description": "最大大小，单位 MB（只能小于设置值）。",
+                    "value": "MB",
+                    "default": "(user.zip.max_mb)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "也包括预设日期的记录（与 CMS:SELECT 相同）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "也包括已过期的记录（与 CMS:SELECT 相同）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "会话 Cookie（CMS:USER_LOGIN cookiename）。",
+                    "value": "Cookie 名称",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "消息：message[empty]（无文件）、message[limit]（过大）、message[throttled]（压缩包过多）。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        }
+    }
+}

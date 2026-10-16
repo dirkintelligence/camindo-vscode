@@ -1,0 +1,8 @@
+{
+  "description": "Colors, completion and hover for (CMS:…) commands in camindo CMS templates (*.cms.php)",
+  "command.reload": "camindo: Reload command definitions",
+  "config.language": "Language of the command descriptions. Empty: the display language of VS Code (English if camindo has no such language).",
+  "config.commandsFile": "JSON file or directory with the command definitions (php Core/cron/camindo.php template commands --all --out=DIR), absolute or relative to the workspace. Empty: the files shipped with the extension.",
+  "config.commandColor": "Color of (CMS:…) commands, e.g. #a000a0. Empty: purple, lighter in dark themes.",
+  "config.phpColor": "Color of PHP expressions inside commands ({$…}, $var), e.g. #ff8800. Empty: orange."
+}

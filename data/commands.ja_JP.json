@@ -1,0 +1,3892 @@
+{
+    "version": "9.0.8",
+    "lang": "ja_JP",
+    "commands": {
+        "continue": {
+            "note": "成功テンプレートがあってもテンプレートの処理を続行します。",
+            "do": "field",
+            "oneof": "",
+            "params": {}
+        },
+        "csp": {
+            "note": "このページのスクリプトポリシー（Content Security Policy）を変更します: 追加のスクリプトソース、フォームの送信先、または別のモード。最初の出力より前に置く必要があります。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "script": {
+                    "description": "追加のスクリプトソース。スペースまたはカンマで区切ります（https://js.example.com, *.example.com）。'unsafe-inline' のようなキーワードは破棄されます。",
+                    "value": "ソース",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "form": {
+                    "description": "追加のフォーム送信先（form-action を有効にします）。例: 決済サービス。",
+                    "value": "ソース",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mode": {
+                    "description": "このページのモード: off = スクリプトポリシーなし、report = 報告のみ、enforce = 適用。空の場合: インスタンスの設定。",
+                    "value": "off / report / enforce",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "date": {
+            "note": "日付値の日付部分を書式設定して出力します。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "読み取り元のレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "内容をソースとして使用するレコードのフィールド名。",
+                    "value": "フィールド",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "ソースとして使用するテキスト形式の値。",
+                    "value": "日付値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU パターン（例: \"dd.MM.y\"）。指定しない場合は、ページのロケールによって表記が決まります。",
+                    "value": "書式指定",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: タイムゾーン名を末尾に付加します（例: \"Europe/Berlin\"）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "疑問符の前のテキストが書式設定後の値に含まれる場合、疑問符の後のテキストに置き換えます（例: \"Jan?January\"）。",
+                    "value": "テキスト?テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "ソース（'field' または 'useval'）が空の場合に出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "ソースが空でない場合に、ソースの代わりに出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "書式設定後の値が空でない場合に、その前に置くテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "書式設定後の値が空でない場合に、末尾に付加するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "書式設定後の値を出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "datetime": {
+            "note": "日付値の日付と時刻を書式設定して出力します。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "読み取り元のレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "内容をソースとして使用するレコードのフィールド名。",
+                    "value": "フィールド",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "ソースとして使用するテキスト形式の値。",
+                    "value": "日付値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU パターン（例: \"dd.MM.y HH:mm\"）。指定しない場合は、ページのロケールによって表記が決まります。",
+                    "value": "書式指定",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "autotime": {
+                    "description": "true: 時刻がない場合（00:00）は表示しません。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: タイムゾーン名を末尾に付加します（例: \"Europe/Berlin\"）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "疑問符の前のテキストが書式設定後の値に含まれる場合、疑問符の後のテキストに置き換えます（例: \"Jan?January\"）。",
+                    "value": "テキスト?テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "ソース（'field' または 'useval'）が空の場合に出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "ソースが空でない場合に、ソースの代わりに出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "書式設定後の値が空でない場合に、その前に置くテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "書式設定後の値が空でない場合に、末尾に付加するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "書式設定後の値を出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "email": {
+            "note": "メールを送信します。必要に応じて、事前にフォームの必須フィールドを確認します。",
+            "do": "do",
+            "oneof": "subject,subjecttemplate,body,bodytemplate",
+            "params": {
+                "formguard": {
+                    "description": "true: ロボット対策のフォーム保護。フォームには (CMS:USER_TOKEN formguard=true) のフィールド（タイムスタンプ、空のハニーポットフィールド）が含まれている必要があり、送信できるのは早くても user.formguard_min_seconds（3）の経過後です。数値を指定すると、このフォームの最短時間になります（formguard=5）。0 または false で保護をオフにします。満たさない場合は、スロットリングと同様にメッセージ \"throttled\" になります。",
+                    "value": "true / false / 秒",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "throttle": {
+                    "description": "送信元（IP）ごとのスロットリング: true = 上限 user.throttle.email_ip（1 時間に 5 回）、それ以外は user.throttle の個別のバケット。制限された場合: メッセージ \"throttled\"、メールは送信されません。誰でもアドレスを入力できるお問い合わせフォーム向けです。",
+                    "value": "true / バケット名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "to": {
+                    "description": "受信者のメールアドレス。複数の受信者は to[]=… またはカンマ区切りで指定します（最大 20）。",
+                    "value": "メールアドレス",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "toname": {
+                    "description": "受信者名（受信者がちょうど 1 人の場合のみ）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "from": {
+                    "description": "送信者のメールアドレス。",
+                    "value": "メールアドレス",
+                    "default": "email.noreply または email.reply（.camindo.php）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fromname": {
+                    "description": "送信者名。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "contenttype": {
+                    "description": "メールの MIME タイプ。",
+                    "value": "text/plain または text/html",
+                    "default": "text/plain",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "メールの件名。",
+                    "value": "テキスト",
+                    "default": "(no subject)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subjecttemplate": {
+                    "description": "件名用のテンプレート（タグと改行は削除されます）。subject より優先されます。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "body": {
+                    "description": "本文（テキストまたは HTML）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "bodytemplate": {
+                    "description": "メール本文用のテンプレート。body より優先されます。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "paths_absolute": {
+                    "description": "true: メール本文内のサーバー相対パスをすべて絶対パスに変換します（contenttype=\"text/html\" の場合のみ）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sender_url": {
+                    "description": "（任意でプロトコル付きの）ドメイン。サーバー相対パスを絶対パスに変換するために使用します。",
+                    "value": "(http://)ドメイン",
+                    "default": "インスタンスのプロトコルとメインドメイン",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: メールを送信せず、ログファイル var/log/{date}_mail-debug.log に書き込みます。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "requiredfields": {
+                    "description": "必須フィールドの指定。リクエスト配列 data[…] 内のフィールド名（インデックス名）（パラメーター data を参照）。",
+                    "value": "フィールド名（カンマ区切り）",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "'requiredfields' が想定するデータを含むリクエスト配列の名前（既定値は data、つまり $_POST['data']）。",
+                    "value": "PHP 変数名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "'submit' に値が含まれる場合にのみ 'requiredfields' を評価します。それ以外の場合、CMS:EMAIL コマンドは無視されます。",
+                    "value": "テキスト値",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "送信に成功した後に読み込むテンプレート。その後ページは終了します（CMS:CONTINUE を使う場合を除く）。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "エラーメッセージ。インデックスには用途（required, to, from, content, attachment, send）、値にはメッセージテキストを指定します。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "attachment": {
+                    "description": "添付するファイル。var ディレクトリからの相対パスで、download/、upload/、modules/ からのみ。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "fed": {
+            "note": "フロントエンド編集が有効な場合に、レコードを編集するためのボタンを作成します。同じページに CMS:FED_SCRIPT が必要です。",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "label": {
+                    "description": "ボタンのラベル。",
+                    "value": "テキスト",
+                    "default": "[»]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "開くレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "info": {
+                    "description": "true: ボタンで入力フォームではなくレコードの詳細表示を開きます。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ボタンの前に出力するテキスト（ボタンがない場合は出力しません）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ボタンの後に出力するテキスト（ボタンがない場合は出力しません）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "ボタンを出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_code": {
+            "note": "フロントエンド編集が有効な場合に HTML コードを出力します。",
+            "do": "code",
+            "oneof": "",
+            "params": {
+                "code": {
+                    "description": "フロントエンド編集が有効な場合に出力する HTML コード。",
+                    "value": "HTML コード",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "フロントエンド編集が無効な場合の代替出力。",
+                    "value": "HTML コード",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "コードを出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "fed_script": {
+            "note": "JavaScript 関数 cFED() と、CMS:FED のボタン用のクリックリスナーを（ページの nonce 付きで）提供します。ページごとに 1 回、通常はフッターに置きます。",
+            "do": "set",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "スクリプトブロックを出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "header": {
+            "note": "HTTP ヘッダーを送信します。",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "ヘッダーとしてブラウザーに送信するテキスト行。値がない場合（\"Name:\"）は、そのヘッダーを削除します。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "false: 同じ種類の既存のヘッダーを上書きせず、新しいヘッダーを追加します。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "include": {
+            "note": "テンプレートを読み込みます。出力キャッシュ（IncludeCache）によるキャッシュも可能です。",
+            "do": "template",
+            "oneof": "",
+            "params": {
+                "caching": {
+                    "description": "テンプレートの出力をこの期間キャッシュし、その間は再処理せずに配信します。指定なし、空、または 0: キャッシュなし。",
+                    "value": "秒、30s、5m、1h、1d または infinite",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cacheparams": {
+                    "description": "出力が依存するすべてのもの（レコード、ページ、顧客 …）。値ごとに個別のキャッシュファイルが作成されます。インスタンスと言語は自動的に考慮されます。",
+                    "value": "null、bool、int、string または array（変数としても可: cacheparams=$params）",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "出力全体（読み込んだテンプレートを含む）を出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "読み込む詳細テンプレート。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_list": {
+            "note": "ページナビゲーション（ページネーション）を作成します。例: 1 … 5 | 6 | 7 | 8 | 9 … 15。",
+            "do": "separator",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "現在のページのオフセット（スキップした結果の数）。値がない場合は、リクエストパラメーター skip が適用されます。",
+                    "value": "数値 >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maximum": {
+                    "description": "同時に表示するページリンクの数（移動に合わせて変化）。最初と最後のページへのリンクは含みません。",
+                    "value": "数値 >= 1",
+                    "default": "7",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "boundaries": {
+                    "description": "true: 最初と最後のページへのリンクが移動範囲の外にある場合は、常に表示します。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "2 つのページリンクの間のテキスト。省略記号（'ellipsis'）の前後には挿入されません。",
+                    "value": "区切り文字",
+                    "default": " ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "ページリンク用のテンプレート。{page} はページ番号に、{href} はページの URL に置き換えられます。",
+                    "value": "HTML テンプレート",
+                    "default": " <a href=\"{href}\">{page}</a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_active": {
+                    "description": "現在のページ用のテンプレート。{page} はページ番号に、{href} はページの URL に置き換えられます。",
+                    "value": "HTML テンプレート",
+                    "default": " <strong>{page}</strong> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ellipsis": {
+                    "description": "省略したページのプレースホルダー。端のリンクと移動範囲の間に表示されます。",
+                    "value": "コード",
+                    "default": " … ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "完成した HTML 内の単純なテキスト置換。区切り文字は疑問符です: \"search?replace\"。",
+                    "value": "テキスト?テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ナビゲーションの前のテキスト（ナビゲーションを出力する場合のみ）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ナビゲーションの後のテキスト（ナビゲーションを出力する場合のみ）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "結果が 1 ページに収まる場合、または CMS:SELECT に limit がなくナビゲーションが不要な場合の出力。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "ナビゲーションを出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_next": {
+            "note": "次のページへのリンクを作成します。",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "現在のページのオフセット（スキップした結果の数）。値がない場合は、リクエストパラメーター skip が適用されます。",
+                    "value": "数値 >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "次のページがある場合のリンク用のテンプレート。{href} は移動先の URL に置き換えられます。",
+                    "value": "HTML テンプレート",
+                    "default": " <a href=\"{href}\"><strong>❯❯</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "次のページがない場合の、選択できないリンク用のテンプレート。ここでも {href} が置き換えられます。",
+                    "value": "HTML テンプレート",
+                    "default": " <span>❯❯</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "完成した HTML 内の単純なテキスト置換。区切り文字は疑問符です: \"search?replace\"。",
+                    "value": "テキスト?テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "リンクの前のテキスト（リンクを出力する場合のみ）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "リンクの後のテキスト（リンクを出力する場合のみ）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "CMS:SELECT に limit がない場合の出力（その場合ページはありません）。すべてが 1 ページに収まる場合は tpl_inactive が表示されます。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "リンクを出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "jump_prev": {
+            "note": "前のページへのリンクを作成します。",
+            "do": "tpl_link",
+            "oneof": "",
+            "params": {
+                "skip": {
+                    "description": "現在のページのオフセット（スキップした結果の数）。値がない場合は、リクエストパラメーター skip が適用されます。",
+                    "value": "数値 >= 0",
+                    "default": "$_REQUEST[skip]",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_link": {
+                    "description": "前のページがある場合のリンク用のテンプレート。{href} は移動先の URL に置き換えられます。",
+                    "value": "HTML テンプレート",
+                    "default": " <a href=\"{href}\"><strong>❮❮</strong></a> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "tpl_inactive": {
+                    "description": "前のページがない場合の、選択できないリンク用のテンプレート。ここでも {href} が置き換えられます。",
+                    "value": "HTML テンプレート",
+                    "default": " <span>❮❮</span> ",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "完成した HTML 内の単純なテキスト置換。区切り文字は疑問符です: \"search?replace\"。",
+                    "value": "テキスト?テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "リンクの前のテキスト（リンクを出力する場合のみ）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "リンクの後のテキスト（リンクを出力する場合のみ）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "CMS:SELECT に limit がない場合の出力（その場合ページはありません）。すべてが 1 ページに収まる場合は tpl_inactive が表示されます。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "リンクを出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "media": {
+            "note": "画像タグを作成するか、メディアファイルの内容をテキスト形式で出力します。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "読み取り元のレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "アップロードフィールドまたはサムネイルフィールドの名前。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subfield": {
+                    "description": "IMG タグの代わりに単一の値: path（src/href 用の DOCUMENT_ROOT からのパス、読みやすいファイル名付き。auth/download/user_auth の場合は file.php 経由）、file（ファイルシステム上の絶対パス）、filename（元のファイル名）、mime_type、extension（ドットなし）、size（バイト。autoformat で読みやすい形式）、width / height（ピクセル、不明な場合は 0）、version（ファイルのバージョンカウンター）。",
+                    "value": "path / file / filename / mime_type / extension / size / width / height / version",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "auth": {
+                    "description": "true: リンクはメディアディレクトリではなく /file.php を指します。「ログイン中のフロントエンドユーザーのみ」（user_auth）のフィールドでは自動的にこうなり、file.php がフロントエンドのセッションを確認します。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "指定したファイル名で /file.php を介してファイルをダウンロード用に提供します（拡張子は自動的に付加されます）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "IMG タグの幅。CSS 単位の有無は任意です（既定値: px）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "IMG タグの高さ。CSS 単位の有無は任意です（既定値: px）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "attr": {
+                    "description": "IMG タグの追加属性（キー: 属性名、値: 属性値）。",
+                    "value": "配列",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "autoformat": {
+                    "description": "true: 'subfield' で選択した内容を種類に応じて書式設定します（例: ファイルサイズを値に応じて bytes/KB/MB で動的に表示）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "書式設定後の値が空でない場合に、その値を上書きします。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "書式設定後の値が空（または \"0\"）の場合の代替テキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "書式設定後の値が空（または \"0\"）でない場合に、その前に置くテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "書式設定後の値が空（または \"0\"）でない場合に、末尾に付加するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "ファイル配列（例: CMS:SAVEDATA から）と field_id、record_id。PHP から直接呼び出す場合のみ、field なしで使用します（例を参照）。",
+                    "value": "配列",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "書式設定後の値を出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "message": {
+            "note": "現在のエラーメッセージからテキストを出力します。",
+            "do": "useval",
+            "oneof": "",
+            "params": {
+                "useval": {
+                    "description": "ソースとして使用するテキスト形式の値。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "メッセージがある場合に、その前に出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "メッセージがある場合に、その後に出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "メッセージがない場合のテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "メッセージの代わりに出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "メッセージを表示せず、変数 $set に書き込みます。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "nonce": {
+            "note": "ページの nonce を出力します: <script(CMS:NONCE)>。ウェブサイトのスクリプトポリシーが適用されると、テンプレート内のすべてのスクリプトにこれが必要です。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "format": {
+                    "description": "attribute: nonce=\"…\"（<script> タグ用に先頭にスペース付き）。value: 値のみ。",
+                    "value": "\"attribute\" / \"value\"",
+                    "default": "\"attribute\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "出力を表示せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "number": {
+            "note": "数値を書式設定して出力します。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "読み取り元のレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "内容をソースとして使用するレコードのフィールド名。",
+                    "value": "フィールド",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "ソースとして使用するテキスト形式の値。",
+                    "value": "数値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "ソースが空の場合、または数値（mul/add の適用後）が 0 の場合に出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "元のソースが空でない場合に、ソースとなる数値。",
+                    "value": "数値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "mul": {
+                    "description": "ソースに掛ける数値。",
+                    "value": "数値",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "add": {
+                    "description": "ソースに加算する数値。",
+                    "value": "数値",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "PHP コマンド sprintf() に準じた書式設定。",
+                    "value": "書式",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimals": {
+                    "description": "固定の小数桁数（四捨五入）。decimal と thousands_separator は引き続き適用されます。指定しない場合は、数値が持つ桁数のままです。",
+                    "value": "数値 0-10",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "decimal": {
+                    "description": "小数点を置き換える文字。",
+                    "value": "文字",
+                    "default": ".",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "thousands_separator": {
+                    "description": "千の位の区切りとして挿入する文字（右から左へ 3 桁ごと）。",
+                    "value": "文字",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nullcent": {
+                    "description": "小数部がない場合にそれを置き換えるテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "疑問符の前のテキストが書式設定後の値に含まれる場合、疑問符の後のテキストに置き換えます（例: \".00?\" で空の小数部を削除）。",
+                    "value": "テキスト?テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "書式設定後の値が \"0\" または空でない場合に、その前に置くテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "書式設定後の値が \"0\" または空でない場合に、末尾に付加するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "書式設定後の値を出力せず、代わりに変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sizefactor": {
+                    "description": "1000 または 1024。0 より大きい場合、読みやすいファイルサイズを計算します（例: 15.2 GB）。",
+                    "value": "1 キロバイトのバイト数",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_cell": {
+            "note": "Zelle der aktuellen Zeile. Schrift ist die zu diesem Zeitpunkt eingestellte (CMS:PDF_FONT).",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Zelltext; bricht innerhalb der Spalte um, soweit fit= ihn nicht einpasst.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "col": {
+                    "description": "Spaltenindex ab 0; ohne Angabe die nächste Spalte.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Horizontale Ausrichtung.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "valign": {
+                    "description": "Vertikale Ausrichtung in der Zeile.",
+                    "value": "T / C / B",
+                    "default": "T",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fit": {
+                    "description": "Text auf eine Zeile in der Spaltenbreite einpassen: fontsize verkleinert die Schrift (bis min_size), spacing verringert den Zeichenabstand, scale beides, force staucht horizontal. Was auch so nicht passt, bricht um.",
+                    "value": "none / scale / fontsize / spacing / force",
+                    "default": "none",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "min_size": {
+                    "description": "Kleinste Schriftgröße beim Einpassen.",
+                    "value": "Punkt",
+                    "default": "6",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenseiten: L links, T oben, R rechts, B unten; 1 alle, 0 keine.",
+                    "value": "LTRB / 1 / 0",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke; sonst die der Tabelle.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_color": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand dieser Zelle; sonst der der Tabelle.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe der Zelle. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_color": {
+            "note": "Definiert ein Farbfeld mit RGB- und/oder CMYK-Wert. Der Farbraum des Dokuments (PDF_INIT) wählt den Wert; ein fehlender wird umgerechnet.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Name des Farbfelds (Buchstaben, Ziffern, _ und -).",
+                    "value": "Name",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "rgb": {
+                    "description": "RGB-Wert als Hex-Farbe, z. B. #0066FF.",
+                    "value": "#rrggbb",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cmyk": {
+                    "description": "CMYK-Wert in Prozent, z. B. 0,100,100,0.",
+                    "value": "c,m,y,k",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_fill_color": {
+            "note": "Füllfarbe für die folgenden CMS:PDF_RECT. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Füllfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_font": {
+            "note": "Stellt die Schrift für die folgenden Texte und Zellen ein. Gilt über Seiten hinweg.",
+            "do": "font",
+            "oneof": "",
+            "params": {
+                "font": {
+                    "description": "Name einer Schrift aus var/modules/pdf/fonts/ ({name}.json; mitgeliefert: helvetica, times, courier, symbol, zapfdingbats). Eine Datei {name}.ttf/.otf wird beim ersten Aufruf konvertiert.",
+                    "value": "Schriftname",
+                    "default": "helvetica",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "Schriftschnitt: B fett, I kursiv, U unterstrichen, D durchgestrichen, O überstrichen. Leer = regulär.",
+                    "value": "B / I / U / D / O, kombinierbar",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße in Punkt.",
+                    "value": "Punkt",
+                    "default": "12",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_html": {
+            "note": "Schreibt einen HTML-Block (Umbruch und Seitenumbruch durch tc-lib-pdf). Der Cursor bleibt stehen - die Höhe des Blocks ist nicht bekannt.",
+            "do": "html",
+            "oneof": "",
+            "params": {
+                "html": {
+                    "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
+                    "value": "HTML",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_image": {
+            "note": "Platziert ein Bild (JPEG, PNG, GIF, ...) aus dem Medienverzeichnis. Der Cursor rückt unter das Bild.",
+            "do": "file",
+            "oneof": "",
+            "params": {
+                "file": {
+                    "description": "Bilddatei: absoluter Pfad aus (CMS:MEDIA subfield=file), Webpfad aus subfield=path oder Pfad relativ zu public/media. Nur Dateien unterhalb des Medienverzeichnisses.",
+                    "value": "Pfad",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite; 0 = aus der Höhe (bzw. aus den Pixeln bei 72 dpi, wenn beide fehlen).",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe; 0 = proportional zur Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "link": {
+                    "description": "Verweis, der beim Klick auf das Bild geöffnet wird.",
+                    "value": "URL",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_init": {
+            "note": "Vorgaben für das Dokument: Farbraum, ICC-Profil, Seitenformat und Ränder. Vor der ersten CMS:PDF_PAGE.",
+            "do": "colorspace",
+            "oneof": "",
+            "params": {
+                "colorspace": {
+                    "description": "Farbraum, in dem Farben ins PDF geschrieben werden.",
+                    "value": "RGB / CMYK",
+                    "default": "RGB",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "icc_profile": {
+                    "description": "ICC-Profil aus var/modules/pdf/profiles/, wird als Output Intent eingebettet.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "output_condition": {
+                    "description": "Bezeichner der Druckbedingung für den Output Intent (z. B. FOGRA39). Ohne Angabe der Dateiname des Profils.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat leerer Seiten (Namen wie in tc-lib-pdf).",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "A4",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Hoch- (P) oder Querformat (L) leerer Seiten.",
+                    "value": "P / L",
+                    "default": "P",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Seitenränder in mm (ein Wert: alle; zwei: oben/unten, rechts/links). Linker Rand = x-Vorgabe, rechter Rand = Breitenvorgabe, unterer Rand = Umbruchgrenze der Tabellen.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "20,20,20,20",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line": {
+            "note": "Zeichnet eine Linie.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x1": {
+                    "description": "Startpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y1": {
+                    "description": "Startpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x2": {
+                    "description": "Endpunkt, Abstand von links.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y2": {
+                    "description": "Endpunkt, Abstand von oben.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Liniendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Linienfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_line_color": {
+            "note": "Linienfarbe für die folgenden CMS:PDF_LINE, Rahmen von CMS:PDF_RECT und Zellenrahmen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Linienfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_meta": {
+            "note": "Dokumenteigenschaften (werden bei CMS:PDF_PRINT geschrieben).",
+            "do": "title",
+            "oneof": "",
+            "params": {
+                "title": {
+                    "description": "Titel.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "author": {
+                    "description": "Autor.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "subject": {
+                    "description": "Thema.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keywords": {
+                    "description": "Stichwörter.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "creator": {
+                    "description": "Erzeugende Anwendung.",
+                    "value": "Text",
+                    "default": "camindo CMS",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_page": {
+            "note": "Legt eine neue Seite an - leer oder auf einer Seite einer Layout-Vorlage. Der erste Aufruf beginnt das Dokument.",
+            "do": "layout",
+            "oneof": "",
+            "params": {
+                "layout": {
+                    "description": "PDF-Vorlage aus var/modules/pdf/layouts/, deren Seite als Hintergrund übernommen wird. Ohne Angabe eine leere Seite.",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "page": {
+                    "description": "Seite der Vorlage (ab 1), die übernommen wird.",
+                    "value": "Zahl",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "Seitenformat einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "A4 / A5 / LETTER / ...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "orientation": {
+                    "description": "Ausrichtung einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "P / L",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "margins": {
+                    "description": "Ränder nur dieser Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "value": "oben,rechts,unten,links",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_print": {
+            "note": "Sendet das Dokument an den Browser und beendet den Request. Vor CMS:PDF_PAGE darf das Template nichts ausgegeben haben.",
+            "do": "filename",
+            "oneof": "",
+            "params": {
+                "filename": {
+                    "description": "Dateiname, den der Browser anzeigt bzw. beim Speichern vorschlägt.",
+                    "value": "Dateiname",
+                    "default": "document.pdf",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "download": {
+                    "description": "Leer oder false: im Browser anzeigen. true: als Download unter filename. Ein Dateiname: als Download unter diesem Namen.",
+                    "value": "false / true / Dateiname",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_rect": {
+            "note": "Zeichnet ein Rechteck, umrandet und/oder gefüllt.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "x": {
+                    "description": "Linke Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "height": {
+                    "description": "Höhe.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "style": {
+                    "description": "D Rahmen, F Füllung, DF beides.",
+                    "value": "D / F / DF",
+                    "default": "D",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Füllfarbe; sonst CMS:PDF_FILL_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border": {
+                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "line_width": {
+                    "description": "Rahmendicke.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_row": {
+            "note": "Beginnt eine Tabellenzeile.",
+            "do": "",
+            "oneof": "",
+            "params": {
+                "is_header": {
+                    "description": "Kopfzeile: wird nach einem Seitenumbruch auf der Folgeseite wiederholt.",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "keep_together": {
+                    "description": "Zeile nicht über Seiten teilen. Derzeit werden Zeilen grundsätzlich nicht geteilt; der Parameter ist für spätere Versionen reserviert.",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table": {
+            "note": "Beginnt eine Tabelle; Zeilen und Zellen folgen mit CMS:PDF_ROW / CMS:PDF_CELL, gezeichnet wird bei CMS:PDF_TABLE_END. Zeilen werden nie geteilt: was nicht mehr auf die Seite passt, beginnt auf einer Folgeseite, Kopfzeilen werden dort wiederholt.",
+            "do": "cols",
+            "oneof": "",
+            "params": {
+                "cols": {
+                    "description": "Spaltenbreiten in mm, kommasepariert.",
+                    "value": "b1,b2,...",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Linke Kante; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Obere Kante; ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "padding": {
+                    "description": "Innenabstand aller Zellen in mm (ein Wert: alle; zwei: oben/unten, rechts/links).",
+                    "value": "oben,rechts,unten,links",
+                    "default": "1",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "border_width": {
+                    "description": "Rahmendicke der Zellen.",
+                    "value": "mm",
+                    "default": "0.2",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_layout": {
+                    "description": "Layout-Vorlage der Folgeseiten bei Seitenumbruch; sonst wie die letzte CMS:PDF_PAGE (leer = leere Seite).",
+                    "value": "Dateiname",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "next_page": {
+                    "description": "Seite der Vorlage für Folgeseiten.",
+                    "value": "Zahl",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_table_end": {
+            "note": "Zeichnet die Tabelle. Der Cursor rückt unter die Tabelle.",
+            "do": "",
+            "oneof": "",
+            "params": {}
+        },
+        "pdf_text": {
+            "note": "Schreibt einen Textblock mit Zeilenumbruch innerhalb der Breite. Der Cursor rückt unter den Block.",
+            "do": "text",
+            "oneof": "",
+            "params": {
+                "text": {
+                    "description": "Der Text (UTF-8; Zeilenumbrüche werden umgebrochen). Leer = keine Ausgabe.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "x": {
+                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "y": {
+                    "description": "Abstand vom oberen Seitenrand (Oberkante des Blocks); ohne Angabe der Cursor.",
+                    "value": "mm",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "width": {
+                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "value": "mm",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "align": {
+                    "description": "Ausrichtung: links, zentriert, rechts, Blocksatz.",
+                    "value": "L / C / R / J",
+                    "default": "L",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "size": {
+                    "description": "Schriftgröße nur für diesen Block; sonst die von CMS:PDF_FONT.",
+                    "value": "Punkt",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "color": {
+                    "description": "Textfarbe nur für diesen Block; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "background": {
+                    "description": "Hintergrundfarbe des Blocks. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "pdf_text_color": {
+            "note": "Textfarbe für die folgenden CMS:PDF_TEXT und Zellen. Ohne Angabe Schwarz.",
+            "do": "name",
+            "oneof": "",
+            "params": {
+                "name": {
+                    "description": "Textfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
+                    "value": "Farbe",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "raw": {
+            "note": "内容を書式設定せずに出力します。",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "読み取り元のレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "内容を出力するフィールドの名前。",
+                    "value": "フィールド",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "フィールドが空の場合に出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "フィールドの内容が空でない場合に、その代わりに出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "フィールドの内容が空でない場合に、その前に置くテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "フィールドの内容が空でない場合に、末尾に付加するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "内容を出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "relation": {
+            "note": "現在のレコードにリンクされているすべてのレコードのメインフィールド（タイトル）を出力します。",
+            "do": "field",
+            "oneof": "",
+            "params": {
+                "id": {
+                    "description": "リンクを出力するレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "リンク先を出力するリンクフィールド（フィールド型 relation、pointer、link）の名前。それ以外のフィールド型はエラーメッセージになります。",
+                    "value": "フィールド",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "結果セットに含めるレコードの最大数。",
+                    "value": "数値 >0",
+                    "default": "1000",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: まだ公開されていないリンク先（online_at に未到達）も出力します（CMS:SELECT と同様）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: 期限切れのリンク先（offline_at に到達）も出力します（CMS:SELECT と同様）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "指定しない場合は、承認済みのリンク先（status_id 0）のみ。ステータス ID > 0 の場合はそのステータスのリンク先のみ、\"any\" の場合はすべてのステータスのリンク先（CMS:SELECT と同様）。",
+                    "value": "ステータス ID または any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "内容を要求する言語バージョンのコード（多言語フィールドに影響）。まだ実装されていません。現在は常に呼び出し時の言語が適用されます。",
+                    "value": "言語コード",
+                    "default": "（現在の言語）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "separator": {
+                    "description": "結果の間に置くテキスト。",
+                    "value": "区切り文字",
+                    "default": "|",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ソースが空でない場合に、その前に置くテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ソースが空でない場合に、末尾に付加するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "元のソースが空の場合に、ソースとなるテキスト（'set' 以外のパラメーターは無視されます）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "出力が空でない場合に、その出力を上書きします。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "ソースの出力をリダイレクトし、$set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "result_end": {
+            "note": "CMS:SELECT の結果を処理するループの終了を示します。",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "result_start": {
+            "note": "CMS:SELECT の結果を処理するループの開始を示します。",
+            "do": "do",
+            "oneof": "",
+            "params": {}
+        },
+        "savedata": {
+            "note": "現在のレコードのデータを指定した変数に格納します。",
+            "do": "phpvar",
+            "oneof": "",
+            "params": {
+                "phpvar": {
+                    "description": "現在のレコードのデータを格納する変数。",
+                    "value": "$GLOBALS 内のインデックス",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "データを読み込むレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。指定しない場合は、現在読み込まれているレコード。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "多言語フィールドの内容をどの言語で読み込むかを指定します。まだ実装されていません。現在は常に呼び出し時の言語が適用されます。",
+                    "value": "言語バージョンのコード",
+                    "default": "$lang",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select": {
+            "note": "指定した（フィルター）条件でデータベースを検索し、見つかったレコードを返します。",
+            "do": "resulttemplate",
+            "oneof": "filter,relation",
+            "params": {
+                "set": {
+                    "description": "出力全体（読み込んだテンプレートを含む）を出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "結果を処理するために読み込む一覧テンプレート。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresulttemplate": {
+                    "description": "クエリの結果がない場合に読み込む詳細テンプレート。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "noresult": {
+                    "description": "クエリの結果がない場合に直接出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "キーには検索するフィールドの名前（任意のリンクフィールドには relation_any、コンテンツエリアの名前には area。そこで数値を指定すると area_id とみなされます）。値には検索する値を指定します。",
+                    "value": "値または EMPTY",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_mode": {
+                    "description": "同じフィールドの複数の値を組み合わせる方法（filter_mode[field]=AND）。",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "filter_op": {
+                    "description": "指定したフィールドの比較演算子（filter_op[field]=\">\"）。代わりに、演算子をキーと値の間（filter[price] > 100）や値の直前（filter[price]=\">100\"）に書くこともできます。",
+                    "value": "=, ==, !=, !!, >, <, >>, <<, >=, <=",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "skip": {
+                    "description": "結果セットでスキップするレコードの数。limit と組み合わせた場合のみ機能します。",
+                    "value": "数値 >= 0",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "結果セットに含めるレコードの最大数。同時に CMS:JUMP_LIST、CMS:JUMP_PREV、CMS:JUMP_NEXT のページサイズになります。値なしまたは 0: 無制限、ページナビゲーションなし。",
+                    "value": "数値 >0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "並べ替えに使うフィールド（order を参照）。複数の場合はカンマ区切りまたは sort[]=… で指定します。area はコンテンツエリアの名前で、pointerfield.field はリンク先レコードのフィールドで並べ替えます。",
+                    "value": "フィールド名（複数可、カンマ区切り）",
+                    "default": "changed_at",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "並べ替えの方向（sort を参照）。sort がない場合は changed_at desc が適用されます。",
+                    "value": "desc / asc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "内容を要求する言語バージョンのコード（多言語フィールドに影響）。まだ実装されていません。現在は常に呼び出し時の言語が適用されます。",
+                    "value": "言語コード",
+                    "default": "（現在の言語）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "検索対象のレコードが格納されているリレーション／ポインターフィールドのフィールド名（src_id と併用）。dest_id と併用する場合は、検索対象のレコードが dest_id を指すためのフィールド。ANY: 任意のポインターフィールド。",
+                    "value": "フィールド名（複数可、カンマ区切り）または 'ANY'",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "リンクを評価する元のレコード（値なし: 現在のレコード）。",
+                    "value": "レコード ID（複数可）",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "dest_id": {
+                    "description": "relation の逆方向: relation を介してこのレコードを指すレコード（relation=ANY: 任意のポインターフィールドを介して）。src_id がない場合、現在のレコードはソースとして使用されません。",
+                    "value": "レコード ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "nextof": {
+                    "description": "relation と併用する場合のみ: リンクリスト内で指定したレコードに隣接するレコード。その後の項目（order=asc）またはその前の項目（order=desc）をリストの順序で返します。limit=1 の場合は次または前のレコード。",
+                    "value": "レコード ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "count": {
+                    "description": "true: \"limit\" と \"skip\" に関係なく、結果セットのレコード数を求めます（resulttemplate 内の $this->db->num_rows_unlimited。JUMP コマンドの基礎になります）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hits": {
+                    "description": "false: 件数のみを数えます（count=true を含む）。レコードは読み込まれず、resulttemplate も読み込まれません。合計は呼び出し元のテンプレートの $this->db->num_rows_unlimited で利用できます。0 の場合は noresult/noresulttemplate が適用されます。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "true: 期限切れのレコード（offline_at に到達）もクエリに含めます。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "true: 公開日が先のレコード（online_at に未到達）もクエリに含めます。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "debug": {
+                    "description": "true: サポートでの分析用に、生成したデータベースクエリを出力します。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sql": {
+                    "description": "WHERE 句に追加する生の SQL（注意: サポート専用です！）。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "state": {
+                    "description": "値がない場合は、承認済みのレコード（status_id 0）のみ。ステータス ID > 0 の場合はそのステータスのレコードのみ、\"any\" の場合はすべてのステータスのレコードを検索します。",
+                    "value": "ステータス ID または any",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "select_langversion": {
+            "note": "利用可能な言語をレコードとして返します。",
+            "do": "resulttemplate",
+            "oneof": "",
+            "params": {
+                "set": {
+                    "description": "出力全体（読み込んだテンプレートを含む）を出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resulttemplate": {
+                    "description": "結果を処理するために読み込む一覧テンプレート。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "snippet": {
+            "note": "スニペット（テキストモジュール）を呼び出し時の言語で出力します。",
+            "do": "key",
+            "oneof": "",
+            "params": {
+                "key": {
+                    "description": "スニペットのキー。例: custom.read_more（インスタンスのスニペットセット）、またはプレフィックスなしのコアスニペット。",
+                    "value": "スニペットのキー",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "param": {
+                    "description": "プレースホルダーの値: param[name]=value はスニペット内の {name} を置き換え、ICU パラメーター（plural、select）を埋めます。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: 特殊文字を HTML の等価表現に変換します（属性用）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "スニペットが存在しない場合に出力するテキスト（ifempty がない場合はキーが表示されます）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "スニペットが空でない場合に、その前に置くテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "スニペットが空でない場合に、末尾に付加するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "テキストを出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "text": {
+            "note": "書式設定を適用してテキストを出力します。",
+            "do": "field",
+            "oneof": "field,useval,id",
+            "params": {
+                "id": {
+                    "description": "読み取り元のレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。'field' がない場合は、フィールド \"text\" を読み取ります。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "内容をソースとして使用するレコードのフィールド名。",
+                    "value": "フィールド",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "ソースとして使用するテキスト形式の値。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "元のソースが空の場合に、ソースとなるテキスト（その場合 'set' 以外のパラメーターは無視されます）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "元のソースが空でない場合に、ソースとなるテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "entitydecode": {
+                    "description": "true: &...; 形式のエンティティを Unicode 文字に戻します。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: テキストの先頭と末尾のスペースを削除します。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "striptags": {
+                    "description": "true: HTML タグとスクリプトタグを削除します。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "if": {
+                    "description": "ソースが疑問符の前のテキストと一致する場合、疑問符の後のテキストが新しいソースになります。",
+                    "value": "テキスト?テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "else": {
+                    "description": "それまでの IF の条件がいずれも当てはまらない場合、この値がソースになります。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "疑問符の前のテキストがソースに含まれる場合、疑問符の後のテキストに置き換えます。",
+                    "value": "テキスト?テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "limit": {
+                    "description": "テキストを指定した文字数に短縮し、\"…\" を付加します。s を付けると（例: 200s）、最後の単語の終わりで短縮します。",
+                    "value": "数値 >= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lbrconvert": {
+                    "description": "true: 改行を HTML の改行（<br> タグ）に変換します。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "specialchars": {
+                    "description": "true: 特殊文字を HTML の等価表現に変換します。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlconvert": {
+                    "description": "true: インターネットアドレスを自動的にクリック可能なリンクに変換します。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailconvert": {
+                    "description": "true: メールアドレスをリンクにします。encrypt: リンクを JavaScript で簡易的に暗号化します。",
+                    "value": "true / false / encrypt",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emaillimit": {
+                    "description": "リンクしたメールアドレスを、表示される文字数 x に自動的に短縮します。",
+                    "value": ">= 0",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailtext": {
+                    "description": "メールアドレスの代わりに表示するリンクテキスト（\"emailconvert\" が有効な場合のみ）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "target": {
+                    "description": "自動生成されるリンク（urlconvert、emailconvert）のリンクターゲットを設定します。",
+                    "value": "ウィンドウ / フレーム",
+                    "default": "_self",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "markdown": {
+                    "description": "true: テキストは Markdown であり、HTML に変換されます（テキスト内の HTML はエスケープされます）。その他の変換は適用されません。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urlencode": {
+                    "description": "true: テキストを RFC 1738 に従ってエンコードします。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "urllimit": {
+                    "description": "自動生成されるリンクの表示テキストの最大長（外部リンクにのみ適しています！）。",
+                    "value": "文字数",
+                    "default": "80",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ampconvert": {
+                    "description": "true: 単独の & を自動的に HTML エンティティ &amp; に変換します。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "ソースが空でない場合に、ソースの前に置くテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "ソースが空でない場合に、ソースの末尾に付加するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "iso": {
+                    "description": "true: 出力を文字セット ISO-8859-1 に変換します。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "charset": {
+                    "description": "出力の変換先となる文字セット。",
+                    "value": "テキスト",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "書式設定後の値を出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "time": {
+            "note": "日付値または時刻値の時刻を書式設定して出力します。",
+            "do": "field",
+            "oneof": "field,useval",
+            "params": {
+                "id": {
+                    "description": "読み取り元のレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "内容をソースとして使用するレコードのフィールド名。",
+                    "value": "フィールド",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "ソースとして使用するテキスト形式の値。",
+                    "value": "時刻値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "ICU パターン（例: \"HH:mm\"）。指定しない場合は、ページのロケールによって表記が決まります。分ちょうどの時刻は秒なしで表示されます。",
+                    "value": "書式指定",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "timezone": {
+                    "description": "true: タイムゾーン名を末尾に付加します（例: \"Europe/Berlin\"）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "replace": {
+                    "description": "疑問符の前のテキストが書式設定後の値に含まれる場合、疑問符の後のテキストに置き換えます（例: \"Jan?January\"）。",
+                    "value": "テキスト?テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "ifempty": {
+                    "description": "ソース（'field' または 'useval'）が空の場合に出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "instead": {
+                    "description": "ソースが空でない場合に、ソースの代わりに出力するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "prefix": {
+                    "description": "書式設定後の値が空でない場合に、その前に置くテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "suffix": {
+                    "description": "書式設定後の値が空でない場合に、末尾に付加するテキスト。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "書式設定後の値を出力せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "url": {
+            "note": "レコードの URL を作成します。",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "area": {
+                    "description": "エリアの一覧へのリンク: スラッグプレフィックスから成るアドレス（/en/models）で、エリアの一覧テンプレートが表示されます。",
+                    "value": "エリア名または ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "リンク先のレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
+                    "value": "レコード ID またはスラッグ",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "template": {
+                    "description": "レコードを表示するテンプレート（URL のカンマの後の 2 番目の部分）: name または area.name。指定しない場合は、エリアが割り当てるテンプレート。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "lang": {
+                    "description": "リンク先の言語バージョン（既定値は現在の呼び出しの言語）。インスタンスが複数の言語を運用している場合、コードは常に URL に含まれます。言語が 1 つだけの場合は含まれません。ウェブサイトが運用していないコードは無視されます。",
+                    "value": "言語コード",
+                    "default": "（現在の言語）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "protocol": {
+                    "description": "http または https（absolute または host と併用する場合のみ）。指定しない場合はインスタンスのプロトコル、それもなければ呼び出しのプロトコル。",
+                    "value": "転送プロトコル",
+                    "default": "（インスタンスのプロトコル）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "host": {
+                    "description": "例: example.com。ウェブサイトを呼び出すドメインを変更します。",
+                    "value": "ホスト名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "absolute": {
+                    "description": "true: プロトコルとドメインを含めてパスを生成します。false: パスはサーバー相対で、スラッシュで始まります。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "URL を出力せず、$set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_2fa": {
+            "note": "ログイン中のフロントエンドユーザーの第2要素を表示、設定（認証アプリまたはメールによるコード）、オフにします。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: リクエストには CMS:USER_TOKEN の有効なトークンが含まれている必要があります（CSRF 対策）。false でこのコマンドの確認をオフにします（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "status: 読み取りのみ。totp_setup: アプリ用の新しいキーを作成します（$set['totp_setup']）。totp_enable: data[token] と data[code] を確認して保存します（$set['recovery_codes']）。code_enable: メールによるコードを選択します（パスワードで確認）。disable: オフにします（アプリのコードまたはパスワード）。recovery_renew: 新しいリカバリーコード（アプリのコード）。",
+                    "value": "status / totp_setup / totp_enable / code_enable / disable / recovery_renew",
+                    "default": "status",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "このフィールドにテキストが含まれる場合にのみ、書き込みを行う機能が実行されます。",
+                    "value": "テキスト値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "入力を含む PHP 配列の名前。",
+                    "value": "PHP 変数名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "data[…] 内のコード用入力フィールドの名前。",
+                    "value": "フィールド名",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "data[…] 内のパスワード用入力フィールドの名前（code_enable、コードによる disable）。",
+                    "value": "フィールド名",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "エラーメッセージ。インデックスには用途、値にはメッセージテキストを指定します（表を参照）。",
+                    "value": "既定のメッセージ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "セッション Cookie の名前 [a-z0-9]。",
+                    "value": "Cookie 名",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_auth": {
+            "note": "セッション ID の有効性を確認します。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "sessionid": {
+                    "description": "Cookie を使う代わりに、指定したセッション ID でフロントエンドユーザーのセッションを再開します。",
+                    "value": "セッション ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "ログイン中のフロントエンドユーザーのプロフィールレコードが満たす必要があるフィルター条件。",
+                    "value": "CMS:SELECT のパラメーター \"filter[]\" を参照",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "mode": {
+                    "description": "同じフィールドに関する値を組み合わせる方法。",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "セッション Cookie の名前 [a-z0-9]。",
+                    "value": "Cookie 名",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_basket": {
+            "note": "ショッピングバスケットを編集します。",
+            "do": "function",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: リクエストには CMS:USER_TOKEN の有効なトークンが含まれている必要があります（CSRF 対策）。false でこのコマンドの確認をオフにします（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "function": {
+                    "description": "実行する機能。",
+                    "value": "\"load\" / \"add\" / \"update\" / \"update_addon\"",
+                    "default": "\"load\"",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "function=add + overwrite=true: 追加時に、すでに保存されている数量を更新します。",
+                    "value": "false / true",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "ショッピングバスケットのカテゴリー。",
+                    "value": "カテゴリー ID",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "これらのコンテナーのレコードだけがバスケットに入ります。指定しない場合: 種類「record」または「ugc」のコンテナーの公開済みレコード（プロフィールは対象外）。",
+                    "value": "コンテナーの ID または名前（カンマ区切り）",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "variable": {
+                    "description": "項目の ID を配列として格納する変数の名前。",
+                    "value": "変数名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "duration": {
+                    "description": "変更がない限り、バスケットが保存される日数。",
+                    "value": "日数",
+                    "default": "30",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "basket_addon": {
+                    "description": "格納するテキスト（シリアル化されたデータ）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_delete": {
+            "note": "ログイン中のフロントエンドユーザーに属するレコードを削除します。",
+            "do": "id",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: リクエストには CMS:USER_TOKEN の有効なトークンが含まれている必要があります（CSRF 対策）。false でこのコマンドの確認をオフにします（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "削除するレコード。",
+                    "value": "レコード ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: 削除するレコードは、ログイン中のフロントエンドユーザーに属していなくてもかまいません（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "項目の削除に成功したときに読み込むテンプレート。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message_error": {
+                    "description": "ユーザーがレコードにアクセスできない場合のエラーメッセージ。",
+                    "value": "テキスト",
+                    "default": "アクセスが拒否されました！",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_input": {
+            "note": "フロントエンドユーザーが入力したデータからレコードを作成または更新します。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "csrf": {
+                    "description": "true: リクエストには CMS:USER_TOKEN の有効なトークンが含まれている必要があります（CSRF 対策）。false でこのコマンドの確認をオフにします（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "項目の保存に成功したときに読み込むテンプレート。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "保存するデータを含む PHP 配列の名前。",
+                    "value": "PHP 変数名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "フロントエンドユーザーの入力を明示的に上書きします（メタフィールドを含む。ただし record_id、area_id、instance_id、tmp、deleted、origin_id、owner_id、created_by、changed_by を除く）。ここにフロントエンドユーザーの入力を渡さないでください！",
+                    "value": "キーと値のペア",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "container": {
+                    "description": "新しいレコードを保存するコンテンツエリアの ID または名前。",
+                    "value": "コンテナーの ID または名前",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "インデックスに応じたエラーメッセージ（表を参照）。",
+                    "value": "テキスト",
+                    "default": "既定のテキスト",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "このフィールドにテキストが含まれる場合にのみ、コマンドが実行されます。",
+                    "value": "テキスト値",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "書き込みを許可する入力フィールドの名前。空 = コンテナーに定義されたすべてのフィールド。",
+                    "value": "カンマ区切りのリスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "id": {
+                    "description": "指定した場合は、このレコードの更新（UPDATE）を試みます。それ以外の場合は新規に作成します（CREATE）。",
+                    "value": "レコード ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ignoreuser": {
+                    "description": "true: 変更するレコードは、ログイン中のフロントエンドユーザーに属していなくてもかまいません（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "forceupdate": {
+                    "description": "true: パラメーター「id」で指定したレコードの更新を強制します。エラーの場合はメッセージを出力します。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "masterid": {
+                    "description": "ツリー構造のエリアで作成する場合のみ: 新しいレコードの親ノード（parent_id）。",
+                    "value": "レコード ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "作成時のみ: バックエンドの所有者の admin_id（record.owner_id、created_by）。指定しない場合は user.default_owner_id が適用されます。",
+                    "value": "ユーザー ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "removefiles": {
+                    "description": "内容を削除するアップロードフィールドの名前。",
+                    "value": "カンマ区切りのリスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "currentfield": {
+                    "description": "プロフィールのコンテナーのみ: 現在のパスワードを入力するフォームフィールド data[…] の名前。新しいパスワードは現在のパスワードと一緒の場合にのみ保存されます。ただし、リセットリンクでログインした直後（$set['password_reset']）は除きます。メッセージ \"current\"。",
+                    "value": "フィールド名",
+                    "default": "current_password",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login": {
+            "note": "フロントエンドユーザーのログインデータを確認し、新しいセッションを作成します。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "プロフィールのエリアが第2要素（アプリのコードまたはメールによるコード）を必要とする場合の、ログインの 2 番目のステップ用のテンプレート。メールによるコードの場合は、$set['login_code'] を CMS:EMAIL で送信し、CMS:USER_LOGIN_CODE 用のコード入力フォームを表示します。エリアが第2要素を使用する場合は必須です。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: リクエストには CMS:USER_TOKEN の有効なトークンが含まれている必要があります（CSRF 対策）。false でこのコマンドの確認をオフにします（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "ログインに成功した後に読み込む詳細テンプレート。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "フロントエンドユーザーのデータが格納されているプロフィールのコンテナーの ID または名前。",
+                    "value": "コンテナーの ID または名前",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "ログインデータを含む PHP 配列の名前。",
+                    "value": "PHP 変数名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "エラーメッセージ。インデックスには用途、値にはメッセージテキストを指定します（表を参照）。",
+                    "value": "既定のメッセージ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "ハッシュ（CMS:USER_PW のトークン、パスワードを忘れた場合）によってログインすることもできます。",
+                    "value": "ハッシュ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "trim": {
+                    "description": "true: 入力の先頭と末尾のスペースを削除します。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookie": {
+                    "description": "true: 複数のページにわたってログインを維持するため、既定で Cookie を設定します。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "このフィールドにテキストが含まれる場合にのみ、コマンドが実行されます。「hash」によるログインには適用されません。",
+                    "value": "テキスト値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "セッション Cookie の名前 [a-z0-9]。",
+                    "value": "Cookie 名",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_login_code": {
+            "note": "ログインの 2 番目のステップ: 認証アプリのコード、メールによるコード、またはリカバリーコードを確認し、フロントエンドユーザーをログインさせます。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "codetemplate": {
+                    "description": "\"resend\" の後に読み込み、新しいコード（$set['login_code']）を CMS:EMAIL で送信するテンプレート。通常は CMS:USER_LOGIN の \"codetemplate\" と同じです。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: リクエストには CMS:USER_TOKEN の有効なトークンが含まれている必要があります（CSRF 対策）。false でこのコマンドの確認をオフにします（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "ログインに成功した後に読み込む詳細テンプレート。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "このフィールドにテキストが含まれる場合にのみ、コードを確認します。",
+                    "value": "テキスト値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "resend": {
+                    "description": "true: メールによる新しいコードを作成します（スロットリングあり）。コードは $set['login_code'] に入り、それを CMS:EMAIL で送信する \"codetemplate\" が読み込まれます。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "入力を含む PHP 配列の名前。",
+                    "value": "PHP 変数名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "codefield": {
+                    "description": "data[…] 内のコード用入力フィールドの名前。",
+                    "value": "フィールド名",
+                    "default": "code",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "エラーメッセージ。インデックスには用途、値にはメッセージテキストを指定します（表を参照）。",
+                    "value": "既定のメッセージ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "sessionid": {
+                    "description": "Cookie を使わない、待機中のログインのセッション（アプリからの呼び出し）。CMS:USER_LOGIN の後の $set['user_session_id']。",
+                    "value": "セッション ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "セッション Cookie の名前 [a-z0-9]。",
+                    "value": "Cookie 名",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_logout": {
+            "note": "ログイン中のフロントエンドユーザーのセッションを終了して削除します。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "submit": {
+                    "description": "パラメーターを指定した場合、テキストが含まれるときにのみログアウトします（例: ログアウトフォームの submit=\"$logout\"）。空の場合は何も起こらず、メッセージトークンも設定されません。パラメーターがない場合は、呼び出しのたびにログアウトします（有効なトークンが前提です）。",
+                    "value": "テキスト値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: リクエストには CMS:USER_TOKEN の有効なトークンが含まれている必要があります（CSRF 対策）。false でこのコマンドの確認をオフにします（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "deletecookie": {
+                    "description": "false: サーバー側のセッションのみを削除します。true: ブラウザーの Cookie も削除します。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "セッション Cookie の名前 [a-z0-9]。",
+                    "value": "Cookie 名",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_password_rules": {
+            "note": "パスワードのルールとテキストを、属性 data-c9-password 用の JSON として出力します（拡張機能 Password、インラインで組み込み）。サーバーが保存時に確認するのと同じルールです。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "container": {
+                    "description": "対象となるパスワードフィールドを持つプロフィールのコンテナー。",
+                    "value": "コンテナーの ID または名前",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "field": {
+                    "description": "コンテナーのパスワードフィールド。拡張機能 Password が設定されている場合はそのルールが、それ以外は security.password_policy が適用されます（その場合サーバーは確認しません）。",
+                    "value": "フィールド名",
+                    "default": "ログインのパスワードフィールド",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "出力を表示せず、変数 $set に格納します。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_protect": {
+            "note": "ログインしていない訪問者からのアクセスからテンプレートを保護します。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "errortemplate": {
+                    "description": "フロントエンドユーザーがコンテナーにアクセスできない場合、またはログインしていない場合に読み込む詳細テンプレート。",
+                    "value": "テンプレート名",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "ログイン中のフロントエンドユーザーのプロフィールレコードが満たす必要があるフィルター条件。",
+                    "value": "CMS:SELECT のパラメーター \"filter[]\" を参照",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "sessionid": {
+                    "description": "Cookie を使う代わりに、指定したセッション ID でフロントエンドユーザーのセッションを再開します。",
+                    "value": "セッション ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "セッション Cookie の名前 [a-z0-9]。",
+                    "value": "Cookie 名",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_pw": {
+            "note": "パスワードのリセットを準備します。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: ロボット対策のフォーム保護。フォームには (CMS:USER_TOKEN formguard=true) のフィールド（タイムスタンプ、空のハニーポットフィールド）が含まれている必要があり、送信できるのは早くても user.formguard_min_seconds（3）の経過後です。数値を指定すると、このフォームの最短時間になります（formguard=5）。0 または false で保護をオフにします。満たさない場合は、スロットリングと同様にメッセージ \"throttled\" になります。",
+                    "value": "true / false / 秒",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: リクエストには CMS:USER_TOKEN の有効なトークンが含まれている必要があります（CSRF 対策）。false でこのコマンドの確認をオフにします（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "「uniquevalue」をフィールド「uniquefield」でプロフィールに割り当てられた場合に読み込む詳細テンプレート。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "errortemplate": {
+                    "description": "「uniquevalue」が指定されたものの、プロフィールに割り当てられなかった場合に読み込む詳細テンプレート。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "照合するプロフィールが格納されているプロフィールのコンテナーの ID または名前。",
+                    "value": "コンテナーの ID または名前",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquefield": {
+                    "description": "検索に使うフィールドの名前（フィールド型 chars、text、encrypted。例: 「email」）。値はちょうど 1 つのプロフィールと一致する必要があります。",
+                    "value": "フィールド名",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "uniquevalue": {
+                    "description": "フィールド「uniquefield」で検索する値。例: $_POST[email]。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "このフィールドにテキストが含まれる場合にのみ、コマンドが実行されます。",
+                    "value": "テキスト値",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "エラーメッセージ。インデックスには用途、値にはメッセージテキストを指定します（表を参照）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_register": {
+            "note": "送信されたデータからプロフィールレコードを作成し、ステータスを status=2 に設定します。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: ロボット対策のフォーム保護。フォームには (CMS:USER_TOKEN formguard=true) のフィールド（タイムスタンプ、空のハニーポットフィールド）が含まれている必要があり、送信できるのは早くても user.formguard_min_seconds（3）の経過後です。数値を指定すると、このフォームの最短時間になります（formguard=5）。0 または false で保護をオフにします。満たさない場合は、スロットリングと同様にメッセージ \"throttled\" になります。",
+                    "value": "true / false / 秒",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "csrf": {
+                    "description": "true: リクエストには CMS:USER_TOKEN の有効なトークンが含まれている必要があります（CSRF 対策）。false でこのコマンドの確認をオフにします（注意: セキュリティに関する注意事項を守ってください！）。",
+                    "value": "true / false",
+                    "default": "true",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "successtemplate": {
+                    "description": "登録に成功した後に読み込む詳細テンプレート。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "container": {
+                    "description": "フロントエンドユーザーのデータを保存するプロフィールのコンテナーの ID または名前。",
+                    "value": "コンテナーの ID または名前",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "emailfield": {
+                    "description": "フロントエンドユーザーのメールアドレスを保存するフィールドの名前（確認リンクはそこへ送信されます）。",
+                    "value": "フィールド名",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "fields": {
+                    "description": "書き込みを許可する入力フィールドの名前。空 = コンテナーに定義されたすべてのフィールド。",
+                    "value": "カンマ区切りのリスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "overwrite": {
+                    "description": "フロントエンドユーザーの入力を明示的に上書きします（メタフィールドを含む。ただし record_id、area_id、instance_id、tmp、deleted、origin_id、owner_id、created_by、changed_by を除く）。ここにフロントエンドユーザーの入力を渡さないでください！",
+                    "value": "キーと値のペア",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "message": {
+                    "description": "エラーメッセージ。インデックスには用途、値にはメッセージテキストを指定します（CMS:USER_INPUT の表を参照）。",
+                    "value": "メッセージ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "submit": {
+                    "description": "このフィールドにテキストが含まれる場合にのみ、コマンドが実行されます。",
+                    "value": "テキスト値",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "owner": {
+                    "description": "新しいプロフィールのバックエンドの所有者の admin_id（record.owner_id、created_by）。指定しない場合は user.default_owner_id が適用されます。",
+                    "value": "ユーザー ID",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "data": {
+                    "description": "保存するデータを含む PHP 配列の名前。",
+                    "value": "PHP 変数名",
+                    "default": "data",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "user_register_confirm": {
+            "note": "プロフィールレコードを有効にし、status=0 に設定します。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "successtemplate": {
+                    "description": "登録を正常に完了できた場合に読み込む詳細テンプレート。",
+                    "value": "",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "hash": {
+                    "description": "CMS:USER_REGISTER が作成し、メールで送信したハッシュ ID。",
+                    "value": "ハッシュ ID",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "エラーメッセージ。インデックスには用途、値にはメッセージテキストを指定します（表を参照）。",
+                    "value": "メッセージ",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        },
+        "user_token": {
+            "note": "書き込みを行う CMS:USER_* コマンドを含むフォーム用に、CSRF トークンを出力します（隠しフィールド _token）。",
+            "do": "do",
+            "oneof": "",
+            "params": {
+                "formguard": {
+                    "description": "true: さらにタイムスタンプと非表示のハニーポットフィールド（ロボット対策のフォーム保護）を出力します。USER_REGISTER、USER_PW、または CMS:EMAIL formguard=true を含むフォーム向けです。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "format": {
+                    "description": "field: 隠し入力フィールド <input type=\"hidden\" name=\"_token\">。value: トークンのみ（Ajax 用: ヘッダー X-Camindo-Token または POST フィールド _token）。",
+                    "value": "\"field\" / \"value\"",
+                    "default": "\"field\"",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "set": {
+                    "description": "出力を表示せず、変数 $set に格納します。トークンは常に $set['user_token'] にも入ります。",
+                    "value": "$set の配列インデックス",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "xml": {
+            "note": "XML 宣言を作成します。",
+            "do": "encoding",
+            "oneof": "",
+            "params": {
+                "encoding": {
+                    "description": "使用する文字エンコーディング。",
+                    "value": "encoding",
+                    "default": "utf-8",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "version": {
+                    "description": "XML のバージョン。",
+                    "value": "version",
+                    "default": "1.0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                }
+            }
+        },
+        "zip": {
+            "note": "複数のレコードのファイルを ZIP アーカイブとしてダウンロード用に提供し、ページを終了します。",
+            "do": "field",
+            "oneof": "filter,relation,ids,source",
+            "params": {
+                "field": {
+                    "description": "アップロード／サムネイルフィールド（複数可）。レコードごとに、訪問者が取得できる最初のフィールドが適用されます（例: fil_print,fil_upload: 報道向けには印刷版、それ以外はウェブ版）。",
+                    "value": "フィールド名（複数可、カンマ区切り）",
+                    "default": "",
+                    "mandatory": true,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filter": {
+                    "description": "CMS:SELECT と同様のレコードの選択。",
+                    "value": "値",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": true
+                },
+                "filter_op": {
+                    "description": "CMS:SELECT と同様の比較演算子。",
+                    "value": "演算子",
+                    "default": "=",
+                    "mandatory": false,
+                    "subparam": 2,
+                    "operator": false
+                },
+                "filter_mode": {
+                    "description": "CMS:SELECT と同様の、複数の値の組み合わせ方。",
+                    "value": "AND / OR",
+                    "default": "OR",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "relation": {
+                    "description": "CMS:SELECT と同様の、リンクされたレコード。",
+                    "value": "フィールド名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "src_id": {
+                    "description": "relation の元のレコード。空または 0: ファイルなし。",
+                    "value": "レコード ID",
+                    "default": "（現在のレコード）",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "ids": {
+                    "description": "明示的に指定したレコード（公開済み、このウェブサイトのもの）。",
+                    "value": "レコード ID（カンマ区切り）",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "source": {
+                    "description": "basket: セッションのバスケット内のレコード（カテゴリーは category から）。例: ライトボックス。",
+                    "value": "basket",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "category": {
+                    "description": "source=basket の場合のバスケットのカテゴリー。",
+                    "value": "数値",
+                    "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "sort": {
+                    "description": "CMS:SELECT と同様の並び順。指定しない場合は ids またはバスケットの順序。",
+                    "value": "フィールド名",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "order": {
+                    "description": "並べ替えの方向。",
+                    "value": "asc / desc",
+                    "default": "asc",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                },
+                "name": {
+                    "description": "アーカイブの名前（.zip なし）。",
+                    "value": "テキスト",
+                    "default": "download",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "filenames": {
+                    "description": "アーカイブ内のファイル名: {slug}、{id}、{filename}（元の名前）、{extension}、{fieldname}。重複する名前には -2、-3 … が付きます。",
+                    "value": "パターン",
+                    "default": "{slug}.{extension}",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "credits": {
+                    "description": "CREDITS.txt を追加します: ファイルごとにその名前と、これらのフィールドの内容（例: タイトル、キャプション、画像クレジット）。",
+                    "value": "フィールド名（カンマ区切り）",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxfiles": {
+                    "description": "ファイルの最大数（設定値より小さい値のみ）。",
+                    "value": "数値",
+                    "default": "(user.zip.max_files)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "maxsize": {
+                    "description": "最大サイズ（MB、設定値より小さい値のみ）。",
+                    "value": "MB",
+                    "default": "(user.zip.max_mb)",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "future": {
+                    "description": "公開日が先のレコードも含めます（CMS:SELECT と同様）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "archive": {
+                    "description": "期限切れのレコードも含めます（CMS:SELECT と同様）。",
+                    "value": "true / false",
+                    "default": "false",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "cookiename": {
+                    "description": "セッション Cookie（CMS:USER_LOGIN の cookiename）。",
+                    "value": "Cookie 名",
+                    "default": "usess",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "message": {
+                    "description": "メッセージ: message[empty]（ファイルなし）、message[limit]（大きすぎる）、message[throttled]（アーカイブが多すぎる）。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
+                    "subparam": 1,
+                    "operator": false
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+# Release on a tag vX.Y.Z: tests, package, GitHub release with the .vsix and - if the
+# tokens are set as repository secrets - publish to the Visual Studio Marketplace
+# (VSCE_PAT) and to Open VSX (OVSX_PAT). Without a token that step is skipped.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      OVSX_PAT: ${{ secrets.OVSX_PAT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Tag matches package.json
+        run: |
+          version=$(node -p "require('./package.json').version")
+          test "v$version" = "$GITHUB_REF_NAME" || { echo "tag $GITHUB_REF_NAME != package.json $version"; exit 1; }
+      - name: Package
+        run: npx --yes @vscode/vsce@3 package --out "camindo-cms-templates-${GITHUB_REF_NAME#v}.vsix"
+      - name: GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: camindo-cms-templates-*.vsix
+          generate_release_notes: true
+      - name: Visual Studio Marketplace
+        if: env.VSCE_PAT != ''
+        run: npx --yes @vscode/vsce@3 publish --packagePath camindo-cms-templates-*.vsix
+      - name: Open VSX
+        if: env.OVSX_PAT != ''
+        run: npx --yes ovsx@0 publish camindo-cms-templates-*.vsix --pat "$OVSX_PAT"
