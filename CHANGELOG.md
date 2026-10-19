@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0
+
+- Syntax check while typing (`camindo.validate`): errors of the template compiler in red,
+  hints in yellow – missing `)` before the next command or an HTML tag, unclosed quotes and
+  brackets, unknown commands and parameters with a suggestion, required parameters,
+  operators, sub-key depth, stray or unclosed quotes (marked at the quote, the rest of
+  the command is still checked), `(CMS:…)` inside quotes, switches
+  that are neither true nor false
+- Messages in the twelve camindo backend languages
+
 ## 0.1.0
 
 - Colors for `(CMS:…)` commands and the PHP expressions inside them (`*.cms.php`)
