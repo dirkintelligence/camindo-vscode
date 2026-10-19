@@ -1,8 +1,9 @@
 {
-  "description": "camindo CMS テンプレート（*.cms.php）の (CMS:…) コマンドの色分け、補完、ホバー",
+  "description": "camindo CMS テンプレート（*.cms.php）の (CMS:…) コマンドの色分け、補完、ホバー、構文チェック",
   "command.reload": "camindo: コマンド定義を再読み込み",
   "config.language": "コマンド説明の言語。空欄: VS Code の表示言語（camindo にその言語がない場合は英語）。",
   "config.commandsFile": "コマンド定義を含む JSON ファイルまたはディレクトリ（php Core/cron/camindo.php template commands --all --out=DIR）。絶対パスまたはワークスペースからの相対パス。空欄: 同梱のファイル。",
   "config.commandColor": "(CMS:…) コマンドの色（例: #a000a0）。空欄: 紫（ダークテーマではより明るい色）。",
-  "config.phpColor": "コマンド内の PHP 式（{$…}、$var）の色（例: #ff8800）。空欄: オレンジ。"
+  "config.phpColor": "コマンド内の PHP 式（{$…}、$var）の色（例: #ff8800）。空欄: オレンジ。",
+  "config.validate": "入力中に (CMS:…) コマンドをチェックします。テンプレートコンパイラーのエラーは赤、ヒントは黄色の波線で表示されます。"
 }

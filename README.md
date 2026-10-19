@@ -11,6 +11,17 @@ files (`*.cms.php`):
   command (mandatory ones first, used ones left out unless they take keys such as
   `filter[…]`); after `=` the fixed values (`true / false`, `asc / desc` …).
 - **Hover** – description of a command (with its parameters) or of a parameter.
+- **Syntax check** – while you type, errors of the template compiler are underlined in
+  red and listed under *Problems*: a missing `)` (also when the next `(CMS:…)` or an HTML
+  tag follows), unclosed quotes, `{…}` or `[…]`, unknown commands and parameters (with a
+  suggestion for typing errors), missing required parameters, comparison operators where
+  only `=` is allowed, and stray quotes that would swallow the following lines
+  (`field=test"`, `filter[area]='products …` without its closing quote) – marked at the
+  quote, the rest of the command is still checked. Yellow hints: `(CMS:…)` inside quotes
+  (not evaluated) and switches
+  that are neither true nor false (`specialchars=ja`). The check runs in the extension
+  itself – no PHP, no camindo installation – and takes well under a millisecond per
+  template.
 - **Twelve languages** – the descriptions come from the camindo backend snippets:
   Arabic, Bengali, Chinese, English, French, German, Hindi, Japanese, Korean,
   Portuguese, Spanish and Urdu.
@@ -52,6 +63,7 @@ After a change run *camindo: Reload command definitions* from the command palett
 |---|---|
 | `camindo.language` | display language of VS Code |
 | `camindo.commandsFile` | the files shipped with the extension |
+| `camindo.validate` | `true` – syntax check while typing |
 | `camindo.commandColor` | purple (`#a000a0`, lighter in dark themes) |
 | `camindo.phpColor` | orange (`#ff8800`) |
 
@@ -59,7 +71,7 @@ After a change run *camindo: Reload command definitions* from the command palett
 
 ```bash
 npm install
-npm test                # scanner, grammar (VS Code tokenizer), data
+npm test                # scanner, syntax check, grammar (VS Code tokenizer), data
 npm run commands        # data/commands.{lang}.json from ../Core (camindo checkout next to it)
 ```
 

@@ -1,8 +1,9 @@
 {
-  "description": "Cores, autocompletar e dicas para os comandos (CMS:…) nos templates do camindo CMS (*.cms.php)",
+  "description": "Cores, preenchimento automático, dicas e verificação de sintaxe para comandos (CMS:…) em templates do camindo CMS (*.cms.php)",
   "command.reload": "camindo: recarregar as definições de comandos",
   "config.language": "Idioma das descrições de comandos. Vazio: o idioma de exibição do VS Code (inglês se o camindo não o oferecer).",
   "config.commandsFile": "Arquivo JSON ou diretório com as definições de comandos (php Core/cron/camindo.php template commands --all --out=DIR), absoluto ou relativo ao workspace. Vazio: os arquivos incluídos.",
   "config.commandColor": "Cor dos comandos (CMS:…), p. ex. #a000a0. Vazio: roxo, mais claro em temas escuros.",
-  "config.phpColor": "Cor das expressões PHP dentro dos comandos ({$…}, $var), p. ex. #ff8800. Vazio: laranja."
+  "config.phpColor": "Cor das expressões PHP dentro dos comandos ({$…}, $var), p. ex. #ff8800. Vazio: laranja.",
+  "config.validate": "Verificar os comandos (CMS:…) durante a digitação: erros do compilador de templates sublinhados em vermelho, avisos em amarelo."
 }

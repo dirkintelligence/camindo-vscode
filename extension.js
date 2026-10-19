@@ -1,5 +1,5 @@
-// camindo CMS templates for VS Code: colors, completion and hover for (CMS:…) commands
-// in *.cms.php files. No dependencies; the command definitions come from
+// camindo CMS templates for VS Code: colors, completion, hover and syntax check for
+// (CMS:…) commands in *.cms.php files. No dependencies; the command definitions come from
 // data/commands.{lang}.json (camindo.php template commands --all --out=data) or the
 // file in the setting camindo.commandsFile.
 'use strict';
@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { MAX_COMMAND_LENGTH, scanCommand, scanAll, usedKeys, choices } = require('./scanner');
+const { lint } = require('./lint');
 const { resolveLanguage, t } = require('./l10n');
 
 const SELECTOR = [{ pattern: '**/*.cms.php' }];
@@ -219,13 +220,44 @@ function decorateVisible() {
 }
 
 // ---------------------------------------------------------------------------
+// Syntax check (lint.js): errors of the template compiler red, hints yellow
+// ---------------------------------------------------------------------------
+
+let diagnostics;
+
+function check(doc) {
+    if (!diagnostics || !isTemplate(doc)) return;
+    if (!vscode.workspace.getConfiguration('camindo').get('validate', true)) {
+        diagnostics.delete(doc.uri);
+        return;
+    }
+    diagnostics.set(doc.uri, lint(doc.getText(), commands).map(d => {
+        let message = t(lang, d.code, ...d.args);
+        if (d.code === 'unknownParam' && d.args[2]) message += ' ' + t(lang, 'didYouMean', d.args[2]);
+        const item = new vscode.Diagnostic(
+            new vscode.Range(doc.positionAt(d.start), doc.positionAt(d.end)), message,
+            d.severity === 'error' ? vscode.DiagnosticSeverity.Error : vscode.DiagnosticSeverity.Warning);
+        item.source = 'camindo';
+        item.code = d.code;
+        return item;
+    }));
+}
+
+function checkAll() {
+    vscode.workspace.textDocuments.forEach(check);
+}
+
+// ---------------------------------------------------------------------------
 
 function activate(context) {
     loadCommands();
     createDecorations();
+    diagnostics = vscode.languages.createDiagnosticCollection('camindo');
 
     let timer = null;
+    const checkTimers = new Map();   // uri -> timer: check after a short pause in typing
     context.subscriptions.push(
+        diagnostics,
         vscode.languages.registerCompletionItemProvider(SELECTOR, completionProvider, ':', ' ', '='),
         vscode.languages.registerHoverProvider(SELECTOR, hoverProvider),
         vscode.window.onDidChangeVisibleTextEditors(decorateVisible),
@@ -235,10 +267,19 @@ function activate(context) {
             timer = setTimeout(() => {
                 vscode.window.visibleTextEditors.filter(ed => ed.document === e.document).forEach(decorate);
             }, 120);
+            const key = e.document.uri.toString();
+            clearTimeout(checkTimers.get(key));
+            checkTimers.set(key, setTimeout(() => { checkTimers.delete(key); check(e.document); }, 250));
         }),
-        vscode.workspace.onDidCloseTextDocument(doc => cache.delete(doc.uri.toString())),
+        vscode.workspace.onDidOpenTextDocument(check),
+        vscode.workspace.onDidCloseTextDocument(doc => {
+            cache.delete(doc.uri.toString());
+            clearTimeout(checkTimers.get(doc.uri.toString()));
+            diagnostics.delete(doc.uri);
+        }),
         vscode.workspace.onDidChangeConfiguration(e => {
             if (e.affectsConfiguration('camindo.commandsFile') || e.affectsConfiguration('camindo.language')) loadCommands();
+            if (e.affectsConfiguration('camindo')) checkAll();
             if (e.affectsConfiguration('camindo.commandColor') || e.affectsConfiguration('camindo.phpColor')) {
                 createDecorations();
                 decorateVisible();
@@ -246,11 +287,13 @@ function activate(context) {
         }),
         vscode.commands.registerCommand('camindo.reloadCommands', () => {
             loadCommands();
+            checkAll();
             vscode.window.showInformationMessage('camindo: ' + t(lang, 'loaded', Object.keys(commands).length));
         }),
         { dispose: () => { commandDeco && commandDeco.dispose(); phpDeco && phpDeco.dispose(); } }
     );
     decorateVisible();
+    checkAll();
 }
 
 function deactivate() {}

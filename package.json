@@ -2,7 +2,7 @@
   "name": "camindo-cms-templates",
   "displayName": "camindo CMS Templates",
   "description": "%description%",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "camindo",
   "author": "Dirk Ruetz",
   "license": "AGPL-3.0-or-later",
@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/dirkintelligence/camindo-vscode/issues"
   },
-  "keywords": ["camindo", "cms", "template", "php", "completion", "syntax"],
+  "keywords": ["camindo", "cms", "template", "php", "completion", "syntax", "lint", "diagnostics"],
   "galleryBanner": {
     "color": "#3d5a8a",
     "theme": "dark"
@@ -23,7 +23,7 @@
   "engines": {
     "vscode": "^1.80.0"
   },
-  "categories": ["Programming Languages", "Snippets"],
+  "categories": ["Programming Languages", "Linters", "Snippets"],
   "main": "./extension.js",
   "activationEvents": [
     "workspaceContains:**/*.cms.php",
@@ -65,6 +65,11 @@
           "type": "string",
           "default": "",
           "description": "%config.commandsFile%"
+        },
+        "camindo.validate": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.validate%"
         },
         "camindo.commandColor": {
           "type": "string",

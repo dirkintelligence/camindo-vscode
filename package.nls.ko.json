@@ -1,8 +1,9 @@
 {
-  "description": "camindo CMS 템플릿(*.cms.php)의 (CMS:…) 명령에 대한 색상, 자동 완성 및 호버",
+  "description": "camindo CMS 템플릿(*.cms.php)의 (CMS:…) 명령에 대한 색상, 자동 완성, 호버, 구문 검사",
   "command.reload": "camindo: 명령 정의 다시 불러오기",
   "config.language": "명령 설명의 언어. 비워 두면 VS Code 표시 언어(camindo에 해당 언어가 없으면 영어).",
   "config.commandsFile": "명령 정의가 담긴 JSON 파일 또는 디렉터리(php Core/cron/camindo.php template commands --all --out=DIR), 절대 경로 또는 작업 영역 기준 상대 경로. 비워 두면 함께 제공된 파일.",
   "config.commandColor": "(CMS:…) 명령의 색상(예: #a000a0). 비워 두면 보라색(어두운 테마에서는 더 밝게).",
-  "config.phpColor": "명령 안의 PHP 식({$…}, $var) 색상(예: #ff8800). 비워 두면 주황색."
+  "config.phpColor": "명령 안의 PHP 식({$…}, $var) 색상(예: #ff8800). 비워 두면 주황색.",
+  "config.validate": "입력하는 동안 (CMS:…) 명령을 검사합니다. 템플릿 컴파일러 오류는 빨간색, 힌트는 노란색 물결선으로 표시됩니다."
 }

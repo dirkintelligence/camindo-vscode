@@ -1,8 +1,9 @@
 {
-  "description": "为 camindo CMS 模板（*.cms.php）中的 (CMS:…) 命令提供着色、自动补全和悬停提示",
+  "description": "为 camindo CMS 模板（*.cms.php）中的 (CMS:…) 命令提供着色、自动补全、悬停提示和语法检查",
   "command.reload": "camindo：重新加载命令定义",
   "config.language": "命令说明的语言。留空：使用 VS Code 的显示语言（camindo 不支持该语言时使用英语）。",
   "config.commandsFile": "包含命令定义的 JSON 文件或目录（php Core/cron/camindo.php template commands --all --out=DIR），绝对路径或相对于工作区的路径。留空：使用随附的文件。",
   "config.commandColor": "(CMS:…) 命令的颜色，例如 #a000a0。留空：紫色（深色主题中更浅）。",
-  "config.phpColor": "命令中 PHP 表达式（{$…}、$var）的颜色，例如 #ff8800。留空：橙色。"
+  "config.phpColor": "命令中 PHP 表达式（{$…}、$var）的颜色，例如 #ff8800。留空：橙色。",
+  "config.validate": "输入时检查 (CMS:…) 命令：模板编译器的错误以红色波浪线标出，提示以黄色标出。"
 }
