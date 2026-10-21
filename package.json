@@ -2,7 +2,7 @@
   "name": "camindo-cms-templates",
   "displayName": "camindo CMS Templates",
   "description": "%description%",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "camindo",
   "author": "Dirk Ruetz",
   "license": "AGPL-3.0-or-later",
