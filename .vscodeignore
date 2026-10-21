@@ -1,6 +1,6 @@
 .github/**
 test/**
 node_modules/**
-images/icon.svg
+**/.DS_Store
 .gitignore
 *.vsix

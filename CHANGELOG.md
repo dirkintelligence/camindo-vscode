@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- New extension icon
+
 ## 0.2.0
 
 - Syntax check while typing (`camindo.validate`): errors of the template compiler in red,
