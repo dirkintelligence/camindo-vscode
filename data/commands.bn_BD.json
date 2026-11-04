@@ -1161,28 +1161,28 @@
             }
         },
         "pdf_cell": {
-            "note": "Zelle der aktuellen Zeile. Schrift ist die zu diesem Zeitpunkt eingestellte (CMS:PDF_FONT).",
+            "note": "বর্তমান সারির সেল। ফন্ট হলো এই মুহূর্তে নির্ধারিত ফন্ট (CMS:PDF_FONT)।",
             "do": "text",
             "oneof": "",
             "params": {
                 "text": {
-                    "description": "Zelltext; bricht innerhalb der Spalte um, soweit fit= ihn nicht einpasst.",
-                    "value": "Text",
+                    "description": "সেলের পাঠ্য; কলামের মধ্যে র‍্যাপ হয়, যদি না fit= তাকে মানিয়ে নেয়।",
+                    "value": "পাঠ্য",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "col": {
-                    "description": "Spaltenindex ab 0; ohne Angabe die nächste Spalte.",
-                    "value": "Zahl",
+                    "description": "কলাম ইনডেক্স 0 থেকে; না দিলে পরের কলাম।",
+                    "value": "সংখ্যা",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "align": {
-                    "description": "Horizontale Ausrichtung.",
+                    "description": "অনুভূমিক সারিবদ্ধকরণ।",
                     "value": "L / C / R / J",
                     "default": "L",
                     "mandatory": false,
@@ -1190,7 +1190,7 @@
                     "operator": false
                 },
                 "valign": {
-                    "description": "Vertikale Ausrichtung in der Zeile.",
+                    "description": "সারিতে উল্লম্ব সারিবদ্ধকরণ।",
                     "value": "T / C / B",
                     "default": "T",
                     "mandatory": false,
@@ -1198,7 +1198,7 @@
                     "operator": false
                 },
                 "fit": {
-                    "description": "Text auf eine Zeile in der Spaltenbreite einpassen: fontsize verkleinert die Schrift (bis min_size), spacing verringert den Zeichenabstand, scale beides, force staucht horizontal. Was auch so nicht passt, bricht um.",
+                    "description": "পাঠ্যকে কলামের প্রস্থে এক লাইনে মানিয়ে নিন: fontsize ফন্টের আকার কমায় (min_size পর্যন্ত), spacing অক্ষরের দূরত্ব কমায়, scale দুটোই করে, force অনুভূমিকভাবে সংকুচিত করে। তারপরও যা না আঁটে তা র‍্যাপ হয়।",
                     "value": "none / scale / fontsize / spacing / force",
                     "default": "none",
                     "mandatory": false,
@@ -1206,15 +1206,15 @@
                     "operator": false
                 },
                 "min_size": {
-                    "description": "Kleinste Schriftgröße beim Einpassen.",
-                    "value": "Punkt",
+                    "description": "মানিয়ে নেওয়ার সময় সবচেয়ে ছোট ফন্টের আকার।",
+                    "value": "পয়েন্ট",
                     "default": "6",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "border": {
-                    "description": "Rahmenseiten: L links, T oben, R rechts, B unten; 1 alle, 0 keine.",
+                    "description": "বর্ডারের দিক: L বাম, T উপর, R ডান, B নিচ; 1 সব, 0 কোনোটিই নয়।",
                     "value": "LTRB / 1 / 0",
                     "default": "1",
                     "mandatory": false,
@@ -1222,7 +1222,7 @@
                     "operator": false
                 },
                 "border_width": {
-                    "description": "Rahmendicke; sonst die der Tabelle.",
+                    "description": "বর্ডারের পুরুত্ব; অন্যথায় টেবিলেরটি।",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1230,32 +1230,32 @@
                     "operator": false
                 },
                 "border_color": {
-                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "বর্ডারের রং; অন্যথায় CMS:PDF_LINE_COLOR। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "padding": {
-                    "description": "Innenabstand dieser Zelle; sonst der der Tabelle.",
-                    "value": "oben,rechts,unten,links",
+                    "description": "এই সেলের ভেতরের দূরত্ব; অন্যথায় টেবিলেরটি।",
+                    "value": "উপর,ডান,নিচ,বাম",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "color": {
-                    "description": "Textfarbe; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "পাঠ্যের রং; অন্যথায় CMS:PDF_TEXT_COLOR। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "background": {
-                    "description": "Hintergrundfarbe der Zelle. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "সেলের পটভূমির রং। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1264,20 +1264,20 @@
             }
         },
         "pdf_color": {
-            "note": "Definiert ein Farbfeld mit RGB- und/oder CMYK-Wert. Der Farbraum des Dokuments (PDF_INIT) wählt den Wert; ein fehlender wird umgerechnet.",
+            "note": "RGB এবং/অথবা CMYK মান সহ একটি রঙের ফিল্ড সংজ্ঞায়িত করে। নথির কালার স্পেস (PDF_INIT) মান বেছে নেয়; অনুপস্থিত মান রূপান্তর করা হয়।",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Name des Farbfelds (Buchstaben, Ziffern, _ und -).",
-                    "value": "Name",
+                    "description": "রঙের ফিল্ডের নাম (অক্ষর, অঙ্ক, _ ও -)।",
+                    "value": "নাম",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "rgb": {
-                    "description": "RGB-Wert als Hex-Farbe, z. B. #0066FF.",
+                    "description": "হেক্স রং হিসেবে RGB মান, যেমন #0066FF।",
                     "value": "#rrggbb",
                     "default": "",
                     "mandatory": false,
@@ -1285,7 +1285,7 @@
                     "operator": false
                 },
                 "cmyk": {
-                    "description": "CMYK-Wert in Prozent, z. B. 0,100,100,0.",
+                    "description": "শতাংশে CMYK মান, যেমন 0,100,100,0।",
                     "value": "c,m,y,k",
                     "default": "",
                     "mandatory": false,
@@ -1295,13 +1295,13 @@
             }
         },
         "pdf_fill_color": {
-            "note": "Füllfarbe für die folgenden CMS:PDF_RECT. Ohne Angabe Schwarz.",
+            "note": "পরবর্তী CMS:PDF_RECT-এর ভরাট রং। না দিলে কালো।",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Füllfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "ভরাট রং। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1310,29 +1310,29 @@
             }
         },
         "pdf_font": {
-            "note": "Stellt die Schrift für die folgenden Texte und Zellen ein. Gilt über Seiten hinweg.",
+            "note": "পরবর্তী পাঠ্য ও সেলের ফন্ট নির্ধারণ করে। সব পেজে প্রযোজ্য থাকে।",
             "do": "font",
             "oneof": "",
             "params": {
                 "font": {
-                    "description": "Name einer Schrift aus var/modules/pdf/fonts/ ({name}.json; mitgeliefert: helvetica, times, courier, symbol, zapfdingbats). Eine Datei {name}.ttf/.otf wird beim ersten Aufruf konvertiert.",
-                    "value": "Schriftname",
+                    "description": "var/modules/pdf/fonts/ থেকে ফন্টের নাম ({name}.json; অন্তর্ভুক্ত: helvetica, times, courier, symbol, zapfdingbats)। {name}.ttf/.otf ফাইল প্রথম কলে রূপান্তর করা হয়।",
+                    "value": "ফন্টের নাম",
                     "default": "helvetica",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "style": {
-                    "description": "Schriftschnitt: B fett, I kursiv, U unterstrichen, D durchgestrichen, O überstrichen. Leer = regulär.",
-                    "value": "B / I / U / D / O, kombinierbar",
+                    "description": "ফন্ট স্টাইল: B বোল্ড, I ইটালিক, U নিচে রেখা, D কাটা দাগ, O উপরে রেখা। খালি = সাধারণ।",
+                    "value": "B / I / U / D / O, একসাথে ব্যবহারযোগ্য",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "size": {
-                    "description": "Schriftgröße in Punkt.",
-                    "value": "Punkt",
+                    "description": "ফন্টের আকার পয়েন্টে।",
+                    "value": "পয়েন্ট",
                     "default": "12",
                     "mandatory": false,
                     "subparam": 0,
@@ -1341,20 +1341,20 @@
             }
         },
         "pdf_html": {
-            "note": "Schreibt einen HTML-Block (Umbruch und Seitenumbruch durch tc-lib-pdf). Der Cursor bleibt stehen - die Höhe des Blocks ist nicht bekannt.",
+            "note": "একটি HTML ব্লক লেখে (লাইন ও পেজ ব্রেক tc-lib-pdf দ্বারা)। কার্সর একই জায়গায় থাকে - ব্লকের উচ্চতা জানা থাকে না।",
             "do": "html",
             "oneof": "",
             "params": {
                 "html": {
-                    "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
-                    "value": "HTML",
+                    "description": "HTML কোড (পাঠ্য মার্কআপ, তালিকা, টেবিল, ইনলাইন CSS)।",
+                    "value": "HTML কোড",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "description": "পেজের বাম প্রান্ত থেকে দূরত্ব; না দিলে বাম মার্জিন।",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1362,7 +1362,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "description": "পেজের উপরের প্রান্ত থেকে দূরত্ব; না দিলে কার্সর।",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1370,7 +1370,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "description": "ব্লকের প্রস্থ; 0 = ডান মার্জিন পর্যন্ত।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1380,20 +1380,20 @@
             }
         },
         "pdf_image": {
-            "note": "Platziert ein Bild (JPEG, PNG, GIF, ...) aus dem Medienverzeichnis. Der Cursor rückt unter das Bild.",
+            "note": "মিডিয়া ডিরেক্টরি থেকে একটি ছবি (JPEG, PNG, GIF, ...) বসায়। কার্সর ছবির নিচে চলে যায়।",
             "do": "file",
             "oneof": "",
             "params": {
                 "file": {
-                    "description": "Bilddatei: absoluter Pfad aus (CMS:MEDIA subfield=file), Webpfad aus subfield=path oder Pfad relativ zu public/media. Nur Dateien unterhalb des Medienverzeichnisses.",
-                    "value": "Pfad",
+                    "description": "ছবির ফাইল: (CMS:MEDIA subfield=file) থেকে সম্পূর্ণ পাথ, subfield=path থেকে ওয়েব পাথ বা public/media-এর সাপেক্ষে পাথ। শুধু মিডিয়া ডিরেক্টরির নিচের ফাইল।",
+                    "value": "পাথ",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "description": "পেজের বাম প্রান্ত থেকে দূরত্ব; না দিলে বাম মার্জিন।",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1401,7 +1401,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "description": "পেজের উপরের প্রান্ত থেকে দূরত্ব; না দিলে কার্সর।",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1409,7 +1409,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite; 0 = aus der Höhe (bzw. aus den Pixeln bei 72 dpi, wenn beide fehlen).",
+                    "description": "প্রস্থ; 0 = উচ্চতা থেকে (দুটোই না থাকলে 72 dpi-তে পিক্সেল থেকে)।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1417,7 +1417,7 @@
                     "operator": false
                 },
                 "height": {
-                    "description": "Höhe; 0 = proportional zur Breite.",
+                    "description": "উচ্চতা; 0 = প্রস্থের সমানুপাতিক।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1425,7 +1425,7 @@
                     "operator": false
                 },
                 "link": {
-                    "description": "Verweis, der beim Klick auf das Bild geöffnet wird.",
+                    "description": "ছবিতে ক্লিক করলে যে লিংক খোলে।",
                     "value": "URL",
                     "default": "",
                     "mandatory": false,
@@ -1435,12 +1435,12 @@
             }
         },
         "pdf_init": {
-            "note": "Vorgaben für das Dokument: Farbraum, ICC-Profil, Seitenformat und Ränder. Vor der ersten CMS:PDF_PAGE.",
+            "note": "নথির ডিফল্ট মান: কালার স্পেস, ICC প্রোফাইল, পেজ ফরম্যাট ও মার্জিন। প্রথম CMS:PDF_PAGE-এর আগে।",
             "do": "colorspace",
             "oneof": "",
             "params": {
                 "colorspace": {
-                    "description": "Farbraum, in dem Farben ins PDF geschrieben werden.",
+                    "description": "যে কালার স্পেসে রং PDF-এ লেখা হয়।",
                     "value": "RGB / CMYK",
                     "default": "RGB",
                     "mandatory": false,
@@ -1448,23 +1448,23 @@
                     "operator": false
                 },
                 "icc_profile": {
-                    "description": "ICC-Profil aus var/modules/pdf/profiles/, wird als Output Intent eingebettet.",
-                    "value": "Dateiname",
+                    "description": "var/modules/pdf/profiles/ থেকে ICC প্রোফাইল, আউটপুট ইনটেন্ট (output intent) হিসেবে এমবেড করা হয়।",
+                    "value": "ফাইলের নাম",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "output_condition": {
-                    "description": "Bezeichner der Druckbedingung für den Output Intent (z. B. FOGRA39). Ohne Angabe der Dateiname des Profils.",
-                    "value": "Text",
+                    "description": "আউটপুট ইনটেন্টের প্রিন্ট শর্তের শনাক্তকারী (যেমন FOGRA39)। না দিলে প্রোফাইলের ফাইলের নাম।",
+                    "value": "পাঠ্য",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "format": {
-                    "description": "Seitenformat leerer Seiten (Namen wie in tc-lib-pdf).",
+                    "description": "খালি পেজের পেজ ফরম্যাট (নাম tc-lib-pdf অনুযায়ী)।",
                     "value": "A4 / A5 / LETTER / ...",
                     "default": "A4",
                     "mandatory": false,
@@ -1472,7 +1472,7 @@
                     "operator": false
                 },
                 "orientation": {
-                    "description": "Hoch- (P) oder Querformat (L) leerer Seiten.",
+                    "description": "খালি পেজের জন্য পোর্ট্রেট (P) বা ল্যান্ডস্কেপ (L)।",
                     "value": "P / L",
                     "default": "P",
                     "mandatory": false,
@@ -1480,8 +1480,8 @@
                     "operator": false
                 },
                 "margins": {
-                    "description": "Seitenränder in mm (ein Wert: alle; zwei: oben/unten, rechts/links). Linker Rand = x-Vorgabe, rechter Rand = Breitenvorgabe, unterer Rand = Umbruchgrenze der Tabellen.",
-                    "value": "oben,rechts,unten,links",
+                    "description": "পেজ মার্জিন mm-এ (একটি মান: সব; দুটি: উপর/নিচ, ডান/বাম)। বাম মার্জিন = x-এর ডিফল্ট, ডান মার্জিন = প্রস্থের ডিফল্ট, নিচের মার্জিন = টেবিলের পেজ ব্রেক সীমা।",
+                    "value": "উপর,ডান,নিচ,বাম",
                     "default": "20,20,20,20",
                     "mandatory": false,
                     "subparam": 0,
@@ -1490,12 +1490,12 @@
             }
         },
         "pdf_line": {
-            "note": "Zeichnet eine Linie.",
+            "note": "একটি রেখা আঁকে।",
             "do": "",
             "oneof": "",
             "params": {
                 "x1": {
-                    "description": "Startpunkt, Abstand von links.",
+                    "description": "শুরুর বিন্দু, বাম থেকে দূরত্ব।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1503,7 +1503,7 @@
                     "operator": false
                 },
                 "y1": {
-                    "description": "Startpunkt, Abstand von oben.",
+                    "description": "শুরুর বিন্দু, উপর থেকে দূরত্ব।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1511,7 +1511,7 @@
                     "operator": false
                 },
                 "x2": {
-                    "description": "Endpunkt, Abstand von links.",
+                    "description": "শেষ বিন্দু, বাম থেকে দূরত্ব।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1519,7 +1519,7 @@
                     "operator": false
                 },
                 "y2": {
-                    "description": "Endpunkt, Abstand von oben.",
+                    "description": "শেষ বিন্দু, উপর থেকে দূরত্ব।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1527,7 +1527,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Liniendicke.",
+                    "description": "রেখার পুরুত্ব।",
                     "value": "mm",
                     "default": "0.2",
                     "mandatory": false,
@@ -1535,8 +1535,8 @@
                     "operator": false
                 },
                 "color": {
-                    "description": "Linienfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "রেখার রং; অন্যথায় CMS:PDF_LINE_COLOR। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1545,13 +1545,13 @@
             }
         },
         "pdf_line_color": {
-            "note": "Linienfarbe für die folgenden CMS:PDF_LINE, Rahmen von CMS:PDF_RECT und Zellenrahmen. Ohne Angabe Schwarz.",
+            "note": "পরবর্তী CMS:PDF_LINE, CMS:PDF_RECT-এর বর্ডার ও সেল বর্ডারের রেখার রং। না দিলে কালো।",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Linienfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "রেখার রং। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1560,45 +1560,45 @@
             }
         },
         "pdf_meta": {
-            "note": "Dokumenteigenschaften (werden bei CMS:PDF_PRINT geschrieben).",
+            "note": "নথির বৈশিষ্ট্য (CMS:PDF_PRINT-এর সময় লেখা হয়)।",
             "do": "title",
             "oneof": "",
             "params": {
                 "title": {
-                    "description": "Titel.",
-                    "value": "Text",
+                    "description": "শিরোনাম।",
+                    "value": "পাঠ্য",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "author": {
-                    "description": "Autor.",
-                    "value": "Text",
+                    "description": "লেখক।",
+                    "value": "পাঠ্য",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "subject": {
-                    "description": "Thema.",
-                    "value": "Text",
+                    "description": "বিষয়।",
+                    "value": "পাঠ্য",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "keywords": {
-                    "description": "Stichwörter.",
-                    "value": "Text",
+                    "description": "কীওয়ার্ড।",
+                    "value": "পাঠ্য",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "creator": {
-                    "description": "Erzeugende Anwendung.",
-                    "value": "Text",
+                    "description": "নথি তৈরিকারী অ্যাপ্লিকেশন।",
+                    "value": "পাঠ্য",
                     "default": "camindo CMS",
                     "mandatory": false,
                     "subparam": 0,
@@ -1607,28 +1607,28 @@
             }
         },
         "pdf_page": {
-            "note": "Legt eine neue Seite an - leer oder auf einer Seite einer Layout-Vorlage. Der erste Aufruf beginnt das Dokument.",
+            "note": "একটি নতুন পেজ তৈরি করে - খালি অথবা লেআউট ফাইলের কোনো পেজের ভিত্তিতে। প্রথম কল নথি শুরু করে।",
             "do": "layout",
             "oneof": "",
             "params": {
                 "layout": {
-                    "description": "PDF-Vorlage aus var/modules/pdf/layouts/, deren Seite als Hintergrund übernommen wird. Ohne Angabe eine leere Seite.",
-                    "value": "Dateiname",
+                    "description": "var/modules/pdf/layouts/ থেকে PDF লেআউট ফাইল, যার পেজ পটভূমি হিসেবে নেওয়া হয়। না দিলে খালি পেজ।",
+                    "value": "ফাইলের নাম",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "page": {
-                    "description": "Seite der Vorlage (ab 1), die übernommen wird.",
-                    "value": "Zahl",
+                    "description": "লেআউট ফাইলের যে পেজ নেওয়া হবে (১ থেকে)।",
+                    "value": "সংখ্যা",
                     "default": "1",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "format": {
-                    "description": "Seitenformat einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "description": "খালি পেজের পেজ ফরম্যাট; অন্যথায় PDF_INIT-এর ডিফল্ট।",
                     "value": "A4 / A5 / LETTER / ...",
                     "default": "",
                     "mandatory": false,
@@ -1636,7 +1636,7 @@
                     "operator": false
                 },
                 "orientation": {
-                    "description": "Ausrichtung einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "description": "খালি পেজের দিক; অন্যথায় PDF_INIT-এর ডিফল্ট।",
                     "value": "P / L",
                     "default": "",
                     "mandatory": false,
@@ -1644,8 +1644,8 @@
                     "operator": false
                 },
                 "margins": {
-                    "description": "Ränder nur dieser Seite; sonst die Vorgabe aus PDF_INIT.",
-                    "value": "oben,rechts,unten,links",
+                    "description": "শুধু এই পেজের মার্জিন; অন্যথায় PDF_INIT-এর ডিফল্ট।",
+                    "value": "উপর,ডান,নিচ,বাম",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1654,21 +1654,21 @@
             }
         },
         "pdf_print": {
-            "note": "Sendet das Dokument an den Browser und beendet den Request. Vor CMS:PDF_PAGE darf das Template nichts ausgegeben haben.",
+            "note": "নথি ব্রাউজারে পাঠায় এবং অনুরোধ শেষ করে। CMS:PDF_PAGE-এর আগে টেমপ্লেট কিছুই আউটপুট করতে পারবে না।",
             "do": "filename",
             "oneof": "",
             "params": {
                 "filename": {
-                    "description": "Dateiname, den der Browser anzeigt bzw. beim Speichern vorschlägt.",
-                    "value": "Dateiname",
+                    "description": "ফাইলের নাম যা ব্রাউজার দেখায় বা সংরক্ষণের সময় প্রস্তাব করে।",
+                    "value": "ফাইলের নাম",
                     "default": "document.pdf",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "download": {
-                    "description": "Leer oder false: im Browser anzeigen. true: als Download unter filename. Ein Dateiname: als Download unter diesem Namen.",
-                    "value": "false / true / Dateiname",
+                    "description": "খালি বা false: ব্রাউজারে দেখান। true: filename নামে ডাউনলোড করুন। একটি ফাইলের নাম: সেই নামে ডাউনলোড করুন।",
+                    "value": "false / true / ফাইলের নাম",
                     "default": "false",
                     "mandatory": false,
                     "subparam": 0,
@@ -1677,12 +1677,12 @@
             }
         },
         "pdf_rect": {
-            "note": "Zeichnet ein Rechteck, umrandet und/oder gefüllt.",
+            "note": "একটি আয়তক্ষেত্র আঁকে, বর্ডার সহ এবং/অথবা ভরাট।",
             "do": "",
             "oneof": "",
             "params": {
                 "x": {
-                    "description": "Linke Kante.",
+                    "description": "বাম প্রান্ত।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1690,7 +1690,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Obere Kante.",
+                    "description": "উপরের প্রান্ত।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1698,7 +1698,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite.",
+                    "description": "প্রস্থ।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1706,7 +1706,7 @@
                     "operator": false
                 },
                 "height": {
-                    "description": "Höhe.",
+                    "description": "উচ্চতা।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1714,7 +1714,7 @@
                     "operator": false
                 },
                 "style": {
-                    "description": "D Rahmen, F Füllung, DF beides.",
+                    "description": "D বর্ডার, F ভরাট, DF দুটোই।",
                     "value": "D / F / DF",
                     "default": "D",
                     "mandatory": false,
@@ -1722,23 +1722,23 @@
                     "operator": false
                 },
                 "color": {
-                    "description": "Füllfarbe; sonst CMS:PDF_FILL_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "ভরাট রং; অন্যথায় CMS:PDF_FILL_COLOR। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "border": {
-                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "বর্ডারের রং; অন্যথায় CMS:PDF_LINE_COLOR। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "line_width": {
-                    "description": "Rahmendicke.",
+                    "description": "বর্ডারের পুরুত্ব।",
                     "value": "mm",
                     "default": "0.2",
                     "mandatory": false,
@@ -1748,12 +1748,12 @@
             }
         },
         "pdf_row": {
-            "note": "Beginnt eine Tabellenzeile.",
+            "note": "একটি টেবিল সারি শুরু করে।",
             "do": "",
             "oneof": "",
             "params": {
                 "is_header": {
-                    "description": "Kopfzeile: wird nach einem Seitenumbruch auf der Folgeseite wiederholt.",
+                    "description": "হেডার সারি: পেজ ব্রেকের পরে পরের পেজে পুনরাবৃত্ত হয়।",
                     "value": "true / false",
                     "default": "false",
                     "mandatory": false,
@@ -1761,7 +1761,7 @@
                     "operator": false
                 },
                 "keep_together": {
-                    "description": "Zeile nicht über Seiten teilen. Derzeit werden Zeilen grundsätzlich nicht geteilt; der Parameter ist für spätere Versionen reserviert.",
+                    "description": "সারিকে পেজ জুড়ে ভাগ করবেন না। বর্তমানে সারি কখনো ভাগ হয় না; প্যারামিটারটি পরবর্তী সংস্করণের জন্য সংরক্ষিত।",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -1771,20 +1771,20 @@
             }
         },
         "pdf_table": {
-            "note": "Beginnt eine Tabelle; Zeilen und Zellen folgen mit CMS:PDF_ROW / CMS:PDF_CELL, gezeichnet wird bei CMS:PDF_TABLE_END. Zeilen werden nie geteilt: was nicht mehr auf die Seite passt, beginnt auf einer Folgeseite, Kopfzeilen werden dort wiederholt.",
+            "note": "একটি টেবিল শুরু করে; সারি ও সেল CMS:PDF_ROW / CMS:PDF_CELL দিয়ে আসে, আঁকা হয় CMS:PDF_TABLE_END-এ। সারি কখনো ভাগ হয় না: যা পেজে আর আঁটে না তা পরের পেজে শুরু হয়, সেখানে হেডার সারি পুনরাবৃত্ত হয়।",
             "do": "cols",
             "oneof": "",
             "params": {
                 "cols": {
-                    "description": "Spaltenbreiten in mm, kommasepariert.",
-                    "value": "b1,b2,...",
+                    "description": "কলামের প্রস্থ mm-এ, কমা দিয়ে আলাদা।",
+                    "value": "w1,w2,...",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Linke Kante; ohne Angabe der linke Rand.",
+                    "description": "বাম প্রান্ত; না দিলে বাম মার্জিন।",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1792,7 +1792,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Obere Kante; ohne Angabe der Cursor.",
+                    "description": "উপরের প্রান্ত; না দিলে কার্সর।",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1800,15 +1800,15 @@
                     "operator": false
                 },
                 "padding": {
-                    "description": "Innenabstand aller Zellen in mm (ein Wert: alle; zwei: oben/unten, rechts/links).",
-                    "value": "oben,rechts,unten,links",
+                    "description": "সব সেলের ভেতরের দূরত্ব mm-এ (একটি মান: সব; দুটি: উপর/নিচ, ডান/বাম)।",
+                    "value": "উপর,ডান,নিচ,বাম",
                     "default": "1",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "border_width": {
-                    "description": "Rahmendicke der Zellen.",
+                    "description": "সেলের বর্ডারের পুরুত্ব।",
                     "value": "mm",
                     "default": "0.2",
                     "mandatory": false,
@@ -1816,16 +1816,16 @@
                     "operator": false
                 },
                 "next_layout": {
-                    "description": "Layout-Vorlage der Folgeseiten bei Seitenumbruch; sonst wie die letzte CMS:PDF_PAGE (leer = leere Seite).",
-                    "value": "Dateiname",
+                    "description": "পেজ ব্রেকের সময় পরের পেজগুলোর লেআউট ফাইল; অন্যথায় শেষ CMS:PDF_PAGE-এর মতো (খালি = খালি পেজ)।",
+                    "value": "ফাইলের নাম",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "next_page": {
-                    "description": "Seite der Vorlage für Folgeseiten.",
-                    "value": "Zahl",
+                    "description": "পরের পেজগুলোর জন্য লেআউট ফাইলের পেজ।",
+                    "value": "সংখ্যা",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1834,26 +1834,26 @@
             }
         },
         "pdf_table_end": {
-            "note": "Zeichnet die Tabelle. Der Cursor rückt unter die Tabelle.",
+            "note": "টেবিল আঁকে। কার্সর টেবিলের নিচে চলে যায়।",
             "do": "",
             "oneof": "",
             "params": {}
         },
         "pdf_text": {
-            "note": "Schreibt einen Textblock mit Zeilenumbruch innerhalb der Breite. Der Cursor rückt unter den Block.",
+            "note": "প্রস্থের মধ্যে লাইন র‍্যাপ সহ একটি পাঠ্য ব্লক লেখে। কার্সর ব্লকের নিচে চলে যায়।",
             "do": "text",
             "oneof": "",
             "params": {
                 "text": {
-                    "description": "Der Text (UTF-8; Zeilenumbrüche werden umgebrochen). Leer = keine Ausgabe.",
-                    "value": "Text",
+                    "description": "পাঠ্য (UTF-8; লাইন ব্রেক বজায় থাকে)। খালি = কোনো আউটপুট নয়।",
+                    "value": "পাঠ্য",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "description": "পেজের বাম প্রান্ত থেকে দূরত্ব; না দিলে বাম মার্জিন।",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1861,7 +1861,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Abstand vom oberen Seitenrand (Oberkante des Blocks); ohne Angabe der Cursor.",
+                    "description": "পেজের উপরের প্রান্ত থেকে দূরত্ব (ব্লকের উপরের প্রান্ত); না দিলে কার্সর।",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1869,7 +1869,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "description": "ব্লকের প্রস্থ; 0 = ডান মার্জিন পর্যন্ত।",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1877,7 +1877,7 @@
                     "operator": false
                 },
                 "align": {
-                    "description": "Ausrichtung: links, zentriert, rechts, Blocksatz.",
+                    "description": "সারিবদ্ধকরণ: বাম, মাঝখানে, ডান, উভয় পাশে সমান।",
                     "value": "L / C / R / J",
                     "default": "L",
                     "mandatory": false,
@@ -1885,24 +1885,24 @@
                     "operator": false
                 },
                 "size": {
-                    "description": "Schriftgröße nur für diesen Block; sonst die von CMS:PDF_FONT.",
-                    "value": "Punkt",
+                    "description": "শুধু এই ব্লকের ফন্টের আকার; অন্যথায় CMS:PDF_FONT-এর আকার।",
+                    "value": "পয়েন্ট",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "color": {
-                    "description": "Textfarbe nur für diesen Block; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "শুধু এই ব্লকের পাঠ্যের রং; অন্যথায় CMS:PDF_TEXT_COLOR। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "background": {
-                    "description": "Hintergrundfarbe des Blocks. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "ব্লকের পটভূমির রং। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1911,13 +1911,13 @@
             }
         },
         "pdf_text_color": {
-            "note": "Textfarbe für die folgenden CMS:PDF_TEXT und Zellen. Ohne Angabe Schwarz.",
+            "note": "পরবর্তী CMS:PDF_TEXT ও সেলের পাঠ্যের রং। না দিলে কালো।",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Textfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "পাঠ্যের রং। রঙের ফিল্ড (PDF_COLOR), #rrggbb বা c,m,y,k।",
+                    "value": "রং",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,

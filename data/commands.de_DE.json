@@ -1347,7 +1347,7 @@
             "params": {
                 "html": {
                     "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
-                    "value": "HTML",
+                    "value": "HTML-Code",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,

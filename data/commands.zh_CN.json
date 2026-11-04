@@ -1161,28 +1161,28 @@
             }
         },
         "pdf_cell": {
-            "note": "Zelle der aktuellen Zeile. Schrift ist die zu diesem Zeitpunkt eingestellte (CMS:PDF_FONT).",
+            "note": "当前行的单元格。字体为此时设置的字体 (CMS:PDF_FONT)。",
             "do": "text",
             "oneof": "",
             "params": {
                 "text": {
-                    "description": "Zelltext; bricht innerhalb der Spalte um, soweit fit= ihn nicht einpasst.",
-                    "value": "Text",
+                    "description": "单元格文本；在列内换行，除非 fit= 使其适配。",
+                    "value": "文本",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "col": {
-                    "description": "Spaltenindex ab 0; ohne Angabe die nächste Spalte.",
-                    "value": "Zahl",
+                    "description": "列索引，从 0 开始；未指定时为下一列。",
+                    "value": "数字",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "align": {
-                    "description": "Horizontale Ausrichtung.",
+                    "description": "水平对齐。",
                     "value": "L / C / R / J",
                     "default": "L",
                     "mandatory": false,
@@ -1190,7 +1190,7 @@
                     "operator": false
                 },
                 "valign": {
-                    "description": "Vertikale Ausrichtung in der Zeile.",
+                    "description": "行内垂直对齐。",
                     "value": "T / C / B",
                     "default": "T",
                     "mandatory": false,
@@ -1198,7 +1198,7 @@
                     "operator": false
                 },
                 "fit": {
-                    "description": "Text auf eine Zeile in der Spaltenbreite einpassen: fontsize verkleinert die Schrift (bis min_size), spacing verringert den Zeichenabstand, scale beides, force staucht horizontal. Was auch so nicht passt, bricht um.",
+                    "description": "将文本适配到列宽内的一行：fontsize 缩小字号（最小到 min_size），spacing 缩小字符间距，scale 两者兼用，force 水平压缩。仍放不下的内容会换行。",
                     "value": "none / scale / fontsize / spacing / force",
                     "default": "none",
                     "mandatory": false,
@@ -1206,15 +1206,15 @@
                     "operator": false
                 },
                 "min_size": {
-                    "description": "Kleinste Schriftgröße beim Einpassen.",
-                    "value": "Punkt",
+                    "description": "适配时的最小字号。",
+                    "value": "磅",
                     "default": "6",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "border": {
-                    "description": "Rahmenseiten: L links, T oben, R rechts, B unten; 1 alle, 0 keine.",
+                    "description": "边框的边：L 左，T 上，R 右，B 下；1 全部，0 无。",
                     "value": "LTRB / 1 / 0",
                     "default": "1",
                     "mandatory": false,
@@ -1222,7 +1222,7 @@
                     "operator": false
                 },
                 "border_width": {
-                    "description": "Rahmendicke; sonst die der Tabelle.",
+                    "description": "边框粗细；否则使用表格的设置。",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1230,32 +1230,32 @@
                     "operator": false
                 },
                 "border_color": {
-                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "边框颜色；否则使用 CMS:PDF_LINE_COLOR。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "padding": {
-                    "description": "Innenabstand dieser Zelle; sonst der der Tabelle.",
-                    "value": "oben,rechts,unten,links",
+                    "description": "此单元格的内边距；否则使用表格的设置。",
+                    "value": "上,右,下,左",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "color": {
-                    "description": "Textfarbe; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "文本颜色；否则使用 CMS:PDF_TEXT_COLOR。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "background": {
-                    "description": "Hintergrundfarbe der Zelle. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "单元格的背景颜色。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1264,20 +1264,20 @@
             }
         },
         "pdf_color": {
-            "note": "Definiert ein Farbfeld mit RGB- und/oder CMYK-Wert. Der Farbraum des Dokuments (PDF_INIT) wählt den Wert; ein fehlender wird umgerechnet.",
+            "note": "定义带有 RGB 和/或 CMYK 值的颜色字段。文档的色彩空间 (PDF_INIT) 决定使用哪个值；缺少的值会被换算。",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Name des Farbfelds (Buchstaben, Ziffern, _ und -).",
-                    "value": "Name",
+                    "description": "颜色字段的名称（字母、数字、_ 和 -）。",
+                    "value": "名称",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "rgb": {
-                    "description": "RGB-Wert als Hex-Farbe, z. B. #0066FF.",
+                    "description": "十六进制颜色形式的 RGB 值，例如 #0066FF。",
                     "value": "#rrggbb",
                     "default": "",
                     "mandatory": false,
@@ -1285,7 +1285,7 @@
                     "operator": false
                 },
                 "cmyk": {
-                    "description": "CMYK-Wert in Prozent, z. B. 0,100,100,0.",
+                    "description": "以百分比表示的 CMYK 值，例如 0,100,100,0。",
                     "value": "c,m,y,k",
                     "default": "",
                     "mandatory": false,
@@ -1295,13 +1295,13 @@
             }
         },
         "pdf_fill_color": {
-            "note": "Füllfarbe für die folgenden CMS:PDF_RECT. Ohne Angabe Schwarz.",
+            "note": "后续 CMS:PDF_RECT 的填充颜色。未指定时为黑色。",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Füllfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "填充颜色。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1310,29 +1310,29 @@
             }
         },
         "pdf_font": {
-            "note": "Stellt die Schrift für die folgenden Texte und Zellen ein. Gilt über Seiten hinweg.",
+            "note": "设置后续文本和单元格的字体。跨页有效。",
             "do": "font",
             "oneof": "",
             "params": {
                 "font": {
-                    "description": "Name einer Schrift aus var/modules/pdf/fonts/ ({name}.json; mitgeliefert: helvetica, times, courier, symbol, zapfdingbats). Eine Datei {name}.ttf/.otf wird beim ersten Aufruf konvertiert.",
-                    "value": "Schriftname",
+                    "description": "var/modules/pdf/fonts/ 中字体的名称（{name}.json；随附：helvetica、times、courier、symbol、zapfdingbats）。文件 {name}.ttf/.otf 会在第一次调用时转换。",
+                    "value": "字体名称",
                     "default": "helvetica",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "style": {
-                    "description": "Schriftschnitt: B fett, I kursiv, U unterstrichen, D durchgestrichen, O überstrichen. Leer = regulär.",
-                    "value": "B / I / U / D / O, kombinierbar",
+                    "description": "字形：B 粗体，I 斜体，U 下划线，D 删除线，O 上划线。为空 = 常规。",
+                    "value": "B / I / U / D / O，可组合",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "size": {
-                    "description": "Schriftgröße in Punkt.",
-                    "value": "Punkt",
+                    "description": "字号，单位为磅。",
+                    "value": "磅",
                     "default": "12",
                     "mandatory": false,
                     "subparam": 0,
@@ -1341,20 +1341,20 @@
             }
         },
         "pdf_html": {
-            "note": "Schreibt einen HTML-Block (Umbruch und Seitenumbruch durch tc-lib-pdf). Der Cursor bleibt stehen - die Höhe des Blocks ist nicht bekannt.",
+            "note": "写入 HTML 块（换行和分页由 tc-lib-pdf 处理）。光标保持不动——文本块的高度未知。",
             "do": "html",
             "oneof": "",
             "params": {
                 "html": {
-                    "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
-                    "value": "HTML",
+                    "description": "HTML 代码（文本标记、列表、表格、内联 CSS）。",
+                    "value": "HTML 代码",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "description": "距页面左边缘的距离；未指定时为左边距。",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1362,7 +1362,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "description": "距页面上边缘的距离；未指定时为光标位置。",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1370,7 +1370,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "description": "文本块宽度；0 = 到右边距为止。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1380,20 +1380,20 @@
             }
         },
         "pdf_image": {
-            "note": "Platziert ein Bild (JPEG, PNG, GIF, ...) aus dem Medienverzeichnis. Der Cursor rückt unter das Bild.",
+            "note": "放置媒体目录中的图片（JPEG、PNG、GIF、...）。光标移到图片下方。",
             "do": "file",
             "oneof": "",
             "params": {
                 "file": {
-                    "description": "Bilddatei: absoluter Pfad aus (CMS:MEDIA subfield=file), Webpfad aus subfield=path oder Pfad relativ zu public/media. Nur Dateien unterhalb des Medienverzeichnisses.",
-                    "value": "Pfad",
+                    "description": "图片文件：来自 (CMS:MEDIA subfield=file) 的绝对路径、来自 subfield=path 的 Web 路径或相对于 public/media 的路径。仅限媒体目录下的文件。",
+                    "value": "路径",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "description": "距页面左边缘的距离；未指定时为左边距。",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1401,7 +1401,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "description": "距页面上边缘的距离；未指定时为光标位置。",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1409,7 +1409,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite; 0 = aus der Höhe (bzw. aus den Pixeln bei 72 dpi, wenn beide fehlen).",
+                    "description": "宽度；0 = 根据高度确定（两者都缺少时根据 72 dpi 下的像素确定）。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1417,7 +1417,7 @@
                     "operator": false
                 },
                 "height": {
-                    "description": "Höhe; 0 = proportional zur Breite.",
+                    "description": "高度；0 = 与宽度成比例。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1425,7 +1425,7 @@
                     "operator": false
                 },
                 "link": {
-                    "description": "Verweis, der beim Klick auf das Bild geöffnet wird.",
+                    "description": "点击图片时打开的链接。",
                     "value": "URL",
                     "default": "",
                     "mandatory": false,
@@ -1435,12 +1435,12 @@
             }
         },
         "pdf_init": {
-            "note": "Vorgaben für das Dokument: Farbraum, ICC-Profil, Seitenformat und Ränder. Vor der ersten CMS:PDF_PAGE.",
+            "note": "文档的默认设置：色彩空间、ICC 配置文件、页面格式和边距。须在第一个 CMS:PDF_PAGE 之前。",
             "do": "colorspace",
             "oneof": "",
             "params": {
                 "colorspace": {
-                    "description": "Farbraum, in dem Farben ins PDF geschrieben werden.",
+                    "description": "颜色写入 PDF 时使用的色彩空间。",
                     "value": "RGB / CMYK",
                     "default": "RGB",
                     "mandatory": false,
@@ -1448,23 +1448,23 @@
                     "operator": false
                 },
                 "icc_profile": {
-                    "description": "ICC-Profil aus var/modules/pdf/profiles/, wird als Output Intent eingebettet.",
-                    "value": "Dateiname",
+                    "description": "来自 var/modules/pdf/profiles/ 的 ICC 配置文件，作为输出意图（output intent）嵌入。",
+                    "value": "文件名",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "output_condition": {
-                    "description": "Bezeichner der Druckbedingung für den Output Intent (z. B. FOGRA39). Ohne Angabe der Dateiname des Profils.",
-                    "value": "Text",
+                    "description": "输出意图的印刷条件标识符（例如 FOGRA39）。未指定时使用配置文件的文件名。",
+                    "value": "文本",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "format": {
-                    "description": "Seitenformat leerer Seiten (Namen wie in tc-lib-pdf).",
+                    "description": "空白页的页面格式（名称与 tc-lib-pdf 相同）。",
                     "value": "A4 / A5 / LETTER / ...",
                     "default": "A4",
                     "mandatory": false,
@@ -1472,7 +1472,7 @@
                     "operator": false
                 },
                 "orientation": {
-                    "description": "Hoch- (P) oder Querformat (L) leerer Seiten.",
+                    "description": "空白页为纵向 (P) 或横向 (L)。",
                     "value": "P / L",
                     "default": "P",
                     "mandatory": false,
@@ -1480,8 +1480,8 @@
                     "operator": false
                 },
                 "margins": {
-                    "description": "Seitenränder in mm (ein Wert: alle; zwei: oben/unten, rechts/links). Linker Rand = x-Vorgabe, rechter Rand = Breitenvorgabe, unterer Rand = Umbruchgrenze der Tabellen.",
-                    "value": "oben,rechts,unten,links",
+                    "description": "页边距，单位 mm（一个值：全部；两个值：上/下、右/左）。左边距 = x 的默认值，右边距 = 宽度的默认值，下边距 = 表格的分页界限。",
+                    "value": "上,右,下,左",
                     "default": "20,20,20,20",
                     "mandatory": false,
                     "subparam": 0,
@@ -1490,12 +1490,12 @@
             }
         },
         "pdf_line": {
-            "note": "Zeichnet eine Linie.",
+            "note": "绘制一条线。",
             "do": "",
             "oneof": "",
             "params": {
                 "x1": {
-                    "description": "Startpunkt, Abstand von links.",
+                    "description": "起点，距左侧的距离。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1503,7 +1503,7 @@
                     "operator": false
                 },
                 "y1": {
-                    "description": "Startpunkt, Abstand von oben.",
+                    "description": "起点，距顶部的距离。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1511,7 +1511,7 @@
                     "operator": false
                 },
                 "x2": {
-                    "description": "Endpunkt, Abstand von links.",
+                    "description": "终点，距左侧的距离。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1519,7 +1519,7 @@
                     "operator": false
                 },
                 "y2": {
-                    "description": "Endpunkt, Abstand von oben.",
+                    "description": "终点，距顶部的距离。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1527,7 +1527,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Liniendicke.",
+                    "description": "线条粗细。",
                     "value": "mm",
                     "default": "0.2",
                     "mandatory": false,
@@ -1535,8 +1535,8 @@
                     "operator": false
                 },
                 "color": {
-                    "description": "Linienfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "线条颜色；否则使用 CMS:PDF_LINE_COLOR。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1545,13 +1545,13 @@
             }
         },
         "pdf_line_color": {
-            "note": "Linienfarbe für die folgenden CMS:PDF_LINE, Rahmen von CMS:PDF_RECT und Zellenrahmen. Ohne Angabe Schwarz.",
+            "note": "后续 CMS:PDF_LINE、CMS:PDF_RECT 边框和单元格边框的线条颜色。未指定时为黑色。",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Linienfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "线条颜色。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1560,45 +1560,45 @@
             }
         },
         "pdf_meta": {
-            "note": "Dokumenteigenschaften (werden bei CMS:PDF_PRINT geschrieben).",
+            "note": "文档属性（在 CMS:PDF_PRINT 时写入）。",
             "do": "title",
             "oneof": "",
             "params": {
                 "title": {
-                    "description": "Titel.",
-                    "value": "Text",
+                    "description": "标题。",
+                    "value": "文本",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "author": {
-                    "description": "Autor.",
-                    "value": "Text",
+                    "description": "作者。",
+                    "value": "文本",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "subject": {
-                    "description": "Thema.",
-                    "value": "Text",
+                    "description": "主题。",
+                    "value": "文本",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "keywords": {
-                    "description": "Stichwörter.",
-                    "value": "Text",
+                    "description": "关键词。",
+                    "value": "文本",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "creator": {
-                    "description": "Erzeugende Anwendung.",
-                    "value": "Text",
+                    "description": "生成文档的应用程序。",
+                    "value": "文本",
                     "default": "camindo CMS",
                     "mandatory": false,
                     "subparam": 0,
@@ -1607,28 +1607,28 @@
             }
         },
         "pdf_page": {
-            "note": "Legt eine neue Seite an - leer oder auf einer Seite einer Layout-Vorlage. Der erste Aufruf beginnt das Dokument.",
+            "note": "新建一页——空白页或基于版式文件中的某一页。第一次调用时开始文档。",
             "do": "layout",
             "oneof": "",
             "params": {
                 "layout": {
-                    "description": "PDF-Vorlage aus var/modules/pdf/layouts/, deren Seite als Hintergrund übernommen wird. Ohne Angabe eine leere Seite.",
-                    "value": "Dateiname",
+                    "description": "来自 var/modules/pdf/layouts/ 的 PDF 版式文件，其页面用作背景。未指定时为空白页。",
+                    "value": "文件名",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "page": {
-                    "description": "Seite der Vorlage (ab 1), die übernommen wird.",
-                    "value": "Zahl",
+                    "description": "要使用的版式文件页码（从 1 开始）。",
+                    "value": "数字",
                     "default": "1",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "format": {
-                    "description": "Seitenformat einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "description": "空白页的页面格式；否则使用 PDF_INIT 的默认值。",
                     "value": "A4 / A5 / LETTER / ...",
                     "default": "",
                     "mandatory": false,
@@ -1636,7 +1636,7 @@
                     "operator": false
                 },
                 "orientation": {
-                    "description": "Ausrichtung einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "description": "空白页的方向；否则使用 PDF_INIT 的默认值。",
                     "value": "P / L",
                     "default": "",
                     "mandatory": false,
@@ -1644,8 +1644,8 @@
                     "operator": false
                 },
                 "margins": {
-                    "description": "Ränder nur dieser Seite; sonst die Vorgabe aus PDF_INIT.",
-                    "value": "oben,rechts,unten,links",
+                    "description": "仅此页的边距；否则使用 PDF_INIT 的默认值。",
+                    "value": "上,右,下,左",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1654,21 +1654,21 @@
             }
         },
         "pdf_print": {
-            "note": "Sendet das Dokument an den Browser und beendet den Request. Vor CMS:PDF_PAGE darf das Template nichts ausgegeben haben.",
+            "note": "将文档发送到浏览器并结束请求。在 CMS:PDF_PAGE 之前，模板不得有任何输出。",
             "do": "filename",
             "oneof": "",
             "params": {
                 "filename": {
-                    "description": "Dateiname, den der Browser anzeigt bzw. beim Speichern vorschlägt.",
-                    "value": "Dateiname",
+                    "description": "浏览器显示或保存时建议的文件名。",
+                    "value": "文件名",
                     "default": "document.pdf",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "download": {
-                    "description": "Leer oder false: im Browser anzeigen. true: als Download unter filename. Ein Dateiname: als Download unter diesem Namen.",
-                    "value": "false / true / Dateiname",
+                    "description": "为空或 false：在浏览器中显示。true：以 filename 下载。文件名：以该名称下载。",
+                    "value": "false / true / 文件名",
                     "default": "false",
                     "mandatory": false,
                     "subparam": 0,
@@ -1677,12 +1677,12 @@
             }
         },
         "pdf_rect": {
-            "note": "Zeichnet ein Rechteck, umrandet und/oder gefüllt.",
+            "note": "绘制一个矩形，带边框和/或填充。",
             "do": "",
             "oneof": "",
             "params": {
                 "x": {
-                    "description": "Linke Kante.",
+                    "description": "左边缘。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1690,7 +1690,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Obere Kante.",
+                    "description": "上边缘。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1698,7 +1698,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite.",
+                    "description": "宽度。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1706,7 +1706,7 @@
                     "operator": false
                 },
                 "height": {
-                    "description": "Höhe.",
+                    "description": "高度。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1714,7 +1714,7 @@
                     "operator": false
                 },
                 "style": {
-                    "description": "D Rahmen, F Füllung, DF beides.",
+                    "description": "D 边框，F 填充，DF 两者。",
                     "value": "D / F / DF",
                     "default": "D",
                     "mandatory": false,
@@ -1722,23 +1722,23 @@
                     "operator": false
                 },
                 "color": {
-                    "description": "Füllfarbe; sonst CMS:PDF_FILL_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "填充颜色；否则使用 CMS:PDF_FILL_COLOR。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "border": {
-                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "边框颜色；否则使用 CMS:PDF_LINE_COLOR。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "line_width": {
-                    "description": "Rahmendicke.",
+                    "description": "边框粗细。",
                     "value": "mm",
                     "default": "0.2",
                     "mandatory": false,
@@ -1748,12 +1748,12 @@
             }
         },
         "pdf_row": {
-            "note": "Beginnt eine Tabellenzeile.",
+            "note": "开始一个表格行。",
             "do": "",
             "oneof": "",
             "params": {
                 "is_header": {
-                    "description": "Kopfzeile: wird nach einem Seitenumbruch auf der Folgeseite wiederholt.",
+                    "description": "表头行：分页后在后续页重复。",
                     "value": "true / false",
                     "default": "false",
                     "mandatory": false,
@@ -1761,7 +1761,7 @@
                     "operator": false
                 },
                 "keep_together": {
-                    "description": "Zeile nicht über Seiten teilen. Derzeit werden Zeilen grundsätzlich nicht geteilt; der Parameter ist für spätere Versionen reserviert.",
+                    "description": "不跨页拆分该行。目前行一律不拆分；此参数保留给以后的版本。",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -1771,20 +1771,20 @@
             }
         },
         "pdf_table": {
-            "note": "Beginnt eine Tabelle; Zeilen und Zellen folgen mit CMS:PDF_ROW / CMS:PDF_CELL, gezeichnet wird bei CMS:PDF_TABLE_END. Zeilen werden nie geteilt: was nicht mehr auf die Seite passt, beginnt auf einer Folgeseite, Kopfzeilen werden dort wiederholt.",
+            "note": "开始一个表格；行和单元格随后通过 CMS:PDF_ROW / CMS:PDF_CELL 给出，在 CMS:PDF_TABLE_END 时绘制。行绝不会被拆分：页面放不下的内容从后续页开始，表头行在那里重复。",
             "do": "cols",
             "oneof": "",
             "params": {
                 "cols": {
-                    "description": "Spaltenbreiten in mm, kommasepariert.",
-                    "value": "b1,b2,...",
+                    "description": "列宽，单位 mm，以逗号分隔。",
+                    "value": "w1,w2,...",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Linke Kante; ohne Angabe der linke Rand.",
+                    "description": "左边缘；未指定时为左边距。",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1792,7 +1792,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Obere Kante; ohne Angabe der Cursor.",
+                    "description": "上边缘；未指定时为光标位置。",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1800,15 +1800,15 @@
                     "operator": false
                 },
                 "padding": {
-                    "description": "Innenabstand aller Zellen in mm (ein Wert: alle; zwei: oben/unten, rechts/links).",
-                    "value": "oben,rechts,unten,links",
+                    "description": "所有单元格的内边距，单位 mm（一个值：全部；两个值：上/下、右/左）。",
+                    "value": "上,右,下,左",
                     "default": "1",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "border_width": {
-                    "description": "Rahmendicke der Zellen.",
+                    "description": "单元格的边框粗细。",
                     "value": "mm",
                     "default": "0.2",
                     "mandatory": false,
@@ -1816,16 +1816,16 @@
                     "operator": false
                 },
                 "next_layout": {
-                    "description": "Layout-Vorlage der Folgeseiten bei Seitenumbruch; sonst wie die letzte CMS:PDF_PAGE (leer = leere Seite).",
-                    "value": "Dateiname",
+                    "description": "分页时后续页的版式文件；否则与最后一个 CMS:PDF_PAGE 相同（为空 = 空白页）。",
+                    "value": "文件名",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "next_page": {
-                    "description": "Seite der Vorlage für Folgeseiten.",
-                    "value": "Zahl",
+                    "description": "后续页使用的版式文件页码。",
+                    "value": "数字",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1834,26 +1834,26 @@
             }
         },
         "pdf_table_end": {
-            "note": "Zeichnet die Tabelle. Der Cursor rückt unter die Tabelle.",
+            "note": "绘制表格。光标移到表格下方。",
             "do": "",
             "oneof": "",
             "params": {}
         },
         "pdf_text": {
-            "note": "Schreibt einen Textblock mit Zeilenumbruch innerhalb der Breite. Der Cursor rückt unter den Block.",
+            "note": "在宽度范围内写入可自动换行的文本块。光标移到文本块下方。",
             "do": "text",
             "oneof": "",
             "params": {
                 "text": {
-                    "description": "Der Text (UTF-8; Zeilenumbrüche werden umgebrochen). Leer = keine Ausgabe.",
-                    "value": "Text",
+                    "description": "文本（UTF-8；保留换行符）。为空 = 不输出。",
+                    "value": "文本",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "description": "距页面左边缘的距离；未指定时为左边距。",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1861,7 +1861,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Abstand vom oberen Seitenrand (Oberkante des Blocks); ohne Angabe der Cursor.",
+                    "description": "距页面上边缘的距离（文本块顶端）；未指定时为光标位置。",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1869,7 +1869,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "description": "文本块宽度；0 = 到右边距为止。",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1877,7 +1877,7 @@
                     "operator": false
                 },
                 "align": {
-                    "description": "Ausrichtung: links, zentriert, rechts, Blocksatz.",
+                    "description": "对齐方式：左对齐、居中、右对齐、两端对齐。",
                     "value": "L / C / R / J",
                     "default": "L",
                     "mandatory": false,
@@ -1885,24 +1885,24 @@
                     "operator": false
                 },
                 "size": {
-                    "description": "Schriftgröße nur für diesen Block; sonst die von CMS:PDF_FONT.",
-                    "value": "Punkt",
+                    "description": "仅此文本块的字号；否则使用 CMS:PDF_FONT 的字号。",
+                    "value": "磅",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "color": {
-                    "description": "Textfarbe nur für diesen Block; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "仅此文本块的文本颜色；否则使用 CMS:PDF_TEXT_COLOR。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "background": {
-                    "description": "Hintergrundfarbe des Blocks. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "文本块的背景颜色。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1911,13 +1911,13 @@
             }
         },
         "pdf_text_color": {
-            "note": "Textfarbe für die folgenden CMS:PDF_TEXT und Zellen. Ohne Angabe Schwarz.",
+            "note": "后续 CMS:PDF_TEXT 和单元格的文本颜色。未指定时为黑色。",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Textfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "文本颜色。颜色字段（PDF_COLOR）、#rrggbb 或 c,m,y,k。",
+                    "value": "颜色",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,

@@ -1161,12 +1161,12 @@
             }
         },
         "pdf_cell": {
-            "note": "Zelle der aktuellen Zeile. Schrift ist die zu diesem Zeitpunkt eingestellte (CMS:PDF_FONT).",
+            "note": "Cell of the current row. The font is the one set at this point (CMS:PDF_FONT).",
             "do": "text",
             "oneof": "",
             "params": {
                 "text": {
-                    "description": "Zelltext; bricht innerhalb der Spalte um, soweit fit= ihn nicht einpasst.",
+                    "description": "Cell text; wraps within the column unless fit= fits it.",
                     "value": "Text",
                     "default": "",
                     "mandatory": false,
@@ -1174,15 +1174,15 @@
                     "operator": false
                 },
                 "col": {
-                    "description": "Spaltenindex ab 0; ohne Angabe die nächste Spalte.",
-                    "value": "Zahl",
+                    "description": "Column index from 0; if omitted, the next column.",
+                    "value": "Number",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "align": {
-                    "description": "Horizontale Ausrichtung.",
+                    "description": "Horizontal alignment.",
                     "value": "L / C / R / J",
                     "default": "L",
                     "mandatory": false,
@@ -1190,7 +1190,7 @@
                     "operator": false
                 },
                 "valign": {
-                    "description": "Vertikale Ausrichtung in der Zeile.",
+                    "description": "Vertical alignment in the row.",
                     "value": "T / C / B",
                     "default": "T",
                     "mandatory": false,
@@ -1198,7 +1198,7 @@
                     "operator": false
                 },
                 "fit": {
-                    "description": "Text auf eine Zeile in der Spaltenbreite einpassen: fontsize verkleinert die Schrift (bis min_size), spacing verringert den Zeichenabstand, scale beides, force staucht horizontal. Was auch so nicht passt, bricht um.",
+                    "description": "Fit the text on one line within the column width: fontsize reduces the font size (down to min_size), spacing reduces the character spacing, scale does both, force compresses horizontally. What still does not fit wraps.",
                     "value": "none / scale / fontsize / spacing / force",
                     "default": "none",
                     "mandatory": false,
@@ -1206,15 +1206,15 @@
                     "operator": false
                 },
                 "min_size": {
-                    "description": "Kleinste Schriftgröße beim Einpassen.",
-                    "value": "Punkt",
+                    "description": "Smallest font size when fitting.",
+                    "value": "Points",
                     "default": "6",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "border": {
-                    "description": "Rahmenseiten: L links, T oben, R rechts, B unten; 1 alle, 0 keine.",
+                    "description": "Border sides: L left, T top, R right, B bottom; 1 all, 0 none.",
                     "value": "LTRB / 1 / 0",
                     "default": "1",
                     "mandatory": false,
@@ -1222,7 +1222,7 @@
                     "operator": false
                 },
                 "border_width": {
-                    "description": "Rahmendicke; sonst die der Tabelle.",
+                    "description": "Border thickness; otherwise that of the table.",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1230,32 +1230,32 @@
                     "operator": false
                 },
                 "border_color": {
-                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Border color; otherwise CMS:PDF_LINE_COLOR. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "padding": {
-                    "description": "Innenabstand dieser Zelle; sonst der der Tabelle.",
-                    "value": "oben,rechts,unten,links",
+                    "description": "Padding of this cell; otherwise that of the table.",
+                    "value": "top,right,bottom,left",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "color": {
-                    "description": "Textfarbe; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Text color; otherwise CMS:PDF_TEXT_COLOR. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "background": {
-                    "description": "Hintergrundfarbe der Zelle. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Background color of the cell. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1264,12 +1264,12 @@
             }
         },
         "pdf_color": {
-            "note": "Definiert ein Farbfeld mit RGB- und/oder CMYK-Wert. Der Farbraum des Dokuments (PDF_INIT) wählt den Wert; ein fehlender wird umgerechnet.",
+            "note": "Defines a color field with an RGB and/or CMYK value. The color space of the document (PDF_INIT) selects the value; a missing one is converted.",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Name des Farbfelds (Buchstaben, Ziffern, _ und -).",
+                    "description": "Name of the color field (letters, digits, _ and -).",
                     "value": "Name",
                     "default": "",
                     "mandatory": false,
@@ -1277,7 +1277,7 @@
                     "operator": false
                 },
                 "rgb": {
-                    "description": "RGB-Wert als Hex-Farbe, z. B. #0066FF.",
+                    "description": "RGB value as a hex color, e.g. #0066FF.",
                     "value": "#rrggbb",
                     "default": "",
                     "mandatory": false,
@@ -1285,7 +1285,7 @@
                     "operator": false
                 },
                 "cmyk": {
-                    "description": "CMYK-Wert in Prozent, z. B. 0,100,100,0.",
+                    "description": "CMYK value in percent, e.g. 0,100,100,0.",
                     "value": "c,m,y,k",
                     "default": "",
                     "mandatory": false,
@@ -1295,13 +1295,13 @@
             }
         },
         "pdf_fill_color": {
-            "note": "Füllfarbe für die folgenden CMS:PDF_RECT. Ohne Angabe Schwarz.",
+            "note": "Fill color for the following CMS:PDF_RECT. If omitted, black.",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Füllfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Fill color. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1310,29 +1310,29 @@
             }
         },
         "pdf_font": {
-            "note": "Stellt die Schrift für die folgenden Texte und Zellen ein. Gilt über Seiten hinweg.",
+            "note": "Sets the font for the following texts and cells. Applies across pages.",
             "do": "font",
             "oneof": "",
             "params": {
                 "font": {
-                    "description": "Name einer Schrift aus var/modules/pdf/fonts/ ({name}.json; mitgeliefert: helvetica, times, courier, symbol, zapfdingbats). Eine Datei {name}.ttf/.otf wird beim ersten Aufruf konvertiert.",
-                    "value": "Schriftname",
+                    "description": "Name of a font from var/modules/pdf/fonts/ ({name}.json; included: helvetica, times, courier, symbol, zapfdingbats). A file {name}.ttf/.otf is converted on the first call.",
+                    "value": "Font name",
                     "default": "helvetica",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "style": {
-                    "description": "Schriftschnitt: B fett, I kursiv, U unterstrichen, D durchgestrichen, O überstrichen. Leer = regulär.",
-                    "value": "B / I / U / D / O, kombinierbar",
+                    "description": "Font style: B bold, I italic, U underlined, D strikethrough, O overline. Empty = regular.",
+                    "value": "B / I / U / D / O, can be combined",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "size": {
-                    "description": "Schriftgröße in Punkt.",
-                    "value": "Punkt",
+                    "description": "Font size in points.",
+                    "value": "Points",
                     "default": "12",
                     "mandatory": false,
                     "subparam": 0,
@@ -1341,20 +1341,20 @@
             }
         },
         "pdf_html": {
-            "note": "Schreibt einen HTML-Block (Umbruch und Seitenumbruch durch tc-lib-pdf). Der Cursor bleibt stehen - die Höhe des Blocks ist nicht bekannt.",
+            "note": "Writes an HTML block (wrapping and page breaks by tc-lib-pdf). The cursor stays where it is - the height of the block is not known.",
             "do": "html",
             "oneof": "",
             "params": {
                 "html": {
-                    "description": "Der HTML-Code (Textauszeichnung, Listen, Tabellen, Inline-CSS).",
-                    "value": "HTML",
+                    "description": "The HTML code (text markup, lists, tables, inline CSS).",
+                    "value": "HTML code",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "description": "Distance from the left page edge; if omitted, the left margin.",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1362,7 +1362,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "description": "Distance from the top page edge; if omitted, the cursor.",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1370,7 +1370,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "description": "Width of the block; 0 = up to the right margin.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1380,20 +1380,20 @@
             }
         },
         "pdf_image": {
-            "note": "Platziert ein Bild (JPEG, PNG, GIF, ...) aus dem Medienverzeichnis. Der Cursor rückt unter das Bild.",
+            "note": "Places an image (JPEG, PNG, GIF, ...) from the media directory. The cursor moves below the image.",
             "do": "file",
             "oneof": "",
             "params": {
                 "file": {
-                    "description": "Bilddatei: absoluter Pfad aus (CMS:MEDIA subfield=file), Webpfad aus subfield=path oder Pfad relativ zu public/media. Nur Dateien unterhalb des Medienverzeichnisses.",
-                    "value": "Pfad",
+                    "description": "Image file: absolute path from (CMS:MEDIA subfield=file), web path from subfield=path or path relative to public/media. Only files below the media directory.",
+                    "value": "Path",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "description": "Distance from the left page edge; if omitted, the left margin.",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1401,7 +1401,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Abstand vom oberen Seitenrand; ohne Angabe der Cursor.",
+                    "description": "Distance from the top page edge; if omitted, the cursor.",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1409,7 +1409,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite; 0 = aus der Höhe (bzw. aus den Pixeln bei 72 dpi, wenn beide fehlen).",
+                    "description": "Width; 0 = from the height (or from the pixels at 72 dpi if both are missing).",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1417,7 +1417,7 @@
                     "operator": false
                 },
                 "height": {
-                    "description": "Höhe; 0 = proportional zur Breite.",
+                    "description": "Height; 0 = proportional to the width.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1425,7 +1425,7 @@
                     "operator": false
                 },
                 "link": {
-                    "description": "Verweis, der beim Klick auf das Bild geöffnet wird.",
+                    "description": "Link that opens when the image is clicked.",
                     "value": "URL",
                     "default": "",
                     "mandatory": false,
@@ -1435,12 +1435,12 @@
             }
         },
         "pdf_init": {
-            "note": "Vorgaben für das Dokument: Farbraum, ICC-Profil, Seitenformat und Ränder. Vor der ersten CMS:PDF_PAGE.",
+            "note": "Defaults for the document: color space, ICC profile, page size and margins. Before the first CMS:PDF_PAGE.",
             "do": "colorspace",
             "oneof": "",
             "params": {
                 "colorspace": {
-                    "description": "Farbraum, in dem Farben ins PDF geschrieben werden.",
+                    "description": "Color space in which colors are written to the PDF.",
                     "value": "RGB / CMYK",
                     "default": "RGB",
                     "mandatory": false,
@@ -1448,15 +1448,15 @@
                     "operator": false
                 },
                 "icc_profile": {
-                    "description": "ICC-Profil aus var/modules/pdf/profiles/, wird als Output Intent eingebettet.",
-                    "value": "Dateiname",
+                    "description": "ICC profile from var/modules/pdf/profiles/, embedded as output intent.",
+                    "value": "File name",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "output_condition": {
-                    "description": "Bezeichner der Druckbedingung für den Output Intent (z. B. FOGRA39). Ohne Angabe der Dateiname des Profils.",
+                    "description": "Identifier of the print condition for the output intent (e.g. FOGRA39). If omitted, the file name of the profile.",
                     "value": "Text",
                     "default": "",
                     "mandatory": false,
@@ -1464,7 +1464,7 @@
                     "operator": false
                 },
                 "format": {
-                    "description": "Seitenformat leerer Seiten (Namen wie in tc-lib-pdf).",
+                    "description": "Page size of empty pages (names as in tc-lib-pdf).",
                     "value": "A4 / A5 / LETTER / ...",
                     "default": "A4",
                     "mandatory": false,
@@ -1472,7 +1472,7 @@
                     "operator": false
                 },
                 "orientation": {
-                    "description": "Hoch- (P) oder Querformat (L) leerer Seiten.",
+                    "description": "Portrait (P) or landscape (L) for empty pages.",
                     "value": "P / L",
                     "default": "P",
                     "mandatory": false,
@@ -1480,8 +1480,8 @@
                     "operator": false
                 },
                 "margins": {
-                    "description": "Seitenränder in mm (ein Wert: alle; zwei: oben/unten, rechts/links). Linker Rand = x-Vorgabe, rechter Rand = Breitenvorgabe, unterer Rand = Umbruchgrenze der Tabellen.",
-                    "value": "oben,rechts,unten,links",
+                    "description": "Page margins in mm (one value: all; two: top/bottom, right/left). Left margin = default for x, right margin = default for the width, bottom margin = page break limit of tables.",
+                    "value": "top,right,bottom,left",
                     "default": "20,20,20,20",
                     "mandatory": false,
                     "subparam": 0,
@@ -1490,12 +1490,12 @@
             }
         },
         "pdf_line": {
-            "note": "Zeichnet eine Linie.",
+            "note": "Draws a line.",
             "do": "",
             "oneof": "",
             "params": {
                 "x1": {
-                    "description": "Startpunkt, Abstand von links.",
+                    "description": "Start point, distance from the left.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1503,7 +1503,7 @@
                     "operator": false
                 },
                 "y1": {
-                    "description": "Startpunkt, Abstand von oben.",
+                    "description": "Start point, distance from the top.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1511,7 +1511,7 @@
                     "operator": false
                 },
                 "x2": {
-                    "description": "Endpunkt, Abstand von links.",
+                    "description": "End point, distance from the left.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1519,7 +1519,7 @@
                     "operator": false
                 },
                 "y2": {
-                    "description": "Endpunkt, Abstand von oben.",
+                    "description": "End point, distance from the top.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1527,7 +1527,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Liniendicke.",
+                    "description": "Line thickness.",
                     "value": "mm",
                     "default": "0.2",
                     "mandatory": false,
@@ -1535,8 +1535,8 @@
                     "operator": false
                 },
                 "color": {
-                    "description": "Linienfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Line color; otherwise CMS:PDF_LINE_COLOR. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1545,13 +1545,13 @@
             }
         },
         "pdf_line_color": {
-            "note": "Linienfarbe für die folgenden CMS:PDF_LINE, Rahmen von CMS:PDF_RECT und Zellenrahmen. Ohne Angabe Schwarz.",
+            "note": "Line color for the following CMS:PDF_LINE, borders of CMS:PDF_RECT and cell borders. If omitted, black.",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Linienfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Line color. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1560,12 +1560,12 @@
             }
         },
         "pdf_meta": {
-            "note": "Dokumenteigenschaften (werden bei CMS:PDF_PRINT geschrieben).",
+            "note": "Document properties (written by CMS:PDF_PRINT).",
             "do": "title",
             "oneof": "",
             "params": {
                 "title": {
-                    "description": "Titel.",
+                    "description": "Title.",
                     "value": "Text",
                     "default": "",
                     "mandatory": false,
@@ -1573,7 +1573,7 @@
                     "operator": false
                 },
                 "author": {
-                    "description": "Autor.",
+                    "description": "Author.",
                     "value": "Text",
                     "default": "",
                     "mandatory": false,
@@ -1581,7 +1581,7 @@
                     "operator": false
                 },
                 "subject": {
-                    "description": "Thema.",
+                    "description": "Subject.",
                     "value": "Text",
                     "default": "",
                     "mandatory": false,
@@ -1589,7 +1589,7 @@
                     "operator": false
                 },
                 "keywords": {
-                    "description": "Stichwörter.",
+                    "description": "Keywords.",
                     "value": "Text",
                     "default": "",
                     "mandatory": false,
@@ -1597,7 +1597,7 @@
                     "operator": false
                 },
                 "creator": {
-                    "description": "Erzeugende Anwendung.",
+                    "description": "Creating application.",
                     "value": "Text",
                     "default": "camindo CMS",
                     "mandatory": false,
@@ -1607,28 +1607,28 @@
             }
         },
         "pdf_page": {
-            "note": "Legt eine neue Seite an - leer oder auf einer Seite einer Layout-Vorlage. Der erste Aufruf beginnt das Dokument.",
+            "note": "Adds a new page - empty or based on a page of a layout file. The first call starts the document.",
             "do": "layout",
             "oneof": "",
             "params": {
                 "layout": {
-                    "description": "PDF-Vorlage aus var/modules/pdf/layouts/, deren Seite als Hintergrund übernommen wird. Ohne Angabe eine leere Seite.",
-                    "value": "Dateiname",
+                    "description": "PDF layout file from var/modules/pdf/layouts/ whose page is used as the background. If omitted, an empty page.",
+                    "value": "File name",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "page": {
-                    "description": "Seite der Vorlage (ab 1), die übernommen wird.",
-                    "value": "Zahl",
+                    "description": "Page of the layout file (from 1) to use.",
+                    "value": "Number",
                     "default": "1",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "format": {
-                    "description": "Seitenformat einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "description": "Page size of an empty page; otherwise the default from PDF_INIT.",
                     "value": "A4 / A5 / LETTER / ...",
                     "default": "",
                     "mandatory": false,
@@ -1636,7 +1636,7 @@
                     "operator": false
                 },
                 "orientation": {
-                    "description": "Ausrichtung einer leeren Seite; sonst die Vorgabe aus PDF_INIT.",
+                    "description": "Orientation of an empty page; otherwise the default from PDF_INIT.",
                     "value": "P / L",
                     "default": "",
                     "mandatory": false,
@@ -1644,8 +1644,8 @@
                     "operator": false
                 },
                 "margins": {
-                    "description": "Ränder nur dieser Seite; sonst die Vorgabe aus PDF_INIT.",
-                    "value": "oben,rechts,unten,links",
+                    "description": "Margins of this page only; otherwise the default from PDF_INIT.",
+                    "value": "top,right,bottom,left",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1654,21 +1654,21 @@
             }
         },
         "pdf_print": {
-            "note": "Sendet das Dokument an den Browser und beendet den Request. Vor CMS:PDF_PAGE darf das Template nichts ausgegeben haben.",
+            "note": "Sends the document to the browser and ends the request. The template must not have produced any output before CMS:PDF_PAGE.",
             "do": "filename",
             "oneof": "",
             "params": {
                 "filename": {
-                    "description": "Dateiname, den der Browser anzeigt bzw. beim Speichern vorschlägt.",
-                    "value": "Dateiname",
+                    "description": "File name that the browser shows or suggests when saving.",
+                    "value": "File name",
                     "default": "document.pdf",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "download": {
-                    "description": "Leer oder false: im Browser anzeigen. true: als Download unter filename. Ein Dateiname: als Download unter diesem Namen.",
-                    "value": "false / true / Dateiname",
+                    "description": "Empty or false: show in the browser. true: download as filename. A file name: download under this name.",
+                    "value": "false / true / file name",
                     "default": "false",
                     "mandatory": false,
                     "subparam": 0,
@@ -1677,12 +1677,12 @@
             }
         },
         "pdf_rect": {
-            "note": "Zeichnet ein Rechteck, umrandet und/oder gefüllt.",
+            "note": "Draws a rectangle, outlined and/or filled.",
             "do": "",
             "oneof": "",
             "params": {
                 "x": {
-                    "description": "Linke Kante.",
+                    "description": "Left edge.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1690,7 +1690,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Obere Kante.",
+                    "description": "Top edge.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1698,7 +1698,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite.",
+                    "description": "Width.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1706,7 +1706,7 @@
                     "operator": false
                 },
                 "height": {
-                    "description": "Höhe.",
+                    "description": "Height.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1714,7 +1714,7 @@
                     "operator": false
                 },
                 "style": {
-                    "description": "D Rahmen, F Füllung, DF beides.",
+                    "description": "D border, F fill, DF both.",
                     "value": "D / F / DF",
                     "default": "D",
                     "mandatory": false,
@@ -1722,23 +1722,23 @@
                     "operator": false
                 },
                 "color": {
-                    "description": "Füllfarbe; sonst CMS:PDF_FILL_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Fill color; otherwise CMS:PDF_FILL_COLOR. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "border": {
-                    "description": "Rahmenfarbe; sonst CMS:PDF_LINE_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Border color; otherwise CMS:PDF_LINE_COLOR. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "line_width": {
-                    "description": "Rahmendicke.",
+                    "description": "Border thickness.",
                     "value": "mm",
                     "default": "0.2",
                     "mandatory": false,
@@ -1748,12 +1748,12 @@
             }
         },
         "pdf_row": {
-            "note": "Beginnt eine Tabellenzeile.",
+            "note": "Starts a table row.",
             "do": "",
             "oneof": "",
             "params": {
                 "is_header": {
-                    "description": "Kopfzeile: wird nach einem Seitenumbruch auf der Folgeseite wiederholt.",
+                    "description": "Header row: repeated on the continuation page after a page break.",
                     "value": "true / false",
                     "default": "false",
                     "mandatory": false,
@@ -1761,7 +1761,7 @@
                     "operator": false
                 },
                 "keep_together": {
-                    "description": "Zeile nicht über Seiten teilen. Derzeit werden Zeilen grundsätzlich nicht geteilt; der Parameter ist für spätere Versionen reserviert.",
+                    "description": "Do not split the row across pages. Currently rows are never split; the parameter is reserved for later versions.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -1771,20 +1771,20 @@
             }
         },
         "pdf_table": {
-            "note": "Beginnt eine Tabelle; Zeilen und Zellen folgen mit CMS:PDF_ROW / CMS:PDF_CELL, gezeichnet wird bei CMS:PDF_TABLE_END. Zeilen werden nie geteilt: was nicht mehr auf die Seite passt, beginnt auf einer Folgeseite, Kopfzeilen werden dort wiederholt.",
+            "note": "Starts a table; rows and cells follow with CMS:PDF_ROW / CMS:PDF_CELL, drawing happens at CMS:PDF_TABLE_END. Rows are never split: what no longer fits on the page starts on a continuation page, where header rows are repeated.",
             "do": "cols",
             "oneof": "",
             "params": {
                 "cols": {
-                    "description": "Spaltenbreiten in mm, kommasepariert.",
-                    "value": "b1,b2,...",
+                    "description": "Column widths in mm, comma-separated.",
+                    "value": "w1,w2,...",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "x": {
-                    "description": "Linke Kante; ohne Angabe der linke Rand.",
+                    "description": "Left edge; if omitted, the left margin.",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1792,7 +1792,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Obere Kante; ohne Angabe der Cursor.",
+                    "description": "Top edge; if omitted, the cursor.",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1800,15 +1800,15 @@
                     "operator": false
                 },
                 "padding": {
-                    "description": "Innenabstand aller Zellen in mm (ein Wert: alle; zwei: oben/unten, rechts/links).",
-                    "value": "oben,rechts,unten,links",
+                    "description": "Padding of all cells in mm (one value: all; two: top/bottom, right/left).",
+                    "value": "top,right,bottom,left",
                     "default": "1",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "border_width": {
-                    "description": "Rahmendicke der Zellen.",
+                    "description": "Border thickness of the cells.",
                     "value": "mm",
                     "default": "0.2",
                     "mandatory": false,
@@ -1816,16 +1816,16 @@
                     "operator": false
                 },
                 "next_layout": {
-                    "description": "Layout-Vorlage der Folgeseiten bei Seitenumbruch; sonst wie die letzte CMS:PDF_PAGE (leer = leere Seite).",
-                    "value": "Dateiname",
+                    "description": "Layout file of continuation pages on a page break; otherwise as in the last CMS:PDF_PAGE (empty = empty page).",
+                    "value": "File name",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "next_page": {
-                    "description": "Seite der Vorlage für Folgeseiten.",
-                    "value": "Zahl",
+                    "description": "Page of the layout file for continuation pages.",
+                    "value": "Number",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1834,18 +1834,18 @@
             }
         },
         "pdf_table_end": {
-            "note": "Zeichnet die Tabelle. Der Cursor rückt unter die Tabelle.",
+            "note": "Draws the table. The cursor moves below the table.",
             "do": "",
             "oneof": "",
             "params": {}
         },
         "pdf_text": {
-            "note": "Schreibt einen Textblock mit Zeilenumbruch innerhalb der Breite. Der Cursor rückt unter den Block.",
+            "note": "Writes a text block with line wrapping within the width. The cursor moves below the block.",
             "do": "text",
             "oneof": "",
             "params": {
                 "text": {
-                    "description": "Der Text (UTF-8; Zeilenumbrüche werden umgebrochen). Leer = keine Ausgabe.",
+                    "description": "The text (UTF-8; line breaks are kept). Empty = no output.",
                     "value": "Text",
                     "default": "",
                     "mandatory": false,
@@ -1853,7 +1853,7 @@
                     "operator": false
                 },
                 "x": {
-                    "description": "Abstand vom linken Seitenrand; ohne Angabe der linke Rand.",
+                    "description": "Distance from the left page edge; if omitted, the left margin.",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1861,7 +1861,7 @@
                     "operator": false
                 },
                 "y": {
-                    "description": "Abstand vom oberen Seitenrand (Oberkante des Blocks); ohne Angabe der Cursor.",
+                    "description": "Distance from the top page edge (top of the block); if omitted, the cursor.",
                     "value": "mm",
                     "default": "",
                     "mandatory": false,
@@ -1869,7 +1869,7 @@
                     "operator": false
                 },
                 "width": {
-                    "description": "Breite des Blocks; 0 = bis zum rechten Rand.",
+                    "description": "Width of the block; 0 = up to the right margin.",
                     "value": "mm",
                     "default": "0",
                     "mandatory": false,
@@ -1877,7 +1877,7 @@
                     "operator": false
                 },
                 "align": {
-                    "description": "Ausrichtung: links, zentriert, rechts, Blocksatz.",
+                    "description": "Alignment: left, centered, right, justified.",
                     "value": "L / C / R / J",
                     "default": "L",
                     "mandatory": false,
@@ -1885,24 +1885,24 @@
                     "operator": false
                 },
                 "size": {
-                    "description": "Schriftgröße nur für diesen Block; sonst die von CMS:PDF_FONT.",
-                    "value": "Punkt",
+                    "description": "Font size for this block only; otherwise that of CMS:PDF_FONT.",
+                    "value": "Points",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "color": {
-                    "description": "Textfarbe nur für diesen Block; sonst CMS:PDF_TEXT_COLOR. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Text color for this block only; otherwise CMS:PDF_TEXT_COLOR. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
                 "background": {
-                    "description": "Hintergrundfarbe des Blocks. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Background color of the block. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
@@ -1911,13 +1911,13 @@
             }
         },
         "pdf_text_color": {
-            "note": "Textfarbe für die folgenden CMS:PDF_TEXT und Zellen. Ohne Angabe Schwarz.",
+            "note": "Text color for the following CMS:PDF_TEXT and cells. If omitted, black.",
             "do": "name",
             "oneof": "",
             "params": {
                 "name": {
-                    "description": "Textfarbe. Farbfeld (PDF_COLOR), #rrggbb oder c,m,y,k.",
-                    "value": "Farbe",
+                    "description": "Text color. Color field (PDF_COLOR), #rrggbb or c,m,y,k.",
+                    "value": "Color",
                     "default": "",
                     "mandatory": false,
                     "subparam": 0,
