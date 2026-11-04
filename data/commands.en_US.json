@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "en_US",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "List template that is included to process the results.",
+                    "description": "List template that is included to process the results. Required, except with hits=false.",
                     "value": "Template name",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "Detail template that is included if the query returns no results.",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: Only counts (includes count=true); no records are loaded and no resulttemplate is included. The total is then available in the calling template in $this->db->num_rows_unlimited; noresult/noresulttemplate apply if it is 0.",
+                    "description": "false: Only counts (includes count=true); no records are loaded and no resulttemplate is included (it can be omitted). The total is then available only in the calling template in $this->db->num_rows_unlimited, where it overwrites an existing value; noresult/noresulttemplate apply if it is 0.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "Without a value only released records (status_id 0). A status ID > 0 finds only records with this status; \"any\" finds records of every status.",
                     "value": "Status ID or any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "Takes filter and sort values from the URL - comma list or array of the permitted keys: filter[field], filter_op[field], filter_mode[field], skip, limit, sort, order (e.g. \"filter[title],sort,order,skip\"). filter only with a field name. Values set in the command always take precedence; for a field filtered in the command, the URL adds nothing.",
+                    "value": "comma list: filter[field], filter_op[field], filter_mode[field], skip, limit, sort, order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: Entities in the format &...; are converted back to Unicode characters.",
+                    "description": "true: Entities in the format &...; are converted to Unicode characters from U+0100 up; below that (angle brackets, &, umlauts) they stay entities.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

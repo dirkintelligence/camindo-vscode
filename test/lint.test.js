@@ -97,6 +97,28 @@ test('validation like validateCmsCommand', () => {
     assert.ok(codes(`(CMS:${mandatory[0]})`).includes('mandatoryMissing'));
 });
 
+test('mandatory_unless: resulttemplate of CMS:SELECT only without hits=false', () => {
+    for (const source of [
+        '(CMS:SELECT filter[a]=1 hits=false)',
+        '(CMS:SELECT filter[a]=1 hits="false")',
+        '(CMS:SELECT list filter[a]=1 hits=false)',
+        '(CMS:SELECT filter[a]=1 hits="{$h}")',
+        '(CMS:SELECT filter[a]=1 {$k}=false)',
+        '(CMS:SELECT list filter[a]=1)',
+        '(CMS:SELECT resulttemplate=list filter[a]=1)',
+    ]) {
+        assert.deepStrictEqual(codes(source), [], source);
+    }
+    for (const source of [
+        '(CMS:SELECT filter[a]=1)',
+        '(CMS:SELECT filter[a]=1 count=true)',
+        '(CMS:SELECT filter[a]=1 hits=true)',
+    ]) {
+        assert.deepStrictEqual(codes(source), ['mandatoryUnless'], source);
+    }
+    assert.deepStrictEqual(lint('(CMS:SELECT filter[a]=1)', commands)[0].args, ['resulttemplate', 'hits=false']);
+});
+
 test('unknown parameter with suggestion', () => {
     const [d] = lint('(CMS:TEXT title specialchar=true)', commands);
     assert.strictEqual(d.code, 'unknownParam');

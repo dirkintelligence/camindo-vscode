@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "es_ES",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "Plantilla de lista que se incluye para procesar los resultados.",
+                    "description": "Plantilla de lista que se incluye para procesar los resultados. Obligatorio, salvo con hits=false.",
                     "value": "Nombre de la plantilla",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "Plantilla de detalle que se incluye si la consulta no devuelve resultados.",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: solo cuenta (incluye count=true); no se cargan registros ni se incluye ninguna resulttemplate. El total está entonces disponible en la plantilla que llama en $this->db->num_rows_unlimited; noresult/noresulttemplate se aplican si es 0.",
+                    "description": "false: solo cuenta (incluye count=true); no se cargan registros ni se incluye ninguna resulttemplate (puede omitirse). El total está entonces disponible solo en la plantilla que llama en $this->db->num_rows_unlimited, donde sobrescribe un valor existente; noresult/noresulttemplate se aplican si es 0.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "Sin valor, solo registros aprobados (status_id 0). Un ID de estado > 0 encuentra solo registros con este estado; \"any\" encuentra registros de cualquier estado.",
                     "value": "ID de estado o any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "Toma valores de filtro y orden de la URL: lista separada por comas o array de las claves permitidas: filter[campo], filter_op[campo], filter_mode[campo], skip, limit, sort, order (p. ej. \"filter[title],sort,order,skip\"). filter solo con nombre de campo. Los valores fijados en el comando siempre tienen prioridad; para un campo filtrado en el comando, la URL no añade nada.",
+                    "value": "lista separada por comas: filter[campo], filter_op[campo], filter_mode[campo], skip, limit, sort, order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: las entidades con el formato &...; se convierten de nuevo en caracteres Unicode.",
+                    "description": "true: las entidades con el formato &...; se convierten en caracteres Unicode a partir de U+0100; por debajo (corchetes angulares, &, diéresis) siguen siendo entidades.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

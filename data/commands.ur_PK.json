@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "ur_PK",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "نتائج کی پروسیسنگ کے لیے شامل کیا جانے والا فہرست ٹیمپلیٹ۔",
+                    "description": "نتائج کی پروسیسنگ کے لیے شامل کیا جانے والا فہرست ٹیمپلیٹ۔ لازمی، سوائے hits=false کے۔",
                     "value": "ٹیمپلیٹ کا نام",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "کوئری کا کوئی نتیجہ نہ ہو تو شامل کیا جانے والا تفصیلی ٹیمپلیٹ۔",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: صرف گنتی کرتا ہے (count=true شامل)؛ کوئی ریکارڈ لوڈ نہیں ہوتا اور کوئی resulttemplate شامل نہیں ہوتا۔ کل تعداد تب کال کرنے والے ٹیمپلیٹ میں $this->db->num_rows_unlimited میں دستیاب ہوتی ہے؛ 0 ہو تو noresult/noresulttemplate لاگو ہوتے ہیں۔",
+                    "description": "false: صرف گنتی کرتا ہے (count=true شامل)؛ کوئی ریکارڈ لوڈ نہیں ہوتا اور کوئی resulttemplate شامل نہیں ہوتا (اسے چھوڑا جا سکتا ہے)۔ کل تعداد تب صرف کال کرنے والے ٹیمپلیٹ میں $this->db->num_rows_unlimited میں دستیاب ہوتی ہے اور وہاں موجودہ قدر کو بدل دیتی ہے؛ 0 ہو تو noresult/noresulttemplate لاگو ہوتے ہیں۔",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "قدر کے بغیر صرف منظور شدہ ریکارڈز (status_id 0)۔ حیثیت ID > 0 صرف اس حیثیت والے ریکارڈز تلاش کرتا ہے؛ \"any\" ہر حیثیت کے ریکارڈز تلاش کرتا ہے۔",
                     "value": "حیثیت ID یا any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "URL سے فلٹر اور ترتیب کی قدریں لیتا ہے – اجازت یافتہ کلیدوں کی کاما فہرست یا ارے: filter[فیلڈ]، filter_op[فیلڈ]، filter_mode[فیلڈ]، skip، limit، sort، order (مثلاً \"filter[title],sort,order,skip\")۔ filter صرف فیلڈ کے نام کے ساتھ۔ کمانڈ میں دی گئی قدروں کو ہمیشہ ترجیح ملتی ہے؛ کمانڈ میں فلٹر کیے گئے فیلڈ میں URL کچھ شامل نہیں کرتا۔",
+                    "value": "کاما فہرست: filter[فیلڈ]، filter_op[فیلڈ]، filter_mode[فیلڈ]، skip، limit، sort، order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: &...; کی شکل والی اینٹیٹیز واپس Unicode حروف میں بدل دی جاتی ہیں۔",
+                    "description": "true: &...; کی شکل والی اینٹیٹیز U+0100 سے Unicode حروف میں بدل دی جاتی ہیں؛ اس سے نیچے (زاویہ دار بریکٹ، &، اُملاؤٹ) وہ اینٹیٹیز ہی رہتی ہیں۔",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

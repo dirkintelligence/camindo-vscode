@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "de_DE",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "Listentemplate, das zur Verarbeitung der Ergebnisse eingebunden wird.",
+                    "description": "Listentemplate, das zur Verarbeitung der Ergebnisse eingebunden wird. Pflicht, außer bei hits=false.",
                     "value": "Template-Name",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "Detailtemplate, das eingebunden wird, falls die Abfrage keine Ergebnisse liefert.",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: Es wird nur gezählt (schließt count=true ein), es werden keine Datensätze geladen und kein resulttemplate eingebunden. Die Gesamtzahl steht danach im aufrufenden Template in $this->db->num_rows_unlimited; noresult/noresulttemplate gelten, wenn sie 0 ist.",
+                    "description": "false: Es wird nur gezählt (schließt count=true ein), es werden keine Datensätze geladen und kein resulttemplate eingebunden (die Angabe entfällt). Die Gesamtzahl steht danach nur im aufrufenden Template in $this->db->num_rows_unlimited und überschreibt dort einen vorhandenen Wert; noresult/noresulttemplate gelten, wenn sie 0 ist.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "Ohne Angabe nur freigegebene Datensätze (status_id 0). Eine Status-Id > 0 findet nur Datensätze mit diesem Status, \"any\" Datensätze jeden Status.",
                     "value": "Status-Id oder any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "Übernimmt Filter- und Sortierwerte aus der URL – Kommaliste oder Array der erlaubten Schlüssel: filter[feld], filter_op[feld], filter_mode[feld], skip, limit, sort, order (z. B. \"filter[titel],sort,order,skip\"). filter nur mit Feldname. Im Befehl gesetzte Werte haben immer Vorrang; für ein im Befehl gefiltertes Feld fügt die URL nichts hinzu.",
+                    "value": "Kommaliste: filter[feld], filter_op[feld], filter_mode[feld], skip, limit, sort, order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: Entities im Format &...; werden zurück in Unicode-Zeichen gewandelt.",
+                    "description": "true: Entities im Format &...; werden ab U+0100 in Unicode-Zeichen gewandelt; darunter (spitze Klammern, &, Umlaute) bleiben sie Entities.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "fr_FR",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "Modèle de liste inclus pour traiter les résultats.",
+                    "description": "Modèle de liste inclus pour traiter les résultats. Obligatoire, sauf avec hits=false.",
                     "value": "Nom du modèle",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "Modèle de détail inclus si la requête ne renvoie aucun résultat.",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false : compte uniquement (inclut count=true) ; aucun enregistrement n’est chargé et aucun resulttemplate n’est inclus. Le total est alors disponible dans le modèle appelant dans $this->db->num_rows_unlimited ; noresult/noresulttemplate s’appliquent s’il vaut 0.",
+                    "description": "false : compte uniquement (inclut count=true) ; aucun enregistrement n’est chargé et aucun resulttemplate n’est inclus (il peut être omis). Le total est alors disponible uniquement dans le modèle appelant dans $this->db->num_rows_unlimited, où il remplace une valeur existante ; noresult/noresulttemplate s’appliquent s’il vaut 0.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "Sans valeur, uniquement les enregistrements validés (status_id 0). Un ID de statut > 0 ne trouve que les enregistrements avec ce statut ; \"any\" trouve les enregistrements de tous les statuts.",
                     "value": "ID de statut ou any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "Reprend les valeurs de filtre et de tri de l'URL : liste séparée par des virgules ou tableau des clés autorisées : filter[champ], filter_op[champ], filter_mode[champ], skip, limit, sort, order (p. ex. \"filter[title],sort,order,skip\"). filter uniquement avec un nom de champ. Les valeurs définies dans la commande sont toujours prioritaires ; pour un champ filtré dans la commande, l'URL n'ajoute rien.",
+                    "value": "liste séparée par des virgules : filter[champ], filter_op[champ], filter_mode[champ], skip, limit, sort, order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true : les entités au format &...; sont reconverties en caractères Unicode.",
+                    "description": "true : les entités au format &...; sont converties en caractères Unicode à partir de U+0100 ; en dessous (chevrons, &, trémas) elles restent des entités.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

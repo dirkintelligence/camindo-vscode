@@ -330,6 +330,21 @@ function unquote(tok) {
     return tok.quote ? tok.text.slice(1, -1) : tok.text;
 }
 
+/**
+ * Does a condition of 'mandatory_unless' release the parameter (mandatoryWaived() in the
+ * parser)? A key or value with a PHP part counts as released: only the run decides.
+ */
+function mandatoryWaived(cmd, unless) {
+    for (const p of cmd.params) {
+        if (p.standalone || p.op !== '=') continue;
+        if (hasPhp(p.key)) return true;
+        const expected = unless[unquote(p.key)];
+        if (expected === undefined || !p.value) continue;
+        if (hasPhp(p.value) || unquote(p.value) === expected) return true;
+    }
+    return false;
+}
+
 function validate(cmd, def, names, diags) {
     const params = def.params || {};
     const seen = new Set();
@@ -371,6 +386,10 @@ function validate(cmd, def, names, diags) {
     for (const [name, pdef] of Object.entries(params)) {
         if (pdef.mandatory && !seen.has(name)) {
             diags.push(diag(cmd.start, cmd.nameEnd, 'error', 'mandatoryMissing', name, cmd.upper));
+        }
+        if (pdef.mandatory_unless && !seen.has(name) && !mandatoryWaived(cmd, pdef.mandatory_unless)) {
+            const conditions = Object.entries(pdef.mandatory_unless).map(([k, v]) => `${k}=${v}`).join(', ');
+            diags.push(diag(cmd.start, cmd.nameEnd, 'error', 'mandatoryUnless', name, conditions));
         }
     }
     if (def.oneof) {

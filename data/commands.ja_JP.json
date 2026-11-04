@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "ja_JP",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "結果を処理するために読み込む一覧テンプレート。",
+                    "description": "結果を処理するために読み込む一覧テンプレート。 hits=false の場合を除き必須です。",
                     "value": "テンプレート名",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "クエリの結果がない場合に読み込む詳細テンプレート。",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: 件数のみを数えます（count=true を含む）。レコードは読み込まれず、resulttemplate も読み込まれません。合計は呼び出し元のテンプレートの $this->db->num_rows_unlimited で利用できます。0 の場合は noresult/noresulttemplate が適用されます。",
+                    "description": "false: 件数のみを数えます（count=true を含む）。レコードは読み込まれず、resulttemplate も読み込まれません（省略できます）。合計は呼び出し元のテンプレートの $this->db->num_rows_unlimited でのみ利用でき、既存の値を上書きします。0 の場合は noresult/noresulttemplate が適用されます。",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "値がない場合は、承認済みのレコード（status_id 0）のみ。ステータス ID > 0 の場合はそのステータスのレコードのみ、\"any\" の場合はすべてのステータスのレコードを検索します。",
                     "value": "ステータス ID または any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "URL からフィルターと並べ替えの値を取得します。許可するキーをカンマ区切りリストまたは配列で指定します：filter[フィールド]、filter_op[フィールド]、filter_mode[フィールド]、skip、limit、sort、order（例：\"filter[title],sort,order,skip\"）。filter はフィールド名付きのみ。コマンドで指定した値が常に優先され、コマンドでフィルターしたフィールドには URL から何も追加されません。",
+                    "value": "カンマ区切りリスト：filter[フィールド]、filter_op[フィールド]、filter_mode[フィールド]、skip、limit、sort、order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: &...; 形式のエンティティを Unicode 文字に戻します。",
+                    "description": "true: &...; 形式のエンティティのうち U+0100 以降を Unicode 文字に戻します。それ未満（山かっこ、&、ウムラウト）はエンティティのままです。",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

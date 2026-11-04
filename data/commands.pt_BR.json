@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "pt_BR",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "Template de lista incluído para processar os resultados.",
+                    "description": "Template de lista incluído para processar os resultados. Obrigatório, exceto com hits=false.",
                     "value": "Nome do template",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "Template de detalhe incluído se a consulta não retornar resultados.",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: apenas conta (inclui count=true); nenhum registro é carregado e nenhum resulttemplate é incluído. O total fica então disponível no template chamador em $this->db->num_rows_unlimited; noresult/noresulttemplate valem se for 0.",
+                    "description": "false: apenas conta (inclui count=true); nenhum registro é carregado e nenhum resulttemplate é incluído (pode ser omitido). O total fica então disponível apenas no template chamador em $this->db->num_rows_unlimited, onde sobrescreve um valor existente; noresult/noresulttemplate valem se for 0.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "Sem valor, apenas registros aprovados (status_id 0). Um ID de status > 0 encontra apenas registros com esse status; \"any\" encontra registros de qualquer status.",
                     "value": "ID de status ou any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "Usa valores de filtro e ordenação da URL: lista separada por vírgulas ou array das chaves permitidas: filter[campo], filter_op[campo], filter_mode[campo], skip, limit, sort, order (ex.: \"filter[title],sort,order,skip\"). filter apenas com nome de campo. Valores definidos no comando sempre têm prioridade; para um campo filtrado no comando, a URL não acrescenta nada.",
+                    "value": "lista separada por vírgulas: filter[campo], filter_op[campo], filter_mode[campo], skip, limit, sort, order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: entidades no formato &...; são convertidas de volta em caracteres Unicode.",
+                    "description": "true: entidades no formato &...; são convertidas em caracteres Unicode a partir de U+0100; abaixo disso (colchetes angulares, &, tremas) continuam entidades.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

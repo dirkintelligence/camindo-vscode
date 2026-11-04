@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+- `resulttemplate` of `CMS:SELECT` can be omitted with `hits=false`; without it the syntax check
+  still reports a missing template (`mandatory_unless` in the command data)
+- Command data updated to camindo 9.1.5
+
 ## 0.2.1
 
 - New extension icon

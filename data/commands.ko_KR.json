@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "ko_KR",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "결과를 처리하기 위해 포함하는 목록 템플릿입니다.",
+                    "description": "결과를 처리하기 위해 포함하는 목록 템플릿입니다. hits=false인 경우를 제외하고 필수입니다.",
                     "value": "템플릿 이름",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "쿼리 결과가 없을 때 포함하는 상세 템플릿입니다.",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: 개수만 셉니다(count=true 포함). 레코드를 불러오지 않고 resulttemplate도 포함하지 않습니다. 합계는 호출한 템플릿의 $this->db->num_rows_unlimited에서 사용할 수 있으며, 0이면 noresult/noresulttemplate가 적용됩니다.",
+                    "description": "false: 개수만 셉니다(count=true 포함). 레코드를 불러오지 않고 resulttemplate도 포함하지 않습니다(생략 가능). 합계는 호출한 템플릿의 $this->db->num_rows_unlimited에서만 사용할 수 있고 기존 값을 덮어쓰며, 0이면 noresult/noresulttemplate가 적용됩니다.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "값이 없으면 승인된 레코드(status_id 0)만 찾습니다. 상태 ID > 0이면 그 상태의 레코드만, \"any\"이면 모든 상태의 레코드를 찾습니다.",
                     "value": "상태 ID 또는 any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "URL에서 필터 및 정렬 값을 가져옵니다. 허용할 키를 쉼표 목록 또는 배열로 지정합니다: filter[필드], filter_op[필드], filter_mode[필드], skip, limit, sort, order (예: \"filter[title],sort,order,skip\"). filter는 필드 이름과 함께만 사용합니다. 명령에 지정한 값이 항상 우선하며, 명령에서 필터링한 필드에는 URL이 아무것도 추가하지 않습니다.",
+                    "value": "쉼표 목록: filter[필드], filter_op[필드], filter_mode[필드], skip, limit, sort, order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: &...; 형식의 엔터티를 다시 유니코드 문자로 변환합니다.",
+                    "description": "true: &...; 형식의 엔터티를 U+0100부터 유니코드 문자로 변환합니다. 그 아래(꺾쇠괄호, &, 움라우트)는 엔터티로 유지됩니다.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

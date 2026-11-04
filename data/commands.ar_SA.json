@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "ar_SA",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "قالب القائمة الذي يُدرج لمعالجة النتائج.",
+                    "description": "قالب القائمة الذي يُدرج لمعالجة النتائج. إلزامي إلا مع hits=false.",
                     "value": "اسم القالب",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "قالب التفاصيل الذي يُدرج إذا لم يُرجع الاستعلام أي نتائج.",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: العدّ فقط (يتضمن count=true)؛ لا تُحمَّل أي سجلات ولا يُدرج أي resulttemplate. يكون المجموع متاحًا حينها في القالب المستدعي ضمن $this->db->num_rows_unlimited؛ ويُطبَّق noresult/noresulttemplate إذا كان 0.",
+                    "description": "false: العدّ فقط (يتضمن count=true)؛ لا تُحمَّل أي سجلات ولا يُدرج أي resulttemplate (يمكن حذفه). يكون المجموع متاحًا حينها في القالب المستدعي فقط ضمن $this->db->num_rows_unlimited، حيث يستبدل أي قيمة موجودة؛ ويُطبَّق noresult/noresulttemplate إذا كان 0.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "بدون قيمة: السجلات المعتمدة فقط (status_id 0). معرّف حالة > 0 يجد السجلات ذات هذه الحالة فقط؛ و\"any\" يجد سجلات كل الحالات.",
                     "value": "معرّف الحالة أو any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "يأخذ قيم التصفية والفرز من عنوان URL - قائمة مفصولة بفواصل أو مصفوفة بالمفاتيح المسموح بها: filter[حقل]، filter_op[حقل]، filter_mode[حقل]، skip، limit، sort، order (مثلًا \"filter[title],sort,order,skip\"). filter مع اسم حقل فقط. القيم المحددة في الأمر لها الأولوية دائمًا؛ وللحقل المُصفّى في الأمر لا يضيف عنوان URL شيئًا.",
+                    "value": "قائمة مفصولة بفواصل: filter[حقل]، filter_op[حقل]، filter_mode[حقل]، skip، limit، sort، order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: تُعاد الكيانات بالصيغة &...; إلى أحرف Unicode.",
+                    "description": "true: تُحوَّل الكيانات بالصيغة &...; إلى أحرف Unicode ابتداءً من U+0100؛ وما دون ذلك (الأقواس الزاوية و& والأحرف اللاتينية ذات العلامات) يبقى كيانات.",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

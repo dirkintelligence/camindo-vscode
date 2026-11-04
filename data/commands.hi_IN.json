@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "hi_IN",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "परिणामों को प्रोसेस करने के लिए शामिल किया जाने वाला सूची टेम्पलेट।",
+                    "description": "परिणामों को प्रोसेस करने के लिए शामिल किया जाने वाला सूची टेम्पलेट। अनिवार्य, सिवाय hits=false के।",
                     "value": "टेम्पलेट का नाम",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "क्वेरी का कोई परिणाम न होने पर शामिल किया जाने वाला विवरण टेम्पलेट।",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: केवल गिनती करता है (count=true शामिल); कोई रिकॉर्ड लोड नहीं होता और कोई resulttemplate शामिल नहीं होता। कुल संख्या तब कॉल करने वाले टेम्पलेट में $this->db->num_rows_unlimited में उपलब्ध होती है; 0 होने पर noresult/noresulttemplate लागू होते हैं।",
+                    "description": "false: केवल गिनती करता है (count=true शामिल); कोई रिकॉर्ड लोड नहीं होता और कोई resulttemplate शामिल नहीं होता (इसे छोड़ा जा सकता है)। कुल संख्या तब केवल कॉल करने वाले टेम्पलेट में $this->db->num_rows_unlimited में उपलब्ध होती है और वहाँ मौजूदा मान को अधिलेखित कर देती है; 0 होने पर noresult/noresulttemplate लागू होते हैं।",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "मान के बिना केवल स्वीकृत रिकॉर्ड (status_id 0)। स्थिति ID > 0 केवल उस स्थिति वाले रिकॉर्ड खोजता है; \"any\" हर स्थिति के रिकॉर्ड खोजता है।",
                     "value": "स्थिति ID या any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "URL से फ़िल्टर और क्रम के मान लेता है – अनुमत कुंजियों की अल्पविराम सूची या ऐरे: filter[फ़ील्ड], filter_op[फ़ील्ड], filter_mode[फ़ील्ड], skip, limit, sort, order (जैसे \"filter[title],sort,order,skip\")। filter केवल फ़ील्ड नाम के साथ। कमांड में दिए मान हमेशा प्राथमिक होते हैं; कमांड में फ़िल्टर किए गए फ़ील्ड में URL कुछ नहीं जोड़ता।",
+                    "value": "अल्पविराम सूची: filter[फ़ील्ड], filter_op[फ़ील्ड], filter_mode[फ़ील्ड], skip, limit, sort, order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: &...; प्रारूप की एंटिटी वापस Unicode वर्णों में बदली जाती हैं।",
+                    "description": "true: &...; प्रारूप की एंटिटी U+0100 से Unicode वर्णों में बदली जाती हैं; इससे नीचे (कोण कोष्ठक, &, उमलाउट) वे एंटिटी ही रहती हैं।",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,

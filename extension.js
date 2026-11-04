@@ -139,7 +139,7 @@ const completionProvider = {
             item.insertText = new vscode.SnippetString(name + keys + '=' + val);
             item.detail = (p.mandatory ? t(lang, 'mandatory') + ' · ' : '') + (p.value || '');
             item.documentation = paramDoc(name, p);
-            item.sortText = (p.mandatory ? '0' : '1') + name;
+            item.sortText = (p.mandatory || p.mandatory_unless ? '0' : '1') + name;
             items.push(item);
         }
         return items;

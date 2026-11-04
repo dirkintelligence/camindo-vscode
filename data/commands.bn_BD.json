@@ -1,5 +1,5 @@
 {
-    "version": "9.0.8",
+    "version": "9.1.5",
     "lang": "bn_BD",
     "commands": {
         "continue": {
@@ -2156,12 +2156,15 @@
                     "operator": false
                 },
                 "resulttemplate": {
-                    "description": "ফলাফল প্রক্রিয়াকরণের জন্য যে তালিকা টেমপ্লেট অন্তর্ভুক্ত হয়।",
+                    "description": "ফলাফল প্রক্রিয়াকরণের জন্য যে তালিকা টেমপ্লেট অন্তর্ভুক্ত হয়। আবশ্যক, তবে hits=false হলে নয়।",
                     "value": "টেমপ্লেটের নাম",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
                     "subparam": 0,
-                    "operator": false
+                    "operator": false,
+                    "mandatory_unless": {
+                        "hits": "false"
+                    }
                 },
                 "noresulttemplate": {
                     "description": "কোয়েরির কোনো ফলাফল না থাকলে যে বিস্তারিত টেমপ্লেট অন্তর্ভুক্ত হয়।",
@@ -2284,7 +2287,7 @@
                     "operator": false
                 },
                 "hits": {
-                    "description": "false: শুধু গণনা করে (count=true অন্তর্ভুক্ত); কোনো রেকর্ড লোড হয় না এবং কোনো resulttemplate অন্তর্ভুক্ত হয় না। মোট সংখ্যা তখন কলকারী টেমপ্লেটে $this->db->num_rows_unlimited-এ পাওয়া যায়; 0 হলে noresult/noresulttemplate প্রযোজ্য।",
+                    "description": "false: শুধু গণনা করে (count=true অন্তর্ভুক্ত); কোনো রেকর্ড লোড হয় না এবং কোনো resulttemplate অন্তর্ভুক্ত হয় না (বাদ দেওয়া যায়)। মোট সংখ্যা তখন শুধু কলকারী টেমপ্লেটে $this->db->num_rows_unlimited-এ পাওয়া যায় এবং সেখানে বিদ্যমান মান প্রতিস্থাপন করে; 0 হলে noresult/noresulttemplate প্রযোজ্য।",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
@@ -2327,6 +2330,14 @@
                     "description": "মান ছাড়া শুধু অনুমোদিত রেকর্ড (status_id 0)। স্ট্যাটাস ID > 0 শুধু সেই স্ট্যাটাসের রেকর্ড খোঁজে; \"any\" প্রতিটি স্ট্যাটাসের রেকর্ড খোঁজে।",
                     "value": "স্ট্যাটাস ID বা any",
                     "default": "0",
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "request": {
+                    "description": "URL থেকে ফিল্টার ও সাজানোর মান নেয় – অনুমোদিত কী-গুলোর কমা-তালিকা বা অ্যারে: filter[ফিল্ড], filter_op[ফিল্ড], filter_mode[ফিল্ড], skip, limit, sort, order (যেমন \"filter[title],sort,order,skip\")। filter শুধু ফিল্ডের নামসহ। কমান্ডে দেওয়া মান সবসময় অগ্রাধিকার পায়; কমান্ডে ফিল্টার করা ফিল্ডে URL কিছু যোগ করে না।",
+                    "value": "কমা-তালিকা: filter[ফিল্ড], filter_op[ফিল্ড], filter_mode[ফিল্ড], skip, limit, sort, order",
+                    "default": "",
                     "mandatory": false,
                     "subparam": 0,
                     "operator": false
@@ -2465,7 +2476,7 @@
                     "operator": false
                 },
                 "entitydecode": {
-                    "description": "true: &...; ফরম্যাটের এনটিটিগুলো আবার Unicode অক্ষরে রূপান্তরিত হয়।",
+                    "description": "true: &...; ফরম্যাটের এনটিটিগুলো U+0100 থেকে Unicode অক্ষরে রূপান্তরিত হয়; এর নিচে (কোণ বন্ধনী, &, উমলাউট) এনটিটিই থাকে।",
                     "value": "true / false",
                     "default": "true",
                     "mandatory": false,
