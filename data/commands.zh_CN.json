@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "zh_CN",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "不加格式地输出内容。",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "要读取的记录。纯数字序列 = record_id，其他 = slug——与 URL 中的规则相同。",
@@ -1942,7 +1942,15 @@
                     "description": "要输出其内容的字段的名称。",
                     "value": "字段",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "用作来源的文本形式的值。",
+                    "value": "文本",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },

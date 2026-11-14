@@ -59,6 +59,13 @@ test('PHP parts inside double quotes, none inside single quotes', async () => {
     assert.strictEqual(scopeOf(tokens, '$no'), 'meta.cms.string.single');
 });
 
+test('index chains: $page[title], $page[key][subkey], also in double quotes', async () => {
+    const tokens = await tokenize([`(CMS:TEXT useval=$page[key][subkey] prefix="x $page[title] y" suffix='$page[a][b]')`]);
+    assert.strictEqual(scopeOf(tokens, '$page[key][subkey]'), 'meta.cms.php');
+    assert.strictEqual(scopeOf(tokens, '$page[title]'), 'meta.cms.php');
+    assert.strictEqual(scopeOf(tokens, '$page[a][b]'), 'meta.cms.string.single');
+});
+
 test(') in a string does not end the command; text after it is outside', async () => {
     const tokens = await tokenize(['(CMS:TEXT a ifempty="x) y")<p>after</p>']);
     assert.strictEqual(scopeOf(tokens, 'x) y'), 'meta.cms.string.double');

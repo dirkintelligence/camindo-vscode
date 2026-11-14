@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "hi_IN",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "सामग्री को बिना फ़ॉर्मैट किए आउटपुट करता है।",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "वह रिकॉर्ड जिससे पढ़ा जाता है। केवल अंक = record_id, अन्य सब = Slug - URL जैसा ही नियम।",
@@ -1942,7 +1942,15 @@
                     "description": "उस फ़ील्ड का नाम जिसकी सामग्री आउटपुट होती है।",
                     "value": "फ़ील्ड",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "पाठ रूप में मान जो स्रोत के रूप में उपयोग होता है।",
+                    "value": "पाठ",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },

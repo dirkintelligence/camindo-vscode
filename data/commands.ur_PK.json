@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "ur_PK",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "مواد کو فارمیٹ کیے بغیر آؤٹ پٹ کرتا ہے۔",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "وہ ریکارڈ جس سے پڑھا جاتا ہے۔ صرف ہندسے = record_id، باقی سب = Slug - وہی اصول جو URL میں ہے۔",
@@ -1942,7 +1942,15 @@
                     "description": "اس فیلڈ کا نام جس کا مواد آؤٹ پٹ ہوتا ہے۔",
                     "value": "فیلڈ",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "متن کی شکل میں قدر جو ماخذ کے طور پر استعمال ہوتی ہے۔",
+                    "value": "متن",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },

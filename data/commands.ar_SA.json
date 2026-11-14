@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "ar_SA",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "يُخرج المحتوى دون تنسيق.",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "السجل الذي تتم القراءة منه. أرقام فقط = record_id، وأي شيء آخر = slug - القاعدة نفسها كما في عنوان URL.",
@@ -1942,7 +1942,15 @@
                     "description": "اسم الحقل الذي يُخرج محتواه.",
                     "value": "الحقل",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "قيمة بصيغة نصية تُستخدم كمصدر.",
+                    "value": "نص",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },

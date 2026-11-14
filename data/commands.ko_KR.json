@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "ko_KR",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "내용을 서식 없이 출력합니다.",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "읽어 올 레코드입니다. 숫자로만 이루어진 경우 = record_id, 그 외 = slug – URL과 같은 규칙입니다.",
@@ -1942,7 +1942,15 @@
                     "description": "내용을 출력할 필드의 이름입니다.",
                     "value": "필드",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "소스로 사용할 텍스트 형식의 값입니다.",
+                    "value": "텍스트",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },

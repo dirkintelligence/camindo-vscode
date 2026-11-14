@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.3
+
+- `CMS:RAW` knows the parameter `useval` (at least one of `field`, `useval`)
+- Index chains of variables colored as a whole – `$page[title]`, `$page[key][subkey]`, also
+  inside double quotes (not inside single quotes)
+- Command data updated to camindo 9.1.8
+
 ## 0.2.2
 
 - `resulttemplate` of `CMS:SELECT` can be omitted with `hits=false`; without it the syntax check

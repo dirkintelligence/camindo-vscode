@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "en_US",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "Outputs the content unformatted.",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "Record to read from. Pure digit sequence = record_id, anything else = slug - the same rule as in the URL.",
@@ -1942,7 +1942,15 @@
                     "description": "Name of the field whose content is output.",
                     "value": "Field",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "Value in text form that is used as the source.",
+                    "value": "Text",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },

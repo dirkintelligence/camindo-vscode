@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "fr_FR",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "Affiche le contenu sans mise en forme.",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "Enregistrement à lire. Suite de chiffres uniquement = record_id, tout le reste = slug – la même règle que dans l’URL.",
@@ -1942,7 +1942,15 @@
                     "description": "Nom du champ dont le contenu est affiché.",
                     "value": "Champ",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "Valeur sous forme de texte qui sert de source.",
+                    "value": "Texte",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },

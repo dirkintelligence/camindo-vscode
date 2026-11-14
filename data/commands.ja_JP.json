@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "ja_JP",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "内容を書式設定せずに出力します。",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "読み取り元のレコード。数字のみ = record_id、それ以外 = スラッグ（URL と同じ規則）。",
@@ -1942,7 +1942,15 @@
                     "description": "内容を出力するフィールドの名前。",
                     "value": "フィールド",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "ソースとして使用するテキスト形式の値。",
+                    "value": "テキスト",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },

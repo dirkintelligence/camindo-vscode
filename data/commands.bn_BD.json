@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "bn_BD",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "বিষয়বস্তু ফরম্যাট না করে আউটপুট করে।",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "যে রেকর্ড থেকে পড়া হয়। শুধু অঙ্ক = record_id, অন্য সবকিছু = Slug - URL-এর মতোই নিয়ম।",
@@ -1942,7 +1942,15 @@
                     "description": "সেই ফিল্ডের নাম যার বিষয়বস্তু আউটপুট হয়।",
                     "value": "ফিল্ড",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "পাঠ্য আকারে মান যা উৎস হিসেবে ব্যবহৃত হয়।",
+                    "value": "পাঠ্য",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },

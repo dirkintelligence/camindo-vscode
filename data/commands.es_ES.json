@@ -1,5 +1,5 @@
 {
-    "version": "9.1.6",
+    "version": "9.1.8",
     "lang": "es_ES",
     "commands": {
         "continue": {
@@ -1928,7 +1928,7 @@
         "raw": {
             "note": "Muestra el contenido sin formato.",
             "do": "field",
-            "oneof": "",
+            "oneof": "field,useval",
             "params": {
                 "id": {
                     "description": "Registro del que se lee. Secuencia solo de dígitos = record_id, cualquier otra cosa = slug: la misma regla que en la URL.",
@@ -1942,7 +1942,15 @@
                     "description": "Nombre del campo cuyo contenido se muestra.",
                     "value": "Campo",
                     "default": "",
-                    "mandatory": true,
+                    "mandatory": false,
+                    "subparam": 0,
+                    "operator": false
+                },
+                "useval": {
+                    "description": "Valor en forma de texto que se usa como fuente.",
+                    "value": "Texto",
+                    "default": "",
+                    "mandatory": false,
                     "subparam": 0,
                     "operator": false
                 },
